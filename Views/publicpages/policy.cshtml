@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewData["Title"] = "policy";
+}
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <title>S T A G E</title>
+    <meta name="viewport" content="width=device-width, initial-scale=6">
+    <meta name="descrption" content="Best website to Find any Books">
+    <!-- Bootstrap CSS -->
+    <link rel="icon" href="img/stage_logo.png" type="" sizes="">
+    <link rel="shortcut icon" href="img/stage_logo.png" type="" sizes="">
+    <link rel="apple-touch-icon" href="img/stage_logo.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <img src="~/img/stage_logo.png" alt="language" width="30px" height="30px" style="margin-right: 10px;">
+            <a class="navbar-brand" href="#">S T A G E</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-area="" asp-controller="account" asp-action="contact">Contact<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-area="" asp-controller="publicpages" asp-action="policy">Policy<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            About
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">About Stage</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">Our message</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="service">Services</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"></a>
+                            </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <img src="~/img/lang.png" alt="language" width="25px" height="25px"> Lannguage
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="index_ar.html">العربية</a>
+                            <a class="dropdown-item" href="#">English</a>
+                            <a class="dropdown-item" href="#">German</a>
+                            <a class="dropdown-item" href="#">Spanish</a>
+                            <a class="dropdown-item" href="#">French</a>
+                            <a class="dropdown-item" href="#">hindi</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"></a>
+                            </div>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <form class="form-inline">
+                <a class="btn btn-outline-primary my-2 my-sm-0" asp-area="" asp-controller="account" asp-action="Signup" style="margin-right: 10PX;">
+                    New
+                    Account
+                </a>
+                <a class="btn btn-outline-primary my-2 my-sm-0" asp-area="" asp-controller="account" asp-action="login">Login</a>
+                @*href="../Views/accounts/login.cshtml"
+
+                *@
+            </form>
+
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-2">
+
+        </div>
+        <div class="col-2 mt-3">
+            <h1>Our Policy</h1>
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <h5>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.
+
+                Why do we use it?
+                It is a long established fact that a reader will be distracted by the readable content of a page when
+                looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution
+                of letters, as opposed to using 'Content here, content here', making it look like readable English. Many
+                desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a
+                search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have
+                evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+            </h5>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/js.js"></script>
+    <script src="jsme/global.js"></script>
+</body>
+
+</html>
+

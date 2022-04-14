@@ -1,0 +1,56 @@
+.body
+{
+    direction: rtl;
+}
+
+.adv
+{
+    width: 80%;
+    height: 80px;
+    background-color: yellow;
+    margin: auto;
+    padding: 10px;
+}
+.bookName
+{
+    width: 80%;
+    height: 80px;
+    
+    margin: auto;
+    padding: 10px;
+}
+.hrstyle
+{
+    color: white;
+    background-color: white;
+}
+.pages
+{
+   
+border-radius: 5px;
+    border: 2px solid #007bff;
+    background-color: #007bff;
+    
+}
+.pages a 
+{
+    color: white;
+}
+.pages:hover
+{
+   
+
+    border: 2px solid #333333;
+    background-color: white;
+    
+}
+.pages a :hover
+{
+    
+    color: #333333;
+}
+.hh:hover
+{
+ content: H O M E;
+ color: #007bff;
+}
