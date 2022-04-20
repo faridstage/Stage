@@ -4,6 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using System.Net.Mail;
+using Stage_Books.Models;
+
 
 namespace Stage_Books.Controllers
 {
@@ -26,7 +30,29 @@ namespace Stage_Books.Controllers
         {
             return View();
         }
-        
+        [HttpPost]
+        //public IActionResult Sendemail(SendEmail se)
+        //{
+        //    string to = se.to;
+        //    string name = se.name;
+        //    string title = se.title;
+        //    string msg = se.msg;
+        //    MailMessage mail = new MailMessage();
+        //    mail.To.Add(to);
+        //    mail.Subject = title;
+        //    mail.Body = msg;
+        //    mail.From = new MailAddress("stage.books.2022@gmail.com");
+        //    mail.IsBodyHtml = false;
+        //    SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+        //    smtp.Port = 587;
+        //    smtp.UseDefaultCredentials = false;  
+        //    smtp.EnableSsl = true;
+        //    smtp.Credentials = new NetworkCredential("stage.books.2022@gmail.com", "stage82467913Aa");
+        //    smtp.Send(mail);
+        //    ViewBag.Message = "Sending Is Seccussefuly To "+"Stage";
+        //    //smtp.Send("stage.books.2022@gmail.com", "amir.edward.freelancer@gmail.com", title,body);
+        //    return View();
+        //}
         // GET: accountController/Details/5
         public ActionResult Details(int id)
         {

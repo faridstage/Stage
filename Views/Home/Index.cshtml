@@ -24,84 +24,9 @@
 
 </head>
 
-<body>
-
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <img src="img/stage_logo.png" alt="language" width="30" height="30" style="margin-right: 10px;">
-            <a class="navbar-brand" href="#">S T A G E</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
-                    </li>
-
-                    <li class="nav-item active">
-                        <a class="nav-link" asp-area="" asp-controller="account" asp-action="contact">Contact<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" asp-area="" asp-controller="publicpages" asp-action="policy">Policy<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            About
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">About Stage</a>
-                            <a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">Our message</a>
-                            <a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="service">Services</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"></a>
-                            </div>
-                            </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <img src="img/lang.png" alt="language" width="25" height="25"> Lannguage
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="index_ar.html">العربية</a>
-                            <a class="dropdown-item" href="#">English</a>
-                            <a class="dropdown-item" href="#">German</a>
-                            <a class="dropdown-item" href="#">Spanish</a>
-                            <a class="dropdown-item" href="#">French</a>
-                            <a class="dropdown-item" href="#">hindi</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"></a>
-                            </div>
-                            </div>
-                    </li>
-
-                </ul>
-
-            </div>
+<body oncontextmenu="return false;">
 
 
-            <form class="form-inline">
-                <a  class="btn btn-outline-primary my-2 my-sm-0" asp-area="" asp-controller="account" asp-action="Signup" style="margin-right: 10PX;">
-                    New
-                    Account
-                </a>
-                <a class="btn btn-outline-primary my-2 my-sm-0" asp-area="" asp-controller="account" asp-action="login">Login</a>
-                @*href="../Views/accounts/login.cshtml"
-        
-                *@
-            </form>
-
-        </nav>
-    </div>
 
     <!-- slides -->
     <!--<div class="container" >
@@ -226,39 +151,41 @@
             <!--cat -->
             <div class="col-sm">
                 <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
-                    <h3>Category</h3>
+                    <h3>Categorys</h3>
                     <div class="list-group">
                         <a href="#" class="list-group-item list-group-item-action active">
-                            اقسام الكتب
+                             Books Categorys
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action"> الكتب العلمية</a>
-                        <a href="#" class="list-group-item list-group-item-action"> الكتب الادبية  </a>
-                        <a href="#" class="list-group-item list-group-item-action"> الكتب الدينية</a>
-                        <a href="#" class="list-group-item list-group-item-action"> كتب الاساطير</a>
-                        <a href="#" class="list-group-item list-group-item-action"> الكتب التاريخية</a>
+                        <a href="#" class="list-group-item list-group-item-action"> ... </a>
+                        <a href="#" class="list-group-item list-group-item-action"> ...  </a>
+                        <a href="#" class="list-group-item list-group-item-action"> ...</a>
+                        <a href="#" class="list-group-item list-group-item-action"> ...</a>
+                        <a href="#" class="list-group-item list-group-item-action"> ...</a>
 
                     </div>
                     <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Read More ...</button>
                     <hr>
                     <div class="list-group">
                         <a href="#" class="list-group-item list-group-item-action active">
-                            المؤلفين
+                            Authors Categorys
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action"> احمد مراد</a>
-                        <a href="#" class="list-group-item list-group-item-action">شكسبير</a>
-                        <a href="#" class="list-group-item list-group-item-action">احمد خالد توفيق</a>
+                        <a href="#" class="list-group-item list-group-item-action"> ... </a>
+                        <a href="#" class="list-group-item list-group-item-action">...</a>
+                        <a href="#" class="list-group-item list-group-item-action">...</a>
 
                     </div>
                     <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Read More ...</button>
                     <hr>
                     <div class="list-group">
                         <a href="#" class="list-group-item list-group-item-action active">
-                            الكتب حسب اللغة
+                          Book language  
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action">English</a>
-                        <a href="#" class="list-group-item list-group-item-action">Arabic</a>
-                        <a href="#" class="list-group-item list-group-item-action">Franch</a>
-                        <a href="#" class="list-group-item list-group-item-action disabled">Hebrew</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-1">العربية</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-2">English</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-3">Deutsch</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-4">Español</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-5">Français</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-6">हिन्दी</a>
                     </div>
                     <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Read More ...</button>
                     <hr>
@@ -275,9 +202,9 @@
                     <a class="btn btn-outline-primary my-2 my-sm-0" asp-area="" asp-controller="publicpages" asp-action="about_stage">Read More ...</a>
                 </div>
 
-                <div class="card text-center" style="background-color: yellow;">
+                <div class="card text-center" style="">
                     <div class="card-header">
-                        بنر اعلانى
+                         .
                     </div>
                     <div class="card-body">
                     </div>
@@ -299,15 +226,15 @@
                                 <div class="card" style="width: 18rem;">
                                     <img class="card-img-top" src="img/unknownbook.png" alt="Card image cap">
                                     <div class="card-body">
-                                        <h5 class="card-title">كتاب ...........</h5>
+                                        <h5 class="card-title">Book ...........</h5>
                                         <p class="card-text">
-                                            وصف شامل عن الكتاب    ...........
+                                               ...........
                                         </p>
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">المؤلف</li>
-                                        <li class="list-group-item">لغة الكتاب</li>
-                                        <li class="list-group-item">موضوع الكتاب</li>
+                                        <li class="list-group-item">Auther</li>
+                                        <li class="list-group-item">Lang ofBook</li>
+                                        <li class="list-group-item">Subject ofBook</li>
                                     </ul>
                                     <div class="card-body">
                                         <a href="#" class="card-link">Read Book</a>
@@ -320,62 +247,16 @@
                                 <div class="card" style="width: 18rem;">
                                     <img class="card-img-top" src="img/unknownbook.png" alt="Card image cap">
                                     <div class="card-body">
-                                        <h5 class="card-title">كتاب ...........</h5>
+                                        <h5 class="card-title">Book ...........</h5>
                                         <p class="card-text">
-                                            وصف شامل عن الكتاب on the كتاب ........... and make up the bulk of the
-                                            card's content.
+                                            ........... 
+                                            
                                         </p>
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">المؤلف</li>
-                                        <li class="list-group-item">لغة الكتاب</li>
-                                        <li class="list-group-item">موضوع الكتاب</li>
-                                    </ul>
-                                    <div class="card-body">
-                                        <a href="#" class="card-link">Read Book</a>
-                                        <a href="#" class="card-link">Fav</a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-
-
-                            <td>
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="img/unknownbook.png" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">كتاب ...........</h5>
-                                        <p class="card-text">
-                                            وصف شامل عن الكتاب on the كتاب ........... and make up the bulk of the
-                                            card's content.
-                                        </p>
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">المؤلف</li>
-                                        <li class="list-group-item">لغة الكتاب</li>
-                                        <li class="list-group-item">موضوع الكتاب</li>
-                                    </ul>
-                                    <div class="card-body">
-                                        <a href="#" class="card-link">Read Book</a>
-                                        <a href="#" class="card-link">Fav</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="img/unknownbook.png" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">كتاب ...........</h5>
-                                        <p class="card-text">
-                                            وصف شامل عن الكتاب on the كتاب ........... and make up the bulk of the
-                                            card's content.
-                                        </p>
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">المؤلف</li>
-                                        <li class="list-group-item">لغة الكتاب</li>
-                                        <li class="list-group-item">موضوع الكتاب</li>
+                                        <li class="list-group-item">Auther</li>
+                                        <li class="list-group-item">Lang ofBook</li>
+                                        <li class="list-group-item">Subject ofBook</li>
                                     </ul>
                                     <div class="card-body">
                                         <a href="#" class="card-link">Read Book</a>
@@ -391,16 +272,15 @@
                                 <div class="card" style="width: 18rem;">
                                     <img class="card-img-top" src="img/unknownbook.png" alt="Card image cap">
                                     <div class="card-body">
-                                        <h5 class="card-title">كتاب ...........</h5>
+                                        <h5 class="card-title">Book ...........</h5>
                                         <p class="card-text">
-                                            وصف شامل عن الكتاب on the كتاب ........... and make up the bulk of the
-                                            card's content.
+                                             ........... 
                                         </p>
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">المؤلف</li>
-                                        <li class="list-group-item">لغة الكتاب</li>
-                                        <li class="list-group-item">موضوع الكتاب</li>
+                                        <li class="list-group-item">Auther</li>
+                                        <li class="list-group-item">Lang ofBook</li>
+                                        <li class="list-group-item">Subject ofBook</li>
                                     </ul>
                                     <div class="card-body">
                                         <a href="#" class="card-link">Read Book</a>
@@ -412,16 +292,62 @@
                                 <div class="card" style="width: 18rem;">
                                     <img class="card-img-top" src="img/unknownbook.png" alt="Card image cap">
                                     <div class="card-body">
-                                        <h5 class="card-title">كتاب ...........</h5>
+                                        <h5 class="card-title">Book ...........</h5>
                                         <p class="card-text">
-                                            وصف شامل عن الكتاب on the كتاب ........... and make up the bulk of the
-                                            card's content.
+                                             ........... 
+                                            
                                         </p>
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">المؤلف</li>
-                                        <li class="list-group-item">لغة الكتاب</li>
-                                        <li class="list-group-item">موضوع الكتاب</li>
+                                        <li class="list-group-item">Auther</li>
+                                        <li class="list-group-item">Lang ofBook</li>
+                                        <li class="list-group-item">Subject ofBook</li>
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="card-link">Read Book</a>
+                                        <a href="#" class="card-link">Fav</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+
+
+                            <td>
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="img/unknownbook.png" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Book ...........</h5>
+                                        <p class="card-text">
+                                              ........... 
+                                           
+                                        </p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Auther</li>
+                                        <li class="list-group-item">Lang ofBook</li>
+                                        <li class="list-group-item">Subject ofBook</li>
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="card-link">Read Book</a>
+                                        <a href="#" class="card-link">Fav</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="img/unknownbook.png" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Book ...........</h5>
+                                        <p class="card-text">
+                                            ........... 
+                                          
+                                        </p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Auther</li>
+                                        <li class="list-group-item">Lang ofBook</li>
+                                        <li class="list-group-item">Subject ofBook</li>
                                     </ul>
                                     <div class="card-body">
                                         <a href="#" class="card-link">Read Book</a>
@@ -437,18 +363,18 @@
             <!-- Advertisement -->
             <div class="col-sm">
                 <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
-                    <h3>Advertisement</h3>
+                   
                     <div class="card" style="width: 12rem; ">
 
                         <div class="card-body">
-                            <p class="card-text">اعلان.</p>
+                            <p class="card-text">..</p>
                         </div>
                     </div>
                     <hr>
                     <div class="card" style="width: 12rem;">
 
                         <div class="card-body">
-                            <p class="card-text">اعلان.</p>
+                            <p class="card-text">..</p>
                         </div>
                     </div>
 
@@ -456,14 +382,14 @@
                     <div class="card" style="width: 12rem; ">
 
                         <div class="card-body">
-                            <p class="card-text">اعلان.</p>
+                            <p class="card-text">..</p>
                         </div>
                     </div>
                     <hr>
                     <div class="card" style="width: 12rem; ">
 
                         <div class="card-body">
-                            <p class="card-text">اعلان.</p>
+                            <p class="card-text">..</p>
                         </div>
                     </div>
                     <hr>
@@ -471,7 +397,7 @@
 
                         <div class="card-body">
                             <p class="card-text">
-                                اعلان
+                                .
                                 .
                             </p>
                         </div>
@@ -483,100 +409,7 @@
     </div>
 
     <!-- Footer  -->
-    <div class="container-fluid" style="background-color: #333333;">
-        <div class="row">
-            <div class="col" style="text-align: center; padding: 7px;">
-                <span style="color: white; font-size: 2rem;">S T A G E </span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col" style="text-align: center; padding: 10px; margin: 15px;">
-                
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6" style="">
-                 <div class="row">
-                    <span style="color:#333333; font-size: 1.5rem; text-align: center;">Contact Us </span>
-                </div>
-                <div class="row">
-                    <img src="img/home.png" alt="Facebook" title="Facebook" width="30" height="30"
-                         style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                        Home <span class="sr-only">(current)</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <img src="img/about-us.jpg" alt="Facebook" title="Facebook" width="30" height="30"
-                         style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                        About Stage
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <img src="img/services-icon-4.jpg" alt="Facebook" title="Facebook" width="30" height="30"
-                         style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                        Ouer Services
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <img src="img/community.png" alt="Facebook" title="Facebook" width="30" height="30"
-                         style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                        ouer message
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <img src="img/join.png" alt="Facebook" title="Facebook" width="30" height="30"
-                         style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                        Join us <span class="sr-only">(current)</span>
-                    </a>
-                </div>
-            </div>
-           
-            <div class="col-6" style="text-align: center;">
-                <div class="row">
-                    <span style="color: white; font-size: 1.5rem; text-align: center;">Contact Us </span>
-                </div>
-                <div class="row">
-                    <a class="nav-link" href="#" style="color:white;">
-                        <img src="img/facebook.png" alt="Facebook" title="Facebook"
-                             width="30" height="30"> <span class="sr-only">(current)</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <a class="nav-link" href="#" style="color:white;">
-                        <img src="img/twitter.jpg" alt="Facebook" title="Facebook"
-                             width="33" height="33"> <span class="sr-only">(current)</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <a class="nav-link" href="#" style="color:white;">
-                        <img src="img/youtube.jpg" alt="Facebook" title="Facebook"
-                             width="30" height="30"> <span class="sr-only">(current)</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <a class="nav-link" href="#" style="color:white;">
-                        <img src="img/Gmail.ico" alt="Facebook" title="Facebook"
-                             width="30" height="30"> <span class="sr-only">(current)</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-                <div class="row">
-            <div class="col " style="text-align: center; border-radius: 5px; ">
-                <h5 style="color: white; margin-top: 15px">Visitors</h5>
-                <img src="~/img/Statistic.png" alt="visitors" width="40" height="30" />
-                <p style="color: white; margin-top: 10px;">0</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col" style="text-align: center; padding: 7px;">
-                <span style="color: white;">&copy; copy Right Stage 20222</span>
-            </div>
-        </div>
-    </div>
+
 
     <!-- -->
     <!-- Optional JavaScript; choose one of the two! -->

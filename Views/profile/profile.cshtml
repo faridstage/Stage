@@ -13,400 +13,221 @@
     <meta name="viewport" content="width=device-width, initial-scale=6">
     <meta name="descrption" content="Best website to Find any Books">
     <!-- Bootstrap CSS -->
-    <link rel="icon" href="img/stage_logo.png" type="" sizes="">
-    <link rel="shortcut icon" href="img/stage_logo.png" type="" sizes="">
-    <link rel="apple-touch-icon" href="img/stage_logo.png">
+    <link rel="icon" href="~/img/stage_logo.png" type="" sizes="">
+    <link rel="shortcut icon" href="~/img/stage_logo.png" type="" sizes="">
+    <link rel="apple-touch-icon" href="~/img/stage_logo.png">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet">
-
 </head>
 
-<body>
+<body oncontextmenu="return false;">
+    <!-- Nav Bar-->
 
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <img src="~/img/stage_logo.png" alt="language" width="30px" height="30px" style="margin-right: 10px;">
-            <a class="navbar-brand" href="#">S T A G E</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
-                    </li>
-
-                    <li class="nav-item active">
-                        <a class="nav-link" asp-area="" asp-controller="account" asp-action="contact">Contact<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" asp-area="" asp-controller="publicpages" asp-action="policy">Policy<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            About
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">About Stage</a>
-                            <a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">Our message</a>
-                            <a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="service">Services</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"></a>
-                            </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <img src="~/img/lang.png" alt="language" width="25px" height="25px"> Lannguage
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="index_ar.html">العربية</a>
-                            <a class="dropdown-item" href="#">English</a>
-                            <a class="dropdown-item" href="#">German</a>
-                            <a class="dropdown-item" href="#">Spanish</a>
-                            <a class="dropdown-item" href="#">French</a>
-                            <a class="dropdown-item" href="#">hindi</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"></a>
-                            </div>
-                    </li>
-
-                </ul>
-
-            </div>
+     <!-- Nav Bar-->
 
 
-            <form class="form-inline">
-                <a class="btn btn-outline-primary my-2 my-sm-0" asp-area="" asp-controller="account" asp-action="Signup" style="margin-right: 10PX;">
-                    New
-                    Account
-                </a>
-                <a class="btn btn-outline-primary my-2 my-sm-0" asp-area="" asp-controller="account" asp-action="login">Login</a>
-                @*href="../Views/accounts/login.cshtml"
-
-                *@
-            </form>
-
-        </nav>
-    </div>
-
-
-
-
-    <!-- container -->
-    <div class="container-fluid">
+       <!-- container -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-2" style="background-color: #333333;">
         <div class="row">
-            <div class="col-sm-2" style="background-color: #333333;">
-                <div class="row">
-                    <img src="img/unkown.png" alt="Facebook" title="Facebook" width="100px" height="100px"
-                         style="margin:25px auto;">
-                </div>
-                <div class="row">
-                    <a class="nav-link" href="#" style=" margin: auto; ">
-                        <span class="" style="color: white;">
-                            Edit
-                            Profile
-                        </span>
-                    </a>
-                </div>
-                <div class="row">
-                    <a class="nav-link" href="#" style=" margin: auto; ">
-                        <span class="" style="color: white;">
-                            User
-                            Name
-                        </span>
-                    </a>
-                </div>
-                <hr>
+          <img src="~/img/unkown.png"  t="Facebook" title="Facebook" width="100" height="100"
+            style="margin:25px auto;">
+        </div>
+        <div class="row">
+          <a class="nav-link" href="#" style=" margin: auto; "> <span class="" style="color: white;">Edit
+              Profile</span></a>
+        </div>
+        <div class="row">
+          <a class="nav-link" href="#" style=" margin: auto; "> <span class="" style="color: white;">User
+              Name</span></a>
+        </div>
+        <hr>
 
+      </div>
+
+      <div class="col-sm-10">
+        <!--fav start-->
+        <div class="container-fluid" style="margin: 20px auto; ">
+          <span style="margin-bottom: 15px;font-size: large;">Favourit Books</span>
+        </div>
+        <div class="container-fluid" style="margin: 20px auto; background-color:#DEDEDE;">
+
+
+          <div class="row">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
             </div>
 
-            <div class="col-sm-10">
-                <!--fav start-->
-                <div class="container-fluid" style="margin: 20px auto; ">
-                    <span style="margin-bottom: 15px;font-size: large;">Favourit Books</span>
-                </div>
-                <div class="container-fluid" style="margin: 20px auto; background-color:#DEDEDE;">
-
-
-                    <div class="row">
-                        <div class="card" style="width: 18rem;background-color: greenyellow;">
-                            <img class="card-img-top" src="..." alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.
-                                </p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-
-                        <div class="card" style="width: 18rem;background-color: greenyellow;">
-                            <img class="card-img-top" src="..." alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.
-                                </p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-
-                        <div class="card" style="width: 18rem;background-color: greenyellow;">
-                            <img class="card-img-top" src="..." alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.
-                                </p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-
-                        <div class="card" style="width: 18rem;background-color: greenyellow;">
-                            <img class="card-img-top" src="..." alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.
-                                </p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Fav-->
-                <hr>
-
-                <div class="adv">
-                    اعلانات
-                </div>
-
-                <hr>
-                <!--save start-->
-                <div class="container-fluid" style="margin: 20px auto; ">
-                    <span style="margin-bottom: 15px;font-size: large;">Your Saving </span>
-                </div>
-                <div class="container-fluid" style="margin: 20px auto; background-color:#DEDEDE;">
-
-
-                    <div class="row">
-                        <div class="card" style="width: 18rem;background-color: goldenrod;">
-                            <img class="card-img-top" src="..." alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.
-                                </p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-
-                        <div class="card" style="width: 18rem;background-color: goldenrod;">
-                            <img class="card-img-top" src="..." alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.
-                                </p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-
-                        <div class="card" style="width: 18rem;background-color: goldenrod;">
-                            <img class="card-img-top" src="..." alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.
-                                </p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-
-                        <div class="card" style="width: 18rem;background-color: goldenrod;">
-                            <img class="card-img-top" src="..." alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.
-                                </p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End save-->
-                <hr>
-
-                <div class="adv">
-                    اعلانات
-                </div>
-
-                <hr>
-                <!--read start-->
-                <div class="container-fluid" style="margin: 20px auto;">
-                    <span style="margin-bottom: 15px;font-size: large;"> Books`s Reading</span>
-                </div>
-                <div class="container-fluid" style="margin: 20px auto; background-color:#DEDEDE;">
-
-
-                    <div class="row">
-                        <div class="card" style="width: 18rem;background-color: lawngreen;">
-                            <img class="card-img-top" src="..." alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.
-                                </p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-
-                        <div class="card" style="width: 18rem;background-color: lawngreen;">
-                            <img class="card-img-top" src="..." alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.
-                                </p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-
-                        <div class="card" style="width: 18rem;background-color: lawngreen;">
-                            <img class="card-img-top" src="..." alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.
-                                </p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-
-                        <div class="card" style="width: 18rem;background-color: lawngreen;">
-                            <img class="card-img-top" src="..." alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.
-                                </p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End read-->
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
             </div>
+
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Fav-->
+        <hr>
+
+        <div class="adv">
+          اعلانات
+        </div>
+
+        <hr>
+        <!--save start-->
+        <div class="container-fluid" style="margin: 20px auto; ">
+          <span style="margin-bottom: 15px;font-size: large;">Your Saving </span>
+        </div>
+        <div class="container-fluid" style="margin: 20px auto; background-color:#DEDEDE;">
+
+
+          <div class="row">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End save-->
+        <hr>
+
+        <div class="adv">
+          اعلانات
+        </div>
+
+        <hr>
+        <!--read start-->
+        <div class="container-fluid" style="margin: 20px auto;">
+          <span style="margin-bottom: 15px;font-size: large;"> Books`s Reading</span>
+        </div>
+        <div class="container-fluid" style="margin: 20px auto; background-color:#DEDEDE;">
+
+
+          <div class="row">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End read-->
+      </div>
+    <!-- container -->
+   
+
+ 
+
+
+
+
+
+
+
 
 
             <!-- Footer  -->
-            <div class="container-fluid" style="background-color: #333333;">
-                <div class="row">
-                    <div class="col" style="text-align: center; padding: 7px;">
-                        <span style="color: white; font-size: 2rem;">S T A G E </span>
-                    </div>
-                </div>
-                <div class="row">
-
-                </div>
-                <div class="row">
-                    <div class="col" style="">
-                        <div class="row">
-                            <img src="img/home.png" alt="Facebook" title="Facebook" width="30px" height="30px"
-                                 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                                Home <span class="sr-only">(current)</span>
-                            </a>
-                        </div>
-                        <div class="row">
-                            <img src="img/about-us.jpg" alt="Facebook" title="Facebook" width="30px" height="30px"
-                                 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                                About
-                                Stage <span class="sr-only">(current)</span>
-                            </a>
-                        </div>
-                        <div class="row">
-                            <img src="img/services-icon-4.jpg" alt="Facebook" title="Facebook" width="30px" height="30px"
-                                 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                                Ouer
-                                Services <span class="sr-only">(current)</span>
-                            </a>
-                        </div>
-                        <div class="row">
-                            <img src="img/community.png" alt="Facebook" title="Facebook" width="30px" height="30px"
-                                 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                                ouer
-                                message <span class="sr-only">(current)</span>
-                            </a>
-                        </div>
-                        <div class="row">
-                            <img src="img/join.png" alt="Facebook" title="Facebook" width="30px" height="30px"
-                                 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                                Join us
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col" style="text-align: center;">
-                        <div class="row">
-                            <span style="color: white; font-size: 1.5rem; text-align: center;">Contact Us </span>
-                        </div>
-                        <div class="row">
-                            <a class="nav-link" href="#" style="color:white;">
-                                <img src="img/facebook.png" alt="Facebook"
-                                     title="Facebook" width="30px" height="30px"> <span class="sr-only">(current)</span>
-                            </a>
-                        </div>
-                        <div class="row">
-                            <a class="nav-link" href="#" style="color:white;">
-                                <img src="img/twitter.jpg" alt="Facebook"
-                                     title="Facebook" width="33px" height="33px"> <span class="sr-only">(current)</span>
-                            </a>
-                        </div>
-                        <div class="row">
-                            <a class="nav-link" href="#" style="color:white;">
-                                <img src="img/youtube.jpg" alt="Facebook"
-                                     title="Facebook" width="30px" height="30px"> <span class="sr-only">(current)</span>
-                            </a>
-                        </div>
-                        <div class="row">
-                            <a class="nav-link" href="#" style="color:white;">
-                                <img src="img/email.png" alt="Facebook" title="Facebook"
-                                     width="30px" height="30px"> <span class="sr-only">(current)</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col" style="text-align: center; padding: 7px;">
-                        <span style="color: white;">&copy; copy Right Stage 20222</span>
-                    </div>
-                </div>
-            </div>
 
             <!-- -->
             <!-- Optional JavaScript; choose one of the two! -->

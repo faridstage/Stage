@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="~/Admin/cssD/dataTables.bootstrap5.min.css" />
   <link rel="stylesheet" href="~/Admin/cssD/style.css" />
-  
   <title>Stage Dashboard</title>
   <link rel="icon" href="~/img/stage_logo.png" type="" sizes="">
   <link rel="shortcut icon" href="~/img/stage_logo.png" type="" sizes="">
@@ -26,7 +25,7 @@
         aria-controls="offcanvasExample">
         <span class="navbar-toggler-icon" data-bs-target="#sidebar"></span>
       </button>
-      <img src="img/stage_logo.png" alt="language" width="30" height="30"
+      <img src="~/img/stage_logo.png" alt="language" width="30" height="30"
         style="margin-right: 10px;margin-left: 5px;">
       <a class="navbar-brand" href="index.html">S T A G E</a>
 
@@ -61,7 +60,6 @@
               </div>
               </div>
           </li>
-
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
@@ -105,7 +103,7 @@
             </div>
           </li>
           <li>
-            <a href="dashboard.html" class="nav-link px-3 active">
+            <a href="#" class="nav-link px-3 active"
               <span class="me-2"><i class="bi bi-speedometer2"></i></span>
               <span>Dashboard</span>
             </a>
@@ -131,7 +129,7 @@
             <div class="collapse" id="layouts">
               <ul class="navbar-nav ps-3">
                 <li>
-                  <a href="Edit.html" class="nav-link px-3">
+                  <a href="~/Admin/Edit/Edit" class="nav-link px-3">
                     <span class="me-2"><i class="bi bi-pencil-square"></i></span>
                     <span>Edit Books</span>
                   </a>
@@ -140,7 +138,7 @@
             </div>
           </li>
           <li>
-            <a href="AddBook.html" class="nav-link px-3">
+            <a  href="~/Admin/AddBook/AddBook" class="nav-link px-3">
               <span class="me-2"><i class="bi bi-book-fill"></i></span>
               <span>Add Book</span>
             </a>
@@ -154,15 +152,36 @@
             </div>
           </li>
           <li>
-            <a href="Users.html" class="nav-link px-3">
+            <a href="~/Admin/Users/Users" class="nav-link px-3">
               <span class="me-2"><i class="bi bi-person-fill"></i></span>
               <span>Manage Users</span>
             </a>
           </li>
           <li>
-            <a href="AddUser.html" class="nav-link px-3">
+            <a href="~/Admin/AddUser/AddUser" class="nav-link px-3">
               <span class="me-2"><i class="bi bi-plus-circle"></i></span>
               <span>Add Users</span>
+            </a>
+          </li>
+
+          <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+          </li>
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+              Other
+            </div>
+          </li>
+          <li>
+            <a href="~/Admin/index_ocr/index_ocr" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-person-fill"></i></span>
+              <span>OCR</span>
+            </a>
+          </li>
+          <li>
+            <a href="~/Admin/bu/bu" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-plus-circle"></i></span>
+              <span>Back UP</span>
             </a>
           </li>
         </ul>

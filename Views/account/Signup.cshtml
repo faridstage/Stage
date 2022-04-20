@@ -22,82 +22,9 @@
     <link rel="apple-touch-icon" href="img/stage_logo.png">
 </head>
 
-<body>
-
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <img src="~/img/stage_logo.png" alt="language" width="30px" height="30px" style="margin-right: 10px;">
-            <a class="navbar-brand" href="#">S T A G E</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
-                    </li>
-
-                    <li class="nav-item active">
-                        <a class="nav-link" asp-area="" asp-controller="account" asp-action="contact">Contact<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" asp-area="" asp-controller="publicpages" asp-action="policy">Policy<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            About
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">About Stage</a>
-                            <a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">Our message</a>
-                            <a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="service">Services</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"></a>
-                            </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <img src="~/img/lang.png" alt="language" width="25px" height="25px"> Lannguage
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="index_ar.html">العربية</a>
-                            <a class="dropdown-item" href="#">English</a>
-                            <a class="dropdown-item" href="#">German</a>
-                            <a class="dropdown-item" href="#">Spanish</a>
-                            <a class="dropdown-item" href="#">French</a>
-                            <a class="dropdown-item" href="#">hindi</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"></a>
-                            </div>
-                    </li>
-
-                </ul>
-
-            </div>
+<body oncontextmenu="return false;">
 
 
-            <form class="form-inline">
-                <a class="btn btn-outline-primary my-2 my-sm-0" asp-area="" asp-controller="account" asp-action="Signup" style="margin-right: 10PX;">
-                    New
-                    Account
-                </a>
-                <a class="btn btn-outline-primary my-2 my-sm-0" asp-area="" asp-controller="account" asp-action="login">Login</a>
-                @*href="../Views/accounts/login.cshtml"
-
-                *@
-            </form>
-
-        </nav>
-    </div>
 
 
     <br><br><br>
@@ -179,14 +106,14 @@
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <div class="input-group">
+                      <!--  <div class="input-group">
                             <div class="custom-file">
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Add you image</label>
                                     <input class="form-control" type="file" id="formFile">
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <br><br>
@@ -253,10 +180,17 @@
                         <h5>or <a href="login.html">Log in</a></h5>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>
-
+                <br />
+                <br />      
+                <br />
+                <br />
+                                <br />
+                <br />
 
 
 
