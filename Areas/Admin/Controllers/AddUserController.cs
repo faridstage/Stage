@@ -5,7 +5,7 @@ namespace Stage_Books.Areas.Admin.Controllers
     [Area("Admin")]
     public class AddUserController : Controller
     {
-        public IActionResult User()
+        public IActionResult Index()
         {
             return View();
         }

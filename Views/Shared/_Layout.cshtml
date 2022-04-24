@@ -1,184 +1,189 @@
-﻿<!DOCTYPE html>
+﻿@inject SignInManager<ApplicationUser> signInManager;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 </head>
 <body>
-      <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <img src="~/img/stage_logo.png" alt="language" width="30" height="30" style="margin-right: 10px;">
-            <a class="navbar-brand" href="#">S T A G E</a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" asp-area="" asp-controller="account" asp-action="contact">Contact<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" asp-area="" asp-controller="publicpages" asp-action="policy">Policy<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            About
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">About Stage</a>
-                            <a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">Our message</a>
-                            <a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="service">Services</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	<div class="container-fluid">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<img src="~/img/stage_logo.png" alt="language" width="30" height="30" style="margin-right: 10px;">
+			<a class="navbar-brand" href="#">S T A G E</a>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" asp-area="" asp-controller="account" asp-action="contact">Contact<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" asp-area="" asp-controller="publicpages" asp-action="policy">Policy<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+						   aria-haspopup="true" aria-expanded="false">
+							About
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">About Stage</a>
+							<a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">Our message</a>
+							<a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="service">Services</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"></a>
-                            </div>
-                            </div>
-                    </li>
-                   <li class="nav-item active">
-                        <a class="nav-link" href="#">Help<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <img src="~/img/lang.png" alt="language" width="25" height="25"> Lannguage
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="index_ar.html">العربية</a>
-                            <a class="dropdown-item" href="#">English</a>
-                            <a class="dropdown-item" href="#">German</a>
-                            <a class="dropdown-item" href="#">Spanish</a>
-                            <a class="dropdown-item" href="#">French</a>
-                            <a class="dropdown-item" href="#">hindi</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#"></a>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Help<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+						   aria-haspopup="true" aria-expanded="false">
+							<img src="~/img/lang.png" alt="language" width="25" height="25"> Lannguage
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="index_ar.html">العربية</a>
+							<a class="dropdown-item" href="#">English</a>
+							<a class="dropdown-item" href="#">German</a>
+							<a class="dropdown-item" href="#">Spanish</a>
+							<a class="dropdown-item" href="#">French</a>
+							<a class="dropdown-item" href="#">hindi</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"></a>
-                            </div>
-                            </div>
-                    </li>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#"></a>
+							</div>
+						</div>
+					</li>
 
-                </ul>
+				</ul>
 
-            </div>
+			</div>
+
+			@if (signInManager.IsSignedIn(User))
+			{
+				<form method="post" asp-action="Logout" asp-controller="Account" class="form-inline">
+					<button type="submit" class="btn btn-outline-primary my-2 my-sm-0" >Logout @User.Identity.Name</button>
+				</form>
+
+			}
+			else
+			{
+				
+					<a class="btn btn-outline-primary my-2 my-sm-0" asp-action="Register" asp-controller="Account">	New	Account	</a>
+					<a class="btn btn-outline-primary my-2 my-sm-0" asp-action="Login" asp-controller="Account">Login</a>
+			}
 
 
-            <form class="form-inline">
-                <a  class="btn btn-outline-primary my-2 my-sm-0" asp-area="" asp-controller="account" asp-action="Signup" style="margin-right: 10PX;">
-                    New
-                    Account
-                </a>
-                <a class="btn btn-outline-primary my-2 my-sm-0" asp-area="" asp-controller="account" asp-action="login">Login</a>
-                @*href="../Views/accounts/login.cshtml"
-        
-                *@
-            </form>
 
-        </nav>
-    </div>
-        <main role="main" class="">
-            @RenderBody()
-        </main>
-      <div class="container-fluid" style="background-color: #333333;">
-        <div class="row">
-            <div class="col" style="text-align: center; padding: 7px;">
-                <span style="color: white; font-size: 2rem;">S T A G E </span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col" style="text-align: center; padding: 10px; margin: 15px;">
-                
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6" style="">
-                 <div class="row">
-                    <span style="color:#333333; font-size: 1.5rem; text-align: center;">Contact Us </span>
-                </div>
-                <div class="row">
-                    <img src="~/img/home.png" alt="Facebook" title="Facebook" width="30" height="30"
-                         style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                        Home <span class="sr-only">(current)</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <img src="~/img/about-us.jpg" alt="Facebook" title="Facebook" width="30" height="30"
-                         style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                        About Stage
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <img src="~/img/services-icon-4.jpg" alt="Facebook" title="Facebook" width="30" height="30"
-                         style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                        Ouer Services
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <img src="~/img/community.png" alt="Facebook" title="Facebook" width="30" height="30"
-                         style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                        ouer message
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <img src="~/img/facebook.png" alt="Facebook" title="Facebook" width="30" height="30"
-                         style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                        Join us <span class="sr-only">(current)</span>
-                    </a>
-                </div>
-            </div>
-           
-            <div class="col-6" style="text-align: center;">
-                <div class="row">
-                    <span style="color: white; font-size: 1.5rem; text-align: center;">Contact Us </span>
-                </div>
-                <div class="row">
-                    <a class="nav-link" href="#" style="color:white;">
-                        <img src="~/img/facebook.png" alt="Facebook" title="Facebook"
-                             width="30" height="30"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Visit Stege on Facebook</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <a class="nav-link" href="#" style="color:white;">
-                        <img src="~/img/twitter.jpg" alt="twitter" title="twitter"
-                             width="33" height="33"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Visit Stege on Twitter</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <a class="nav-link" href="#" style="color:white;">
-                        <img src="~/img/youtube.jpg" alt="youtube" title="youtube"
-                             width="30" height="30"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Youtube</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <a class="nav-link" href="#" style="color:white;">
-                        <img src="~/img/Gmail.ico" alt="Gmail" title="Gmail"
-                             width="30" height="30"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Gmail</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-                <div class="row">
-            <div class="col " style="text-align: center; border-radius: 5px; ">
-                <h5 style="color: white; margin-top: 15px">Visitors</h5>
-                <img src="~/img/Statistic.png" alt="visitors" width="40" height="30" />
-                <p style="color: white; margin-top: 10px;">0</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col" style="text-align: center; padding: 7px;">
-                <span style="color: white;">&copy; copy Right Stage 20222</span>
-            </div>
-        </div>
-    </div>
-    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>*@
-    @await RenderSectionAsync("Scripts", required: false)
+		</nav>
+	</div>
+	<main role="main" class="">
+		@RenderBody()
+	</main>
+	<div class="container-fluid" style="background-color: #333333;">
+		<div class="row">
+			<div class="col" style="text-align: center; padding: 7px;">
+				<span style="color: white; font-size: 2rem;">S T A G E </span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col" style="text-align: center; padding: 10px; margin: 15px;">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6" style="">
+				<div class="row">
+					<span style="color:#333333; font-size: 1.5rem; text-align: center;">Contact Us </span>
+				</div>
+				<div class="row">
+					<img src="~/img/home.png" alt="Facebook" title="Facebook" width="30" height="30"
+						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
+						Home <span class="sr-only">(current)</span>
+					</a>
+				</div>
+				<div class="row">
+					<img src="~/img/about-us.jpg" alt="Facebook" title="Facebook" width="30" height="30"
+						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
+						About Stage
+						<span class="sr-only">(current)</span>
+					</a>
+				</div>
+				<div class="row">
+					<img src="~/img/services-icon-4.jpg" alt="Facebook" title="Facebook" width="30" height="30"
+						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
+						Ouer Services
+						<span class="sr-only">(current)</span>
+					</a>
+				</div>
+				<div class="row">
+					<img src="~/img/community.png" alt="Facebook" title="Facebook" width="30" height="30"
+						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
+						ouer message
+						<span class="sr-only">(current)</span>
+					</a>
+				</div>
+				<div class="row">
+					<img src="~/img/facebook.png" alt="Facebook" title="Facebook" width="30" height="30"
+						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
+						Join us <span class="sr-only">(current)</span>
+					</a>
+				</div>
+			</div>
+
+			<div class="col-6" style="text-align: center;">
+				<div class="row">
+					<span style="color: white; font-size: 1.5rem; text-align: center;">Contact Us </span>
+				</div>
+				<div class="row">
+					<a class="nav-link" href="#" style="color:white;">
+						<img src="~/img/facebook.png" alt="Facebook" title="Facebook"
+							 width="30" height="30"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Visit Stege on Facebook</span>
+					</a>
+				</div>
+				<div class="row">
+					<a class="nav-link" href="#" style="color:white;">
+						<img src="~/img/twitter.jpg" alt="twitter" title="twitter"
+							 width="33" height="33"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Visit Stege on Twitter</span>
+					</a>
+				</div>
+				<div class="row">
+					<a class="nav-link" href="#" style="color:white;">
+						<img src="~/img/youtube.jpg" alt="youtube" title="youtube"
+							 width="30" height="30"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Youtube</span>
+					</a>
+				</div>
+				<div class="row">
+					<a class="nav-link" href="#" style="color:white;">
+						<img src="~/img/Gmail.ico" alt="Gmail" title="Gmail"
+							 width="30" height="30"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Gmail</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col " style="text-align: center; border-radius: 5px; ">
+				<h5 style="color: white; margin-top: 15px">Visitors</h5>
+				<img src="~/img/Statistic.png" alt="visitors" width="40" height="30" />
+				<p style="color: white; margin-top: 10px;">0</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col" style="text-align: center; padding: 7px;">
+				<span style="color: white;">&copy; copy Right Stage 20222</span>
+			</div>
+		</div>
+	</div>
+	@*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+		<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="~/js/site.js" asp-append-version="true"></script>*@
+	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

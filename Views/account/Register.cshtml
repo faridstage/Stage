@@ -1,0 +1,287 @@
+﻿@using Stage_Books.Models.Account
+@model RegisterViewModel
+@{
+	ViewData["Title"] = "Register";
+}
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<title>S T A G E</title>
+	<meta name="viewport" content="width=device-width, initial-scale=6">
+	<meta name="descrption" content="Best website to Find any Books">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="css/style.css" rel="stylesheet">
+	<link rel="icon" href="img/stage_logo.png" type="" sizes="">
+	<link rel="shortcut icon" href="img/stage_logo.png" type="" sizes="">
+	<link rel="apple-touch-icon" href="img/stage_logo.png">
+</head>
+
+<body oncontextmenu="return false;">
+
+
+
+
+	<br>
+	<br>
+	<br>
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<form method="post">
+				<div asp-validation-summary="All" class="text-danger"></div>
+				<div style="height: 120vh;" class="shadow-lg p-3 mb-5 bg-light rounded">
+				<br>
+				<div class="row">
+					<div class="col-md-5 col-sm-5 col-5"></div>
+					<div class="text-center mb-3">
+						<h1 style="color: blue;">Join US</h1>
+
+					</div>
+
+				</div>
+				<div class="row">
+
+					<div class="text-center" style="margin: 15px auto;">
+						<span style="color: red;text-align: center;font-size: 18px;">Note : Please Enter Your Data By English Language</span>
+
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="col-md-6 mb-3">
+
+						<div class="input-group input-group-lg">
+							<input asp-for="Name" type="text" class="form-control" aria-label="Sizing example input"
+								   aria-describedby="inputGroup-sizing-lg" placeholder="username">
+								   <span asp-validation-for="Name"></span>
+						</div>
+					</div>
+					<div class="col-md-6 mb-3">
+						<div class="input-group input-group-lg">
+							<input asp-for="Email" type="text" class="form-control" aria-label="Sizing example input"
+								   aria-describedby="inputGroup-sizing-lg" placeholder="email">
+								   <span asp-validation-for="Email"></span>
+						</div>
+					</div>
+				</div>
+				<br><br>
+
+				
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<div class="input-group input-group-lg">
+							<input asp-for="Password" type="password" class="form-control" aria-label="Sizing example input"
+								   aria-describedby="inputGroup-sizing-lg" placeholder="Password">
+								   <span asp-validation-for="Password"></span>
+						</div>
+					</div>
+					<div class="col-md-6 mb-3">
+						<div class="input-group input-group-lg">
+							<input asp-for="ConfirmPassword" type="password" class="form-control" aria-label="Sizing example input"
+								   aria-describedby="inputGroup-sizing-lg" placeholder="Repeat your password">
+								   <span asp-validation-for="ConfirmPassword"></span>
+						</div>
+					</div>
+				</div>
+				<br><br>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<div class="input-group input-group-lg">
+							<input asp-for="phone" type="text" class="form-control" aria-label="Sizing example input"
+								   aria-describedby="inputGroup-sizing-lg" placeholder="phone number">
+								   <span asp-validation-for="phone"></span>
+						</div>
+					</div>
+					<div class="col-md-6 mb-3">
+						<select asp-for="gender" class="form-control form-control-lg">
+							<option selected disabled>Gender</option>
+							<option>Male</option>
+							<option>Female</option>
+							<option>Other</option>
+						</select>
+						<span asp-validation-for="gender"></span>
+					</div>
+				</div>
+				<br>
+				 <div class="row">
+					<div class="col-md-6 mb-3">
+						<div class="input-group input-group-lg">
+							<input asp-for="city" type="text" class="form-control" aria-label="Sizing example input"
+								   aria-describedby="inputGroup-sizing-lg" placeholder="City">
+								   <span asp-validation-for="city"></span>
+						</div>
+					</div>
+					<div class="col-md-6 mb-3">
+						<div class="input-group input-group-lg">
+							<input asp-for="Nlanguage" type="text" class="form-control" aria-label="Sizing example input"
+								   aria-describedby="inputGroup-sizing-lg" placeholder="Your Mother Language">
+								   <span asp-validation-for="Nlanguage"></span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<div class="input-group input-group-lg">
+							<input asp-for="country" type="text" class="form-control" aria-label="Sizing example input"
+								   aria-describedby="inputGroup-sizing-lg" placeholder="Country">
+								   <span asp-validation-for="country"></span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<div class="input-group input-group-lg">
+							<input asp-for="work" type="text" class="form-control" aria-label="Sizing example input"
+								   aria-describedby="inputGroup-sizing-lg" placeholder="Work">
+								   <span asp-validation-for="work"></span>
+						</div>
+					</div>
+					<div class="col-md-6 mb-3">
+						<div class="input-group input-group-lg">
+							<input asp-for="birth" type="date" class="form-control" aria-label="Sizing example input"
+								   aria-describedby="inputGroup-sizing-lg" placeholder="Your birthday">
+								   <span asp-validation-for="birth"></span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 mb-3">
+						<button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<h5>or <a href="login.html">Log in</a></h5>
+					</div>
+				</div>
+
+
+			</div>
+			</form>
+			<!-- <div class="row">
+					<div class="col-md-6 mb-3">
+						<div class="input-group input-group-lg">
+							<input type="text" class="form-control" aria-label="Sizing example input"
+								   aria-describedby="inputGroup-sizing-lg" placeholder="Country">
+						</div>
+					</div>
+					<div class="col-md-6 mb-3">
+						<div class="input-group input-group-lg">
+							<input type="text" class="form-control" aria-label="Sizing example input"
+								   aria-describedby="inputGroup-sizing-lg" placeholder="City">
+						</div>
+					</div>
+				</div>
+				<br><br>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<select class="form-control form-control-lg">
+							<option selected disabled>Gender</option>
+							<option>Male</option>
+							<option>Female</option>
+							<option>Other</option>
+						</select>
+					</div>
+					<div class="col-md-6 mb-3">
+						<div class="input-group input-group-lg">
+							<input type="text" class="form-control" aria-label="Sizing example input"
+								   aria-describedby="inputGroup-sizing-lg" placeholder="phone number">
+						</div>
+					</div>
+				</div>
+				<br><br>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<div class="input-group input-group-lg">
+							<input type="text" class="form-control" aria-label="Sizing example input"
+								   aria-describedby="inputGroup-sizing-lg" placeholder="Your Lannguage">
+						</div>
+					</div>
+					<div class="col-md-6 mb-3">
+						  <div class="input-group">
+							  <div class="custom-file">
+								  <div class="mb-3">
+									  <label for="formFile" class="form-label">Add you image</label>
+									  <input class="form-control" type="file" id="formFile">
+								  </div>
+							  </div>
+						  </div>
+					</div>
+				</div>
+				<br><br>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<select class="form-control form-control-lg">
+							<option selected disabled>Choose Language</option>
+							<option>English</option>
+							<option>Arabic</option>
+							<option>German</option>
+							<option>Spanish</option>
+							<option>French</option>
+						</select>
+					</div>
+					<div class="col-md-6 mb-3">
+						<select class="form-control form-control-lg">
+							<option selected disabled>Choose Subject</option>
+							<option>Medicine</option>
+							<option>Scince</option>
+							<option>Engineering</option>
+							<option>literature</option>
+							<option>Space Scince</option>
+						</select>
+					</div>
+				</div>
+				<br><br>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<div class="input-group input-group-lg">
+							<input type="text" class="form-control" aria-label="Sizing example input"
+								   aria-describedby="inputGroup-sizing-lg" placeholder="Work">
+						</div>
+					</div>
+					<div class="col-md-6 mb-3">
+						<div class="input-group input-group-lg">
+							<input type="date" class="form-control" aria-label="Sizing example input"
+								   aria-describedby="inputGroup-sizing-lg" placeholder="Your birthday">
+						</div>
+					</div>
+				</div>
+				<br><br> -->
+
+			
+			
+		</div>
+	</div>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+
+
+
+
+	<script src="js/js.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+			crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+			integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+			crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+			crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+
