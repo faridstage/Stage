@@ -1,0 +1,173 @@
+﻿@model IEnumerable<Stage_Books.Models.Contact.Contactmsg>
+
+@{
+    ViewData["Title"] = "Contact";
+}
+
+
+<head >
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <title>S T A G E</title>
+    <meta name="viewport" content="width=device-width, initial-scale=6">
+    <meta name="descrption" content="Best website to Find any Books">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body oncontextmenu="return false;">
+    <br>
+    <p>
+    <a asp-action="Create">Send Message</a>
+    </p>
+    <br><br>
+
+    <!--******************************************-->
+       <div class="row">
+        <div class="col-md-1 col-1">
+
+        </div>
+        <div class="col-md-5 col-12">
+            
+            <h1 style="color: blue;">@Stage_Books.languages.Resource.Contact_Us</h1>
+            <h4>
+                @Stage_Books.languages.Resource.You_Can_Contact_Us___Ask_About_Anything_And_We_Responce_on_Your_E_Mail_Address
+            </h4>
+            <br />
+            <h5 style="color: blue;">@Stage_Books.languages.Resource.Or_Visit_us_On:</h5>
+            <br> 
+                <div class="row">
+                    <img src="/img/facebook.png" alt="Facebook" title="Facebook" width="30" height="30"
+                         style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
+                        Home <span class="sr-only">(current)</span>
+                    </a>
+                </div>
+                <div class="row">
+                    <img src="/img/twitter.jpg" alt="Facebook" title="Facebook" width="30" height="30"
+                         style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
+                        Home <span class="sr-only">(current)</span>
+                    </a>
+                </div>
+                <div class="row">
+                    <img src="/img/youtube.jpg" alt="Facebook" title="Facebook" width="30" height="30"
+                         style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
+                        Home <span class="sr-only">(current)</span>
+                    </a>
+                </div>
+        </div>
+        <div class="col-md-5 col-12">
+            <form class="input-group input-group-lg" method="post" asp-action="contact" >
+            <div class="shadow-lg p-3 mb-5 bg-dark rounded fixed">
+                <br>
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <div class="input-group input-group-lg">
+                            
+                            <input type="text" class="form-control" aria-label="Sizing example input" 
+                                   aria-describedby="inputGroup-sizing-lg" placeholder="Enter your name" title="name">
+                         
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="input-group input-group-lg" >
+                            
+                            <input   type="text" class="form-control" aria-label="Sizing example input" 
+                                   aria-describedby="inputGroup-sizing-lg" value="Enter your E-mail" title="email">
+                         
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+
+                    <div class="col-md-12 mb-3">
+                        <div class="input-group input-group-lg">
+                           
+                            <input  type="text" class="form-control" aria-label="Sizing example input" 
+                                   aria-describedby="inputGroup-sizing-lg" placeholder="Title" name="title">
+                               
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12 mb-3">          
+                        <div class="input-group input-group-lg">
+                          
+                            <textarea  class="form-control" placeholder="your Message" rows="7"></textarea>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        
+                        <input type="submit" class="btn btn-primary btn-lg btn-block" namr="Send" value="send">
+                    
+                  
+                    </div>
+                </div>
+
+            </div>
+          </form>
+        </div>
+    </div>
+<!--******************************************-->
+ <table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.mail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.body)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.body)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+    <script src="js/js.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+</body>

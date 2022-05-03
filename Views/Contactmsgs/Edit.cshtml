@@ -1,0 +1,49 @@
+﻿@model Stage_Books.Models.Contact.Contactmsg
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Contactmsg</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="mail" class="control-label"></label>
+                <input asp-for="mail" class="form-control" />
+                <span asp-validation-for="mail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="title" class="control-label"></label>
+                <input asp-for="title" class="form-control" />
+                <span asp-validation-for="title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="body" class="control-label"></label>
+                <input asp-for="body" class="form-control" />
+                <span asp-validation-for="body" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

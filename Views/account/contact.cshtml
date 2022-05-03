@@ -1,4 +1,4 @@
-﻿
+﻿@*@model IEnumerable<Stage_Books.Models.Contact.Contactmsg>
 @{
     ViewData["Title"] = "contact";
 }
@@ -17,15 +17,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet">
-
-
 </head>
 
+
 <body oncontextmenu="return false;">
-
-
-
-    <br><br><br>
+    <br>
+    <p>
+    <a asp-action="Create">Send Message</a>
+   </p>
+    <br><br>
 
     <div class="row">
         <div class="col-md-1 col-1">
@@ -33,13 +33,12 @@
         </div>
         <div class="col-md-5 col-12">
             
-            <h1 style="color: blue;">Contact Us</h1>
+            <h1 style="color: blue;">@Stage_Books.languages.Resource.Contact_Us</h1>
             <h4>
-                You Can Contact Us , Ask About Anything 
-                And We Responce on Your E-Mail Address
+                @Stage_Books.languages.Resource.You_Can_Contact_Us___Ask_About_Anything_And_We_Responce_on_Your_E_Mail_Address
             </h4>
             <br />
-            <h5 style="color: blue;">Or Visit us On :</h5>
+            <h5 style="color: blue;">@Stage_Books.languages.Resource.Or_Visit_us_On:</h5>
             <br> 
                 <div class="row">
                     <img src="/img/facebook.png" alt="Facebook" title="Facebook" width="30" height="30"
@@ -61,7 +60,7 @@
                 </div>
         </div>
         <div class="col-md-5 col-12">
-            <form class="input-group input-group-lg" method="post" asp-action="Sendemail" >
+            <form class="input-group input-group-lg" method="post" asp-action="contact" >
             <div class="shadow-lg p-3 mb-5 bg-dark rounded fixed">
                 <br>
                 <div class="row">
@@ -119,8 +118,6 @@
             </div>
           </form>
         </div>
-
-
     </div>
 
 
@@ -149,3 +146,4 @@
 
 </html>
 
+*@

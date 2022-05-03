@@ -123,11 +123,35 @@
   <data name="About Stage" xml:space="preserve">
     <value>About Stage</value>
   </data>
+  <data name="Author" xml:space="preserve">
+    <value>Author</value>
+  </data>
   <data name="Authors" xml:space="preserve">
     <value>Authors</value>
   </data>
   <data name="Authors Categorys" xml:space="preserve">
     <value>Authors Categorys</value>
+  </data>
+  <data name="Book" xml:space="preserve">
+    <value>Book</value>
+  </data>
+  <data name="Book Category" xml:space="preserve">
+    <value>Book Category</value>
+  </data>
+  <data name="Book Contact" xml:space="preserve">
+    <value>Book Contact</value>
+  </data>
+  <data name="Book Description" xml:space="preserve">
+    <value>Book Description</value>
+  </data>
+  <data name="Book info" xml:space="preserve">
+    <value>Book info</value>
+  </data>
+  <data name="Book Language" xml:space="preserve">
+    <value>Book Language</value>
+  </data>
+  <data name="Book Name" xml:space="preserve">
+    <value>Book Name</value>
   </data>
   <data name="Books" xml:space="preserve">
     <value>Books</value>
@@ -138,8 +162,8 @@
   <data name="Books Language" xml:space="preserve">
     <value>Books Language</value>
   </data>
-  <data name="Categorys" xml:space="preserve">
-    <value>Categorys</value>
+  <data name="Books`s Reading" xml:space="preserve">
+    <value>Books`s Reading</value>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
@@ -156,8 +180,17 @@
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Edit Profile" xml:space="preserve">
+    <value>Edit Profile</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
+  </data>
+  <data name="Encyclopedia" xml:space="preserve">
+    <value>Encyclopedia</value>
   </data>
   <data name="English" xml:space="preserve">
     <value>English</value>
@@ -165,11 +198,20 @@
   <data name="Fav" xml:space="preserve">
     <value>Fav</value>
   </data>
+  <data name="Favourit Books" xml:space="preserve">
+    <value>Favourit Books</value>
+  </data>
   <data name="Gmail" xml:space="preserve">
     <value>Gmail</value>
   </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="if you Catch a Wrong in Text" xml:space="preserve">
+    <value>if you Catch a Wrong in Text</value>
   </data>
   <data name="Join Us" xml:space="preserve">
     <value>Join Us</value>
@@ -186,8 +228,14 @@
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
   <data name="Most Read Books" xml:space="preserve">
     <value>Most Read Books</value>
+  </data>
+  <data name="My Favourit" xml:space="preserve">
+    <value>My Favourit</value>
   </data>
   <data name="New Account" xml:space="preserve">
     <value>New Account</value>
@@ -216,11 +264,29 @@
   <data name="Our Policy" xml:space="preserve">
     <value>Our Policy</value>
   </data>
+  <data name="Pages" xml:space="preserve">
+    <value>Pages</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
   <data name="Policy" xml:space="preserve">
     <value>Policy</value>
+  </data>
+  <data name="Publisher" xml:space="preserve">
+    <value>Publisher</value>
+  </data>
+  <data name="Publishing Date" xml:space="preserve">
+    <value>Publishing Date</value>
+  </data>
+  <data name="Publishing Num" xml:space="preserve">
+    <value>Publishing Num</value>
+  </data>
+  <data name="Rate" xml:space="preserve">
+    <value>Rate</value>
+  </data>
+  <data name="Read" xml:space="preserve">
+    <value>Read</value>
   </data>
   <data name="Read Book" xml:space="preserve">
     <value>Read Book</value>
@@ -228,8 +294,29 @@
   <data name="Read More" xml:space="preserve">
     <value>Read More</value>
   </data>
+  <data name="Reat Book" xml:space="preserve">
+    <value>Reat Book</value>
+  </data>
+  <data name="Related Books" xml:space="preserve">
+    <value>Related Books</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Save Book" xml:space="preserve">
+    <value>Save Book</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
+  </data>
+  <data name="Search For Any Word in Book" xml:space="preserve">
+    <value>Search For Any Word in Book</value>
+  </data>
+  <data name="Search Results" xml:space="preserve">
+    <value>Search Results</value>
+  </data>
+  <data name="Search Results Area" xml:space="preserve">
+    <value>Search Results Area</value>
   </data>
   <data name="Services" xml:space="preserve">
     <value>Services</value>
@@ -246,6 +333,9 @@
   <data name="Titel" xml:space="preserve">
     <value>Titel</value>
   </data>
+  <data name="Translate" xml:space="preserve">
+    <value>Translate</value>
+  </data>
   <data name="Visit Stege on Facebook" xml:space="preserve">
     <value>Visit Stege on Facebook</value>
   </data>
@@ -260,6 +350,9 @@
   </data>
   <data name="You Can Contact Us , Ask About Anything And We Responce on Your E-Mail Address" xml:space="preserve">
     <value>You Can Contact Us , Ask About Anything And We Responce on Your E-Mail Address</value>
+  </data>
+  <data name="Your_Save" xml:space="preserve">
+    <value>Your_Save</value>
   </data>
   <data name="Youtube" xml:space="preserve">
     <value>Youtube</value>

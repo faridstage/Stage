@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Stage_Books.Models.Account;
-
+using Stage_Books.Models.Contact;
 
 namespace Stage_Books.Models
 {
@@ -13,6 +13,7 @@ namespace Stage_Books.Models
         }
 
         public DbSet<RegisterViewModel> users { get; set; }
+        public DbSet<Contactmsg> Contactmsgs { get; set; }
 
         
     }

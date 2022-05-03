@@ -1,8 +1,27 @@
 ﻿@inject SignInManager<ApplicationUser> signInManager;
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Mvc.Localization
 
+@inject IViewLocalizer localizer
+@inject IOptions<RequestLocalizationOptions> locoption
+@{
+    var requestculture = Context.Features.Get<IRequestCultureFeature>();
+    var culitems = locoption.Value.SupportedUICultures.Select(c => new SelectListItem
+            {
+                Value = c.Name,
+                Text = c.NativeName
+            }).ToList();
+    var returnurl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+}     
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<link rel="icon" href="~/img/stage_logo.png" type="" sizes="">
+    <link rel="shortcut icon" href="~/img/stage_logo.png" type="" sizes="">
+    <link rel="apple-touch-icon" href="~/img/stage_logo.png">
 </head>
 <body>
 	<div class="container-fluid">
@@ -16,23 +35,24 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+						<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">@Stage_Books.languages.Resource.Home <span class="sr-only">(current)</span></a>
+					</li>
+				    <li class="nav-item active">
+						<a class="nav-link" asp-area="" asp-controller="Contactmsgs" asp-action="Create">@Stage_Books.languages.Resource.Contact<span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" asp-area="" asp-controller="account" asp-action="contact">Contact<span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" asp-area="" asp-controller="publicpages" asp-action="policy">Policy<span class="sr-only">(current)</span></a>
+						<a class="nav-link" asp-area="" asp-controller="publicpages" asp-action="policy">@Stage_Books.languages.Resource.Policy<span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
 						   aria-haspopup="true" aria-expanded="false">
-							About
+							@Stage_Books.languages.Resource.About
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">About Stage</a>
-							<a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">Our message</a>
-							<a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="service">Services</a>
+							<a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">@Stage_Books.languages.Resource.About_Stage</a>
+							
+							<a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="service">@Stage_Books.languages.Resource.Services</a>
+							<a class="dropdown-item" asp-area="" asp-controller="Help" asp-action="Help">@Stage_Books.languages.Resource.Help</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
 								<div class="dropdown-divider"></div>
@@ -41,26 +61,33 @@
 						</div>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" href="#">Help<span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="#">@Stage_Books.languages.Resource.Encyclopedia<span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
 						   aria-haspopup="true" aria-expanded="false">
 							<img src="~/img/lang.png" alt="language" width="25" height="25"> Lannguage
 						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="index_ar.html">العربية</a>
-							<a class="dropdown-item" href="#">English</a>
-							<a class="dropdown-item" href="#">German</a>
-							<a class="dropdown-item" href="#">Spanish</a>
-							<a class="dropdown-item" href="#">French</a>
-							<a class="dropdown-item" href="#">hindi</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" title="@localizer["Request culture provider:"] @requestculture?.Provider?.GetType().Name">
 
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#"></a>
-							</div>
-						</div>
+                            <form id="selectlanguage" asp-controller="Home" asp-action="setlang" asp-route-returnurl="@returnurl" method="post">
+                                                       
+                              <select class="form-control form-control-sm" name="culture"
+                                      onchange="this.form.submit();" asp-for="@requestculture.RequestCulture.UICulture.Name"
+                                       asp-items="culitems">
+                           
+                              @*       <option> English</option>
+                                     <option> العربية</option>
+                                     <option> German</option>
+                                     <option> French</option>
+                                     <option> Spanish</option>
+                                     <option> hindi</option>*@
+                               </select>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#"></a>
+                            </div>
+                            </form>
+                            </div>
 					</li>
 
 				</ul>
@@ -77,8 +104,8 @@
 			else
 			{
 				
-					<a class="btn btn-outline-primary my-2 my-sm-0" asp-action="Register" asp-controller="Account">	New	Account	</a>
-					<a class="btn btn-outline-primary my-2 my-sm-0" asp-action="Login" asp-controller="Account">Login</a>
+					<a class="btn btn-outline-primary my-2 my-sm-0" asp-action="Register" asp-controller="Account">	@Stage_Books.languages.Resource.New_Account	</a>
+					<a class="btn btn-outline-primary my-2 my-sm-0" asp-action="Login" asp-controller="Account">@Stage_Books.languages.Resource.Login</a>
 			}
 
 
@@ -168,7 +195,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" hidden>
 			<div class="col " style="text-align: center; border-radius: 5px; ">
 				<h5 style="color: white; margin-top: 15px">Visitors</h5>
 				<img src="~/img/Statistic.png" alt="visitors" width="40" height="30" />

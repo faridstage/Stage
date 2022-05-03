@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Stage_Books.Models;
+using System.Threading;
+using System.Globalization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
 
 namespace Stage_Books.Controllers
 {
@@ -26,6 +30,16 @@ namespace Stage_Books.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult setlang(string culture, string returnurl)
+        {
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+                );
+            return LocalRedirect(returnurl);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

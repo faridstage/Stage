@@ -11,6 +11,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Stage_Books.Models;
+using Microsoft.AspNetCore.Mvc.Razor;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Options;
 
 namespace Stage_Books
 {
@@ -29,6 +33,29 @@ namespace Stage_Books
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("conn1")));
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddLocalization(options => options.ResourcesPath = "languages");
+            services.AddMvc()
+                    .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
+
+
+            services.Configure<RequestLocalizationOptions>(Option =>
+            {
+                var supportedCultures = new[]
+                {
+                    new CultureInfo("en"),
+                    new CultureInfo("Es"),
+                    new CultureInfo("Ar"),
+                    new CultureInfo("Fr"),
+                    new CultureInfo("Hi"),
+                    new CultureInfo("De")
+            };
+                Option.DefaultRequestCulture = new RequestCulture(culture: "en", uiCulture: "en");
+                Option.SupportedCultures = supportedCultures;
+                Option.SupportedUICultures = supportedCultures;
+            });
+
+            services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +76,8 @@ namespace Stage_Books
 
             app.UseRouting();
             app.UseAuthentication();
+            var locoption = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+            app.UseRequestLocalization(locoption.Value);
 
             app.UseAuthorization();
 
