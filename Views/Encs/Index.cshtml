@@ -1,8 +1,8 @@
-﻿
-@{
-    ViewData["Title"] = "Search";
-}
+﻿@model IEnumerable<Stage_Books.Models.Encyclopedia.Enc>
 
+@{
+    ViewData["Title"] = "Index";
+}
 <!doctype html>
 <html lang="en">
 
@@ -14,54 +14,56 @@
     <meta name="descrption" content="Best website to Find any Books">
     <meta name="keywords" content=" كتب عالمية مترجمة , مكتبة,اكبر مكتبة لتحميل الكتب مجانا,اكبر مكتبة كتب,كتب,أكبر مكتبة,اكبر مكتبة للكتب الاسلامية,اكبر مكتبة شخصية,اكبر مكتبة يوغي يو,اكبر مكتبة اسلامية,اكبر مكتبة في العالم,اكبر مكتبة في الجزائر,اكبر مكتبة شخصية في العالم,اكبر مكتبة اسلامية في العالم,مكتبة الكونغرس,اهم اكبر مكتبة كتب الكترونية في العالم لتحميل الكتب .,أكبر مكتبة في العالم ">
     <!-- Bootstrap CSS -->
-    <link rel="icon" href="img/stage_logo.png" type="" sizes="">
-    <link rel="shortcut icon" href="img/stage_logo.png" type="" sizes="">
-    <link rel="apple-touch-icon" href="img/stage_logo.png">
+    <link rel="icon" href="~/img/stage_logo.png" type="" sizes="">
+    <link rel="shortcut icon" href="~/img/stage_logo.png" type="" sizes="">
+    <link rel="apple-touch-icon" href="~/img/stage_logo.png">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
 
 </head>
 
-<body>
-
-
-
-
-    <!-- big budy -->
-    <div class="container-fluid">
-
+<body> <!-- oncontextmenu="return false;"-->
+    <br>
+    <div class="container" style="margin:0px auto; text-align:center">
+        <br />
+        <h3>Encyclobedia</h3>
+        <br>
+        <img src="~/img/en.png" alt="Encyclobedia" width="150" height="150"/>
+        <br />
+        <hr />
     </div>
-    <!-- search section -->
-    <!--
-
-        <div style="text-align: center; margin-top: 25px;">
-         <nav class="navbar navbar-light bg-light">
-
-        </nav>-->
-
-
-    <div class="container-fluid">
-        <!-- نبذة مختصرة عن ستيج  -->
-        <div class="bg-light" style="text-align: center; margin-top: 25px; background-color:#DEDEDE; padding: 20px; padding-bottom: 40px;">
-            <h5> Search</h5>
-            <div class="container">
-                <form class="form-block">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">
-                                <img src="img/search.png" alt="search" width="25px"
-                                     height="25px">
-                            </span>
-                        </div>
-                        <input type="search" class="form-control" placeholder="Search" aria-label="Search"
-                               aria-describedby="basic-addon1" value="" name="">
-                    </div>
-                </form>
+@*    <p>
+    <a asp-action="Create">Send Message</a>
+    </p>*@
+    <br><hr /><br>
+    <div class="container">
+    <form action="" method="post" class="form-group">
+        <div class="row">
+            <div class="col-2">
+                <label for="staticEmail2"  class="">Search</label>
+            </div>
+            <div class="col-8">
+                <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="" style="background-color:#d3d3d3">
+            </div>
+            <div class="col-2">
+                 <button type="submit" class="btn btn-primary mb-2">Search</button>
             </div>
         </div>
+        <div class="form-group mb-2">
+        </div>
+ 
+    </form>
     </div>
+    <br><hr /><br>
+
+    <!--******************************************-->
+<div class="container-fluid">
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
 
     <!-- container -->
     <div class="container-fluid">
@@ -69,103 +71,125 @@
             <!--cat -->
             <div class="col-sm">
                 <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
-                    <h3>Category</h3>
+                    <h3>Categorys</h3>
                     <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action active">
-                            اقسام الكتب
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action"> الكتب العلمية</a>
-                        <a href="#" class="list-group-item list-group-item-action"> الكتب الادبية  </a>
-                        <a href="#" class="list-group-item list-group-item-action"> الكتب الدينية</a>
-                        <a href="#" class="list-group-item list-group-item-action"> كتب الاساطير</a>
-                        <a href="#" class="list-group-item list-group-item-action"> الكتب التاريخية</a>
+                      <a href="#" class="list-group-item list-group-item-action active">@Stage_Books.languages.Resource.Books_Categorys </a>
+                        @{
+                            for(int item = 0;item<0;item++)
+                            {
+                               <a href="#" class="list-group-item list-group-item-action">@item </a>
+                            }
+                        }
+
 
                     </div>
                     <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Read More ...</button>
                     <hr>
                     <div class="list-group">
                         <a href="#" class="list-group-item list-group-item-action active">
-                            المؤلفين
+                            Authors Categorys
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action"> احمد مراد</a>
-                        <a href="#" class="list-group-item list-group-item-action">شكسبير</a>
-                        <a href="#" class="list-group-item list-group-item-action">احمد خالد توفيق</a>
+                        <a href="#" class="list-group-item list-group-item-action"> ... </a>
 
                     </div>
                     <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Read More ...</button>
                     <hr>
                     <div class="list-group">
                         <a href="#" class="list-group-item list-group-item-action active">
-                            الكتب حسب اللغة
+                          Book language  
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action">English</a>
-                        <a href="#" class="list-group-item list-group-item-action">Arabic</a>
-                        <a href="#" class="list-group-item list-group-item-action">Franch</a>
-                        <a href="#" class="list-group-item list-group-item-action disabled">Hebrew</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-1">العربية</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-2">English</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-3">Deutsch</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-4">Español</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-5">Français</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-6">हिन्दी</a>
                     </div>
-                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Read More ...</button>
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" hidden>Read More ...</button>
                     <hr>
                 </div>
             </div>
             <!-- main container -->
             <div class="col-8">
+                <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
+
+                </div>
 
                 <div class="card text-center" style="">
                     <div class="card-header">
-                        بنر اعلانى
+                         .
                     </div>
-
+      
                 </div>
-                <div style="text-align: center; margin-top: 25px; background-color:#DEDEDE; padding: 20px; padding-bottom: 40px;">
-                    <h4>Search Results</h4>
-                </div>
-                <!-- search Results area-->
-                <div style="text-align: center; margin-top: 25px; background-color:#DEDEDE; padding: 20px; padding-bottom: 40px;">
-                    <h4>Search Results Area</h4>
-                </div>
-            </div>
+       @foreach (var item in Model) {
+           <div class="container-fluid row" style="direction:rtl">
+               <div class="col">
+                  <div class="row">
+                                  <h4>
+                @Html.DisplayFor(modelItem => item.Name)
+            </h4>
+                  </div>
+                   <div class="row">
+            <span>
+                @Html.DisplayFor(modelItem => item.Description)
+            </span>
+                   </div>
+                   </div>
 
+                    <div class="col">
+                  <div class="row">
+            <p>
+              <img src="@Html.DisplayFor(modelItem => item.Poster)" alt="poster">   
+            </p>
+                  </div>
+                   <div class="row">
+                        <a asp-action="Details" asp-route-id="@item.id" class="btn btn-primary">Read</a>
+                   </div>
+                   </div>
+           </div>
+            <hr />
+        }
 
-
+ </div>
 
             <!-- Advertisement -->
             <div class="col-sm">
                 <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
-                    <h3>Advertisement</h3>
-                    <div class="card" style="width: 12rem; background-color: yellow;">
+                   
+                    <div class="card" style="width: 12rem; ">
 
                         <div class="card-body">
-                            <p class="card-text">اعلان.</p>
+                            <p class="card-text">..</p>
                         </div>
                     </div>
                     <hr>
-                    <div class="card" style="width: 12rem;background-color: yellow; ">
+                    <div class="card" style="width: 12rem;">
 
                         <div class="card-body">
-                            <p class="card-text">اعلان.</p>
+                            <p class="card-text">..</p>
                         </div>
                     </div>
 
                     <hr>
-                    <div class="card" style="width: 12rem; background-color: yellow;">
+                    <div class="card" style="width: 12rem; ">
 
                         <div class="card-body">
-                            <p class="card-text">اعلان.</p>
+                            <p class="card-text">..</p>
                         </div>
                     </div>
                     <hr>
-                    <div class="card" style="width: 12rem; background-color: yellow;">
+                    <div class="card" style="width: 12rem; ">
 
                         <div class="card-body">
-                            <p class="card-text">اعلان.</p>
+                            <p class="card-text">..</p>
                         </div>
                     </div>
                     <hr>
-                    <div class="card" style="width: 12rem; background-color: yellow;">
+                    <div class="card" style="width: 12rem;">
 
                         <div class="card-body">
                             <p class="card-text">
-                                اعلان
+                                .
                                 .
                             </p>
                         </div>
@@ -176,8 +200,55 @@
         </div>
     </div>
 
-    <!-- Footer  -->
+</div>
 
+            <!-- Advertisement -->
+            <div class="col-sm">
+                <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
+                   
+                    <div class="card" style="width: 12rem; ">
+
+                        <div class="card-body">
+                            <p class="card-text">..</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="card" style="width: 12rem;">
+
+                        <div class="card-body">
+                            <p class="card-text">..</p>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="card" style="width: 12rem; ">
+
+                        <div class="card-body">
+                            <p class="card-text">..</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="card" style="width: 12rem; ">
+
+                        <div class="card-body">
+                            <p class="card-text">..</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="card" style="width: 12rem;">
+
+                        <div class="card-body">
+                            <p class="card-text">
+                                .
+                                .
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+
+    <!-- Footer  -->
     <div class="container-fluid" style="background-color: #333333;">
 		<div class="row">
 			<div class="col" style="text-align: center; padding: 7px;">
@@ -271,10 +342,12 @@
 			</div>
 		</div>
 	</div>
+
+    <!-- -->
     <!-- -->
     <!-- Optional JavaScript; choose one of the two! -->
     <!-- Option 6: Bootstrap Bundle with Popper -->
-    <script src="js/js.js"></script>
+    <script src="~/js/js.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -282,4 +355,3 @@
 </body>
 
 </html>
-

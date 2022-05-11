@@ -1,8 +1,9 @@
-﻿@model IEnumerable<Stage_Books.Models.Contact.Contactmsg>
+﻿@model Stage_Books.Models.Encyclopedia.Enc
 
 @{
-    ViewData["Title"] = "Contact";
+    ViewData["Title"] = "Create";
 }
+
 <html>
 <head>
   <meta charset="UTF-8" />
@@ -21,163 +22,64 @@
 <body oncontextmenu="return false;">
     <br>
     <div class="container" style="margin:0px auto; text-align:center">
-        <h3>Users Messages</h3>
+        <h3>Create Encyclobedia Item</h3>
     </div>
 @*    <p>
     <a asp-action="Create">Send Message</a>
     </p>*@
-    <br><hr /><br>
-    <div class="container">
-    <form action="" method="post" class="form-group">
-        <div class="form-group mb-2">
-        <label for="staticEmail2" class="sr-only">Search</label>
-        <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="" style="background-color:#d3d3d3">
-        </div>
-  <button type="submit" class="btn btn-primary mb-2">Search</button>
-    </form>
-    </div>
-    <br><hr /><br>
+    <br><br>
+ <div class="container-fluid">
+      <h3>Encyclobedia</h3>
 
-    <!--******************************************-->
-@*       <div class="row">
-        <div class="col-md-1 col-1">
-
-        </div>
-        <div class="col-md-5 col-12">
-            
-            <h1 style="color: blue;">@Stage_Books.languages.Resource.Contact_Us</h1>
-            <h4>
-                @Stage_Books.languages.Resource.You_Can_Contact_Us___Ask_About_Anything_And_We_Responce_on_Your_E_Mail_Address
-            </h4>
-            <br />
-            <h5 style="color: blue;">@Stage_Books.languages.Resource.Or_Visit_us_On:</h5>
-            <br> 
-                <div class="row">
-                    <img src="/img/facebook.png" alt="Facebook" title="Facebook" width="30" height="30"
-                         style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                        Home <span class="sr-only">(current)</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <img src="/img/twitter.jpg" alt="Facebook" title="Facebook" width="30" height="30"
-                         style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                        Home <span class="sr-only">(current)</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <img src="/img/youtube.jpg" alt="Facebook" title="Facebook" width="30" height="30"
-                         style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                        Home <span class="sr-only">(current)</span>
-                    </a>
-                </div>
-        </div>
-        <div class="col-md-5 col-12">
-            <form class="input-group input-group-lg" method="post" asp-action="contact" >
-            <div class="shadow-lg p-3 mb-5 bg-dark rounded fixed">
-                <br>
-                <div class="row">
-
-                    <div class="col-md-6 mb-3">
-                        <div class="input-group input-group-lg">
-                            
-                            <input type="text" class="form-control" aria-label="Sizing example input" 
-                                   aria-describedby="inputGroup-sizing-lg" placeholder="Enter your name" title="name">
-                         
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <div class="input-group input-group-lg" >
-                            
-                            <input   type="text" class="form-control" aria-label="Sizing example input" 
-                                   aria-describedby="inputGroup-sizing-lg" value="Enter your E-mail" title="email">
-                         
-                        </div>
-                    </div>
-                </div>
-                <br>
-
-                <div class="row">
-
-                    <div class="col-md-12 mb-3">
-                        <div class="input-group input-group-lg">
-                           
-                            <input  type="text" class="form-control" aria-label="Sizing example input" 
-                                   aria-describedby="inputGroup-sizing-lg" placeholder="Title" name="title">
-                               
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-12 mb-3">          
-                        <div class="input-group input-group-lg">
-                          
-                            <textarea  class="form-control" placeholder="your Message" rows="7"></textarea>
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 mb-3">
-                        
-                        <input type="submit" class="btn btn-primary btn-lg btn-block" namr="Send" value="send">
-                    
-                  
-                    </div>
-                </div>
-
+<div class="container">
+   <h4>Create Auther Store</h4>
+    <hr />
+    <div class="col-md-5 col-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-          </form>
-        </div>
-    </div>*@
-<!--******************************************-->
-<div class="container-fluid">
-     <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.mail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.body)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-       @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.mail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.body)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary ">Edit</a>
-                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success ">Details</a>
-                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-            </td>
-         </tr>
-             }
-    </tbody>
-</table>
-
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Store" class="control-label"></label>
+                <input asp-for="Store" class="form-control" />
+                <span asp-validation-for="Store" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Poster" class="control-label"></label>
+                <input asp-for="Poster" class="form-control" />
+                <span asp-validation-for="Poster" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
 </div>
-
+<br />
+<div>
+    <a asp-action="Index" class="btn btn-success">Back to List</a>
+</div>
+<br />
+  </div>
 
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">

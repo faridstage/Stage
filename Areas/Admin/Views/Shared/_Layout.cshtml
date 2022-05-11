@@ -1,4 +1,11 @@
-﻿
+﻿@model Stage_Books.Models.Contact.Contactmsg
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Mvc.Localization
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -172,13 +179,14 @@
             </div>
           </li>
           <li>
-            <a href="~/Admin/index_ocr/index_ocr" class="nav-link px-3">
+             @* href="../Views/Contactmsgs/Delete" *@
+            <a href="../Contactmsgs/index" class="nav-link px-3">
               <span class="me-2"><i class="bi bi-envelope"></i></span>
               <span>Users Messages</span>
             </a>
           </li>
           <li>
-            <a href="~/Admin/bu/bu" class="nav-link px-3">
+            <a class="nav-link px-3">
               <span class="me-2"><i class="bi bi-bug"></i></span>
               <span>Errors Messages</span>
             </a>
@@ -186,20 +194,21 @@
           <li>
           </li>
           <li>
-            <a href="~/Admin/index_ocr/index_ocr" class="nav-link px-3">
+            <a href="../Encs/Index2" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
+              <span>Show Encyclopedia</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Encs/Create" class="nav-link px-3">
               <span class="me-2"><i class="bi bi-plus-square"></i></span>
               <span>Add Encyclopedia</span>
             </a>
           </li>
-          <li>
-            <a href="~/Admin/bu/bu" class="nav-link px-3">
-              <span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
-              <span>Edit Encyclopedia</span>
-            </a>
-          </li>
-                    <li class="my-4">
+          
+           <li class="my-4">
             <hr class="dropdown-divider bg-light" />
-          </li>
+           </li>
           <li>
             <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
               Other

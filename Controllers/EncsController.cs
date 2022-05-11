@@ -6,26 +6,30 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Stage_Books.Models;
-using Stage_Books.Models.Contact;
+using Stage_Books.Models.Encyclopedia;
 
 namespace Stage_Books.Controllers
 {
-    public class ContactmsgsController : Controller
+    public class EncsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public ContactmsgsController(ApplicationDbContext context)
+        public EncsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Contactmsgs
+        // GET: Encs
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Contactmsgs.ToListAsync());
+            return View(await _context.Encs.ToListAsync());
+        }
+        public async Task<IActionResult> Index2()
+        {
+            return View(await _context.Encs.ToListAsync());
         }
 
-        // GET: Contactmsgs/Details/5
+        // GET: Encs/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +37,39 @@ namespace Stage_Books.Controllers
                 return NotFound();
             }
 
-            var contactmsg = await _context.Contactmsgs
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (contactmsg == null)
+            var enc = await _context.Encs
+                .FirstOrDefaultAsync(m => m.id == id);
+            if (enc == null)
             {
                 return NotFound();
             }
 
-            return View(contactmsg);
+            return View(enc);
         }
 
-        // GET: Contactmsgs/Create
+        // GET: Encs/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Contactmsgs/Create
+        // POST: Encs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,mail,title,body")] Contactmsg contactmsg)
+        public async Task<IActionResult> Create([Bind("id,Name,FullName,Description,Category,Store,Poster")] Enc enc)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(contactmsg);
+                _context.Add(enc);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Create));
+                return RedirectToAction(nameof(Index));
             }
-            return View(contactmsg);
+            return View(enc);
         }
 
-        // GET: Contactmsgs/Edit/5
+        // GET: Encs/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +77,22 @@ namespace Stage_Books.Controllers
                 return NotFound();
             }
 
-            var contactmsg = await _context.Contactmsgs.FindAsync(id);
-            if (contactmsg == null)
+            var enc = await _context.Encs.FindAsync(id);
+            if (enc == null)
             {
                 return NotFound();
             }
-            return View(contactmsg);
+            return View(enc);
         }
 
-        // POST: Contactmsgs/Edit/5
+        // POST: Encs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,mail,title,body")] Contactmsg contactmsg)
+        public async Task<IActionResult> Edit(int id, [Bind("id,Name,FullName,Description,Category,Store,Poster")] Enc enc)
         {
-            if (id != contactmsg.Id)
+            if (id != enc.id)
             {
                 return NotFound();
             }
@@ -97,12 +101,12 @@ namespace Stage_Books.Controllers
             {
                 try
                 {
-                    _context.Update(contactmsg);
+                    _context.Update(enc);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ContactmsgExists(contactmsg.Id))
+                    if (!EncExists(enc.id))
                     {
                         return NotFound();
                     }
@@ -113,10 +117,10 @@ namespace Stage_Books.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(contactmsg);
+            return View(enc);
         }
 
-        // GET: Contactmsgs/Delete/5
+        // GET: Encs/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +128,30 @@ namespace Stage_Books.Controllers
                 return NotFound();
             }
 
-            var contactmsg = await _context.Contactmsgs
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (contactmsg == null)
+            var enc = await _context.Encs
+                .FirstOrDefaultAsync(m => m.id == id);
+            if (enc == null)
             {
                 return NotFound();
             }
 
-            return View(contactmsg);
+            return View(enc);
         }
 
-        // POST: Contactmsgs/Delete/5
+        // POST: Encs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var contactmsg = await _context.Contactmsgs.FindAsync(id);
-            _context.Contactmsgs.Remove(contactmsg);
+            var enc = await _context.Encs.FindAsync(id);
+            _context.Encs.Remove(enc);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ContactmsgExists(int id)
+        private bool EncExists(int id)
         {
-            return _context.Contactmsgs.Any(e => e.Id == id);
+            return _context.Encs.Any(e => e.id == id);
         }
     }
 }
