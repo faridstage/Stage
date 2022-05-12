@@ -12,48 +12,47 @@ using Stage_Books.Models;
 
 namespace Stage_Books.Controllers
 {
-    public class BooksController : Controller
+    public class AuthorsController : Controller
     {
         private readonly ApplicationDbContext _context;
         IWebHostEnvironment WebHostEnvironment;
 
-        public BooksController(ApplicationDbContext context, IWebHostEnvironment webHostEnv)
+        public AuthorsController(ApplicationDbContext context, IWebHostEnvironment webHostEnv)
         {
             _context = context;
             WebHostEnvironment = webHostEnv;
         }
 
-        // GET: Books
+        // GET: Authors
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Books.ToListAsync());
+            return View(await _context.Authors.ToListAsync());
         }
 
-        // GET: Books/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: Authors/Details/5
+        public IActionResult Details(int? id)
         {
-            Book book = _context.Books.Include(e => e.Author).FirstOrDefault(e => e.ID == id);
-            if (book == null)
+            Author author = _context.Authors.Include(d => d.Employees).FirstOrDefault(e => e.ID == id);
+            if (author == null)
             {
                 return NotFound();
             }
 
-            return View(book);
+            return View(author);
         }
 
-        // GET: Books/Create
+        // GET: Authors/Create
         public IActionResult Create()
         {
-            ViewBag.AllAuthors = _context.Authors.ToList();
-            return View("Create");
+            return View();
         }
 
-        // POST: Books/Create
+        // POST: Authors/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,Pages,Category,Language,Topic,Publisher,PubDate,Desc,Rights,AuthorID")] Book book, IFormFile imageFile)
+        public async Task<IActionResult> Create([Bind("ID,Name")] Author author, IFormFile imageFile)
         {
             if (ModelState.IsValid)
             {
@@ -63,8 +62,8 @@ namespace Stage_Books.Controllers
                     string imgExtension = Path.GetExtension(imageFile.FileName);
                     Guid imgGuid = Guid.NewGuid();
                     string imgName = imgGuid + imgExtension;
-                    string imgURL = "\\BookImages\\" + imgName;
-                    book.ImageURL = imgURL;
+                    string imgURL = "\\AuthorImages\\" + imgName;
+                    author.ImageURL = imgURL;
 
                     string imgPath = WebHostEnvironment.WebRootPath + imgURL;
                     FileStream imgStream = new FileStream(imgPath, FileMode.Create);
@@ -75,46 +74,36 @@ namespace Stage_Books.Controllers
                 }
                 else
                 {
-                    book.ImageURL = "\\BookImages\\NoImage.jpeg";
+                    author.ImageURL = "\\AuthorImages\\NoUser.jpg";
                 }
 
 
-                _context.Add(book);
+                _context.Add(author);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            else
-            {
-                ViewBag.AllAuthors = _context.Authors.ToList();
-                return View("Create",book);
-            }
-            
+            return View(author);
         }
 
-        // GET: Books/Edit/5
+        // GET: Authors/Edit/5
         public IActionResult Edit(int? id)
         {
-
-            Book book = _context.Books.FirstOrDefault(e => e.ID == id);
-            if (book == null)
+            Author author = _context.Authors.FirstOrDefault(e => e.ID == id);
+            if (author == null)
             {
                 return NotFound();
             }
-            else
-            {
-                ViewBag.AllAuthors = _context.Authors.ToList();
-                return View("Edit", book);
-            }
+            return View(author);
         }
 
-        // POST: Books/Edit/5
+        // POST: Authors/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Pages,Category,Language,Topic,Publisher,PubDate,Desc,Rights,AuthorID,ImageURL")] Book book, IFormFile imageFile)
+        public IActionResult Edit(int id, [Bind("ID,Name,ImageURL")] Author author, IFormFile imageFile)
         {
-            if (id != book.ID)
+            if (id != author.ID)
             {
                 return NotFound();
             }
@@ -124,9 +113,9 @@ namespace Stage_Books.Controllers
 
                 if (imageFile != null)
                 {
-                    if (book.ImageURL != "\\BookImages\\NoImage.jpeg")
+                    if (author.ImageURL != "\\AuthorImages\\NoUser.jpg")
                     {
-                        string OldimgPath = WebHostEnvironment.WebRootPath + book.ImageURL;
+                        string OldimgPath = WebHostEnvironment.WebRootPath + author.ImageURL;
 
                         if (System.IO.File.Exists(OldimgPath))
                         {
@@ -137,8 +126,8 @@ namespace Stage_Books.Controllers
                     string imgExtension = Path.GetExtension(imageFile.FileName);
                     Guid imgGuid = Guid.NewGuid();
                     string imgName = imgGuid + imgExtension;
-                    string imgURL = "\\BookImages\\" + imgName;
-                    book.ImageURL = imgURL;
+                    string imgURL = "\\AuthorImages\\" + imgName;
+                    author.ImageURL = imgURL;
 
                     string imgPath = WebHostEnvironment.WebRootPath + imgURL;
                     FileStream imgStream = new FileStream(imgPath, FileMode.Create);
@@ -147,50 +136,53 @@ namespace Stage_Books.Controllers
 
 
                 }
-                _context.Books.Update(book);
+                _context.Authors.Update(author);
                 _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
             else
             {
-                ViewBag.AllAuthors = _context.Authors.ToList();
-                return View(book);
+                
+                return View(author);
             }
-
-
-
         }
 
-        // GET: Books/Delete/5
+        // GET: Authors/Delete/5
         public IActionResult Delete(int? id)
         {
-            Book book = _context.Books.FirstOrDefault(e => e.ID == id);
-            if (book == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            return View(book);
+            var author =  _context.Authors
+                .FirstOrDefault(m => m.ID == id);
+            if (author == null)
+            {
+                return NotFound();
+            }
+
+            return View(author);
         }
 
-        // POST: Books/Delete/5
+        // POST: Authors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            Book book = _context.Books.FirstOrDefault(e => e.ID == id);
+            Author author = _context.Authors.FirstOrDefault(e => e.ID == id);
 
-            if (book.ImageURL != "\\BookImages\\NoImage.jpeg")
+            if (author.ImageURL != "\\AuthorsImages\\NoUser.jpg")
             {
-                string imgPath = WebHostEnvironment.WebRootPath + book.ImageURL;
+                string imgPath = WebHostEnvironment.WebRootPath + author.ImageURL;
 
                 if (System.IO.File.Exists(imgPath))
                 {
                     System.IO.File.Delete(imgPath);
                 }
             }
-            _context.Books.Remove(book);
+            _context.Authors.Remove(author);
             _context.SaveChanges();
 
 
@@ -198,9 +190,9 @@ namespace Stage_Books.Controllers
             return RedirectToAction("Index");
         }
 
-        private bool BookExists(int id)
+        private bool AuthorExists(int id)
         {
-            return _context.Books.Any(e => e.ID == id);
+            return _context.Authors.Any(e => e.ID == id);
         }
     }
 }
