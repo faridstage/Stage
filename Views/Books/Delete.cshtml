@@ -20,78 +20,77 @@
 </head>
 
 <body oncontextmenu="return false;">
-	<div class="row">
-		<dt class="col-md-2">
-			@Html.DisplayNameFor(model => model.Name)
-		</dt>
-		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.Name)
-		</dd>
-		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.Pages)
-		</dt>
-		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.Pages)
-		</dd>
-		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.Category)
-		</dt>
-		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.Category)
-		</dd>
-		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.Desc)
-		</dt>
-		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.Desc)
-		</dd>
-		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.Publisher)
-		</dt>
-		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.Publisher)
-		</dd>
-		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.PubDate)
-		</dt>
-		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.PubDate)
-		</dd>
-		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.Rights)
-		</dt>
-		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.Rights)
-		</dd>
-		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.Topic)
-		</dt>
-		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.Topic)
-		</dd>
-		<dt class="col-sm-2">
-			@Html.DisplayNameFor(model => model.Language)
-		</dt>
-		<dd class="col-sm-10">
-			@Html.DisplayFor(model => model.Language)
-		</dd>
-		<div class="row">
-			<dt class="col-1">
-				@Html.DisplayNameFor(book =>book.ImageURL)
-			</dt>
-			<dd>
-				<img style="width:200px; height:200px;margin-left:20px" src="@Html.DisplayFor(book =>book.ImageURL)" />
-			</dd>
-		</div>
+	<br />
+	<h2 style="text-align:center">Delete Book</h2>
+	<br />
+	<hr />
+	<br />
+	<div class="container">
+		<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Rows</th>
+      <th scope="col">Data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">@Html.DisplayNameFor(model => model.Name)</th>
+      <td>@Html.DisplayFor(model => model.Name)</td>
+    </tr>
+	    <tr>
+      <th scope="row">@Html.DisplayNameFor(model => model.Pages)</th>
+      <td>@Html.DisplayFor(model => model.Pages)</td>
+    </tr>
+	    <tr>
+      <th scope="row">@Html.DisplayNameFor(model => model.Category)</th>
+      <td>@Html.DisplayFor(model => model.Category)</td>
+    </tr>
+	    <tr>
+      <th scope="row">@Html.DisplayNameFor(model => model.Desc)</th>
+      <td>@Html.DisplayFor(model => model.Desc)</td>
+    </tr>
+	    <tr>
+      <th scope="row">@Html.DisplayNameFor(model => model.Publisher)</th>
+      <td>@Html.DisplayFor(model => model.Publisher)</td>
+    </tr>
+	    <tr>
+      <th scope="row">@Html.DisplayNameFor(model => model.PubDate)</th>
+      <td>@Html.DisplayFor(model => model.PubDate)</td>
+    </tr>
+		    <tr>
+      <th scope="row">@Html.DisplayNameFor(model => model.Rights)</th>
+      <td>@Html.DisplayFor(model => model.Rights)</td>
+    </tr>
+		    <tr>
+      <th scope="row">@Html.DisplayNameFor(model => model.Topic)</th>
+      <td>@Html.DisplayFor(model => model.Topic)</td>
+    </tr>
+		    <tr>
+      <th scope="row">@Html.DisplayNameFor(model => model.Language)</th>
+      <td>@Html.DisplayFor(model => model.Language)</td>
+    </tr>
+		    <tr>
+      <th scope="row">@Html.DisplayNameFor(book =>book.ImageURL)</th>
+      <td><img style="width:200px; height:200px;margin-left:20px" src="@Html.DisplayFor(book =>book.ImageURL)" />
+</td>
+    </tr>
+  </tbody>
+</table>
+	<br />
+	<hr />
+	<br />
 	</div>
-
+	<div class="container">
 	<form asp-action="Delete">
 		<input type="hidden" asp-for="ID" />
 		<input type="submit" value="Delete" class="btn btn-danger" /> |
-		<a asp-action="Index">Back to List</a>
+		<a class="btn btn-primary" asp-action="Index">Back to List</a>
 	</form>
 	</div>
-
+		<br />
+	<hr />
+	<br />
 	<div class="container-fluid">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar"

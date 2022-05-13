@@ -29,6 +29,12 @@ namespace Stage_Books.Controllers
             return View(await _context.Books.ToListAsync());
         }
 
+        // index_show to show all books in tabel
+        public async Task<IActionResult> index_show()
+        {
+            return View(await _context.Books.ToListAsync());
+        }
+
         // GET: Books/Details/5
         public async Task<IActionResult> Details(int? id)
         {

@@ -10,13 +10,17 @@ using System.Threading;
 using System.Globalization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Hosting;
+
 
 namespace Stage_Books.Controllers
 {
+    
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+     
 
+        private readonly ILogger<HomeController> _logger;
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
