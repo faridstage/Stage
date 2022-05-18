@@ -129,6 +129,9 @@
   <data name="About1" xml:space="preserve">
     <value>लगभग</value>
   </data>
+  <data name="Arabic" xml:space="preserve">
+    <value>अरबी</value>
+  </data>
   <data name="Author" xml:space="preserve">
     <value>लेखक</value>
   </data>
@@ -201,6 +204,9 @@
   <data name="Books1" xml:space="preserve">
     <value>पुस्तकें</value>
   </data>
+  <data name="Categories" xml:space="preserve">
+    <value>श्रेणियाँ</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>संपर्क करना</value>
   </data>
@@ -264,11 +270,20 @@
   <data name="Fav1" xml:space="preserve">
     <value>फेव</value>
   </data>
+  <data name="French" xml:space="preserve">
+    <value>फ्रेंच </value>
+  </data>
+  <data name="German" xml:space="preserve">
+    <value>जर्मन </value>
+  </data>
   <data name="Gmail" xml:space="preserve">
     <value>जीमेल लगीं</value>
   </data>
   <data name="Gmail1" xml:space="preserve">
     <value>जीमेल लगीं</value>
+  </data>
+  <data name="Hindi" xml:space="preserve">
+    <value>हिंदी</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>घर</value>
@@ -503,6 +518,9 @@
   </data>
   <data name="Sign In1" xml:space="preserve">
     <value>दाखिल करना</value>
+  </data>
+  <data name="Spanich" xml:space="preserve">
+    <value>स्पेनिश </value>
   </data>
   <data name="String" xml:space="preserve">
     <value>#VALUE!</value>

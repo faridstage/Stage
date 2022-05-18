@@ -41,6 +41,30 @@ namespace Stage_Books.Controllers
             return View(author);
         }
 
+        //public async Task<IActionResult> Search(string btnsearch)
+        //{
+        //    var author = from a in _context.Authors
+        //                 select a;
+
+        //    if (!String.IsNullOrEmpty(btnsearch))
+        //    {
+        //        author = author.Where(s => s.Name!.Contains(btnsearch));
+        //    }
+
+        //    return View(await author.ToListAsync());
+        //}
+        //public IActionResult Search(string btnsearch)
+        //{
+        //    //Author author = _context.Authors.Where(e => e.Name.StartsWith(btnsearch)).Include(e => e.Name).FirstOrDefault(e => e.Name == btnsearch);
+        //    Author author = _context.Authors.Where(e => e.Name.StartsWith(btnsearch)).Include(e=>e.Name).FirstOrDefault(e=>e.Name==btnsearch);
+
+        //    if (author == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    //return View("index_show", book);
+        //    return View("Index", author);
+        //}
         // GET: Authors/Create
         public IActionResult Create()
         {

@@ -123,6 +123,9 @@
   <data name="About Stage" xml:space="preserve">
     <value>À propos de la scène</value>
   </data>
+  <data name="Arabic" xml:space="preserve">
+    <value>Arabe </value>
+  </data>
   <data name="Author" xml:space="preserve">
     <value>Auteur</value>
   </data>
@@ -159,6 +162,9 @@
   <data name="Books Language" xml:space="preserve">
     <value>Libres Langue</value>
   </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Catégories</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>Contacter</value>
   </data>
@@ -192,8 +198,17 @@
   <data name="Fav" xml:space="preserve">
     <value>Favoris</value>
   </data>
+  <data name="French" xml:space="preserve">
+    <value>Français </value>
+  </data>
+  <data name="German" xml:space="preserve">
+    <value>Allemand </value>
+  </data>
   <data name="Gmail" xml:space="preserve">
     <value>Gmail</value>
+  </data>
+  <data name="Hindi" xml:space="preserve">
+    <value>Hindi</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Domicile</value>
@@ -311,6 +326,9 @@
   </data>
   <data name="Sign In" xml:space="preserve">
     <value>S'identifier</value>
+  </data>
+  <data name="Spanich" xml:space="preserve">
+    <value>Espagnol </value>
   </data>
   <data name="Subject ofBook" xml:space="preserve">
     <value>Sujet de livre</value>

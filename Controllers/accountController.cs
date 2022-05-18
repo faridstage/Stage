@@ -9,24 +9,35 @@ using System.Net.Mail;
 using Stage_Books.Models;
 using Stage_Books.Models.Account;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Stage_Books.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext context)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            _context = context;
         }
         // GET: accountController
         public ActionResult Index()
         {
+           
             return View();
         }
+
+       
+        public async Task<IActionResult> index_show()
+        {
+            return View(await _context.users.ToListAsync());
+        }
+
         [HttpPost]
         public async Task<IActionResult> Logout()
         {

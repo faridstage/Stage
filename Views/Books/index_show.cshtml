@@ -29,6 +29,15 @@
 <p>
     <a class="btn btn-primary " asp-action="Create">Create New</a>
 </p>
+<div class="container">
+	@using (Html.BeginForm())
+	{
+		<label>Search</label>
+		@Html.TextBox("btnsearch")
+		<input type="submit" name="name" value="Search">
+	}
+</div>
+<br />
 <table class="table">
     <thead>
         <tr>

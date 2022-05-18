@@ -22,9 +22,19 @@
 </head>
 
 <body>
+
 	<br />
 	<div class="container row">
 		<h1 style="text-align:center">Author</h1>
+			<br />
+	<div class="container">
+	@using (Html.BeginForm())
+	{
+		<label>Search</label>
+		<input type="search" name="btnsearch">
+		<input type="submit" name="name" value="Search">
+	}
+</div>
 		<br />
 		@foreach (var item in Model)
 		{

@@ -11,24 +11,36 @@ using System.Globalization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Hosting;
-
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 
 namespace Stage_Books.Controllers
 {
     
     public class HomeController : Controller
     {
-     
+        
 
+    // public IEnumerable<Author> author { get; set; }
+        private readonly ApplicationDbContext _context;
         private readonly ILogger<HomeController> _logger;
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
-
+        
         public IActionResult Index()
         {
-            return View();
+            var book =  _context.Books.ToList();
+            var author = _context.Authors.ToList();
+            var show = new Showdatamodel
+            {
+                Books = book,
+                Auther = author,
+               
+            };
+            return View(show);
         }
 
         public IActionResult Privacy()

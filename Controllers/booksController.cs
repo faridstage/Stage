@@ -39,6 +39,7 @@ namespace Stage_Books.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             Book book = _context.Books.Include(e => e.Author).FirstOrDefault(e => e.ID == id);
+
             if (book == null)
             {
                 return NotFound();
@@ -46,7 +47,20 @@ namespace Stage_Books.Controllers
 
             return View(book);
         }
+        // GET: Books/Search/5
+        public IActionResult Search(string btnsearch)
+        {
+            //Book book = _context.Books.Include(e => e.Author).FirstOrDefault(e => e.Name == btnsearch);
+            Book book = _context.Books.Where(e => e.Name.StartsWith(btnsearch)).Include(e => e.Author).FirstOrDefault(e => e.Name == btnsearch);
 
+            if (book == null)
+            {
+                return NotFound();
+            }
+
+            //return View("index_show", book);
+            return View("index_show",book);
+        }
         // GET: Books/Create
         public IActionResult Create()
         {

@@ -123,6 +123,9 @@
   <data name="About Stage" xml:space="preserve">
     <value>About Stage</value>
   </data>
+  <data name="Arabic" xml:space="preserve">
+    <value>Arabic</value>
+  </data>
   <data name="Author" xml:space="preserve">
     <value>Author</value>
   </data>
@@ -162,8 +165,11 @@
   <data name="Books Language" xml:space="preserve">
     <value>Books Language</value>
   </data>
-  <data name="Books`s Reading" xml:space="preserve">
+  <data name="Books Reading" xml:space="preserve">
     <value>Books`s Reading</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Categories</value>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
@@ -201,11 +207,20 @@
   <data name="Favourit Books" xml:space="preserve">
     <value>Favourit Books</value>
   </data>
+  <data name="French" xml:space="preserve">
+    <value>French </value>
+  </data>
+  <data name="German" xml:space="preserve">
+    <value>German </value>
+  </data>
   <data name="Gmail" xml:space="preserve">
     <value>Gmail</value>
   </data>
   <data name="Help" xml:space="preserve">
     <value>Help</value>
+  </data>
+  <data name="Hindi" xml:space="preserve">
+    <value>Hindi</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
@@ -326,6 +341,9 @@
   </data>
   <data name="Sign In" xml:space="preserve">
     <value>Sign In</value>
+  </data>
+  <data name="Spanich" xml:space="preserve">
+    <value>Spanich </value>
   </data>
   <data name="Subject ofBook" xml:space="preserve">
     <value>Subject ofBook</value>

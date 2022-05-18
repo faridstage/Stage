@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Http;
 
 namespace Stage_Books
 {
@@ -30,6 +31,12 @@ namespace Stage_Books
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
+
+            //services.AddAntiforgery(o => o.SuppressXFrameOptionsHeader = true);
+            services.AddAntiforgery(options => {
+                options.SuppressXFrameOptionsHeader = true;
+            });
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("conn1")));
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
@@ -72,15 +79,18 @@ namespace Stage_Books
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
 
+            
+            app.UseStaticFiles();
+            
             app.UseRouting();
             app.UseAuthentication();
             var locoption = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(locoption.Value);
 
             app.UseAuthorization();
-
+            app.Use(async (context, next) => { context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN"); await next(); });
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

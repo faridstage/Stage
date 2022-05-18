@@ -29,8 +29,10 @@ namespace Stage_Books.Models
 
         [Display(Name = "Author")]
         [Range(1, int.MaxValue, ErrorMessage = "Choose a Valid Author")]
+        
         public int AuthorID { get; set; }
         [ValidateNever]
-        public Author? Author { get; set; }
+        
+        public virtual Author Author { get; set; }
     }
 }

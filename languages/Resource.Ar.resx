@@ -123,6 +123,9 @@
   <data name="About Stage" xml:space="preserve">
     <value>عن ستيج</value>
   </data>
+  <data name="Arabic" xml:space="preserve">
+    <value>العربية</value>
+  </data>
   <data name="Author" xml:space="preserve">
     <value>مؤلف</value>
   </data>
@@ -165,6 +168,9 @@
   <data name="Books Reading" xml:space="preserve">
     <value>الكتب المقروءة</value>
   </data>
+  <data name="Categories" xml:space="preserve">
+    <value>تصنيفات</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>اتصال</value>
   </data>
@@ -192,6 +198,9 @@
   <data name="Encyclopedia" xml:space="preserve">
     <value>موسوعة</value>
   </data>
+  <data name="English" xml:space="preserve">
+    <value>الانجليزية</value>
+  </data>
   <data name="English1" xml:space="preserve">
     <value>إنجليزي</value>
   </data>
@@ -201,11 +210,20 @@
   <data name="Favourit Books" xml:space="preserve">
     <value>المفضلة</value>
   </data>
+  <data name="French" xml:space="preserve">
+    <value>الفرنسية</value>
+  </data>
+  <data name="German" xml:space="preserve">
+    <value>الالمانية</value>
+  </data>
   <data name="Gmail" xml:space="preserve">
     <value>جيميل</value>
   </data>
   <data name="Help" xml:space="preserve">
     <value>المساعدة</value>
+  </data>
+  <data name="Hindi" xml:space="preserve">
+    <value>الهندية</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>الرئيسية</value>
@@ -246,7 +264,7 @@
   <data name="Note : Please Enter Your Data By English Language" xml:space="preserve">
     <value>ملاحظة: الرجاء إدخال البيانات الخاصة بك حسب اللغة الإنجليزية</value>
   </data>
-  <data name="Note : Please Enter Your Data By English Note : Please Enter Your Data By English Language1" xml:space="preserve">
+  <data name="Note : Please Enter Your Data By English Note : Please Enter Your Data By English Language" xml:space="preserve">
     <value>ملاحظة: الرجاء إدخال بياناتك باللغة الإنجليزية ملاحظة: يرجى إدخال بياناتك حسب اللغة الإنجليزية</value>
   </data>
   <data name="or Create New acount" xml:space="preserve">
@@ -256,10 +274,10 @@
     <value>أو زيارتنا</value>
   </data>
   <data name="Ouer Message" xml:space="preserve">
-    <value>رسالة ourer.</value>
+    <value>رسالتنا</value>
   </data>
   <data name="Ouer Services" xml:space="preserve">
-    <value>الخدمات الاولى</value>
+    <value>خدماتنا</value>
   </data>
   <data name="Our Policy" xml:space="preserve">
     <value>سياستنا</value>
@@ -327,6 +345,9 @@
   <data name="Sign In" xml:space="preserve">
     <value>تسجيل الدخول</value>
   </data>
+  <data name="Spanich" xml:space="preserve">
+    <value>الاسبانية</value>
+  </data>
   <data name="Subject ofBook" xml:space="preserve">
     <value>موضوع كتاب</value>
   </data>
@@ -348,7 +369,7 @@
   <data name="What About STAGE" xml:space="preserve">
     <value>ماذا عن ستيج ؟</value>
   </data>
-  <data name="You Can Contact Us , Ask About Anything And We Responce on Your E-Mail Address1" xml:space="preserve">
+  <data name="You Can Contact Us , Ask About Anything And We Responce on Your E-Mail Address" xml:space="preserve">
     <value>يمكنك الاتصال بنا ، اسأل عن أي شيء ونحن نجيبك على عنوان بريدك الإلكتروني</value>
   </data>
   <data name="Your Save" xml:space="preserve">

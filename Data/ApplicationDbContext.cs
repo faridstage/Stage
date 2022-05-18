@@ -14,9 +14,13 @@ namespace Stage_Books.Models
         }
         public DbSet<RegisterViewModel> users { get; set; }
         public DbSet<Contactmsg> Contactmsgs { get; set; }
-
+       
         public DbSet<Enc> Encs { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }
+
+        
+
+    
     }
 }

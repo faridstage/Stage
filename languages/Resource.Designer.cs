@@ -79,6 +79,15 @@ namespace Stage_Books.languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arabic.
+        /// </summary>
+        public static string Arabic {
+            get {
+                return ResourceManager.GetString("Arabic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Author.
         /// </summary>
         public static string Author {
@@ -196,6 +205,24 @@ namespace Stage_Books.languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Books`s Reading.
+        /// </summary>
+        public static string Books_Reading {
+            get {
+                return ResourceManager.GetString("Books Reading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categories.
+        /// </summary>
+        public static string Categories {
+            get {
+                return ResourceManager.GetString("Categories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact.
         /// </summary>
         public static string Contact {
@@ -304,6 +331,24 @@ namespace Stage_Books.languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to French .
+        /// </summary>
+        public static string French {
+            get {
+                return ResourceManager.GetString("French", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to German .
+        /// </summary>
+        public static string German {
+            get {
+                return ResourceManager.GetString("German", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gmail.
         /// </summary>
         public static string Gmail {
@@ -318,6 +363,15 @@ namespace Stage_Books.languages {
         public static string Help {
             get {
                 return ResourceManager.GetString("Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hindi.
+        /// </summary>
+        public static string Hindi {
+            get {
+                return ResourceManager.GetString("Hindi", resourceCulture);
             }
         }
         
@@ -679,6 +733,15 @@ namespace Stage_Books.languages {
         public static string Sign_In {
             get {
                 return ResourceManager.GetString("Sign In", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spanich .
+        /// </summary>
+        public static string Spanich {
+            get {
+                return ResourceManager.GetString("Spanich", resourceCulture);
             }
         }
         
