@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
+using X.PagedList.Mvc.Core;
+using X.PagedList;
 
 namespace Stage_Books.Controllers
 {
@@ -30,17 +32,34 @@ namespace Stage_Books.Controllers
             _context = context;
         }
         
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
-            var book =  _context.Books.ToList();
+            var book = _context.Books.ToList().ToPagedList(page ?? 1, 25);
             var author = _context.Authors.ToList();
+            var Enc = _context.Encs.ToList();
             var show = new Showdatamodel
             {
-                Books = book,
+                Books = book.ToList(),
                 Auther = author,
-               
+                Encs = Enc,
             };
             return View(show);
+        }
+
+        public ActionResult Search()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Search(string searchname)
+        {
+            //var result = _context.Books.Include(x => x.Author).Where(b => b.Name.Contains(searchname) || b.Author.Name.Contains(searchname)).ToList();
+            var result = _context.Books.Where(b => b.Name.Contains(searchname)
+                         || b.Author.Name.Contains(searchname)
+                         || b.Topic.Contains(searchname)
+                         || b.Category.Contains(searchname)).ToList();
+                
+            return View(result);
         }
 
         public IActionResult Privacy()

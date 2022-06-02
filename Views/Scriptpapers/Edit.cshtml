@@ -1,0 +1,101 @@
+﻿@model Stage_Books.Models.Scriptpaper
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Scriptpaper</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="scriptname" class="control-label"></label>
+                <input asp-for="scriptname" class="form-control" />
+                <span asp-validation-for="scriptname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="scriptdiscription" class="control-label"></label>
+                <input asp-for="scriptdiscription" class="form-control" />
+                <span asp-validation-for="scriptdiscription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="scriptlang" class="control-label"></label>
+                <input asp-for="scriptlang" class="form-control" />
+                <span asp-validation-for="scriptlang" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="scriptdiscovored" class="control-label"></label>
+                <input asp-for="scriptdiscovored" class="form-control" />
+                <span asp-validation-for="scriptdiscovored" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="scriptdiscovoreddate" class="control-label"></label>
+                <input asp-for="scriptdiscovoreddate" class="form-control" />
+                <span asp-validation-for="scriptdiscovoreddate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="scriptdiscovoredpalce" class="control-label"></label>
+                <input asp-for="scriptdiscovoredpalce" class="form-control" />
+                <span asp-validation-for="scriptdiscovoredpalce" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="scriptwriterby" class="control-label"></label>
+                <input asp-for="scriptwriterby" class="form-control" />
+                <span asp-validation-for="scriptwriterby" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="scripttopic" class="control-label"></label>
+                <input asp-for="scripttopic" class="form-control" />
+                <span asp-validation-for="scripttopic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="scriptdate" class="control-label"></label>
+                <input asp-for="scriptdate" class="form-control" />
+                <span asp-validation-for="scriptdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="scriptcategory" class="control-label"></label>
+                <input asp-for="scriptcategory" class="form-control" />
+                <span asp-validation-for="scriptcategory" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="scriptcode" class="control-label"></label>
+                <input asp-for="scriptcode" class="form-control" />
+                <span asp-validation-for="scriptcode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="scriptpalcestore" class="control-label"></label>
+                <input asp-for="scriptpalcestore" class="form-control" />
+                <span asp-validation-for="scriptpalcestore" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="scriptimage" class="control-label"></label>
+                <input asp-for="scriptimage" class="form-control" />
+                <span asp-validation-for="scriptimage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="scripturl" class="control-label"></label>
+                <input asp-for="scripturl" class="form-control" />
+                <span asp-validation-for="scripturl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="scriptnote" class="control-label"></label>
+                <input asp-for="scriptnote" class="form-control" />
+                <span asp-validation-for="scriptnote" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

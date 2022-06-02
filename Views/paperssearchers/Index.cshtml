@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Stage_Books.Models.paperssearcher>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.searchername)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SerchName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.topic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PagesNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.publishdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.note)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.searchername)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerchName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.topic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PagesNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.publishdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.note)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

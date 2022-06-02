@@ -31,8 +31,37 @@ namespace Stage_Books.Controllers
            
             return View();
         }
-
-       
+        // get search
+        public IActionResult Search(string? search)
+        {
+            //IEnumerable<RegisterViewModel> RegisterViewModel = new List<RegisterViewModel>();
+            List<RegisterViewModel> RegisterViewModel = new List<RegisterViewModel>();
+            if (string.IsNullOrEmpty(search))
+            {
+                RegisterViewModel = _context.users.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = search;
+                RegisterViewModel = _context.users.Where(e => e.Name.Contains(search)).ToList();
+            }
+            return View("index_show", RegisterViewModel); 
+        }
+        public IActionResult Searche(string? searche)
+        {
+            //IEnumerable<RegisterViewModel> RegisterViewModel = new List<RegisterViewModel>();
+            List<RegisterViewModel> RegisterViewModel = new List<RegisterViewModel>();
+            if (string.IsNullOrEmpty(searche))
+            {
+                RegisterViewModel = _context.users.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = searche;
+                RegisterViewModel = _context.users.Where(e => e.Email.Contains(searche)).ToList();
+            }
+            return View("index_show", RegisterViewModel); ;
+        }
         public async Task<IActionResult> index_show()
         {
             return View(await _context.users.ToListAsync());

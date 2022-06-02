@@ -18,7 +18,7 @@ namespace Stage_Books.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Store = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Poster = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
+                    Poster = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

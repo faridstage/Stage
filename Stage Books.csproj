@@ -6,6 +6,32 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\s\P.htm" />
+    <Content Remove="wwwroot\s\Phone Help_files\image001.jpg" />
+    <Content Remove="wwwroot\s\Phone Help_files\image002.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image003.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image004.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image005.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image006.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image007.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image008.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image009.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image010.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image011.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image012.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image013.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image014.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image015.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image016.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image017.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image018.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image019.jpg" />
+    <Content Remove="wwwroot\s\Phone Help_files\image020.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image021.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image022.png" />
+    <Content Remove="wwwroot\s\Phone Help_files\image023.png" />
+    <Content Remove="wwwroot\s\Phone.htm" />
+    <Content Remove="wwwroot\s\PhoneHelp.html" />
     <Content Remove="wwwroot\vtest\Phone.htm" />
   </ItemGroup>
 
@@ -15,6 +41,32 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\s\P.htm" />
+    <None Include="wwwroot\s\Phone Help_files\image001.jpg" />
+    <None Include="wwwroot\s\Phone Help_files\image002.png" />
+    <None Include="wwwroot\s\Phone Help_files\image003.png" />
+    <None Include="wwwroot\s\Phone Help_files\image004.png" />
+    <None Include="wwwroot\s\Phone Help_files\image005.png" />
+    <None Include="wwwroot\s\Phone Help_files\image006.png" />
+    <None Include="wwwroot\s\Phone Help_files\image007.png" />
+    <None Include="wwwroot\s\Phone Help_files\image008.png" />
+    <None Include="wwwroot\s\Phone Help_files\image009.png" />
+    <None Include="wwwroot\s\Phone Help_files\image010.png" />
+    <None Include="wwwroot\s\Phone Help_files\image011.png" />
+    <None Include="wwwroot\s\Phone Help_files\image012.png" />
+    <None Include="wwwroot\s\Phone Help_files\image013.png" />
+    <None Include="wwwroot\s\Phone Help_files\image014.png" />
+    <None Include="wwwroot\s\Phone Help_files\image015.png" />
+    <None Include="wwwroot\s\Phone Help_files\image016.png" />
+    <None Include="wwwroot\s\Phone Help_files\image017.png" />
+    <None Include="wwwroot\s\Phone Help_files\image018.png" />
+    <None Include="wwwroot\s\Phone Help_files\image019.jpg" />
+    <None Include="wwwroot\s\Phone Help_files\image020.png" />
+    <None Include="wwwroot\s\Phone Help_files\image021.png" />
+    <None Include="wwwroot\s\Phone Help_files\image022.png" />
+    <None Include="wwwroot\s\Phone Help_files\image023.png" />
+    <None Include="wwwroot\s\Phone.htm" />
+    <None Include="wwwroot\s\PhoneHelp.html" />
     <None Include="wwwroot\vtest\Phone Help_files\image001.jpg" />
     <None Include="wwwroot\vtest\Phone Help_files\image002.png" />
     <None Include="wwwroot\vtest\Phone Help_files\image003.png" />
@@ -41,17 +93,27 @@
     <None Include="wwwroot\vtest\Phone.htm" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.16.0" />
+    <PackageReference Include="Grpc.Core" Version="2.46.1" />
     <PackageReference Include="MailKit" Version="3.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="5.0.16" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.16" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.16" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.16">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Office.Interop.Word" Version="15.0.4797.1003" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     <PackageReference Include="NuGet.Tessnet2" Version="1.1.1" />
+    <PackageReference Include="OpenXmlPowerTools" Version="4.5.3.2" />
+    <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
+    <PackageReference Include="PageList" Version="1.2.0" />
     <PackageReference Include="System.Collections" Version="4.3.0" />
+    <PackageReference Include="WindowsBase_Core.STW" Version="4.0.30319.1" />
+    <PackageReference Include="X.PagedList" Version="8.0.5" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="8.0.5" />
   </ItemGroup>
 
   <ItemGroup>

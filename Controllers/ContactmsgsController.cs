@@ -18,7 +18,21 @@ namespace Stage_Books.Controllers
         {
             _context = context;
         }
-
+        // GET: Books/Search/5
+        public IActionResult Search(string? search)
+        {
+            List<Contactmsg> Contactmsg = new List<Contactmsg>();
+            if (string.IsNullOrEmpty(search))
+            {
+                Contactmsg = _context.Contactmsgs.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = search;
+                Contactmsg = _context.Contactmsgs.Where(e => e.Name.Contains(search)).ToList();
+            }
+            return View("index", Contactmsg); ;
+        }
         // GET: Contactmsgs
         public async Task<IActionResult> Index()
         {

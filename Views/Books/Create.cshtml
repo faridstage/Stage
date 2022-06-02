@@ -3,7 +3,6 @@
 @{
 	ViewData["Title"] = "Create";
 }
-
 <html>
 <head>
 	<meta charset="UTF-8" />
@@ -13,6 +12,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
 	<link rel="stylesheet" href="~/Admin/cssD/dataTables.bootstrap5.min.css" />
 	<link rel="stylesheet" href="~/Admin/cssD/style.css" />
+	<link rel="stylesheet" href="~/css/style.css" />
 	<title>Stage Dashboard</title>
 	<link rel="icon" href="~/img/stage_logo.png" type="" sizes="">
 	<link rel="shortcut icon" href="~/img/stage_logo.png" type="" sizes="">
@@ -27,61 +27,106 @@
 				<div asp-validation-summary="All" class="text-danger"></div>
 				<main class="mt-5 pt-3">
 					<div class="container-fluid">
-						<br><br>
+						<br>
 						<div class="row">
 							<div class="col-md-3"></div>
 							<div class="col-md-6">
 								<h3>Add new Book</h3>
 							</div>
+							<br />
 						</div>
 						<br>
 						<div class="row">
-							<div class="col-md-2"></div>
-							<div class="col-md-3 mb-3">
+							<div class="col-md-3"></div>
+							<div class="col-md-6">
+								<h3>Basic Information : </h3>
+							</div>
+							<br />
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-0"></div>
+							<div class="col-md-5 mb-3">
 								<div class="input-group input-group-lg">
 									<input asp-for="Name" type="text" class="form-control" aria-label="Sizing example input"
 										   aria-describedby="inputGroup-sizing-lg" placeholder="Book Name">
 									<span asp-validation-for="Name"></span>
 								</div>
 							</div>
-							<div class="col-md-3 mb-3">
-								<div class="input-group input-group-lg">
-									<select class="form-control form-select" aria-label="Sizing example input"
-										   aria-describedby="inputGroup-sizing-lg" placeholder="Author" asp-for="AuthorID"
+							<div class="col-md-5 mb-3">
+								<div class="input-group input-group-lg">   
+									<select class="form-control form-select" aria-label="Sizing example input"   
+										   id="selectauthor" aria-describedby="inputGroup-sizing-lg" onchange="authermore()" placeholder="Author" asp-for="AuthorID"
 											asp-items="@(new SelectList(ViewBag.AllAuthors,"ID","Name")) ">
 										<option disabled selected>Select Author</option>
 									</select>
-									<span asp-validation-for="AuthorID"></span>
+									<span ></span>
 								</div>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-2"></div>
-							<div class="col-md-3 mb-3">
+					    	<div class="col-md-0"></div>
+							  <div class="col-md-5 mb-3">
+								<div class="input-group input-group-lg">
+
+								</div>
+							</div>
+							<div class="col-md-5 mb-3">
+								<div class="input-group input-group-lg">   
+									<input asp-for="AuthorID" type="text" class="form-control" aria-label="Sizing example input"
+										   id="moreauther" aria-describedby="inputGroup-sizing-lg" placeholder="">
+									<span ></span>
+								</div>
+							</div>
+							</div>
+			
+							<br />
+						<div class="row">
+							<div class="col-md-0"></div>
+							<div class="col-md-5 mb-3">
 								<div class="input-group input-group-lg">
 									<input asp-for="Publisher" type="text" class="form-control" aria-label="Sizing example input"
 										   aria-describedby="inputGroup-sizing-lg" placeholder="Publisher">
 									<span asp-validation-for="Publisher"></span>
 								</div>
 							</div>
-							<div class="col-md-3 mb-3">
+						</div>
+						<br />
+						<div class="row">
+							<div class="col-md-0"></div>
+							<div class="col-md-5 mb-3">
+								<span>Rate : </span>
+							</div>
+					    	<div class="col-md-5 mb-3">
 								<div class="input-group input-group-lg">
-									<input asp-for="Desc" type="text" class="form-control" aria-label="Sizing example input"
-										   aria-describedby="inputGroup-sizing-lg" placeholder="Book describtion">
+									<input type="number" class="form-control" aria-label="Sizing example input"
+										   aria-describedby="inputGroup-sizing-lg" readonly value="0" min="0">
+									<span ></span>
+								</div>
+							</div>
+						</div>
+						<br />
+				     	<div class="row">
+							<div class="col-md-0"></div>
+							<div class="col-md-10 mb-6">
+								<div class="input-group input-group-lg">
+									<textarea asp-for="Desc" type="text" class="form-control" aria-label="Sizing example input"
+										   aria-describedby="inputGroup-sizing-lg" placeholder="Book describtion"></textarea>
 									<span asp-validation-for="Desc"></span>
 								</div>
 							</div>
 						</div>
+						<br />
 						<div class="row">
-							<div class="col-md-2"></div>
-							<div class="col-md-3 mb-3">
+							<div class="col-md-0"></div>
+							<div class="col-md-5 mb-3">
 								<div class="input-group input-group-lg">
 									<input asp-for="Topic" type="text" class="form-control" aria-label="Sizing example input"
 										   aria-describedby="inputGroup-sizing-lg" placeholder="Book Tobic">
 									<span asp-validation-for="Topic"></span>
 								</div>
 							</div>
-							<div class="col-md-3 mb-3">
+							<div class="col-md-5 mb-3">
 								<div class="input-group input-group-lg">
 									<select asp-for="Rights" class="form-control form-select" aria-label="Sizing example input"
 											aria-describedby="inputGroup-sizing-lg" required>
@@ -94,36 +139,97 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-2"></div>
-							<div class="col-md-3 mb-3">
+					    	<div class="col-md-0"></div>
+							  <div class="col-md-5 mb-3">
 								<div class="input-group input-group-lg">
 									<input asp-for="Pages" type="number" class="form-control" aria-label="Sizing example input"
 										   aria-describedby="inputGroup-sizing-lg" placeholder="Pages">
 									<span asp-validation-for="Pages"></span>
 								</div>
 							</div>
-							<div class="col-md-3 mb-3">
+							<div class="col-md-5 mb-3">
 								<div class="input-group input-group-lg">
 									<select asp-for="Category" class="form-control form-select" aria-label="Sizing example input"
-											aria-describedby="inputGroup-sizing-lg" required>
-										<option value="">Category</option>
-										<option>Medicine</option>
-										<option>sciences</option>
-										<option>Engineering</option>
-										<option>literature</option>
-										<option>space scince</option>
-									</select>
+											aria-describedby="inputGroup-sizing-lg" id="catselect" onchange="cataddmore()" required>
+										<option disabled selected>Select Category</option>
+										<option value="0">Medicine</option>
+										<option  value="1" >sciences</option>
+										<option  value="2">Engineering</option>
+										<option  value="3">literature</option>
+										<option  value="4">space scince</option>
+									</select> 
+									<span asp-validation-for="Category"></span>
+						
+									
+								</div>
+							</div>
+
+						   <!-- The Modal -->
+@*                            <div id="myModalcat" class="modalcat container-fluid" >
+							   <!-- Modal content -->
+							   	<div class="modal-contentcat container" style="width:50%">
+							      <span class="closecat">&times;</span>
+							      <p>Set Categoryis..</p>
+								  <input type="text" id="" name="" value="" />
+								  <br />
+								  <a class="btn btn-danger" id="">Save</a>
+								 </div>
+							</div>
+						</div>*@
+						<div class="row">
+					    	<div class="col-md-0"></div>
+							  <div class="col-md-5 mb-3">
+								<div class="input-group input-group-lg">
+
+								</div>
+							</div>
+							<div class="col-md-5 mb-3">
+								<div class="input-group input-group-lg">
+									<input asp-for="Category" type="text" class="form-control" aria-label="Sizing example input"
+										   id="morecat" aria-describedby="inputGroup-sizing-lg" placeholder="">
 									<span asp-validation-for="Category"></span>
 								</div>
 							</div>
+							</div>
+							<div class="row">
+							   <div class="col-md-0"></div>
+								<div class="col-md-5 mb-3">
+									<div class="input-group input-group-lg">
+								      <span>Publisher Date :</span>
+							        </div>  
+								</div>
+								<div class="col-md-5 mb-3">
+							    	<div class="input-group input-group-lg">
+									<input asp-for="PubDate" type="date" class="form-control" aria-label="Sizing example input"
+										   aria-describedby="inputGroup-sizing-lg">
+									<span asp-validation-for="PubDate"></span>
+								</div>
+								</div>
+							</div>
+							<br />
+						 <div class="row">
+							<div class="col-md-0"></div>
+							<div class="col-md-5 mb-3">
+								<div class="input-group input-group-lg">
+								   <span style="text-align:center">Upload Date :</span>
+							</div>
+						</div>
+							<div class="col-md-5 mb-3">
+								<div class="input-group input-group-lg">
+									<input  type="date" class="form-control" aria-label="Sizing example input"
+										   aria-describedby="inputGroup-sizing-lg" >
+									<span ></span>
+								</div>
+							</div>
+						
 						</div>
 						<div class="row">
-							<div class="col-md-2"></div>
-							<div class="col-md-3 mb-3">
+							<div class="col-md-0"></div>
+							<div class="col-md-5 mb-3">
 								<div class="input-group input-group-lg">
 									<select asp-for="Language" class="form-control form-select" aria-label="Sizing example input"
 											aria-describedby="inputGroup-sizing-lg" required>
-										<option value="">Book Language</option>
+										<option value="">Language</option>
 										<option>Arabic</option>
 										<option>English</option>
 										<option>German</option>
@@ -131,58 +237,92 @@
 										<option>Hindi</option>
 									</select>
 									<span asp-validation-for="Language"></span>
+									<a class="btn btn-primary" id="myBtn">+</a>
 								</div>
+								
 							</div>
-							<div class="col-md-3 mb-3">
-								<div class="input-group input-group-lg">
-									<input asp-for="PubDate" type="date" class="form-control" aria-label="Sizing example input"
-										   aria-describedby="inputGroup-sizing-lg">
-									<span asp-validation-for="PubDate"></span>
-								</div>
+
+							<div class="col-md-5 mb-3">
+
 							</div>
 						</div>
+						
+								 <!-- The Modal -->
+                            <div id="myModal" class="modal container-fluid" >
+								  <!-- Modal content -->
+							    	<div class="modal-content container" style="width:50%">
+							      <span class="close">&times;</span>
+							      <p>Set Language..</p>
+								  <input type="text" id="" name="" value="" />
+								  <br />
+								  <a class="btn btn-primary" id="">Save</a>
+								 </div>
+							</div>
 						<div class="row">
-							<div class="col-md-2"></div>
-							<div class="col-md-3 mb-3">
+							<div class="col-md-0"></div>
+							<div class="col-md-5 mb-3">
 								<label asp-for="ImageURL"></label>
 								<input type="file" class="form-control" aria-label="Sizing example input"
 									   aria-describedby="inputGroup-sizing-lg" placeholder="Choose Image" name="imageFile" id="imageFile" accept=".png,.jpg" onchange="AddImage()">
 							</div>
-							<div class="col-md-3 mb-3">
+							<div class="col-md-5 mb-3">
 
 								<div class="input-group input-group-lg">
 									<img width="200" height="200" src="" id="bookImage" />
 								</div>
 							</div>
 						</div>
-
+						<br><br><br>
 						<div class="row">
-
-							<div class="col-md-2"></div>
-
-							<div class="col-md-3 mb-3">
+							<div class="col-md-3"></div>
+							<div class="col-md-6">
+								<h3>Book Index File : </h3>
+							</div>
+							<br />
+						</div>
+						<div class="row">
+							<div class="col-md-0"></div>
+							<div class="col-md-5 mb-3">
+								<span class="me-2">Choose Word File "Index"</span>
+								<br />
+								<input type="file" class="form-control" aria-label="Sizing example input"
+									   aria-describedby="inputGroup-sizing-lg" placeholder="Choose Word File">
+							</div>
+						</div>
+						<br><br><br>
+					    <div class="row">
+							<div class="col-md-3"></div>
+							<div class="col-md-6">
+								<h3>Book File : </h3>
+							</div>
+							<br />
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-0"></div>
+							<div class="col-md-5 mb-3">
 								...
 								<span class="me-2">Choose Word File</span>
 								<input type="file" class="form-control" aria-label="Sizing example input"
 									   aria-describedby="inputGroup-sizing-lg" placeholder="Choose Word File">
-
 							</div>
 						</div>
 						<br><br><br>
 						<div class="row">
-							<div class="col-md-4"></div>
+							<div class="col-md-0"></div>
 							<div class="col-md-5">
 								<button style="width: 170px;" type="submit" class="btn btn-primary btn-lg">Add</button>
+							</div>
+							<div class="col-md-5">
+								<a class="btn btn-danger" style="width: 170px;" asp-action="Index">Back to List</a>
 							</div>
 							<br />
 						</div>
 
 						<br />
 					   <div class="row">
-							<div class="col-md-4"></div>
-							<div class="col-md-5">
-								<a class="btn btn-danger" style="width: 170px;" asp-action="Index">Back to List</a>
-							</div>
+							<div class="col-md-0"></div>
+
 							<br />
 						</div>
 					</div>
@@ -404,6 +544,7 @@
 	<script src="~/Admin/jsD/dataTables.bootstrap5.min.js"></script>
 	<script src="~/Admin/jsD/script.js"></script>
 	<script src="~/Admin/js/js.js"></script>
+	<script src="../wwwroot/js/js.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 			crossorigin="anonymous"></script>
@@ -419,9 +560,84 @@
 
 @section Scripts {
 <script>
-		   function AddImage(){
-		   document.getElementById('bookImage').src= window.URL.createObjectURL(document.getElementById('imageFile').files[0])
+	//js for more category in one input
+	function cataddmore()
+	{
+	var e = document.getElementById("catselect");
+	var i = e.selectedIndex;
+	var a = document.getElementById("morecat")
+    a.value +=  " " + e.options[i].text + " " + "|";
 	}
+		//js for more Authers in one input  
+	function authermore()
+	{
+	var e = document.getElementById("selectauthor");
+	var i = e.selectedIndex;
+	var a = document.getElementById("moreauther")
+    a.value +=  " " + e.options[i].text + " " + "|";
+	}
+
+
+		   function AddImage()
+		   {
+		   document.getElementById('bookImage').src= window.URL.createObjectURL(document.getElementById('imageFile').files[0])
+	       }
+	    // Get the modal
+         var modal = document.getElementById("myModal");
+
+       // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+      // Get the <span> element that closes the modal
+       var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks the button, open the modal 
+      btn.onclick = function () 
+	  {
+      modal.style.display = "block";
+       }
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function ()
+	  {
+       modal.style.display = "none";
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+     }
+	 //****************** */
+
+	    // Get the modal
+         var modalcat = document.getElementById("myModalcat");
+
+       // Get the button that opens the modal
+        var btncat = document.getElementById("myBtncat");
+
+      // Get the <span> element that closes the modal
+       var spancat = document.getElementsByClassName("closecat")[0];
+
+      // When the user clicks the button, open the modal 
+      btncat.onclick = function () 
+	  {
+      modalcat.style.display = "block";
+       }
+
+      // When the user clicks on <span> (x), close the modal
+      spancat.onclick = function ()
+	  {
+       modalcat.style.display = "none";
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+      if (event.target == modalcat) {
+        modalcat.style.display = "none";
+      }
+     }
 </script>
     @{
 	await Html.RenderPartialAsync("_ValidationScriptsPartial");

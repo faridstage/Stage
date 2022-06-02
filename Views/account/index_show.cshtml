@@ -25,6 +25,24 @@
 <br />
 <hr />
 <br />
+
+   <div class="container row">
+       <div class="col-5">
+         <form method="get" asp-controller="account" asp-action="search">
+		   <label>Search By Name</label>
+		   <input type="text" name="search" value="@ViewBag.CurrentSearch"/>
+           <button type="submit" class="btn btn-secondary input-group-append">Search</button>
+        </form>
+       </div>
+       <div class="col-5">
+           	  <form method="get" asp-controller="account" asp-action="searche">
+		<label>Search By E-mail</label>
+		<input type="text" name="searche" value="@ViewBag.CurrentSearch"/>
+        <button type="submit" class="btn btn-secondary input-group-append">Search</button>
+     </form>
+       </div>
+   </div>
+   <hr /><br>
 <div class="container">
 <table class="table">
     <thead>

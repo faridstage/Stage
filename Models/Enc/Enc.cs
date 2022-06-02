@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.Collections.Generic;
 
 namespace Stage_Books.Models.Encyclopedia
 {
@@ -16,6 +18,9 @@ namespace Stage_Books.Models.Encyclopedia
         public string Category { get; set; }
         [Required]
         public string Store { get; set; }
-        public byte[] Poster { get; set; }
+
+        [Display(Name = "Image")]
+        [ValidateNever]
+        public string Poster { get; set; }
     }
 }

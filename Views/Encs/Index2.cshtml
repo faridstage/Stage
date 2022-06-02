@@ -115,6 +115,17 @@
   </div>
 
   <div class="container">
+          <br><hr /><br>
+
+   <div class="container">
+	  <form method="get" asp-controller="Encs" asp-action="searchs">
+		<label>Search</label>
+		<input type="text" name="search" value="@ViewBag.CurrentSearch"/>
+        <button type="submit" class="btn btn-secondary input-group-append">Search</button>
+     </form>
+   </div>
+
+    <br><hr /><br>
 <table class="table">
     <thead>
         <tr>

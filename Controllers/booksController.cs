@@ -14,6 +14,7 @@ namespace Stage_Books.Controllers
 {
     public class BooksController : Controller
     {
+        
         private readonly ApplicationDbContext _context;
         IWebHostEnvironment WebHostEnvironment;
 
@@ -47,19 +48,48 @@ namespace Stage_Books.Controllers
 
             return View(book);
         }
-        // GET: Books/Search/5
-        public IActionResult Search(string btnsearch)
+
+        // GET: Books/Details/5
+        public async Task<IActionResult> Book_Details(int? id)
         {
-            //Book book = _context.Books.Include(e => e.Author).FirstOrDefault(e => e.Name == btnsearch);
-            Book book = _context.Books.Where(e => e.Name.StartsWith(btnsearch)).Include(e => e.Author).FirstOrDefault(e => e.Name == btnsearch);
+            Book book = _context.Books.Include(e => e.Author).FirstOrDefault(e => e.ID == id);
 
             if (book == null)
             {
                 return NotFound();
             }
 
-            //return View("index_show", book);
-            return View("index_show",book);
+            return View(book);
+        }
+        // GET: Books/Search/5
+        public IActionResult Search(string? search)
+        {
+            List<Book> Book = new List<Book>();
+            if (string.IsNullOrEmpty(search))
+            {
+                Book = _context.Books.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = search;
+                Book = _context.Books.Where(e => e.Name.Contains(search)).ToList();
+            }
+            return View("index_show", Book); ;
+        }
+
+        public IActionResult Searchhome(string? searchhome)
+        {
+            List<Book> Book = new List<Book>();
+            if (string.IsNullOrEmpty(searchhome))
+            {
+                Book = _context.Books.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = searchhome;
+                Book = _context.Books.Where(e => e.Name.Contains(searchhome)).ToList();
+            }
+            return View("Book_Details", Book); ;
         }
         // GET: Books/Create
         public IActionResult Create()

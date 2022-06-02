@@ -22,13 +22,26 @@ namespace Stage_Books.Controllers
             _context = context;
             WebHostEnvironment = webHostEnv;
         }
-
         // GET: Authors
         public async Task<IActionResult> Index()
         {
             return View(await _context.Authors.ToListAsync());
         }
-
+        // GET: Books/Search/5
+        public IActionResult Search(string? search)
+        {
+            List<Author> Author = new List<Author>();
+            if (string.IsNullOrEmpty(search))
+            {
+                Author = _context.Authors.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = search;
+                Author = _context.Authors.Where(e => e.Name.Contains(search)).ToList();
+            }
+            return View("index", Author); ;
+        }
         // GET: Authors/Details/5
         public IActionResult Details(int? id)
         {
@@ -208,9 +221,6 @@ namespace Stage_Books.Controllers
             }
             _context.Authors.Remove(author);
             _context.SaveChanges();
-
-
-
             return RedirectToAction("Index");
         }
 

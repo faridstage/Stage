@@ -1,11 +1,7 @@
 ﻿@model IEnumerable<Stage_Books.Models.Author>
-
 @{
 	ViewData["Title"] = "Index";
 }
-
-
-
 <html>
 <head>
 	<meta charset="UTF-8" />
@@ -20,21 +16,21 @@
 	<link rel="shortcut icon" href="~/img/stage_logo.png" type="" sizes="">
 	<link rel="apple-touch-icon" href="~/img/stage_logo.png">
 </head>
-
 <body>
-
 	<br />
-	<div class="container row">
+	 <div class="container row">
 		<h1 style="text-align:center">Author</h1>
 			<br />
-	<div class="container">
-	@using (Html.BeginForm())
-	{
-		<label>Search</label>
-		<input type="search" name="btnsearch">
-		<input type="submit" name="name" value="Search">
-	}
-</div>
+      <br><hr /><br>
+       <div class="container">
+	      <form method="get" asp-controller="Authors" asp-action="search">
+		   <label>Search</label>
+		   <input type="text" name="search" value="@ViewBag.CurrentSearch"/>
+           <button type="submit" class="btn btn-secondary input-group-append">Search</button>
+           </form>
+   </div>
+
+    <br><hr /><br>
 		<br />
 		@foreach (var item in Model)
 		{
@@ -52,7 +48,6 @@
 			</div>
 		}
 </div>
-
 <div class="container-fluid">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar"
@@ -125,7 +120,6 @@
 
 		</nav>
 	</div>
-	<!-- top navigation bar -->
 	<!-- offcanvas -->
 	<div class="offcanvas offcanvas-start sidebar-nav bg-dark" tabindex="-1" id="sidebar">
 		<div class="offcanvas-body p-0">
@@ -256,7 +250,6 @@
 			</nav>
 		</div>
 	</div>
-
 	<script src="~/Admin/jsD/bootstrap.bundle.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
 	<script src="~/Admin/jsD/jquery-3.5.1.js"></script>
@@ -274,5 +267,4 @@
 			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 			crossorigin="anonymous"></script>
 </body>
-
 </html>

@@ -63,6 +63,12 @@
 					<li class="nav-item active">
 						<a class="nav-link" asp-area="" asp-controller="Encs" asp-action="index">@Stage_Books.languages.Resource.Encyclopedia<span class="sr-only">(current)</span></a>
 					</li>
+					<li class="nav-item active">
+						<a class="nav-link" asp-area="" asp-controller="Scriptpapers" asp-action="Index">Manuscripts<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" asp-area="" asp-controller="paperssearchers" asp-action="Index">Researcher Papers<span class="sr-only">(current)</span></a>
+					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
 						   aria-haspopup="true" aria-expanded="false">
@@ -93,11 +99,13 @@
 				</ul>
 
 			</div>
+			<a href="../Admin" class="btn btn-dark">Dash</a>
 
 			@if (signInManager.IsSignedIn(User))
 			{
 				<form method="post" asp-action="Logout" asp-controller="Account" class="form-inline">
-					<button type="submit" class="btn btn-outline-primary my-2 my-sm-0" >Logout @User.Identity.Name</button>
+					<button type="submit" class="btn btn-outline-primary my-2 my-sm-0 mr-3" >Logout @User.Identity.Name</button>
+					<img src="../img/unkown.png" alt="User" width="25" height="25" style="border:1px solid white;border-radius:50%">
 				</form>
 
 			}

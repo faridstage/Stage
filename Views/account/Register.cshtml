@@ -139,9 +139,17 @@
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<div class="input-group input-group-lg">
-							<input asp-for="work" type="text" class="form-control" aria-label="Sizing example input"
-								   aria-describedby="inputGroup-sizing-lg" placeholder="Work">
-								   <span asp-validation-for="work"></span>
+								   <select asp-for="work" class="form-control" aria-label="Sizing example input"
+								   aria-describedby="inputGroup-sizing-lg">
+									   <option value="">Use Stage As</option>
+									   <option value="">قارىء</option>
+									   <option value="1">باحث</option>
+									   <option value="2">ناقد</option>
+									   <option value="3">صحفى</option>
+									   <option value="4">مؤلف</option>
+									   <option value="5">ناشر</option>
+								   </select>
+								   <span asp-validation-for="work"></span>ط
 						</div>
 					</div>
 					<div class="col-md-6 mb-3">

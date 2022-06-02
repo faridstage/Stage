@@ -1,0 +1,78 @@
+﻿@model Stage_Books.Models.paperssearcher
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>paperssearcher</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.searchername)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.searchername)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SerchName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SerchName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.topic)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.topic)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.lang)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.lang)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PagesNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PagesNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.publishdate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.publishdate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.category)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.category)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.image)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.image)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.url)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.url)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.note)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.note)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

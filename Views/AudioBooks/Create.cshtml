@@ -1,0 +1,360 @@
+﻿@model Stage_Books.Models.AudioBook
+
+@{
+    ViewData["Title"] = "Create";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="~/Admin/cssD/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="~/Admin/cssD/dataTables.bootstrap5.min.css" />
+  <link rel="stylesheet" href="~/Admin/cssD/style.css" />
+  <title>Stage Dashboard</title>
+  <link rel="icon" href="~/img/stage_logo.png" type="" sizes="">
+  <link rel="shortcut icon" href="~/img/stage_logo.png" type="" sizes="">
+  <link rel="apple-touch-icon" href="~/img/stage_logo.png">
+</head>
+<body>
+	<div class="container-fluid">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar"
+					aria-controls="offcanvasExample">
+				<span class="navbar-toggler-icon" data-bs-target="#sidebar"></span>
+			</button>
+			<img src="~/img/stage_logo.png" alt="language" width="30" height="30"
+				 style="margin-right: 10px;margin-left: 5px;">
+			<a class="navbar-brand" href="index.html">S T A G E</a>
+
+			<a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href="#"></a>
+
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="index.html">Home <span class="sr-only"></span></a>
+					</li>
+
+					<li class="nav-item active">
+						<a class="nav-link" href="contact.html">Contact<span class="sr-only"></span></a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="policy.html">Policy<span class="sr-only"></span></a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+						   aria-haspopup="true" aria-expanded="false">
+							About
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item">About Stage</a>
+							<a class="dropdown-item" href="#">Our message</a>
+							<a class="dropdown-item" href="#">Services</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#"></a>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+						   aria-haspopup="true" aria-expanded="false">
+							<i class="bi bi-globe"></i> Lannguage
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="#">العربية</a>
+							<a class="dropdown-item" href="#">English</a>
+							<a class="dropdown-item" href="#">German</a>
+							<a class="dropdown-item" href="#">Spanish</a>
+							<a class="dropdown-item" href="#">French</a>
+							<a class="dropdown-item" href="#">hindi</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#"></a>
+							</div>
+						</div>
+					</li>
+
+				</ul>
+
+			</div>
+
+
+			<form class="form-inline">
+				<a href="login.html" class="btn btn-outline-primary my-2 my-sm-0" style="margin-right: 10PX;">Log out</a>
+			</form>
+
+		</nav>
+	</div>
+    <br />
+    <div class="container-fluid">
+       <h1 style="text-align:center">Add Audio Book</h1>
+    </div>
+    <hr />
+   <div class="container row" style="margin:0px auto">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Author" class="control-label"></label>
+                <input asp-for="Author" class="form-control" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Publisher" class="control-label"></label>
+                <input asp-for="Publisher" class="form-control" />
+                <span asp-validation-for="Publisher" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Desc" class="control-label"></label>
+                <input asp-for="Desc" class="form-control" />
+                <span asp-validation-for="Desc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PubDate" class="control-label"></label>
+                <input asp-for="PubDate" class="form-control" />
+                <span asp-validation-for="PubDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="uploadDate" class="control-label"></label>
+                <input asp-for="uploadDate" class="form-control" />
+                <span asp-validation-for="uploadDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Language" class="control-label"></label>
+                <input asp-for="Language" class="form-control" />
+                <span asp-validation-for="Language" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Topic" class="control-label"></label>
+                <input asp-for="Topic" class="form-control" />
+                <span asp-validation-for="Topic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rights" class="control-label"></label>
+                <input asp-for="Rights" class="form-control" />
+                <span asp-validation-for="Rights" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="path" class="control-label"></label>
+                <input asp-for="path" class="form-control" />
+                <span asp-validation-for="path" class="text-danger"></span>
+            </div>
+				<br />
+				<br />
+			   	<div class="form-group">
+					<label asp-for="ImageURL" class="control-label"></label>
+					<input type="file" class="form-control" name="imageFile" id="imageFile" accept=".png,.jpg" onchange="AddImage()" />
+				</div>
+				<br />
+				<br />
+           		<div class="col-md-3 mb-3">
+					<div class="input-group input-group-lg">
+						<img width="200" height="200" src="" id="AudioImage" />
+					</div>
+				</div>
+            <div class="form-group">
+                <label asp-for="note" class="control-label"></label>
+                <input asp-for="note" class="form-control" />
+                <span asp-validation-for="note" class="text-danger"></span>
+            </div>
+            <br />
+            <hr />
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-danger" /> |
+                <a class="btn btn-primary" class="btn btn-primary" asp-action="Indexdash">Back to List</a>
+            </div>
+        </form>
+            <br />
+            <hr />
+            <br />
+    </div>
+   </div>
+   <div>
+   </div>
+<div class="offcanvas offcanvas-start sidebar-nav bg-dark" tabindex="-1" id="sidebar">
+    <div class="offcanvas-body p-0">
+      <nav class="navbar-dark">
+        <ul class="navbar-nav">
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3">
+              CORE
+            </div>
+          </li>
+          <li>
+            <a href="#" class="nav-link px-3 active"
+              <span class="me-2"><i class="bi bi-speedometer2"></i></span>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+          </li>
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+              Books
+            </div>
+          </li>
+          <li>
+            <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#layouts">
+              <span class="me-2"><i class="bi bi-layout-split"></i></span>
+              <span>Manage Books</span>
+              <span class="ms-auto">
+                <span class="right-icon">
+                  <i class="bi bi-chevron-down"></i>
+                </span>
+              </span>
+            </a>
+            <div class="collapse" id="layouts">
+              <ul class="navbar-nav ps-3">
+                <li>
+                  <a href="~/Admin/Edit/Edit" class="nav-link px-3">
+                    <span class="me-2"><i class="bi bi-pencil-square"></i></span>
+                    <span>Edit Books</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a  href="../Books/index_show" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-book-fill"></i></span>
+              <span>Show Books</span>
+            </a>
+          </li>
+           <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+          </li>
+         <li>
+            <a  href="../Books/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-journal-plus"></i></span>
+              <span>Add Book</span>
+            </a>
+          </li>
+           <li>
+            <a  href="../AudioBooks/Indexdash" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-journal-plus"></i></span>
+              <span>Add Audio Book</span>
+            </a>
+          </li>
+          <li>
+            <a  href="../Authors/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-person-plus"></i></span>
+              <span>Add Auther</span>
+            </a>
+          </li>
+          <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+          </li>
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+              Users
+            </div>
+          </li>
+          <li>
+            <a href="~/Admin/Users/Users" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-person-fill"></i></span>
+              <span>Manage Users</span>
+            </a>
+          </li>
+           <li>
+            <a href="../account/index_show" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-plus-circle"></i></span>
+              <span>Show Users </span>
+            </a>
+          </li>
+           <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+          </li>
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+              Other
+            </div>
+          </li>
+          <li>
+             @* href="../Views/Contactmsgs/Delete" *@
+            <a href="../Contactmsgs/index" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>Users Messages</span>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-bug"></i></span>
+              <span>Errors Messages</span>
+            </a>
+          </li>
+          <li>
+          </li>
+          <li>
+            <a href="../Encs/Index2" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
+              <span>Show Encyclopedia</span>
+            </a>
+          </li>
+          <li>
+            <a href="../Encs/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-plus-square"></i></span>
+              <span>Add Encyclopedia</span>
+            </a>
+          </li>
+          
+           <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+           </li>
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+              Other
+            </div>
+          </li>
+          <li>
+            <a href="~/Admin/index_ocr/index_ocr" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-journal-text"></i></span>
+              <span>OCR</span>
+            </a>
+          </li>
+          <li>
+            <a href="~/Admin/bu/bu" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-hdd"></i></span>
+              <span>Back UP</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+ </div>
+    <script src="js/js.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+  </html>
+
+
+  @section Scripts {
+	<script>
+		function AddImage(){
+		document.getElementById('AudioImage').src= window.URL.createObjectURL(document.getElementById('imageFile').files[0])
+ }
+	</script>
+    @{
+	await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

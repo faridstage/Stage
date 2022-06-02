@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Stage_Books.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,20 +8,33 @@ using System.Threading.Tasks;
 
 namespace Stage_Books.Controllers
 {
+
+
     public class SearcxhController : Controller
     {
+        private readonly ApplicationDbContext _context;
+        public SearcxhController(ApplicationDbContext context)
+        {
+            
+            _context = context;
+        }
         // GET: SearcxhController
         public ActionResult Index()
         {
+
             return View();
+           
         }
         public IActionResult Search()
         {
+
             return View();
+       
         }
         // GET: SearcxhController/Details/5
         public ActionResult Details(int id)
         {
+
             return View();
         }
 

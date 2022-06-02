@@ -27,15 +27,15 @@
     <a asp-action="Create">Send Message</a>
     </p>*@
     <br><hr /><br>
-    <div class="container">
-    <form action="" method="post" class="form-group">
-        <div class="form-group mb-2">
-        <label for="staticEmail2" class="sr-only">Search</label>
-        <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="" style="background-color:#d3d3d3">
-        </div>
-  <button type="submit" class="btn btn-primary mb-2">Search</button>
-    </form>
-    </div>
+
+   <div class="container">
+	  <form method="get" asp-controller="Contactmsgs" asp-action="search">
+		<label>Search</label>
+		<input type="text" name="search" value="@ViewBag.CurrentSearch"/>
+        <button type="submit" class="btn btn-secondary input-group-append">Search</button>
+     </form>
+   </div>
+
     <br><hr /><br>
 
     <!--******************************************-->

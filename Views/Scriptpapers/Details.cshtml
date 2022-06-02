@@ -1,0 +1,108 @@
+﻿@model Stage_Books.Models.Scriptpaper
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Scriptpaper</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.scriptname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.scriptname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.scriptdiscription)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.scriptdiscription)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.scriptlang)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.scriptlang)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.scriptdiscovored)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.scriptdiscovored)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.scriptdiscovoreddate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.scriptdiscovoreddate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.scriptdiscovoredpalce)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.scriptdiscovoredpalce)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.scriptwriterby)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.scriptwriterby)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.scripttopic)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.scripttopic)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.scriptdate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.scriptdate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.scriptcategory)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.scriptcategory)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.scriptcode)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.scriptcode)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.scriptpalcestore)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.scriptpalcestore)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.scriptimage)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.scriptimage)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.scripturl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.scripturl)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.scriptnote)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.scriptnote)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

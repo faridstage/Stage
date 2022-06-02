@@ -89,7 +89,7 @@ namespace Stage_Books
             app.UseRequestLocalization(locoption.Value);
 
             app.UseAuthorization();
-            app.Use(async (context, next) => { context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN"); await next(); });
+            //app.Use(async (context, next) => { context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN"); await next(); });
             
             app.UseEndpoints(endpoints =>
             {

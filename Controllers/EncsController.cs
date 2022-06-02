@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,12 +16,55 @@ namespace Stage_Books.Controllers
     public class EncsController : Controller
     {
         private readonly ApplicationDbContext _context;
-
+        IWebHostEnvironment WebHostEnvironment;
         public EncsController(ApplicationDbContext context)
         {
             _context = context;
         }
+        // GET: Books/Search/5
+        public IActionResult Search(string? search)
+        {
+            List<Enc> Enc = new List<Enc>();
+            if (string.IsNullOrEmpty(search))
+            {
+                Enc = _context.Encs.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = search;
+                Enc = _context.Encs.Where(e => e.Name.Contains(search)).ToList();
+            }
+            return View("index", Enc); ;
+        }
+        public IActionResult Searchs(string? search)
+        {
+            List<Enc> Enc = new List<Enc>();
+            if (string.IsNullOrEmpty(search))
+            {
+                Enc = _context.Encs.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = search;
+                Enc = _context.Encs.Where(e => e.Name.Contains(search)).ToList();
+            }
+            return View("index2", Enc); ;
+        }
 
+        public IActionResult Searchid(string? search)
+        {
+            List<Enc> Enc = new List<Enc>();
+            if (string.IsNullOrEmpty(search))
+            {
+                Enc = _context.Encs.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = search;
+                Enc = _context.Encs.Where(e => e.Name.Contains(search)).ToList();
+            }
+            return View("index2", Enc); ;
+        }
         // GET: Encs
         public async Task<IActionResult> Index()
         {
@@ -28,7 +74,6 @@ namespace Stage_Books.Controllers
         {
             return View(await _context.Encs.ToListAsync());
         }
-
         // GET: Encs/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -46,7 +91,6 @@ namespace Stage_Books.Controllers
 
             return View(enc);
         }
-
         // GET: Encs/Create
         public IActionResult Create()
         {
@@ -58,17 +102,35 @@ namespace Stage_Books.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,Name,FullName,Description,Category,Store,Poster")] Enc enc)
+        public async Task<IActionResult> Create([Bind("id,Name,FullName,Description,Category,Store,Poster")] Enc enc, IFormFile imageFile)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(enc);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(enc);
-        }
+                if (imageFile != null)
+                {
+                    // Guid -> globally Unique Identifier
+                    string imgExtension = Path.GetExtension(imageFile.FileName);
+                    Guid imgGuid = Guid.NewGuid();
+                    string imgName = imgGuid + imgExtension;
+                    string imgURL = "\\EncImages\\" + imgName;
+                    enc.Poster = imgURL;
 
+                    string imgPath = WebHostEnvironment.WebRootPath + imgURL;
+                    FileStream imgStream = new FileStream(imgPath, FileMode.Create);
+                    imageFile.CopyTo(imgStream);
+                    imgStream.Dispose();
+                    }
+                    else
+                    {
+                        enc.Poster = "\\EncImages\\NoUser.jpg";
+                    }
+                    _context.Add(enc);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                return View(enc);
+            }
+   
         // GET: Encs/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -90,7 +152,7 @@ namespace Stage_Books.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,Name,FullName,Description,Category,Store,Poster")] Enc enc)
+        public async Task<IActionResult> Edit(int id, [Bind("id,Name,FullName,Description,Category,Store,Poster")] Enc enc, IFormFile imageFile)
         {
             if (id != enc.id)
             {
@@ -143,6 +205,17 @@ namespace Stage_Books.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            Enc Enc = _context.Encs.FirstOrDefault(e => e.id == id);
+
+            if (Enc.Poster != "\\EncImages\\NoUser.jpg")
+            {
+                string imgPath = WebHostEnvironment.WebRootPath + Enc.Poster;
+
+                if (System.IO.File.Exists(imgPath))
+                {
+                    System.IO.File.Delete(imgPath);
+                }
+            }
             var enc = await _context.Encs.FindAsync(id);
             _context.Encs.Remove(enc);
             await _context.SaveChangesAsync();
