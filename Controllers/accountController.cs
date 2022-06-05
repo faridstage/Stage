@@ -10,6 +10,7 @@ using Stage_Books.Models;
 using Stage_Books.Models.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Stage_Books.Controllers
 {
@@ -226,5 +227,13 @@ namespace Stage_Books.Controllers
                 return View();
             }
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
     }
 }

@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Stage_Books.Models.Account
+namespace Stage_Books.Models
 {
-    public class RegisterViewModel
+    public class EditUserViewModel
     {
-
-
+        public EditUserViewModel()
+        {
+            Claims = new List<string>();
+            Roles = new List<string>();
+        }
         [Key]
-        public int id { get; set; }
+        public string id { get; set; }
 
         [Required(ErrorMessage = "you have to provide a valid First name")]
         [MinLength(2, ErrorMessage = "min is 2")]
@@ -17,13 +21,6 @@ namespace Stage_Books.Models.Account
         [Required(ErrorMessage = "you have to provide a valid Email")]
         [EmailAddress(ErrorMessage = "you have to provide a valid Email")]
         public string Email { get; set; }
-        [Required(ErrorMessage = "you have to provide a valid Password")]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm Password")]
-        [Compare("Password", ErrorMessage = "The Passwords does not match")]
-        public string ConfirmPassword { get; set; }
 
         [Required]
         public int phone { get; set; }
@@ -40,5 +37,8 @@ namespace Stage_Books.Models.Account
         [Required]
         [DataType(DataType.Date)]
         public DateTime birth { get; set; }
+
+        public List<string> Claims { get; set; }
+        public IList<string> Roles { get; set; }
     }
 }

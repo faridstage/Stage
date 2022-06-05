@@ -99,7 +99,11 @@
 				</ul>
 
 			</div>
-			<a href="../Admin" class="btn btn-dark">Dash</a>
+			
+			@if(signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+			{
+				<a asp-action="Index" asp-controller="Home" asp-area="Admin" class="btn btn-danger nav-link">DASHBOARD</a>
+			}
 
 			@if (signInManager.IsSignedIn(User))
 			{
