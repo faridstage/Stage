@@ -1,4 +1,4 @@
-﻿@*
+﻿\@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -201,13 +201,14 @@
                                 <form class="form-block" style="padding: 15px;">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1" style="background-color: #c4c4c4;"><img src="~/img/search.png" alt="search" width="25" height="25"></span>
+                                         <button onclick="FindNext();">Find Next</button>
+                                         <a href="#" onclick="find();">Find in This Page...</a>
+                                         <span class="input-group-text" id="basic-addon1" style="background-color: #c4c4c4;"><img src="~/img/search.png" alt="search" width="25" height="25"></span>
                                         </div>
-                                        <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1" value="" name="" style="background-color: #c4c4c4;">
+                                        <input id="findInput" type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1" value="" name="" style="background-color: #c4c4c4;">
                                     </div>
                                 </form>
                             </div>
-
                         </div>
                     </div>
 
@@ -221,20 +222,22 @@
                 <!--*****************************************************-->
                 <div id="cont" class="container" style="margin:0px auto;border:2px solid gray;border-radius:10px;background-color:#EEEEEE;">
                     <br />
-                   <div class="Container text-center" style="margin:0px auto;border:2px solid gray;border-radius:10px" >
-                      <div class="row">
-                          <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-volume-up"></i></a></div>
-                          <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-volume-mute"></i></a></div>
-                          <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-translate"></i></a></div>
-                          <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-fullscreen"></i></a></div>
-                          <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-fullscreen-exit"></i></a></div>
-                          <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-clipboard"></i></a></div>
-                      </div>
-                   </div>
-                   <br />
-                    <iframe id="tc" type="text/html" src="../s/Phone.htm" width="1050" height="2000"></iframe>
-                    <br />
-                                       <!--*****************************************************-->
+                    <div id="mainscrees">
+                       <div class="Container text-center" style="margin:0px auto;border:2px solid gray;border-radius:10px" >
+                          <div class="row">
+                              <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-volume-up"></i></a></div>
+                              <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-volume-mute"></i></a></div>
+                              <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-translate"></i></a></div>
+                              <div class="col-2"><a id="maxsize" onclick="openFullscreen();" href="" style="font-size:25px"><i class="bi bi-fullscreen"></i></a></div>
+                              <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-fullscreen-exit"></i></a></div>
+                              <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-clipboard"></i></a></div>
+                          </div>
+                       </div>
+                       <br />
+                        <iframe id="tc" type="text/html" src="../s/Phone.htm" width="1050" height="2000"></iframe>
+                        <br />
+                    </div>
+                   <!--*****************************************************-->
                    <!-- Start pagination -->
                    <hr />
                     <br />
@@ -363,7 +366,39 @@
 			</div>
 		</div>
 	</div>
+
     <script>
+        
+            var elem = document.getElementById("maxsize");
+            var screen = document.getElementById("mainscrees");
+                function openFullscreen() 
+                {
+                  if (screen.requestFullscreen) {
+                    screen.requestFullscreen();
+                  } else if (screen.webkitRequestFullscreen) { /* Safari */
+                    screen.webkitRequestFullscreen();
+                  } else if (screen.msRequestFullscreen) { /* IE11 */
+                    screen.msRequestFullscreen();
+                  }
+                }
+            function FindNext() {
+            var str = document.getElementById ("findInput").value;
+            if (str == "") {
+                alert ("Please enter some text to search!");
+                return;
+            }
+
+            if (window.find) {        // Firefox, Google Chrome, Safari
+                var found = window.find (str);
+                if (!found) {
+                    alert ("The following text was not found:\n" + str);
+                }
+            }
+            else {
+                alert ("Your browser does not support this example!");
+            }
+        }
+
                 function myFunction() {
                   var x = document.getElementById('myDIV');
                   if (x.style.display === 'none') {
@@ -414,7 +449,7 @@
                     x.style.backgroundColor = 'black';
                     color.style.color = 'white';
                 }
-</script>
+   </script>
                     <!-- Option 6: Bootstrap Bundle with Popper -->
                     <script src="~/js/js.js"> </script>
                     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

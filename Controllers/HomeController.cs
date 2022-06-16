@@ -34,9 +34,10 @@ namespace Stage_Books.Controllers
         
         public IActionResult Index(int? page)
         {
-            var book = _context.Books.ToList().ToPagedList(page ?? 1, 25);
-            var author = _context.Authors.ToList();
-            var Enc = _context.Encs.ToList();
+            //
+            var book = _context.Books.ToList().ToPagedList(page ?? 1, 2);
+            var author = _context.Authors.Skip(0).Take(5).ToList();
+            var Enc = _context.Encs.Skip(0).Take(5).ToList();
             var show = new Showdatamodel
             {
                 Books = book.ToList(),
@@ -45,11 +46,24 @@ namespace Stage_Books.Controllers
             };
             return View(show);
         }
-
+        public IActionResult publishercont()
+        {
+            return View();
+        }
+        public IActionResult authercont()
+        {
+            return View();
+        }
+        
+         public IActionResult suggestion()
+        {
+            return View();
+        }
         public ActionResult Search()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Search(string searchname)
         {
@@ -61,7 +75,71 @@ namespace Stage_Books.Controllers
                 
             return View(result);
         }
-
+        public ActionResult gotobooks()
+        {
+            var book = _context.Books.ToList();
+            var author = _context.Authors.ToList();
+            var Enc = _context.Encs.ToList();
+            var show = new Showdatamodel
+            {
+                Books = book.ToList(),
+                Auther = author,
+                Encs = Enc,
+            };
+            return View(show);
+        }
+        public ActionResult gotoauthors()
+        {
+            var book = _context.Books.ToList();
+            var author = _context.Authors.ToList();
+            var Enc = _context.Encs.ToList();
+            var show = new Showdatamodel
+            {
+                Books = book.ToList(),
+                Auther = author,
+                Encs = Enc,
+            };
+            return View(show);
+        }
+        public ActionResult gotocat()
+        {
+            var book = _context.Books.ToList();
+            var author = _context.Authors.ToList();
+            var Enc = _context.Encs.ToList();
+            var show = new Showdatamodel
+            {
+                Books = book.ToList(),
+                Auther = author,
+                Encs = Enc,
+            };
+            return View(show);
+        }
+        public ActionResult gototopic()
+        {
+            var book = _context.Books.ToList();
+            var author = _context.Authors.ToList();
+            var Enc = _context.Encs.ToList();
+            var show = new Showdatamodel
+            {
+                Books = book.ToList(),
+                Auther = author,
+                Encs = Enc,
+            };
+            return View(show);
+        }
+        public ActionResult gotoenc()
+        {
+            var book = _context.Books.ToList();
+            var author = _context.Authors.ToList();
+            var Enc = _context.Encs.ToList();
+            var show = new Showdatamodel
+            {
+                Books = book.ToList(),
+                Auther = author,
+                Encs = Enc,
+            };
+            return View(show);
+        }
         public IActionResult Privacy()
         {
             return View();
