@@ -91,6 +91,7 @@ namespace Stage_Books.Controllers
             var model = new EditUserViewModel
             {
                 id = user.Id,
+                Name = user.Name,
                 Email = user.Email,
                 phone = user.phone,
                 gender = user.gender,

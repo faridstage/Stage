@@ -26,6 +26,9 @@ namespace Stage_Books.Models
         public List<Scriptpaper> Scriptpaper { get; set; }
 
         public List<paperssearcher> paperssearcher { get; set; }
+        public List<SaveBook> SaveBooks { get; set; }
+
+        public List<ApplicationUser> appusers { get; set; }
 
         //public List<Book> Searchfunc(string term)
         //{

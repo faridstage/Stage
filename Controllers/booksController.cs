@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -17,12 +18,15 @@ namespace Stage_Books.Controllers
         
         private readonly ApplicationDbContext _context;
         IWebHostEnvironment WebHostEnvironment;
+        private readonly UserManager<ApplicationUser> userManager;
 
         public BooksController(ApplicationDbContext context, IWebHostEnvironment webHostEnv)
         {
             _context = context;
             WebHostEnvironment = webHostEnv;
+
         }
+        
 
         // GET: Books
         public async Task<IActionResult> Index()
@@ -74,7 +78,7 @@ namespace Stage_Books.Controllers
                 ViewBag.CurrentSearch = search;
                 Book = _context.Books.Where(e => e.Name.Contains(search)).ToList();
             }
-            return View("index_show", Book); ;
+            return View("index_show", Book);
         }
 
         public IActionResult Searchhome(string? searchhome)
@@ -103,7 +107,7 @@ namespace Stage_Books.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,Pages,Category,Language,Topic,Publisher,PubDate,Desc,Rights,AuthorID")] Book book, IFormFile imageFile)
+        public async Task<IActionResult> Create([Bind("ID,Name,Pages,Category,Language,Topic,Publisher,PubDate,Desc,Rights,AuthorID")] Book book, IFormFile imageFile,IFormFile bookFile,IFormFile bookIndex)
         {
             if (ModelState.IsValid)
             {
@@ -126,6 +130,23 @@ namespace Stage_Books.Controllers
                 else
                 {
                     book.ImageURL = "\\BookImages\\NoImage.jpeg";
+                }
+
+                if (bookFile != null)
+                {
+                    // Guid -> globally Unique Identifier
+                    string bookExtension = Path.GetExtension(bookFile.FileName);
+                    Guid bookGuid = Guid.NewGuid();
+                    string bookName = bookGuid + bookExtension;
+                    string bookURL = "\\s\\" + bookName;
+                    book.BookURLS = bookURL;
+
+                    string bookPath = WebHostEnvironment.WebRootPath + bookURL;
+                    FileStream bookStream = new FileStream(bookPath, FileMode.Create);
+                    bookFile.CopyTo(bookStream);
+                    bookStream.Dispose();
+
+
                 }
 
 

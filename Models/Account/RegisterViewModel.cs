@@ -40,5 +40,7 @@ namespace Stage_Books.Models.Account
         [Required]
         [DataType(DataType.Date)]
         public DateTime birth { get; set; }
+
+        public string ImageURL { get; set; }
     }
 }

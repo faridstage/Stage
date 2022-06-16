@@ -38,6 +38,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="wwwroot\Admin\" />
+    <Folder Include="wwwroot\UserImages\" />
   </ItemGroup>
 
   <ItemGroup>

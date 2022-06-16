@@ -1,8 +1,10 @@
-﻿@model Stage_Books.Models.Showdatamodel
+﻿@using System.Security.Claims
+@model Stage_Books.Models.Showdatamodel
 
-@*@{
+
+@{
 	ViewData["Title"] = "profile";
-}*@
+}
 <!doctype html>
 <html lang="en">
 <head>
@@ -27,15 +29,16 @@
 		<div class="row">
 			<div class="col-sm-2" style="background-color: #333333;">
 				<div class="row">
-
-					<img src="~/img/unkown.png" t="Facebook" title="Person" width="100" height="100"
+					@foreach(var item in Model.appusers){
+						<img src="@Html.DisplayFor(modelitem => item.ImageURL)" t="Facebook" title="Person" width="100" height="100"
 						 style="margin:25px auto;">
+					}
+					
 				</div>
 				<div class="row">
 					<a class="nav-link" href="../account/Edit" style=" margin: auto; ">
 						<span class="" style="color: white;">
-							Edit
-							Profile
+							SSSAAA
 						</span>
 					</a>
 				</div>
@@ -76,13 +79,23 @@
 						<span style="text-align:center">Saving</span>
 					</div>
 					<div class="col-3">
+
 						@{
-							int count = Stage_Books.Controllers.HomeController.savedCount;
-							if (count >= 0)
+							string id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+							if (id != null)
 							{
-								<span>@count</span>
+
+								int count = Stage_Books.Controllers.HomeController.savedCount;
+								if (count > 0)
+								{
+									<span>@count</span>
+								}
 							}
 						}
+
+
+
+
 					</div>
 
 					<br />
@@ -178,8 +191,46 @@
 
 
 					<div class="row">
-								
-						
+						@{
+							if (ViewBag.SaveBook != null)
+							{
+								foreach (var item in ViewBag.SaveBook)
+								{
+									<div class="card" style="width: 18rem; margin:7px">
+										<img class="card-img-top" src="~/img/unknownbook.png" alt="Card image cap">
+										<div class="card-body">
+											<h5 class="card-title">@item.BookName</h5>
+											<p class="card-text">
+												@item.bookDesc
+											</p>
+											<a href="#" class="btn btn-primary">Go somewhere</a>
+										</div>
+									</div>
+								}
+							}
+							else
+							{
+								<h1>يا لول</h1>
+							}
+						}
+
+						@*@foreach (var item in Model.)
+							{
+
+							<div class="card" style="width: 18rem; margin:7px">
+							<img class="card-img-top" src="~/img/unknownbook.png" alt="Card image cap">
+							<div class="card-body">
+							<h5 class="card-title">@item.BookName</h5>
+							<p class="card-text">
+							@item.bookDesc
+							</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+							</div>
+							</div>
+
+							}*@
+
+
 
 					</div>
 				</div>
@@ -325,4 +376,5 @@
 
 </body>
 </html>
+
 

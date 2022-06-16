@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Stage_Books.Models;
 
 namespace Stage_Books.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220615182447_AddingUserName")]
+    partial class AddingUserName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -164,9 +166,6 @@ namespace Stage_Books.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageURL")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -225,9 +224,6 @@ namespace Stage_Books.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<string>("ImageURL")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -433,32 +429,6 @@ namespace Stage_Books.Migrations
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("Stage_Books.Models.BookComment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Comments")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("PublishDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
-
-                    b.ToTable("BookComments");
-                });
-
             modelBuilder.Entity("Stage_Books.Models.Contact.Contactmsg", b =>
                 {
                     b.Property<int>("Id")
@@ -520,21 +490,6 @@ namespace Stage_Books.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Encs");
-                });
-
-            modelBuilder.Entity("Stage_Books.Models.RateBook", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("Rate")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RateBooks");
                 });
 
             modelBuilder.Entity("Stage_Books.Models.SaveBook", b =>
@@ -747,17 +702,6 @@ namespace Stage_Books.Migrations
                     b.Navigation("Author");
                 });
 
-            modelBuilder.Entity("Stage_Books.Models.BookComment", b =>
-                {
-                    b.HasOne("Stage_Books.Models.Book", "Books")
-                        .WithMany("BookComment")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Books");
-                });
-
             modelBuilder.Entity("Stage_Books.Models.SaveBook", b =>
                 {
                     b.HasOne("Stage_Books.Models.ApplicationUser", "AppUser")
@@ -770,11 +714,6 @@ namespace Stage_Books.Migrations
             modelBuilder.Entity("Stage_Books.Models.Author", b =>
                 {
                     b.Navigation("Employees");
-                });
-
-            modelBuilder.Entity("Stage_Books.Models.Book", b =>
-                {
-                    b.Navigation("BookComment");
                 });
 #pragma warning restore 612, 618
         }

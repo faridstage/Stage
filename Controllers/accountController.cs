@@ -11,20 +11,24 @@ using Stage_Books.Models.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Stage_Books.Controllers
 {
     public class AccountController : Controller
     {
         private readonly ApplicationDbContext _context;
+        IWebHostEnvironment WebHostEnvironment;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext context)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext context, IWebHostEnvironment webHostEnv)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             _context = context;
+            WebHostEnvironment = webHostEnv;
         }
         // GET: accountController
         public ActionResult Index()
@@ -74,6 +78,24 @@ namespace Stage_Books.Controllers
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+        public IActionResult Index(int? page)
+        {
+            var book = _context.Books.ToList();
+            var author = _context.Authors.ToList();
+            var Enc = _context.Encs.ToList();
+            var users = _context.Users.ToList();
+            var saved = _context.Saved.ToList();
+            var show = new Showdatamodel
+            {
+                Books = book.ToList(),
+                Auther = author,
+                Encs = Enc,
+                appusers = users,
+                SaveBooks = saved
+
+            };
+            return View(show);
+        }
 
         [HttpGet]
         public IActionResult Register()
@@ -81,22 +103,45 @@ namespace Stage_Books.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(RegisterViewModel model, IFormFile imageFile)
         {
             if (ModelState.IsValid)
             {
+                
                 var user = new ApplicationUser
                 {
-                    UserName = model.Email,
+                    UserName = model.Name,
                     Email = model.Email,
                     phone = model.phone,
                     gender = model.gender,
                     country = model.country,
                     city = model.Nlanguage,
                     work = model.work,
-                    birth = model.birth
+                    birth = model.birth,
+                    ImageURL = model.ImageURL
                 };
+                if (imageFile != null)
+                {
+                    // Guid -> globally Unique Identifier
+                    string imgExtension = Path.GetExtension(imageFile.FileName);
+                    Guid imgGuid = Guid.NewGuid();
+                    string imgName = imgGuid + imgExtension;
+                    string imgURL = "\\UserImages\\" + imgName;
+                    model.ImageURL = imgURL;
+
+                    string imgPath = WebHostEnvironment.WebRootPath + imgURL;
+                    FileStream imgStream = new FileStream(imgPath, FileMode.Create);
+                    imageFile.CopyTo(imgStream);
+                    imgStream.Dispose();
+
+
+                }
+                else
+                {
+                    model.ImageURL = "\\UserImages\\NoUser.jpg";
+                }
                 var result = await userManager.CreateAsync(user, model.Password);
+
 
                 if (result.Succeeded)
                 {
