@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Stage_Books.Models
@@ -34,5 +36,13 @@ namespace Stage_Books.Models
         [ValidateNever]
         
         public virtual Author Author { get; set; }
+
+        [Display(Name = "BookFile")]
+        public string BookURLS { get; set; }
+
+        [Display(Name = "IndexFile")]
+        public string IndexURL { get; set; }
+
+        public ICollection<BookComment> BookComment { get; set; }
     }
 }

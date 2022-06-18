@@ -270,14 +270,14 @@
   <data name="Or Visit us On" xml:space="preserve">
     <value>Or Visit us On</value>
   </data>
-  <data name="Ouer Message" xml:space="preserve">
-    <value>Ouer Message</value>
-  </data>
-  <data name="Ouer Services" xml:space="preserve">
-    <value>Ouer Services</value>
+  <data name="Our Message" xml:space="preserve">
+    <value>Our Message</value>
   </data>
   <data name="Our Policy" xml:space="preserve">
     <value>Our Policy</value>
+  </data>
+  <data name="Our Services" xml:space="preserve">
+    <value>Our Services</value>
   </data>
   <data name="Pages" xml:space="preserve">
     <value>Pages</value>
@@ -348,8 +348,17 @@
   <data name="Subject ofBook" xml:space="preserve">
     <value>Subject ofBook</value>
   </data>
+  <data name="suggestions" xml:space="preserve">
+    <value>suggestions</value>
+  </data>
   <data name="Titel" xml:space="preserve">
     <value>Titel</value>
+  </data>
+  <data name="To Authors" xml:space="preserve">
+    <value>To Authors</value>
+  </data>
+  <data name="To Publishers" xml:space="preserve">
+    <value>To Publishers</value>
   </data>
   <data name="Translate" xml:space="preserve">
     <value>Translate</value>

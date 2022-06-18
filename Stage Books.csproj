@@ -38,6 +38,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="wwwroot\Admin\" />
+    <Folder Include="wwwroot\UserImages\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -125,9 +126,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="languages\Resource.Ar.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="languages\Resource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>

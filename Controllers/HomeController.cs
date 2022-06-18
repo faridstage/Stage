@@ -15,55 +15,63 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
 using X.PagedList.Mvc.Core;
 using X.PagedList;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace Stage_Books.Controllers
 {
-    
+
     public class HomeController : Controller
     {
-        
 
-    // public IEnumerable<Author> author { get; set; }
+
+        // public IEnumerable<Author> author { get; set; }
         private readonly ApplicationDbContext _context;
         private readonly ILogger<HomeController> _logger;
+        public static int savedCount = 0;
         public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
             _logger = logger;
             _context = context;
         }
-        
+        public int SavedCount()
+        {
+            int i = 0;
+            string id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (id != null)
+            {
+                i = _context.Saved.Where(x => x.UserId == id).Count();
+            }
+            else
+            {
+                i = 0;
+            }
+            return i;
+        }
+
         public IActionResult Index(int? page)
         {
-            //
-            var book = _context.Books.ToList().ToPagedList(page ?? 1, 2);
+            var book = _context.Books.ToList().ToPagedList(page ?? 1, 25);
             var author = _context.Authors.Skip(0).Take(5).ToList();
             var Enc = _context.Encs.Skip(0).Take(5).ToList();
+            var users = _context.Users.ToList();
+            var saved = _context.Saved.ToList();
             var show = new Showdatamodel
             {
                 Books = book.ToList(),
                 Auther = author,
                 Encs = Enc,
+                appusers = users,
+                SaveBooks = saved
+
             };
             return View(show);
         }
-        public IActionResult publishercont()
-        {
-            return View();
-        }
-        public IActionResult authercont()
-        {
-            return View();
-        }
-        
-         public IActionResult suggestion()
-        {
-            return View();
-        }
+
         public ActionResult Search()
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult Search(string searchname)
         {
@@ -72,74 +80,10 @@ namespace Stage_Books.Controllers
                          || b.Author.Name.Contains(searchname)
                          || b.Topic.Contains(searchname)
                          || b.Category.Contains(searchname)).ToList();
-                
+
             return View(result);
         }
-        public ActionResult gotobooks()
-        {
-            var book = _context.Books.ToList();
-            var author = _context.Authors.ToList();
-            var Enc = _context.Encs.ToList();
-            var show = new Showdatamodel
-            {
-                Books = book.ToList(),
-                Auther = author,
-                Encs = Enc,
-            };
-            return View(show);
-        }
-        public ActionResult gotoauthors()
-        {
-            var book = _context.Books.ToList();
-            var author = _context.Authors.ToList();
-            var Enc = _context.Encs.ToList();
-            var show = new Showdatamodel
-            {
-                Books = book.ToList(),
-                Auther = author,
-                Encs = Enc,
-            };
-            return View(show);
-        }
-        public ActionResult gotocat()
-        {
-            var book = _context.Books.ToList();
-            var author = _context.Authors.ToList();
-            var Enc = _context.Encs.ToList();
-            var show = new Showdatamodel
-            {
-                Books = book.ToList(),
-                Auther = author,
-                Encs = Enc,
-            };
-            return View(show);
-        }
-        public ActionResult gototopic()
-        {
-            var book = _context.Books.ToList();
-            var author = _context.Authors.ToList();
-            var Enc = _context.Encs.ToList();
-            var show = new Showdatamodel
-            {
-                Books = book.ToList(),
-                Auther = author,
-                Encs = Enc,
-            };
-            return View(show);
-        }
-        public ActionResult gotoenc()
-        {
-            var book = _context.Books.ToList();
-            var author = _context.Authors.ToList();
-            var Enc = _context.Encs.ToList();
-            var show = new Showdatamodel
-            {
-                Books = book.ToList(),
-                Auther = author,
-                Encs = Enc,
-            };
-            return View(show);
-        }
+
         public IActionResult Privacy()
         {
             return View();
@@ -160,5 +104,64 @@ namespace Stage_Books.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public async Task<IActionResult> SaveBook(string id)
+        {
+            if (id != null)
+            {
+                ViewBag.SaveBook = await GetSaveBook(id);
+            }
+
+            return View();
+        }
+
+        public async Task<List<SaveBook>> GetSaveBook(string userId)
+        {
+            return await _context.Saved.Where(x => x.UserId == userId).ToListAsync();
+        }
+
+        public bool GetBookName(string bookName, string id)
+        {
+            return _context.Saved.Where(s => s.UserId == id).Any(x => x.BookName == bookName);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SaveBook([Bind("Id,BookName,bookDesc,ImageURL")] SaveBook saveBook, string bookName, string? bookDesc, string bookImage, int bookId)
+        {
+            string id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (id == null)
+            {
+                TempData["msg"] = "Please Login First";
+                return RedirectToAction("Details", "books");
+            }
+            if (ModelState.IsValid)
+            {
+                if (!GetBookName(bookName, id))
+                {
+                    saveBook.BookName = bookName;
+                    saveBook.bookDesc = bookDesc;
+                    saveBook.ImageURL = bookImage;
+                    saveBook.UserId = id;
+
+
+                    _context.Add(saveBook);
+
+                    _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Saved ON;");
+                    await _context.SaveChangesAsync();
+                    _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT Saved OFF;");
+                    savedCount = SavedCount();
+                }
+                else
+                {
+                    TempData["msg"] = "The Book is alredy saved";
+                }
+
+
+            }
+            return RedirectToAction("Book_Details", "books", new { id = bookId });
+        }
+
     }
 }

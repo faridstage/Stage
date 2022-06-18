@@ -22,8 +22,10 @@ namespace Stage_Books.Models
         public DbSet<AudioBook> AudioBooks { get; set; }
         public DbSet<Scriptpaper> Scriptpaper { get; set; }
         public DbSet<paperssearcher> paperssearchers { get; set; }
+        public DbSet<SaveBook> Saved { get; set; }
+        //public DbSet<RateBook> RateBooks { get; set; }
+        public DbSet<BookComment> BookComments { get; set; }
 
-        
 
 
     }

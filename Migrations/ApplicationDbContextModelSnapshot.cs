@@ -164,6 +164,9 @@ namespace Stage_Books.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageURL")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -223,11 +226,17 @@ namespace Stage_Books.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("ImageURL")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nlanguage")
                         .HasColumnType("nvarchar(max)");
@@ -377,6 +386,9 @@ namespace Stage_Books.Migrations
                     b.Property<int>("AuthorID")
                         .HasColumnType("int");
 
+                    b.Property<string>("BookURLS")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(max)");
 
@@ -385,6 +397,9 @@ namespace Stage_Books.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageURL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IndexURL")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Language")
@@ -416,6 +431,32 @@ namespace Stage_Books.Migrations
                     b.HasIndex("AuthorID");
 
                     b.ToTable("Books");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.BookComment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Comments")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("PublishDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("BookComments");
                 });
 
             modelBuilder.Entity("Stage_Books.Models.Contact.Contactmsg", b =>
@@ -479,6 +520,32 @@ namespace Stage_Books.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Encs");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.SaveBook", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BookName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageURL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("bookDesc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Saved");
                 });
 
             modelBuilder.Entity("Stage_Books.Models.Scriptpaper", b =>
@@ -665,9 +732,34 @@ namespace Stage_Books.Migrations
                     b.Navigation("Author");
                 });
 
+            modelBuilder.Entity("Stage_Books.Models.BookComment", b =>
+                {
+                    b.HasOne("Stage_Books.Models.Book", "Books")
+                        .WithMany("BookComment")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Books");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.SaveBook", b =>
+                {
+                    b.HasOne("Stage_Books.Models.ApplicationUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("Stage_Books.Models.Author", b =>
                 {
                     b.Navigation("Employees");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.Book", b =>
+                {
+                    b.Navigation("BookComment");
                 });
 #pragma warning restore 612, 618
         }

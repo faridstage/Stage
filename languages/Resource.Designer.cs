@@ -521,20 +521,11 @@ namespace Stage_Books.languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ouer Message.
+        ///   Looks up a localized string similar to Our Message.
         /// </summary>
-        public static string Ouer_Message {
+        public static string Our_Message {
             get {
-                return ResourceManager.GetString("Ouer Message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ouer Services.
-        /// </summary>
-        public static string Ouer_Services {
-            get {
-                return ResourceManager.GetString("Ouer Services", resourceCulture);
+                return ResourceManager.GetString("Our Message", resourceCulture);
             }
         }
         
@@ -544,6 +535,15 @@ namespace Stage_Books.languages {
         public static string Our_Policy {
             get {
                 return ResourceManager.GetString("Our Policy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Our Services.
+        /// </summary>
+        public static string Our_Services {
+            get {
+                return ResourceManager.GetString("Our Services", resourceCulture);
             }
         }
         
@@ -755,11 +755,38 @@ namespace Stage_Books.languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to suggestions.
+        /// </summary>
+        public static string suggestions {
+            get {
+                return ResourceManager.GetString("suggestions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Titel.
         /// </summary>
         public static string Titel {
             get {
                 return ResourceManager.GetString("Titel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To Authors.
+        /// </summary>
+        public static string To_Authors {
+            get {
+                return ResourceManager.GetString("To Authors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To Publishers.
+        /// </summary>
+        public static string To_Publishers {
+            get {
+                return ResourceManager.GetString("To Publishers", resourceCulture);
             }
         }
         

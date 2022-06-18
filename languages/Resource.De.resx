@@ -252,14 +252,14 @@
   <data name="Or Visit us On" xml:space="preserve">
     <value>Oder besuchen Sie uns weiter</value>
   </data>
-  <data name="Ouer Message" xml:space="preserve">
-    <value>Ouer-Nachricht.</value>
-  </data>
-  <data name="Ouer Services" xml:space="preserve">
-    <value>Ouer-dienstleistungen.</value>
+  <data name="Our Message" xml:space="preserve">
+    <value>Our-Nachricht.</value>
   </data>
   <data name="Our Policy" xml:space="preserve">
     <value>Unsere Geschäftspolitik</value>
+  </data>
+  <data name="Our Services" xml:space="preserve">
+    <value>Our-dienstleistungen.</value>
   </data>
   <data name="Pages" xml:space="preserve">
     <value>Seiten</value>

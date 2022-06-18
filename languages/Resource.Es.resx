@@ -369,23 +369,23 @@
   <data name="Or Visit us On1" xml:space="preserve">
     <value>O visitarnos en</value>
   </data>
-  <data name="Ouer Message" xml:space="preserve">
-    <value>Mensaje OUER</value>
+  <data name="Our Message" xml:space="preserve">
+    <value>Mensaje OUR</value>
   </data>
-  <data name="Ouer Message1" xml:space="preserve">
-    <value>Mensaje OUER</value>
-  </data>
-  <data name="Ouer Services" xml:space="preserve">
-    <value>Servicios OUER</value>
-  </data>
-  <data name="Ouer Services1" xml:space="preserve">
-    <value>Servicios OUER</value>
+  <data name="Our Message1" xml:space="preserve">
+    <value>Mensaje OUR</value>
   </data>
   <data name="Our Policy" xml:space="preserve">
     <value>Nuestra política</value>
   </data>
   <data name="Our Policy1" xml:space="preserve">
     <value>Nuestra política</value>
+  </data>
+  <data name="Our Services" xml:space="preserve">
+    <value>Servicios OUR</value>
+  </data>
+  <data name="Our Services1" xml:space="preserve">
+    <value>Servicios OUR</value>
   </data>
   <data name="Pages" xml:space="preserve">
     <value>Páginas</value>

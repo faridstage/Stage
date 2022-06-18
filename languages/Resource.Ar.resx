@@ -271,16 +271,16 @@
     <value>أو إنشاء حساب جديد</value>
   </data>
   <data name="Or Visit us On" xml:space="preserve">
-    <value>أو زيارتنا</value>
+    <value>أو قم زيارتنا</value>
   </data>
-  <data name="Ouer Message" xml:space="preserve">
+  <data name="Our Message" xml:space="preserve">
     <value>رسالتنا</value>
-  </data>
-  <data name="Ouer Services" xml:space="preserve">
-    <value>خدماتنا</value>
   </data>
   <data name="Our Policy" xml:space="preserve">
     <value>سياستنا</value>
+  </data>
+  <data name="Our Services" xml:space="preserve">
+    <value>خدماتنا</value>
   </data>
   <data name="Pages" xml:space="preserve">
     <value>الصفحات</value>
@@ -351,8 +351,17 @@
   <data name="Subject ofBook" xml:space="preserve">
     <value>موضوع كتاب</value>
   </data>
+  <data name="suggestions" xml:space="preserve">
+    <value>خاص بالاقتراحات</value>
+  </data>
   <data name="Titel" xml:space="preserve">
     <value>تيتيل</value>
+  </data>
+  <data name="To Authors" xml:space="preserve">
+    <value>خاص بالمؤلفين</value>
+  </data>
+  <data name="To Publishers" xml:space="preserve">
+    <value>خاص بالناشر</value>
   </data>
   <data name="Translate" xml:space="preserve">
     <value>يترجم</value>

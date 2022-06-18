@@ -152,11 +152,11 @@
 									<select asp-for="Category" class="form-control form-select" aria-label="Sizing example input"
 											aria-describedby="inputGroup-sizing-lg" id="catselect" onchange="cataddmore()" required>
 										<option disabled selected>Select Category</option>
-										<option value="0">Medicine</option>
-										<option  value="1" >sciences</option>
-										<option  value="2">Engineering</option>
-										<option  value="3">literature</option>
-										<option  value="4">space scince</option>
+											<option>داب</option>
+											<option>فلسفة</option>
+											<option>مقارنة اديان</option>
+											<option>دين</option>
+											<option>علوم</option>
 									</select> 
 									<span asp-validation-for="Category"></span>
 						
@@ -274,13 +274,14 @@
 						</div>
 						<br><br><br>
 						<div class="row">
-							<div class="col-md-3"></div>
-							<div class="col-md-6">
-								<h3>Book Index File : </h3>
+							<div class="col-md-0"></div>
+							<div class="col-md-5 mb-3">
+								<label asp-for="BookURLS"></label>
+								<input asp-for="BookURLS" type="file" class="form-control" aria-label="Sizing example input"
+									   aria-describedby="inputGroup-sizing-lg" placeholder="Select Book" name="bookFile" id="bookFile" accept=".doc,.docx" >
+								<span asp-validation-for="BookURLS"></span>
 							</div>
-							<br />
 						</div>
-						<div class="row">
 							<div class="col-md-0"></div>
 							<div class="col-md-5 mb-3">
 								<span class="me-2">Choose Word File "Index"</span>
