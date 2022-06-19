@@ -20,6 +20,8 @@ namespace Stage_Books.Models
         public string Desc { get; set; }
         [Required]
         public DateTime PubDate { get; set; }
+        [Required]
+        public DateTime UploadDate { get; set; }
         public string Language { get; set; }
         [Required]
         public string Topic { get; set; }
@@ -39,10 +41,12 @@ namespace Stage_Books.Models
 
         [Display(Name = "BookFile")]
         public string BookURLS { get; set; }
-
-        [Display(Name = "IndexFile")]
-        public string IndexURL { get; set; }
+        [Display(Name = "IntroFile")]
+        public string BookIntro { get; set; }
+        [Display(Name = "BookIndex")]
+        public string BookIndex { get; set; }
 
         public ICollection<BookComment> BookComment { get; set; }
+        public string IndexURL { get; set; }
     }
 }

@@ -386,6 +386,12 @@ namespace Stage_Books.Migrations
                     b.Property<int>("AuthorID")
                         .HasColumnType("int");
 
+                    b.Property<string>("BookIndex")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BookIntro")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("BookURLS")
                         .HasColumnType("nvarchar(max)");
 
@@ -425,6 +431,9 @@ namespace Stage_Books.Migrations
                     b.Property<string>("Topic")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UploadDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ID");
 

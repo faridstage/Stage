@@ -107,7 +107,7 @@ namespace Stage_Books.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,Pages,Category,Language,Topic,Publisher,PubDate,Desc,Rights,AuthorID")] Book book, IFormFile imageFile,IFormFile bookFile,IFormFile bookIndex)
+        public async Task<IActionResult> Create([Bind("ID,Name,Pages,Category,Language,Topic,Publisher,PubDate,Desc,Rights,AuthorID,UploadDate")] Book book, IFormFile imageFile,IFormFile bookFile,IFormFile bookIndex,IFormFile bookIntro)
         {
             if (ModelState.IsValid)
             {
@@ -138,13 +138,43 @@ namespace Stage_Books.Controllers
                     string bookExtension = Path.GetExtension(bookFile.FileName);
                     Guid bookGuid = Guid.NewGuid();
                     string bookName = bookGuid + bookExtension;
-                    string bookURL = "\\s\\" + bookName;
+                    string bookURL = "\\BookFiles\\" + bookName;
                     book.BookURLS = bookURL;
 
                     string bookPath = WebHostEnvironment.WebRootPath + bookURL;
                     FileStream bookStream = new FileStream(bookPath, FileMode.Create);
                     bookFile.CopyTo(bookStream);
                     bookStream.Dispose();
+
+
+                }
+                if (bookIndex != null)
+                {
+                    // Guid -> globally Unique Identifier
+                    string bookIndexExtension = Path.GetExtension(bookIndex.FileName);
+                    Guid bookIndexGuid = Guid.NewGuid();
+                    string bookIndexName = bookIndexGuid + bookIndexExtension;
+                    string bookIndexURL = "\\BookIndex\\" + bookIndexName;
+                    book.BookIndex= bookIndexURL;
+
+                    string bookIndexPath = WebHostEnvironment.WebRootPath + bookIndexURL;
+                    FileStream bookIndexStream = new FileStream(bookIndexPath, FileMode.Create);
+                    bookIndex.CopyTo(bookIndexStream);
+                    bookIndexStream.Dispose();
+                }
+                if (bookIntro != null)
+                {
+                    // Guid -> globally Unique Identifier
+                    string bookIntroExtension = Path.GetExtension(bookIntro.FileName);
+                    Guid bookIntroGuid = Guid.NewGuid();
+                    string bookIntroName = bookIntroGuid + bookIntroExtension;
+                    string bookIntroURL = "\\BookIntro\\" + bookIntroName;
+                    book.BookIntro = bookIntroURL;
+
+                    string bookIntroPath = WebHostEnvironment.WebRootPath + bookIntroURL;
+                    FileStream bookIntroStream = new FileStream(bookIntroPath, FileMode.Create);
+                    bookIntro.CopyTo(bookIntroStream);
+                    bookIntroStream.Dispose();
 
 
                 }
@@ -183,7 +213,7 @@ namespace Stage_Books.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Pages,Category,Language,Topic,Publisher,PubDate,Desc,Rights,AuthorID,ImageURL")] Book book, IFormFile imageFile)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Pages,Category,Language,Topic,Publisher,PubDate,Desc,Rights,AuthorID,ImageURL,UploadDate,BookURLS,BookIntro,BookIndex")] Book book, IFormFile imageFile, IFormFile bookFile, IFormFile bookIndex, IFormFile bookIntro)
         {
             if (id != book.ID)
             {
@@ -215,9 +245,78 @@ namespace Stage_Books.Controllers
                     FileStream imgStream = new FileStream(imgPath, FileMode.Create);
                     imageFile.CopyTo(imgStream);
                     imgStream.Dispose();
+                }
+                if (bookFile != null)
+                {
+                    string OldimgPath = WebHostEnvironment.WebRootPath + book.BookURLS;
+
+                    if (System.IO.File.Exists(OldimgPath))
+                    {
+                        System.IO.File.Delete(OldimgPath);
+                    }
+
+                    // Guid -> globally Unique Identifier
+                    string bookExtension = Path.GetExtension(bookFile.FileName);
+                    Guid bookGuid = Guid.NewGuid();
+                    string bookName = bookGuid + bookExtension;
+                    string bookURL = "\\BookFiles\\" + bookName;
+                    book.BookURLS = bookURL;
+
+                    string bookPath = WebHostEnvironment.WebRootPath + bookURL;
+                    FileStream bookStream = new FileStream(bookPath, FileMode.Create);
+                    bookFile.CopyTo(bookStream);
+                    bookStream.Dispose();
 
 
                 }
+
+                if (bookIndex != null)
+                {
+                    string OldimgPath = WebHostEnvironment.WebRootPath + book.BookIndex;
+
+                    if (System.IO.File.Exists(OldimgPath))
+                    {
+                        System.IO.File.Delete(OldimgPath);
+                    }
+
+                    // Guid -> globally Unique Identifier
+                    string bookIndexExtension = Path.GetExtension(bookIndex.FileName);
+                    Guid bookIndexGuid = Guid.NewGuid();
+                    string bookIndexName = bookIndexGuid + bookIndexExtension;
+                    string bookIndexURL = "\\BookIndex\\" + bookIndexName;
+                    book.BookIndex = bookIndexURL;
+
+                    string bookIndexPath = WebHostEnvironment.WebRootPath + bookIndexURL;
+                    FileStream bookIndexStream = new FileStream(bookIndexPath, FileMode.Create);
+                    bookIndex.CopyTo(bookIndexStream);
+                    bookIndexStream.Dispose();
+
+
+                }
+
+                if (bookIntro != null)
+                {
+                    string OldimgPath = WebHostEnvironment.WebRootPath + book.BookIntro;
+
+                    if (System.IO.File.Exists(OldimgPath))
+                    {
+                        System.IO.File.Delete(OldimgPath);
+                    }
+
+                    // Guid -> globally Unique Identifier
+                    string bookIntroExtension = Path.GetExtension(bookIntro.FileName);
+                    Guid bookIntroGuid = Guid.NewGuid();
+                    string bookIntroName = bookIntroGuid + bookIntroExtension;
+                    string bookIntroURL = "\\BookIntro\\" + bookIntroName;
+                    book.BookIntro = bookIntroURL;
+
+                    string bookIntroPath = WebHostEnvironment.WebRootPath + bookIntroURL;
+                    FileStream bookIntroStream = new FileStream(bookIntroPath, FileMode.Create);
+                    bookIntro.CopyTo(bookIntroStream);
+                    bookIntroStream.Dispose();
+                }
+
+
                 _context.Books.Update(book);
                 _context.SaveChanges();
 
@@ -260,6 +359,24 @@ namespace Stage_Books.Controllers
                 {
                     System.IO.File.Delete(imgPath);
                 }
+            }
+            string bookFilePath = WebHostEnvironment.WebRootPath + book.BookURLS;
+
+            if (System.IO.File.Exists(bookFilePath))
+            {
+                System.IO.File.Delete(bookFilePath);
+            }
+            string bookIndexPath = WebHostEnvironment.WebRootPath + book.BookIndex;
+
+            if (System.IO.File.Exists(bookIndexPath))
+            {
+                System.IO.File.Delete(bookIndexPath);
+            }
+            string bookIntroPath = WebHostEnvironment.WebRootPath + book.BookIntro;
+
+            if (System.IO.File.Exists(bookIntroPath))
+            {
+                System.IO.File.Delete(bookIntroPath);
             }
             _context.Books.Remove(book);
             _context.SaveChanges();
