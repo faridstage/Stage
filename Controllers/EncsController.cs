@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Stage_Books.Models;
 using Stage_Books.Models.Encyclopedia;
+using X.PagedList.Mvc.Core;
+using X.PagedList;
 
 namespace Stage_Books.Controllers
 {
@@ -66,9 +68,24 @@ namespace Stage_Books.Controllers
             return View("index2", Enc); ;
         }
         // GET: Encs
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
-            return View(await _context.Encs.ToListAsync());
+            var book = _context.Books.ToList();
+            var author = _context.Authors.ToList();
+            var Enc = _context.Encs.ToList().ToPagedList(page ?? 1, 25);
+            var users = _context.Users.ToList();
+            var saved = _context.Saved.ToList();
+            var show = new Showdatamodel
+            {
+                Books = book.ToList(),
+                Auther = author,
+                Encs = Enc.ToList(),
+                appusers = users,
+                SaveBooks = saved
+
+            };
+            return View(show);
+            //return View(await _context.Encs.ToListAsync());
         }
         public async Task<IActionResult> Index2()
         {

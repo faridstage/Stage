@@ -1,5 +1,9 @@
-﻿@model IEnumerable<Stage_Books.Models.Encyclopedia.Enc>
-
+﻿@*@model IEnumerable<Stage_Books.Models.Encyclopedia.Enc>*@
+@using X.PagedList.Mvc.Core.Common;
+@using X.PagedList.Web.Common;
+@using X.PagedList;
+@using X.PagedList.Mvc.Core; <!--import to get HTML Helper-->
+@model Stage_Books.Models.Showdatamodel
 @{
     ViewData["Title"] = "Index";
 }
@@ -9,45 +13,53 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <title>S T A G E</title>
+    <title>S T A G E - Encyclopedia</title>
     <meta name="viewport" content="width=device-width, initial-scale=6">
     <meta name="descrption" content="Best website to Find any Books">
-    <meta name="keywords" content=" كتب عالمية مترجمة , مكتبة,اكبر مكتبة لتحميل الكتب مجانا,اكبر مكتبة كتب,كتب,أكبر مكتبة,اكبر مكتبة للكتب الاسلامية,اكبر مكتبة شخصية,اكبر مكتبة يوغي يو,اكبر مكتبة اسلامية,اكبر مكتبة في العالم,اكبر مكتبة في الجزائر,اكبر مكتبة شخصية في العالم,اكبر مكتبة اسلامية في العالم,مكتبة الكونغرس,اهم اكبر مكتبة كتب الكترونية في العالم لتحميل الكتب .,أكبر مكتبة في العالم ">
-    <!-- Bootstrap CSS -->
-    <link rel="icon" href="~/img/stage_logo.png" type="" sizes="">
-    <link rel="shortcut icon" href="~/img/stage_logo.png" type="" sizes="">
-    <link rel="apple-touch-icon" href="~/img/stage_logo.png">
-
+    <meta name="keywords" content=" الموسوعة ,موسوعة ستيج, موسوعة منصة ستيح , موسوعة المؤلفين , موسوعة اشخاص المؤلفين , موسوعة اصحاب الابداع الفكرى , Encyclopedia, Stage Encyclopedia , stage , Authors Encyclopedia" />
+    <link rel="icon" href="img/stage_logo.png" type="" sizes="">
+    <link rel="shortcut icon" href="img/stage_logo.png" type="" sizes="">
+    <link rel="apple-touch-icon" href="img/stage_logo.png">
+    	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
     <link href="~/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="css/style.css" rel="stylesheet">
 
 </head>
 
-<body> <!-- oncontextmenu="return false;"-->
+<body style="font-family:cairo,Roboto"> <!-- oncontextmenu="return false;"-->
     <br>
     <div class="container" style="margin:0px auto; text-align:center">
         <br />
-        <h3>Encyclobedia</h3>
+        <h3>@Stage_Books.languages.Resource.Encyclopedia</h3>
         <br>
         <img src="~/img/en.png" alt="Encyclobedia" width="150" height="150"/>
         <br />
-        <hr />
     </div>
 @*    <p>
     <a asp-action="Create">Send Message</a>
     </p>*@
     <br><hr /><br>
-    <br><hr /><br>
 
    <div class="container">
-	  <form method="get" asp-controller="Encs" asp-action="search">
-		<label>Search</label>
-		<input type="text" name="search" value="@ViewBag.CurrentSearch"/>
-        <button type="submit" class="btn btn-secondary input-group-append">Search</button>
-     </form>
+       <div class="col" style="margin:0px auto">
+       <form method="get" asp-controller="Encs" asp-action="search" class="form-inline">
+           <label for="inputPassword2" class="" style="color:#000000">Search</label>
+           <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control" name="search" value="@ViewBag.CurrentSearch" id="inputPassword2" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-primary input-group-append mb-2">Search </button>
+        </form>
+</div>
    </div>
-
     <br><hr /><br>
 
 
@@ -61,71 +73,110 @@
     <!-- container -->
     <div class="container-fluid">
         <div class="row">
-            <!--cat -->
-            <div class="col-sm">
+               <!--cat -->
+         <div class="col-sm">
                 <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
-                    <h3>Categorys</h3>
+                    @*<h3>@Stage_Books.languages.Resource.Categories</h3>*@
                     <div class="list-group">
-                      <a href="#" class="list-group-item list-group-item-action active">@Stage_Books.languages.Resource.Books_Categorys </a>
-                        @{
-                            for(int item = 0;item<0;item++)
-                            {
-                               <a href="#" class="list-group-item list-group-item-action">@item </a>
-                            }
+                      <div class="p-3 mb-2 bg-secondary text-white">Topic</div>
+                    </div>
+                     @if(!Model.Books.Any())
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                No Data !
+                            </div>
                         }
-
-
+                        else
+                        {
+                        @foreach (var item in Model.Books)
+                       {
+                           <a href="#" class="list-group-item list-group-item-action">
+                               @item.Topic
+                           </a>
+                           }
+                        }
+                <br />
+                   	<a class="nav-link text-info" href="../Home/gototopic">More Topics ..<span class="sr-only">(current)</span></a>
+                    <hr>
+                <div class="list-group">
+                        <div class="p-3 mb-2 bg-secondary text-white">
+                            @Stage_Books.languages.Resource.Authors
+                        </div>
+                        @if(!Model.Books.Any())
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                No Data !
+                            </div>
+                        }
+                        else
+                        {
+                      
+                          @foreach (var item in Model.Books)
+                          {
+                           <a href="#" class="list-group-item list-group-item-action">
+                               @item.Author.Name
+                           </a>      
+                          }
+                        }
                     </div>
-                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Read More ...</button>
+                    <a class="nav-link text-info" href="../Home/gotoauthors">More @Stage_Books.languages.Resource.Authors ..<span class="sr-only">(current)</span></a>
                     <hr>
                     <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action active">
-                            Authors Categorys
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action"> ... </a>
+                        <div class="p-3 mb-2 bg-secondary text-white">
+                            @Stage_Books.languages.Resource.Categories
+                        </div>
+                        @if(!Model.Books.Any())
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                No Data !
+                            </div>
+                        }
+                        else
+                        {
+                        @foreach (var item in Model.Books)
+                          {
+                           <a href="#" class="list-group-item list-group-item-action">
+                               @item.Category
+                           </a>
+                          }
+                         }
+                    </div>
+                    	<a class="nav-link text-info" href="../Home/gotocat">More @Stage_Books.languages.Resource.Categories ..<span class="sr-only">(current)</span></a>
+                    <hr />
+               <div class="list-group">
+                            <div class="p-3 mb-2 bg-secondary text-white">
+                              @Stage_Books.languages.Resource.Books_Language
+                            </div>
+                    <a class="list-group-item list-group-item-action" href="#list-item-1">@Stage_Books.languages.Resource.English</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-2">@Stage_Books.languages.Resource.Arabic</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-3">@Stage_Books.languages.Resource.French</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-4">@Stage_Books.languages.Resource.Spanich</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-5">@Stage_Books.languages.Resource.German</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-6">@Stage_Books.languages.Resource.Hindi</a>
 
+                     </div>
+                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" hidden>Read More ...</button>
+                        <hr>
                     </div>
-                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Read More ...</button>
-                    <hr>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action active">
-                          Book language  
-                        </a>
-                <a class="list-group-item list-group-item-action" href="#list-item-1">العربية</a>
-                <a class="list-group-item list-group-item-action" href="#list-item-2">English</a>
-                <a class="list-group-item list-group-item-action" href="#list-item-3">Deutsch</a>
-                <a class="list-group-item list-group-item-action" href="#list-item-4">Español</a>
-                <a class="list-group-item list-group-item-action" href="#list-item-5">Français</a>
-                <a class="list-group-item list-group-item-action" href="#list-item-6">हिन्दी</a>
-                    </div>
-                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" hidden>Read More ...</button>
-                    <hr>
-                </div>
             </div>
             <!-- main container -->
             <div class="col-8">
                 <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
-
                 </div>
-
                 <div class="card text-center" style="">
-                    <div class="card-header">
-                         .
-                    </div>
+                    <div class="card-header"> . </div>
       
                 </div>
-       @foreach (var item in Model) {
-           <div class="container-fluid row" style="direction:rtl">
-               <div class="col">
-                  <div class="row">
-                                  <h4>
-                @Html.DisplayFor(modelItem => item.Name)
-            </h4>
-                  </div>
-                   <div class="row">
-            <span>
-                @Html.DisplayFor(modelItem => item.Description)
-            </span>
+            @foreach (var item in Model.Encs) {
+               <div class="container-fluid row" style="direction:rtl">
+                  <div class="col">
+                     <div class="row">
+                                    <h4>
+                  @Html.DisplayFor(modelItem => item.Name)
+              </h4>
+                    </div>
+                     <div class="row">
+              <span> @Html.DisplayFor(modelItem => item.Description)  </span>
                    </div>
                    </div>
 
@@ -135,31 +186,41 @@
               <img src="@Html.DisplayFor(modelItem => item.Poster)" alt="poster">   
             </p>
                   </div>
-                   <div class="row">
-                        <a asp-action="Details" asp-route-id="@item.id" class="btn btn-primary">Read</a>
-                   </div>
+                   <div class="row"> <a asp-action="Details" asp-route-id="@item.id" class="btn btn-primary">Read</a>  </div>
                    </div>
            </div>
             <hr />
         }
-
+                    <!-- paging control for navigation to the previous page, next page, etc -->
+                    
+                    @Html.PagedListPager(Model.Books.ToPagedList(), page => Url.Action("Index", new { page = page }),
+                        new X.PagedList.Mvc.Core.Common.PagedListRenderOptions
+                        {
+                            DisplayItemSliceAndTotal = true,
+                            ContainerDivClasses = new[] { "navigation" },
+                            LiElementClasses = new[] { "page-item" },
+                            PageClasses = new[] { "page-link" },
+                       })
  </div>
-
-            <!-- Advertisement -->
+            <!-- Ads -->
             <div class="col-sm">
                 <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
                    
                     <div class="card" style="width: 12rem; ">
 
                         <div class="card-body">
-                            <p class="card-text">..</p>
+                            <img class="card-img-top" src="img/ads.jpg" alt="Card image cap">
+                            <hr />
+                            <p class="card-text">Ads</p>
                         </div>
                     </div>
                     <hr>
                     <div class="card" style="width: 12rem;">
 
                         <div class="card-body">
-                            <p class="card-text">..</p>
+                            <img class="card-img-top" src="img/ads.jpg" alt="Card image cap">
+                            <hr />
+                            <p class="card-text">Ads</p>
                         </div>
                     </div>
 
@@ -167,26 +228,27 @@
                     <div class="card" style="width: 12rem; ">
 
                         <div class="card-body">
-                            <p class="card-text">..</p>
-                        </div>
+                            <img class="card-img-top" src="img/ads.jpg" alt="Card image cap">
+                            <hr />
+                            <p class="card-text">Ads</p>                        </div>
                     </div>
                     <hr>
                     <div class="card" style="width: 12rem; ">
 
                         <div class="card-body">
-                            <p class="card-text">..</p>
-                        </div>
+                            <img class="card-img-top" src="img/ads.jpg" alt="Card image cap">
+                            <hr />
+                            <p class="card-text">Ads</p>                        </div>
                     </div>
                     <hr>
                     <div class="card" style="width: 12rem;">
 
                         <div class="card-body">
-                            <p class="card-text">
-                                .
-                                .
-                            </p>
+                            <img class="card-img-top" src="img/ads.jpg" alt="Card image cap">
+                            <hr />
+                            <p class="card-text">Ads</p>
                         </div>
-                    </div>
+                      </div>
                     <hr>
                 </div>
             </div>
@@ -195,51 +257,6 @@
 
 </div>
 
-            <!-- Advertisement -->
-            <div class="col-sm">
-                <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
-                   
-                    <div class="card" style="width: 12rem; ">
-
-                        <div class="card-body">
-                            <p class="card-text">..</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="card" style="width: 12rem;">
-
-                        <div class="card-body">
-                            <p class="card-text">..</p>
-                        </div>
-                    </div>
-
-                    <hr>
-                    <div class="card" style="width: 12rem; ">
-
-                        <div class="card-body">
-                            <p class="card-text">..</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="card" style="width: 12rem; ">
-
-                        <div class="card-body">
-                            <p class="card-text">..</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="card" style="width: 12rem;">
-
-                        <div class="card-body">
-                            <p class="card-text">
-                                .
-                                .
-                            </p>
-                        </div>
-                    </div>
-                    <hr>
-                </div>
-            </div>
 
     <!-- Footer  -->
     <div class="container-fluid" style="background-color: #333333;">
@@ -260,52 +277,52 @@
 				<div class="row">
 					<img src="~/img/home.png" alt="Facebook" title="Facebook" width="30" height="30"
 						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-						Home <span class="sr-only">(current)</span>
+						@Stage_Books.languages.Resource.Home<span class="sr-only">(current)</span>
 					</a>
 				</div>
 				<div class="row">
 					<img src="~/img/about-us.jpg" alt="Facebook" title="Facebook" width="30" height="30"
 						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-						About Stage
+						@Stage_Books.languages.Resource.About_Stage
 						<span class="sr-only">(current)</span>
 					</a>
 				</div>
 				<div class="row">
 					<img src="~/img/services-icon-4.jpg" alt="Facebook" title="Facebook" width="30" height="30"
 						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-						Ouer Services
+						@Stage_Books.languages.Resource.Our_Services
 						<span class="sr-only">(current)</span>
 					</a>
 				</div>
 				<div class="row">
 					<img src="~/img/community.png" alt="Facebook" title="Facebook" width="30" height="30"
 						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-						ouer message
+						@Stage_Books.languages.Resource.Our_Message
 						<span class="sr-only">(current)</span>
 					</a>
 				</div>
 				<div class="row">
 					<img src="~/img/facebook.png" alt="Facebook" title="Facebook" width="30" height="30"
 						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-						Join us <span class="sr-only">(current)</span>
+						@Stage_Books.languages.Resource.Join_Us<span class="sr-only">(current)</span>
 					</a>
 				</div>
 			</div>
 
 			<div class="col-6" style="text-align: center;">
 				<div class="row">
-					<span style="color: white; font-size: 1.5rem; text-align: center;">Contact Us </span>
+					<span style="color: white; font-size: 1.5rem; text-align: center;">Contact Us</span>
 				</div>
 				<div class="row">
 					<a class="nav-link" href="#" style="color:white;">
 						<img src="~/img/facebook.png" alt="Facebook" title="Facebook"
-							 width="30" height="30"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Visit Stege on Facebook</span>
+							 width="30" height="30"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Facebook</span>
 					</a>
 				</div>
 				<div class="row">
 					<a class="nav-link" href="#" style="color:white;">
 						<img src="~/img/twitter.jpg" alt="twitter" title="twitter"
-							 width="33" height="33"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Visit Stege on Twitter</span>
+						 width="33" height="33"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Twitter</span>
 					</a>
 				</div>
 				<div class="row">
@@ -315,27 +332,33 @@
 					</a>
 				</div>
 				<div class="row">
-					<a class="nav-link" href="#" style="color:white;">
+					<a class="nav-link" href="https://mail.google.com/" style="color:white;" target="_blank">
 						<img src="~/img/Gmail.ico" alt="Gmail" title="Gmail"
-							 width="30" height="30"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Gmail</span>
+						width="30" height="30"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">stage.books.2022@gmail.com</span>
 					</a>
 				</div>
 			</div>
 		</div>
 		<div class="row" hidden>
 			<div class="col " style="text-align: center; border-radius: 5px; ">
-				<h5 style="color: white; margin-top: 15px">Visitors</h5>
+				<h5 style="color: white; margin-top: 15px">@Stage_Books.languages.Resource.Visitors</h5>
 				<img src="~/img/Statistic.png" alt="visitors" width="40" height="30" />
 				<p style="color: white; margin-top: 10px;">0</p>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col" style="text-align: center; padding: 7px;">
-				<span style="color: white;">&copy; copy Right Stage 20222</span>
+				<span style="color: white;">&copy; Copyright Stage 2022</span>
 			</div>
 		</div>
 	</div>
-
+  @section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('ul.pagination > li.disabled > a').addClass('page-link');
+        });
+    </script>
+  }
     <!-- -->
     <!-- -->
     <!-- Optional JavaScript; choose one of the two! -->

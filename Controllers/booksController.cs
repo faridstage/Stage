@@ -65,6 +65,16 @@ namespace Stage_Books.Controllers
 
             return View(book);
         }
+        public async Task<IActionResult> Book_Show(int? id)
+        {
+            Book book = _context.Books.Include(e => e.Author).FirstOrDefault(e => e.ID == id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+            return View(book);
+        }
+
         // GET: Books/Search/5
         public IActionResult Search(string? search)
         {

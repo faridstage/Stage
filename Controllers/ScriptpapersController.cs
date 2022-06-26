@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Stage_Books.Models;
+using X.PagedList.Mvc.Core;
+using X.PagedList;
 
 namespace Stage_Books.Controllers
 {
@@ -19,9 +21,26 @@ namespace Stage_Books.Controllers
         }
 
         // GET: Scriptpapers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
-            return View(await _context.Scriptpaper.ToListAsync());
+            var book = _context.Books.ToList();
+            var author = _context.Authors.ToList();
+            var Enc = _context.Encs.ToList();
+            var users = _context.Users.ToList();
+            var saved = _context.Saved.ToList();
+            var scripts = _context.Scriptpaper.ToList().ToPagedList(page ?? 1, 25);
+            var show = new Showdatamodel
+            {
+                Books = book.ToList(),
+                Auther = author,
+                Encs = Enc.ToList(),
+                appusers = users,
+                SaveBooks = saved,
+                Scriptpaper = scripts.ToList()
+
+            };
+            return View(show);
+            //return View(await _context.Scriptpaper.ToListAsync());
         }
         public async Task<IActionResult> Indexd()
         {

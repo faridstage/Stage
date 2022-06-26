@@ -1,0 +1,415 @@
+﻿@model IEnumerable<Stage_Books.Models.Book>
+@using X.PagedList.Mvc.Core.Common;
+@using X.PagedList.Web.Common;
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+
+@{
+    ViewData["Title"] = "Searchbyfrench";
+}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <title>S T A G E - French</title>
+    <meta name="viewport" content="width=device-width, initial-scale=6">
+    <meta name="descrption" content="Best website to Find any Books">
+    <meta name="keywords" content=" الموسوعة ,موسوعة ستيج, موسوعة منصة ستيح , موسوعة المؤلفين , موسوعة اشخاص المؤلفين , موسوعة اصحاب الابداع الفكرى , Encyclopedia, Stage Encyclopedia , stage , Authors Encyclopedia" />
+    <link rel="icon" href="img/stage_logo.png" type="" sizes="">
+    <link rel="shortcut icon" href="img/stage_logo.png" type="" sizes="">
+    <link rel="apple-touch-icon" href="img/stage_logo.png">
+    	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+<body style="font-family:cairo,Roboto"> <!-- oncontextmenu="return false;"-->
+    <br />
+    <br />
+<div class="container"><h1 style="text-align:center">French Books</h1></div>
+<br />
+<hr />
+
+   <div class="container">
+       <div class="col" style="margin:0px auto">
+       <form method="get" asp-controller="" asp-action="search" class="form-inline">
+           <label for="inputPassword2" class="" style="color:#000000">Search</label>
+           <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control" name="search" value="@ViewBag.CurrentSearch" id="inputPassword2" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-primary input-group-append mb-2">Search </button>
+        </form>
+</div>
+   </div>
+    <br><hr /><br>
+
+
+    <!--******************************************-->
+<div class="container-fluid">
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+
+     <!-- container -->
+    <div class="container-fluid">
+           <div class="row">
+               <!--cat -->
+         <div class="col-sm">
+                <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
+                    @*<h3>@Stage_Books.languages.Resource.Categories</h3>*@
+                    <div class="list-group">
+                      <div class="p-3 mb-2 bg-secondary text-white">Topic</div>
+                    </div>
+                     @if(!Model.Any())
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                No Data !
+                            </div>
+                        }
+                        else
+                        {
+                        @foreach (var item in Model)
+                       {
+                           <a href="#" class="list-group-item list-group-item-action">
+                               @item.Topic
+                           </a>
+                           }
+                        }
+                <br />
+                   	<a class="nav-link text-info" href="../Home/gototopic">More Topics ..<span class="sr-only">(current)</span></a>
+                    <hr>
+                <div class="list-group">
+                        <div class="p-3 mb-2 bg-secondary text-white">
+                            @Stage_Books.languages.Resource.Authors
+                        </div>
+                        @if(!Model.Any())
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                No Data !
+                            </div>
+                        }
+                        else
+                        {
+                      
+                          @foreach (var item in Model)
+                          {
+                           <a href="#" class="list-group-item list-group-item-action">
+                               @item.Author.Name
+                           </a>      
+                          }
+                        }
+                    </div>
+                    <a class="nav-link text-info" href="../Home/gotoauthors">More @Stage_Books.languages.Resource.Authors ..<span class="sr-only">(current)</span></a>
+                    <hr>
+                    <div class="list-group">
+                        <div class="p-3 mb-2 bg-secondary text-white">
+                            @Stage_Books.languages.Resource.Categories
+                        </div>
+                        @if(!Model.Any())
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                No Data !
+                            </div>
+                        }
+                        else
+                        {
+                        @foreach (var item in Model)
+                          {
+                           <a href="#" class="list-group-item list-group-item-action">
+                               @item.Category
+                           </a>
+                          }
+                         }
+                    </div>
+                    	<a class="nav-link text-info" href="../Home/gotocat">More @Stage_Books.languages.Resource.Categories ..<span class="sr-only">(current)</span></a>
+                    <hr />
+               <div class="list-group">
+                            <div class="p-3 mb-2 bg-secondary text-white">
+                              @Stage_Books.languages.Resource.Books_Language
+                            </div>
+                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyenglish">@Stage_Books.languages.Resource.English</a>
+                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyrabic">@Stage_Books.languages.Resource.Arabic</a>
+                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyfrench">@Stage_Books.languages.Resource.French</a>
+                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyspanish">@Stage_Books.languages.Resource.Spanich</a>
+                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbygerman">@Stage_Books.languages.Resource.German</a>
+                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyhindi">@Stage_Books.languages.Resource.Hindi</a>
+
+                     </div>
+                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" hidden>Read More ...</button>
+                        <hr>
+                    </div>
+            </div>
+            <!-- main container -->
+            <div class="col-8">
+
+       <!-- meddil nav -->
+           <div class="container ">
+    	  </div>
+       <!-- end meddil nav -->
+       
+
+         <div class="card text-center" >
+                    <div class="card-header" style="background-color:white">
+                           <img class="" width="150" height="150" src="~/img/ads.jpg" alt="Card image cap">
+                            <hr />
+                            <p class="card-text">Ads</p>
+                    </div>
+                    <div class="card-body">
+                    </div>
+              </div>
+                <br />
+                 <div class="container">
+                    <div class="row" style="">
+                   
+                        @if(!Model.Any())
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                No Data !
+                            </div>
+                        }
+                        else
+                        {
+                      
+                        @foreach (var item in Model)
+                       {
+                            <div  class="card" style="width:auto; margin:0px auto;border:2px solid gray; border-radius:6px;background-color:#eeeeee">
+                                <div class="mt-sm-3" style="margin:0px auto">
+                                      <img class="" src="@item.ImageURL" alt="Card image cap" width="150" height="200" style="border-radius:5px">
+                                </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="text-align:center;background-color:#eeeeee">@item.Name</h5>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group" style="text-align:center;background-color:#eeeeee">@item.Author.Name</li>
+                                       @* <li class="list-group-item" style="text-align:center;background-color:#eeeeee">@item.Language</li>*@
+                                       @* <li class="list-group" style="text-align:center;background-color:#eeeeee">@item.Topic</li>*@
+                                    </ul>
+                                    <div class="card-body">
+                                        
+                                        <a asp-controller="books" asp-action="Book_Details" asp-route-id="@item.ID" class="btn btn-danger" style="width:100%;border-radius:9px">Details</a><br><hr>
+                                       
+                                       <a href="#" class="btn btn-success">Save</a>
+                                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Fav</a>
+                                        <a asp-controller="books" asp-action="Book_Details" asp-route-id="@item.ID" class=" btn btn-warning">Intro</a>
+                                         <a href="#" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Index</a>
+                                       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                          <div class="modal-dialog">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Book Index</h5>
+                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                   <span aria-hidden="true">&times;</span>
+                                                 </button>
+                                                </div>
+                                                 <div class="modal-body">...</div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                  <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                         </div>
+                                    </div>
+                                 </div>
+                                <hr />
+                           }
+                       }
+
+                        </div>
+
+                    </div>
+                    <br />
+                     
+                     <!-- paging control for navigation to the previous page, next page, etc -->
+                    @Html.PagedListPager(Model.ToPagedList(), page => Url.Action("Index", new { page = page }),
+                        new X.PagedList.Mvc.Core.Common.PagedListRenderOptions
+                        {
+                            DisplayItemSliceAndTotal = true,
+                            ContainerDivClasses = new[] { "navigation" },
+                            LiElementClasses = new[] { "page-item" },
+                            PageClasses = new[] { "page-link" },
+                       })
+            </div>
+            <!-- Ads -->
+            <div class="col-sm">
+                <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
+                   
+                    <div class="card" style="width: 12rem; ">
+
+                        <div class="card-body">
+                            <img class="card-img-top" src="~/img/ads.jpg" alt="Card image cap">
+                            <hr />
+                            <p class="card-text">Ads</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="card" style="width: 12rem;">
+
+                        <div class="card-body">
+                            <img class="card-img-top" src="~/img/ads.jpg" alt="Card image cap">
+                            <hr />
+                            <p class="card-text">Ads</p>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="card" style="width: 12rem; ">
+
+                        <div class="card-body">
+                            <img class="card-img-top" src="~/img/ads.jpg" alt="Card image cap">
+                            <hr />
+                            <p class="card-text">Ads</p>                        </div>
+                    </div>
+                    <hr>
+                    <div class="card" style="width: 12rem; ">
+
+                        <div class="card-body">
+                            <img class="card-img-top" src="~/img/ads.jpg" alt="Card image cap">
+                            <hr />
+                            <p class="card-text">Ads</p>                        </div>
+                    </div>
+                    <hr>
+                    <div class="card" style="width: 12rem;">
+
+                        <div class="card-body">
+                            <img class="card-img-top" src="~/img/ads.jpg" alt="Card image cap">
+                            <hr />
+                            <p class="card-text">Ads</p>
+                        </div>
+                      </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+         
+
+              <!-- Footer  -->
+                <div class="container-fluid" style="background-color: #333333;">
+		            <div class="row">
+			            <div class="col" style="text-align: center; padding: 7px;">
+				            <span style="color: white; font-size: 2rem;">S T A G E </span>
+			            </div>
+		            </div>
+		            <div class="row">
+			            <div class="col" style="text-align: center; padding: 10px; margin: 15px;">
+			            </div>
+		            </div>
+		            <div class="row">
+			            <div class="col-6" style="">
+				            <div class="row">
+					            <span style="color:#333333; font-size: 1.5rem; text-align: center;">Contact Us </span>
+				            </div>
+				            <div class="row">
+					            <img src="~/img/home.png" alt="Facebook" title="Facebook" width="30" height="30"
+						             style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
+						            @Stage_Books.languages.Resource.Home<span class="sr-only">(current)</span>
+					            </a>
+				            </div>
+				            <div class="row">
+					            <img src="~/img/about-us.jpg" alt="Facebook" title="Facebook" width="30" height="30"
+						             style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
+						            @Stage_Books.languages.Resource.About_Stage
+						            <span class="sr-only">(current)</span>
+					            </a>
+				            </div>
+				            <div class="row">
+					            <img src="~/img/services-icon-4.jpg" alt="Facebook" title="Facebook" width="30" height="30"
+						             style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
+						            @Stage_Books.languages.Resource.Our_Services
+						            <span class="sr-only">(current)</span>
+					            </a>
+				            </div>
+				            <div class="row">
+					            <img src="~/img/community.png" alt="Facebook" title="Facebook" width="30" height="30"
+						             style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
+						            @Stage_Books.languages.Resource.Our_Message
+						            <span class="sr-only">(current)</span>
+					            </a>
+				            </div>
+				            <div class="row">
+					            <img src="~/img/facebook.png" alt="Facebook" title="Facebook" width="30" height="30"
+						             style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
+						            @Stage_Books.languages.Resource.Join_Us<span class="sr-only">(current)</span>
+					            </a>
+				            </div>
+			            </div>
+
+			            <div class="col-6" style="text-align: center;">
+				            <div class="row">
+					            <span style="color: white; font-size: 1.5rem; text-align: center;">Contact Us</span>
+				            </div>
+				            <div class="row">
+					            <a class="nav-link" href="#" style="color:white;">
+						            <img src="~/img/facebook.png" alt="Facebook" title="Facebook"
+							             width="30" height="30"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Facebook</span>
+					            </a>
+				            </div>
+				            <div class="row">
+					            <a class="nav-link" href="#" style="color:white;">
+						            <img src="~/img/twitter.jpg" alt="twitter" title="twitter"
+						             width="33" height="33"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Twitter</span>
+					            </a>
+				            </div>
+				            <div class="row">
+					            <a class="nav-link" href="#" style="color:white;">
+						            <img src="~/img/youtube.jpg" alt="youtube" title="youtube"
+							             width="30" height="30"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Youtube</span>
+					            </a>
+				            </div>
+				            <div class="row">
+					            <a class="nav-link" href="https://mail.google.com/" style="color:white;" target="_blank">
+						            <img src="~/img/Gmail.ico" alt="Gmail" title="Gmail"
+						            width="30" height="30"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">stage.books.2022@gmail.com</span>
+					            </a>
+				            </div>
+			            </div>
+		            </div>
+		            <div class="row" hidden>
+			            <div class="col " style="text-align: center; border-radius: 5px; ">
+				            <h5 style="color: white; margin-top: 15px">@Stage_Books.languages.Resource.Visitors</h5>
+				            <img src="~/img/Statistic.png" alt="visitors" width="40" height="30" />
+				            <p style="color: white; margin-top: 10px;">0</p>
+			            </div>
+		            </div>
+		            <div class="row">
+			            <div class="col" style="text-align: center; padding: 7px;">
+				            <span style="color: white;">&copy; Copyright Stage 2022</span>
+			            </div>
+		            </div>
+	            </div>
+              @section Scripts{
+                <script>
+                    $(document).ready(function () {
+                        $('ul.pagination > li.disabled > a').addClass('page-link');
+                    });
+                </script>
+              }
+    <!-- -->
+    <!-- -->
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Option 6: Bootstrap Bundle with Popper -->
+    <script src="~/js/js.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
+</html>        
+
+   
+
+

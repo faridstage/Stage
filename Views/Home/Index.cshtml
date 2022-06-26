@@ -26,8 +26,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="~/css/style.css" rel="stylesheet">
-  </head>
-<body> <!-- oncontextmenu="return false;"-->
+ </head>
+<body style="font-family:cairo,Roboto"> <!-- oncontextmenu="return false;"-->
     <div class="container-fluid">
         <div style="text-align: center; margin-top: 25px;">
             <h1>S T A G E</h1>
@@ -212,12 +212,12 @@
                             <div class="p-3 mb-2 bg-secondary text-white">
                               @Stage_Books.languages.Resource.Books_Language
                             </div>
-                    <a class="list-group-item list-group-item-action" href="#list-item-1">@Stage_Books.languages.Resource.English</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-2">@Stage_Books.languages.Resource.Arabic</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-3">@Stage_Books.languages.Resource.French</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-4">@Stage_Books.languages.Resource.Spanich</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-5">@Stage_Books.languages.Resource.German</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-6">@Stage_Books.languages.Resource.Hindi</a>
+                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyenglish">@Stage_Books.languages.Resource.English</a>
+                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyrabic">@Stage_Books.languages.Resource.Arabic</a>
+                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyfrench">@Stage_Books.languages.Resource.French</a>
+                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyspanish">@Stage_Books.languages.Resource.Spanich</a>
+                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbygerman">@Stage_Books.languages.Resource.German</a>
+                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyhindi">@Stage_Books.languages.Resource.Hindi</a>
 
                      </div>
                         <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" hidden>Read More ...</button>
@@ -234,64 +234,7 @@
                     <a class="btn btn-outline-primary my-2 my-sm-0" asp-area="" asp-controller="publicpages" asp-action="about_stage">Read More ...</a>
                 </div>
 
-       <!-- meddil nav -->
-           <div class="container ">
-		     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-		     	</button>
-		    	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active mr-5">
-						<a class="nav-link" href="../Home/gotobooks">@Stage_Books.languages.Resource.Books <span class="sr-only">(current)</span></a>
-					</li>
-                    <li class="nav-item active mr-5">
-						<a class="nav-link" href="../Home/gotoauthors">@Stage_Books.languages.Resource.Authors <span class="sr-only">(current)</span></a>
-					</li>
-                    <li class="nav-item active mr-5">
-						<a class="nav-link" href="../Home/gotocat">@Stage_Books.languages.Resource.Categories <span class="sr-only">(current)</span></a>
-					</li>
-                    <li class="nav-item active mr-5">
-						<a class="nav-link" href="../Home/gototopic">Topics<span class="sr-only">(current)</span></a>
-					</li>
-                  <li class="nav-item dropdown mr-5">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-						   aria-haspopup="true" aria-expanded="false">
-							@Stage_Books.languages.Resource.Encyclopedia
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                             @foreach (var item in Model.Encs)
-                             {
-                                  <div class="row">
-                                        <div class="col-8">
-                                            <a class="dropdown-item" asp-area="" asp-controller="Encs" asp-action="">@item.Name</a>
-                                        </div>
-                                         <div class="col-4">
-                                              <img src="@item.Poster" style="border-radius:50%;width:25px;height:25px">
-                                        </div>
-                                    </div>
-                                    <hr />
-                             }
-                             
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#"></a>
-							</div>
-                            <a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="gotoenc">More </a>
-						</div>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">@Stage_Books.languages.Resource.About_Stage</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#"></a>
-							</div>
-					</div>
-				</li>
-				</ul>
-			   </div>
-	    	   </nav>
-    	  </div>
+
        <!-- end meddil nav -->
        
 
@@ -319,6 +262,7 @@
                       
                         @foreach (var item in Model.Books)
                        {
+                           
                             <div  class="card" style="width:auto; margin:0px auto;border:2px solid gray; border-radius:6px;background-color:#eeeeee">
                                 <div class="mt-sm-3" style="margin:0px auto">
                                       <img class="" src="@item.ImageURL" alt="Card image cap" width="150" height="200" style="border-radius:5px">
@@ -337,34 +281,72 @@
                                        
                                        <a href="#" class="btn btn-success">Save</a>
                                         <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Fav</a>
-                                        <a asp-controller="books" asp-action="Book_Details" asp-route-id="@item.ID" class=" btn btn-warning">Intro</a>
-                                         <a href="#" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Index</a>
-                                       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                          <div class="modal-dialog">
-                                            <div class="modal-content">
-                                              <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Book Index</h5>
-                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                   <span aria-hidden="true">&times;</span>
-                                                 </button>
-                                                </div>
-                                                 <div class="modal-body">...</div>
-                                                <div class="modal-footer">
-                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                  <button type="button" class="btn btn-primary">Save changes</button>
-                                                </div>
-                                              </div>
-                                            </div>
-                                         </div>
+                                        <a data-toggle="modal" data-target="#myModal1"  class=" btn btn-warning">Intro</a>
+                                        <a class="btn btn-info" data-toggle="modal"  data-target="#myModal"> Index</a>
+
+
+  
+                                </div>
                                     </div>
-                                 </div>
+                               <br />
                                 <hr />
+
+                                  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" style="text-align:center">Book Index</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <iframe width="100%" height="100%" src="@Html.DisplayFor(modelItem => item.BookIndex)"></iframe>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- The Modal -->
+  <div class="modal" id="myModal1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" style="text-align:center">Book Introdction</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <iframe type="text/html" width="100%" height="100%" src="@item.BookIntro"></iframe>
+          
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
                            }
                        }
 
                         </div>
-
+                     
                     </div>
+                       <br />
                     <br />
                      
                      <!-- paging control for navigation to the previous page, next page, etc -->
@@ -429,7 +411,7 @@
             </div>
         </div>
     </div>
-    <!-- Footer  -->
+@*    <!-- Footer  -->
     <div class="container-fluid" style="background-color: #333333;">
 		<div class="row">
 			<div class="col" style="text-align: center; padding: 7px;">
@@ -522,13 +504,15 @@
 				<span style="color: white;">&copy; Copyright Stage 2022</span>
 			</div>
 		</div>
-	</div>
+	</div>*@
 
     @section Scripts{
     <script>
         $(document).ready(function () {
             $('ul.pagination > li.disabled > a').addClass('page-link');
         });
+
+}
     </script>
 }
 

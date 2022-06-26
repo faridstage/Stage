@@ -222,6 +222,9 @@
   <data name="Help" xml:space="preserve">
     <value>المساعدة</value>
   </data>
+  <data name="Here We Help you How to use stage" xml:space="preserve">
+    <value>هنا ومن خلال هذه المقالات يمكننا مساعدتك على استخدام منصة ستيج للكتب والمعرفة افضل واحسن استخدام</value>
+  </data>
   <data name="Hindi" xml:space="preserve">
     <value>الهندية</value>
   </data>
@@ -318,6 +321,9 @@
   <data name="Related Books" xml:space="preserve">
     <value>كتب ذات صلة</value>
   </data>
+  <data name="Research paper" xml:space="preserve">
+    <value>ورقة بحثية</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>يحفظ</value>
   </data>
@@ -375,7 +381,7 @@
   <data name="Visitors" xml:space="preserve">
     <value>الزائرين</value>
   </data>
-  <data name="What About STAGE" xml:space="preserve">
+  <data name="What About Stage" xml:space="preserve">
     <value>ماذا عن ستيج ؟</value>
   </data>
   <data name="You Can Contact Us , Ask About Anything And We Responce on Your E-Mail Address" xml:space="preserve">

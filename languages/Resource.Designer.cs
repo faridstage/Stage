@@ -367,6 +367,15 @@ namespace Stage_Books.languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Here We Help you How to use stage.
+        /// </summary>
+        public static string Here_We_Help_you_How_to_use_stage {
+            get {
+                return ResourceManager.GetString("Here We Help you How to use stage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hindi.
         /// </summary>
         public static string Hindi {
@@ -656,6 +665,15 @@ namespace Stage_Books.languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Research paper.
+        /// </summary>
+        public static string Research_paper {
+            get {
+                return ResourceManager.GetString("Research paper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string Save {
@@ -827,11 +845,11 @@ namespace Stage_Books.languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to What About STAGE.
+        ///   Looks up a localized string similar to What About Stage.
         /// </summary>
-        public static string What_About_STAGE {
+        public static string What_About_Stage {
             get {
-                return ResourceManager.GetString("What About STAGE", resourceCulture);
+                return ResourceManager.GetString("What About Stage", resourceCulture);
             }
         }
         

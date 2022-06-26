@@ -6,6 +6,18 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Stage_Books.Models;
+using X.PagedList.Mvc.Core;
+using X.PagedList;
+using System.Diagnostics;
+using Microsoft.Extensions.Logging;
+using System.Threading;
+using System.Globalization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Data.SqlClient;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace Stage_Books.Controllers
 {
@@ -19,9 +31,25 @@ namespace Stage_Books.Controllers
         }
 
         // GET: paperssearchers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
-            return View(await _context.paperssearchers.ToListAsync());
+            var book = _context.Books.ToList();
+            var author = _context.Authors.ToList();
+            var Enc = _context.Encs.ToList();
+            var users = _context.Users.ToList();
+            var saved = _context.Saved.ToList();
+            var papers = _context.paperssearchers.ToList().ToPagedList(page ?? 1, 25);
+            var show = new Showdatamodel
+            {
+                Books = book.ToList(),
+                Auther = author,
+                Encs = Enc,
+                appusers = users,
+                SaveBooks = saved,
+                paperssearcher = papers.ToList()
+            };
+            return View(show);
+            //return View(await _context.paperssearchers.ToListAsync());
         }
 
         // GET: paperssearchers/Details/5

@@ -219,6 +219,9 @@
   <data name="Help" xml:space="preserve">
     <value>Help</value>
   </data>
+  <data name="Here We Help you How to use stage" xml:space="preserve">
+    <value>Here We Help you How to use stage</value>
+  </data>
   <data name="Hindi" xml:space="preserve">
     <value>Hindi</value>
   </data>
@@ -315,6 +318,9 @@
   <data name="Related Books" xml:space="preserve">
     <value>Related Books</value>
   </data>
+  <data name="Research paper" xml:space="preserve">
+    <value>Research paper</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
@@ -372,8 +378,8 @@
   <data name="Visitors" xml:space="preserve">
     <value>Visitors</value>
   </data>
-  <data name="What About STAGE" xml:space="preserve">
-    <value>What About STAGE</value>
+  <data name="What About Stage" xml:space="preserve">
+    <value>What About Stage</value>
   </data>
   <data name="You Can Contact Us , Ask About Anything And We Responce on Your E-Mail Address" xml:space="preserve">
     <value>You Can Contact Us , Ask About Anything And We Responce on Your E-Mail Address</value>

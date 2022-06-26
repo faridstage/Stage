@@ -39,7 +39,6 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="wwwroot\Admin\" />
     <Folder Include="wwwroot\BookIndex\" />
-    <Folder Include="wwwroot\BookIntro\" />
     <Folder Include="wwwroot\UserImages\" />
   </ItemGroup>
 
