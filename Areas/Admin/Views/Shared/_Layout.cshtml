@@ -27,7 +27,7 @@
     @RenderBody()
   <!-- top navigation bar -->
   <div class="container-fluid">
-@*    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar"
         aria-controls="offcanvasExample">
         <span class="navbar-toggler-icon" data-bs-target="#sidebar"></span>
@@ -84,19 +84,15 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#"></a>
               </div>
-              </div>
+            </div>
           </li>
-
         </ul>
-
       </div>
-
-
       <form class="form-inline">
         <a href="login.html" class="btn btn-outline-primary my-2 my-sm-0" style="margin-right: 10PX;">Log out</a>
       </form>
+    </nav>
 
-    </nav>*@
   </div>
   <!-- top navigation bar -->
   <!-- offcanvas -->
@@ -133,6 +129,7 @@
                 </span>
               </span>
             </a>
+
             <div class="collapse" id="layouts">
               <ul class="navbar-nav ps-3">
                  <li>
@@ -150,6 +147,7 @@
               </ul>
             </div>
           </li>
+
           <li>
             <a  href="../Books/index_show" class="nav-link px-3">
               <span class="me-2"><i class="bi bi-book-fill"></i></span>
@@ -200,6 +198,7 @@
            <li class="my-4">
             <hr class="dropdown-divider bg-light" />
           </li>
+
           <li>
             <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
               Other
@@ -233,9 +232,119 @@
             </a>
           </li>
           
+          @*********************************@
+          <br />
+          <br />
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+              Manuscripts
+            </div>
+          </li>
+          <li>
+             @* href="../Views/Contactmsgs/Delete" *@
+            <a href="../Scriptpapers/Indexd" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>Manuscripts List </span>
+            </a>
+          </li>
+          <li>
+            <a href="../Scriptpapers/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>Create Manuscripts  </span>
+            </a>
+          </li>
+          <li>
+          </li>
+
            <li class="my-4">
             <hr class="dropdown-divider bg-light" />
            </li>
+           @*********************************@
+
+
+           @*********************************@
+          <br />
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+             Paper Searcher
+            </div>
+          </li>
+          <li>
+             @* href="../Views/Contactmsgs/Delete" *@
+            <a href="../paperssearchers/Index" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>Manuscripts List </span>
+            </a>
+          </li>
+          <li>
+            <a href="../paperssearchers/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>Create Manuscripts  </span>
+            </a>
+          </li>
+          <li>
+          </li>
+
+           <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+           </li>
+           @*********************************@
+
+            @*********************************@
+          <br />
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+             Paper Searcher
+            </div>
+          </li>
+          <li>
+             @* href="../Views/Contactmsgs/Delete" *@
+            <a href="../paperssearchers/Index" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>Paper Searcher List </span>
+            </a>
+          </li>
+          <li>
+            <a href="../paperssearchers/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>Create Paper Searcher  </span>
+            </a>
+          </li>
+          <li>
+          </li>
+
+           <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+           </li>
+           @*********************************@
+
+             @*********************************@
+          <br />
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+             Audio Books & Audios
+            </div>
+          </li>
+          <li>
+             @* href="../Views/Contactmsgs/Delete" *@
+            <a href="../AudioBooks/Index" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>Audio Books List </span>
+            </a>
+          </li>
+          <li>
+            <a href="../AudioBooks/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>Create Audio Books  </span>
+            </a>
+          </li>
+          <li>
+          </li>
+
+           <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+           </li>
+           @*********************************@
           <li>
             <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
               Other

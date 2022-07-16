@@ -26,83 +26,145 @@
     <!-- container -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-2" style="background-color: #333333;">
+            <div class="col-sm-2" style="background-color: #03254c";">
                  <br />
-                <div class="row mt-2" style="margin:0px auto">
+                <div class="row mt-2" style="margin:0px auto" hidden>
                     <div class="col" style="text-align:center;margin:0px auto">
                     <span style="color: white;font-size:26px">Tools</span>
                         </div>
                 </div>
                 <br />
                  <div class="row mt-2" style="margin:0px auto">
-                     <div class="col-3">
-                         <a href="#" onclick="myFunction()" style="font-size:25px;color:white"><i class="bi bi-fonts"></i></i></a>
+                     <div class="col-12">
+                         <button class="btn btn-warning btn-lg w-100" onclick="myFunctionFontColor()" style="font-size:17px;color:#03254c"><i class="bi bi-palette"></i> - Font Color</button>
                      </div>
+                     <br />
+                     <br />
                    <div class="row ml-3" style="display:none" id="myDIV">
-                     <div class="col-3">
-                       <a id="bgg" href="#" style="font-size:15px;color:green;">X1</a>
+                     <div class="mr-3">
+                        <a id="fcgray" onclick="mFgray()" href="#" style="font-size:22px;color:gray;"><i class="bi bi-circle-fill"></i></a>
                    </div>
-                   <div class="col-3">
-                    <a id="bgw" href="#" style="font-size:15px;color:yellow;">X2</a>
+                   <div class="mr-3">
+                     <a id="fcblack" onclick="mFblack()" href="#" style="font-size:22px;color:black;"><i class="bi bi-circle-fill"></i></a>
                    </div>
-                   <div class="col-3">
-                    <a id="bgb" href="#" style="font-size:15px;color:red;">X3</a>
+                   <div class="mr-3">
+                     <a id="fcred" onclick="mFred()" href="#" style="font-size:22px;color:red;"><i class="bi bi-circle-fill"></i></a>
+
+                  </div>
+                  <div class="mr-3">
+                     <a id="fcblue" onclick="mFblue()" href="#" style="font-size:22px;color:blue;"><i class="bi bi-circle-fill"></i></a>
+
+                  </div>
+                   <div class="mr-3">
+                     <a id="fcgreen" onclick="mFgreen()" href="#" style="font-size:22px;color:green;"><i class="bi bi-circle-fill"></i></a>
+
                   </div>
                </div>
                 </div>
-                <div class="row mt-2" style="margin:0px auto">
-                    <div class="col-3">
-                     <a href="#" onclick="myFunction1()" style="font-size:25px;color:white"><i class="bi bi-filetype-ttf"></i></a>
+                  <hr class="hrstyle" hidden>
+
+                  <div class="row mt-2" style="margin:0px auto" hidden>
+                     <div class="col-12">
+                         <button class="btn btn-warning btn-lg w-100" onclick="myFunctionfontsize()" style="font-size:17px;color:#03254c"><i class="bi bi-fonts"></i>- Font Change</button>
+                     </div>
+                     <br />
+                     <br />
+                   <div class="row ml-3" style="display:none" id="myDIVfs">
+                     <div class="mr-4">
+                       <a id="fs1" onclick="mffslarg()" href="#" style="font-size:22px;color:green;">X1</a>
+                   </div>
+                   <div class="mr-4">
+                    <a id="fs2" onclick="mffs2()" href="#" style="font-size:22px;color:yellow;">X2</a>
+                   </div>
+                   <div class="mr-4">
+                    <a id="fs3" onclick="mffs3()" href="#" style="font-size:22px;color:red;">X3</a>
+                  </div>
+               </div>
                 </div>
+                  <hr class="hrstyle">
+
+                <div class="row mt-2" style="margin:0px auto">
+                    <div class="col-12">
+                     <button class="btn btn-warning btn-lg w-100" onclick="myFunction1()" style="font-size:17px;color:#03254c"><i class="bi bi-filetype-ttf"></i>- Font Style</button>
+                </div>
+                     <br />
+                     <br />
                 <div class="row ml-3" style="display:none" id="myDIV1">
-                   <div class="col-3">
-                       <a id="bgg" href="#" style="font-size:15px;color:white;"><i class="bi bi-body-text"></i></a>
+                   <div class="mr-4">
+                       <a id="fc1" onclick="fontchange1()" href="#" style="font-size:25px;color:white;"><i class="bi bi-list"></i></a>
                    </div>
-                   <div class="col-3">
-                    <a id="bgw" href="#" style="font-size:15px;color:white;"><i class="bi bi-body-text"></i></a>
+                   <div class="mr-4">
+                    <a id="fc2" onclick="fontchange2()" href="#"  style="font-size:25px;color:white;"><i class="bi bi-type-italic"></i></a>
                    </div>
-                   <div class="col-3">
-                    <a id="bgb" href="#" style="font-size:15px;color:white;"><i class="bi bi-body-text"></i></i></a>
+                   <div class="mr-4">
+                    <a id="fc3" onclick="fontchange3()" href="#" style="font-size:25px;color:white;"><i class="bi bi-type-bold"></i></a>
                   </div>
                </div>
                </div>
+                 <hr class="hrstyle">
+
                 <div class="row mt-2" style="margin:0px auto">
-                   <div class="col-3">
-                    <a href="#" onclick="myFunction2()" style="font-size:25px;color:white"><i class="bi bi-palette"></i></a>
+                   <div class="col-12">
+                    <button class="btn btn-warning btn-lg w-100" style="font-size:17px;color:#03254c" onclick="myFunction2()"><i class="bi bi-palette"></i> - Backround Color</button>
                    </div>
+                     <br />
+                     <br />
                    <div class="row ml-3" style="display:none" id="myDIV2">
-                     <div class="col-3">
-                       <a id="bgg" onclick="bcw()" href="#" style="font-size:15px;color:white;"><i class="bi bi-circle-fill"></i></a>
+                     <div class="mr-4">
+                       <a id="bgg" onclick="bcw()" href="#" style="font-size:22px;color:white;"><i class="bi bi-circle-fill"></i></a>
                    </div>
-                   <div class="col-3">
-                    <a id="bgw" onclick="bce()" href="#" style="font-size:15px;color:gray;"><i class="bi bi-circle-fill"></i></a>
+                   <div class="mr-4">
+                    <a id="bgw" onclick="bce()" href="#" style="font-size:22px;color:gray;"><i class="bi bi-circle-fill"></i></a>
+                   </div>
+                   <div class="mr-4">
+                    <a id="bgc" onclick="bcc()" href="#" style="font-size:22px;color:#dfccaf;"><i class="bi bi-circle-fill"></i></a>
+                  </div>
+               </div>
+             </div> 
+               <hr class="hrstyle">
+                <div class="row mt-2" style="margin:0px auto">
+                   <div class="col-12">
+                     <button class="btn btn-warning btn-lg w-100" style="font-size:17px;color:#03254c" href="#" onclick="myFunction3()"><i class="bi bi-aspect-ratio"></i> - Book Resize</button>
+                   </div>
+                   <br />
+                     <br />
+                    <div class="row ml-3" style="display:none" id="myDIV3">
+                     <div class="mr-4">
+                       <a id="bigscreen" onclick="bigscreen()" href="#" style="font-size:25px;color:white;"><i class="bi bi-fullscreen"></i></a>
+                   </div>
+                   <div class="mr-4" hidden>
+                    <a id="bgw" onclick="smallscreen()" href="#" style="font-size:25px;color:white;"><i class="bi bi-fullscreen-exit"></i></a>
+                   </div>
+
+               </div>
+                 </div>
+                   <hr class="hrstyle">
+                 <div class="row mt-2" style="margin:0px auto">
+                   <div class="col-12">
+                    <button class="btn btn-warning btn-lg w-100" style="font-size:17px;color:#03254c" onclick="myFunctionaudio()"><i class="bi bi-mic-fill"></i> - Audio </button>
+                   </div>
+                   <br />
+                     <br />
+                   <div class="row ml-3" style="display:none" id="myDIVAudio">
+                     <div class="mr-4">
+                       <a id="bgg" onclick="" href="#" style="font-size:25px;color:white;"><i class="bi bi-mic"></i></a>
+                   </div>
+                   <div class="mr-4">
+                    <a id="bgw" onclick="" href="#" style="font-size:25px;color:gray;"><i class="bi bi-mic-mute"></i></a>
                    </div>
 @*                   <div class="col-3">
                     <a id="bgb" onclick="bcb()" href="#" style="font-size:15px;color:black;"><i class="bi bi-circle-fill"></i></a>
                   </div>*@
                </div>
              </div> 
-                <div class="row mt-2" style="margin:0px auto">
-                    <div class="col-3">
-                     <a href="#" onclick="myFunction3()" style="font-size:25px;color:white"><i class="bi bi-aspect-ratio"></i></a>
-                   </div>
-                    <div class="row ml-3" style="display:none" id="myDIV3">
-                     <div class="col-3">
-                       <a id="bgg" href="#" style="font-size:15px;color:white;"><i class="bi bi-fullscreen"></i></i></a>
-                   </div>
-                   <div class="col-3">
-                    <a id="bgw" href="#" style="font-size:15px;color:white;"><i class="bi bi-fullscreen-exit"></i></a>
-                   </div>
 
-               </div>
-                 </div>
                 <br />
                 <hr />
-               <div class="col" style="text-align:center;margin:0px auto">
+               <div class="col" style="text-align:center;margin:0px auto" hidden>
                     <span style="color: white;font-size:20px">Rate Book</span>
                </div>
                <br>
-                <div class="row">
+                <div class="row" hidden>
                     <div class="col-sm-2">
                       <a class="nav-link" href="#" style="color:yellow">
                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16" >
@@ -139,9 +201,9 @@
                     </a>
                     </div>
                 </div>
-                <hr class="hrstyle">
+                
 
-                <div class="row" style="margin:0px auto">
+                <div class="row" style="margin:0px auto" hidden>
                     <a class="nav-link" href="#" style="color:white">
                         To My Favourit
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-balloon-heart" viewBox="0 0 16 16">
@@ -149,7 +211,7 @@
                        </svg>
                     </a>
                 </div>
-                <div class="row" style="margin:0px auto">
+                <div class="row" style="margin:0px auto" hidden>
                     <a class="nav-link" href="#" style="color:white">
                         Save To Profile
                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-download" viewBox="0 0 16 16">
@@ -162,7 +224,7 @@
         
                     <button class="btn btn-info w-75">My Profile</button>
                 </div>
-                <hr class="hrstyle">
+                
                 <div class="row">
 
                 </div>
@@ -175,7 +237,7 @@
                     <a class="nav-link" href="#" style=" margin: auto; "> <span class="" style="color: white;">Translate </span></a>
                 </div>
                 <hr class="hrstyle">
-                <hr class="hrstyle">
+       
 
             </div>
 
@@ -219,7 +281,7 @@
                                 <form class="form-block" style="padding: 15px;">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                         <span class="input-group-text" id="basic-addon1" style="background-color: #c4c4c4;"><img src="~/img/search.png" alt="search" width="25" height="25"></span>
+                                         <button class="btn btn-warning" type="button"><img src="~/img/search.png" alt="search" width="25" height="25"></button>
                                         </div>
                                         <input id="findInput" type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1" value="" name="" style="background-color: #c4c4c4;">
                                     </div>
@@ -236,7 +298,7 @@
                <!--*****************************************************-->
                 <!--*****************************************************-->
                 <!--*****************************************************-->
-                <div id="cont" class="container" style="margin:0px auto;border:2px solid gray;border-radius:10px;background-color:#EEEEEE;">
+                <div id="cont" class="container" style="margin:0px auto;border:2px solid gray;border-radius:10px;background-color:#EEEEEE;overflow:scroll" >
                     <br />
                     <div id="mainscrees">
                        <div class="Container text-center" style="margin:0px auto;border:2px solid gray;border-radius:10px" >
@@ -244,13 +306,13 @@
                               <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-volume-up"></i></a></div>
                               <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-volume-mute"></i></a></div>
                               <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-translate"></i></a></div>
-                              <div class="col-2"><a id="maxsize" onclick="openFullscreen();" href="" style="font-size:25px"><i class="bi bi-fullscreen"></i></a></div>
-                              <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-fullscreen-exit"></i></a></div>
-                              <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-clipboard"></i></a></div>
+                              <div id="bigscreen" class="col-2"><a id="maxsize" onclick="openFullscreen();" href="" style="font-size:25px"><i class="bi bi-fullscreen"></i></a></div>
+                              <div id="bigscreen" class="col-2"><a href="" style="font-size:25px"><i class="bi bi-fullscreen-exit"></i></a></div>
+                              <div  class="col-2"><a href="" style="font-size:25px"><i class="bi bi-clipboard"></i></a></div>
                           </div>
                        </div>
                        <br />
-                          <iframe id="tc" type="text/html" src="@Html.DisplayFor(modelItem => Model.BookURLS)" width="1050" height="2000"></iframe>
+                          <iframe id="tc" type="text/html" src="@Html.DisplayFor(modelItem => Model.BookURLS)" width="100%" height="1000"></iframe>
                         <br />
                     </div>
                    <!--*****************************************************-->
@@ -320,8 +382,123 @@
             }
         }
 
-                function myFunction() {
+        //*************************** */
+        function mFred() 
+         {
+          var iframe = document.getElementById("tc");
+          var elmnt = iframe.contentWindow.document.getElementsByTagName("body")[0].style.color = 'red';
+          //elmnt.style.display = "none";
+         }
+        //*************************** */
+         function mFblue() 
+         {
+          var iframe = document.getElementById("tc");
+          //var elmnt = iframe.contentWindow.document.getElementsByTagName("p")[0];
+          var elmnt = iframe.contentWindow.document.getElementsByTagName("body")[0].style.color = 'blue';
+          //elmnt.style.display = "none";
+         }
+        //*************************** */
+          function mFgray() 
+         {
+          var iframe = document.getElementById("tc");
+          //var elmnt = iframe.contentWindow.document.getElementsByTagName("p")[0];
+          var elmnt = iframe.contentWindow.document.getElementsByTagName("body")[0].style.color = 'gray';
+          //elmnt.style.display = "none";
+         }
+        //*************************** */
+         function mFblack() 
+         {
+          var iframe = document.getElementById("tc");
+          //var elmnt = iframe.contentWindow.document.getElementsByTagName("p")[0];
+          var elmnt = iframe.contentWindow.document.getElementsByTagName("body")[0].style.color = 'black';
+          //elmnt.style.display = "none";
+         }
+        //*************************** */
+          function mFgreen() 
+         {
+          var iframe = document.getElementById("tc");
+          //var elmnt = iframe.contentWindow.document.getElementsByTagName("p")[0];
+          var elmnt = iframe.contentWindow.document.getElementsByTagName("body")[0].style.color = 'green';
+          //elmnt.style.display = "none";
+         }
+        //*************************** */
+        ////////////////////////////////
+        // font size function
+        //*************************** */
+        function mffslarg() 
+         {
+          var iframe = document.getElementById("tc");
+          var elmnt = iframe.contentWindow.document.getElementsByTagName("body")[0].style.fontFamily = "Noto-Kufi-Arabic";
+          //elmnt.style.display = "none";
+         }
+        //*************************** */
+         function mffs2()  
+         {
+          var iframe = document.getElementById("tc");
+          //var elmnt = iframe.contentWindow.document.getElementsByTagName("p")[0];
+          var elmnt = iframe.contentWindow.document.getElementsByTagName("body")[0].style.fontSize = 'normal';
+          //elmnt.style.display = "none";
+         }
+        //*************************** */
+          function mffs3()  
+         {
+          var iframe = document.getElementById("tc");
+          //var elmnt = iframe.contentWindow.document.getElementsByTagName("p")[0];
+          var elmnt = iframe.contentWindow.document.getElementsByTagName("body")[0].style.fontSize = 'small';
+          //elmnt.style.display = "none";
+         }
+        //*************************** */
+         ////////////////////////////////
+         // font style function
+        //*************************** */
+       function fontchange1()
+       {
+           var iframe = document.getElementById("tc");
+           var elmnt = iframe.contentWindow.document.getElementsByTagName("body")[0].style.fontStyle = "normal";
+
+       }
+       function fontchange2()
+       {
+           var iframe = document.getElementById("tc");
+           var elmnt = iframe.contentWindow.document.getElementsByTagName("body")[0].style.fontStyle  = "italic";
+
+       }
+       
+       function fontchange3()
+       {
+           var iframe = document.getElementById("tc");
+           var elmnt = iframe.contentWindow.document.getElementsByTagName("body")[0].style.fontWeight  = "bold";
+
+       }
+        //*************************** */
+        ////////////////////////////////
+        // Resize Screen function
+        //*************************** */
+        let fullscreen = document.getElementById("cont");
+        let button = document.getElementById("bigscreen");
+
+        button.addEventListener("click", () => {
+          if (!document.fullscreenElement) {
+            fullscreen?.requestFullscreen();
+          } else {
+            document.exitFullscreen();
+          }
+        });
+
+
+
+                function myFunctionFontColor() {
                   var x = document.getElementById('myDIV');
+                  if (x.style.display === 'none') {
+                    x.style.display = 'flex';
+                  } else {
+                    x.style.display = 'none';
+                  }
+                }
+
+                
+                 function myFunctionfontsize() {
+                  var x = document.getElementById('myDIVfs');
                   if (x.style.display === 'none') {
                     x.style.display = 'flex';
                   } else {
@@ -347,6 +524,17 @@
                   }
                 }
 
+                  function myFunctionaudio() {
+                  var x = document.getElementById('myDIVAudio');
+                  if (x.style.display === 'none') {
+                    x.style.display = 'flex';
+                  } else {
+                    x.style.display = 'none';
+                  }
+                }
+                 
+
+
                  function myFunction3() {
                   var x = document.getElementById('myDIV3');
                   if (x.style.display === 'none') {
@@ -364,10 +552,10 @@
                   var x = document.getElementById('cont');
                     x.style.backgroundColor = '#EEEEEE';
                 }
-                 function bcb() {
+                 function bcc() {
                   var x = document.getElementById('cont');
                   var color = document.getElementById('tc');
-                    x.style.backgroundColor = 'black';
+                    x.style.backgroundColor = '#dfccaf';
                     color.style.color = 'white';
                 }
    </script>

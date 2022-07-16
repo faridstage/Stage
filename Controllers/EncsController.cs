@@ -19,9 +19,10 @@ namespace Stage_Books.Controllers
     {
         private readonly ApplicationDbContext _context;
         IWebHostEnvironment WebHostEnvironment;
-        public EncsController(ApplicationDbContext context)
+        public EncsController(ApplicationDbContext context , IWebHostEnvironment webHostEnv)
         {
             _context = context;
+            WebHostEnvironment = webHostEnv;
         }
         // GET: Books/Search/5
         public IActionResult Search(string? search)
@@ -145,9 +146,10 @@ namespace Stage_Books.Controllers
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
-                return View(enc);
-            }
-   
+                return View("Create", enc);
+
+        
+        }
         // GET: Encs/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

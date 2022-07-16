@@ -15,19 +15,21 @@
 
 		<br><br>
 		<div class="container-fluid">
-			<h3>Encyclobedia</h3>
+			<div style="text-align:center"><h3>Encyclobedia - الموسوعة</h3></div>
+			
 
 			<div class="container">
-				<h4>Create Auther Store</h4>
+				<h4>اضافة شخصية جديدة</h4>
 				<hr />
 				<div class="col-md-5 col-12">
-					<form asp-action="Create">
+					<form asp-action="Create" enctype="multipart/form-data">
 						<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 						<div class="form-group">
 							<label asp-for="Name" class="control-label"></label>
 							<input asp-for="Name" class="form-control" />
 							<span asp-validation-for="Name" class="text-danger"></span>
 						</div>
+						<br />
 						<div class="form-group">
 							<label asp-for="FullName" class="control-label"></label>
 							<input asp-for="FullName" class="form-control" />
@@ -38,21 +40,25 @@
 							<input asp-for="Description" class="form-control" />
 							<span asp-validation-for="Description" class="text-danger"></span>
 						</div>
+						<br />
 						<div class="form-group">
 							<label asp-for="Category" class="control-label"></label>
 							<input asp-for="Category" class="form-control" />
 							<span asp-validation-for="Category" class="text-danger"></span>
 						</div>
+						<br />
 						<div class="form-group">
 							<label asp-for="Store" class="control-label"></label>
 							<input asp-for="Store" class="form-control" />
 							<span asp-validation-for="Store" class="text-danger"></span>
 						</div>
+						<br />
 						<div class="form-group">
 							<label asp-for="Poster" class="control-label"></label>
 							<input type="file" class="form-control" name="imageFile" id="imageFile" accept=".png,.jpg" onchange="AddImage()" />
 							<span asp-validation-for="Poster" class="text-danger"></span>
 						</div>
+						<br />
 						<div class="col-md-3 mb-3">
 							<div class="input-group input-group-lg">
 								<img width="200" height="200" src="" id="authorImage" />
@@ -60,14 +66,10 @@
 						</div>
 						<br />
 						<div class="form-group">
-							<input type="submit" value="Create" class="btn btn-primary" />
+							<input type="submit" value="Create" class="btn btn-primary" /> | <a asp-action="Index" class="btn btn-success">Back to List</a>
 						</div>
 					</form>
 				</div>
-			</div>
-			<br />
-			<div>
-				<a asp-action="Index" class="btn btn-success">Back to List</a>
 			</div>
 			<br />
 		</div>
