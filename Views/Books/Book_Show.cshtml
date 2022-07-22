@@ -21,12 +21,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="~/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="stylesheet" href="~/css/styletrans.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Reem+Kufi:wght@700&display=swap" rel="stylesheet">
 </head>
-<body oncontextmenu="return false;">
-    <!-- container -->
+<body >
+    <!-- container oncontextmenu="return false"; -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-2" style="background-color: #03254c";">
+            <div class="col-sm-2" style="background-color: #333333";">
                  <br />
                 <div class="row mt-2" style="margin:0px auto" hidden>
                     <div class="col" style="text-align:center;margin:0px auto">
@@ -147,10 +153,36 @@
                      <br />
                    <div class="row ml-3" style="display:none" id="myDIVAudio">
                      <div class="mr-4">
-                       <a id="bgg" onclick="" href="#" style="font-size:25px;color:white;"><i class="bi bi-mic"></i></a>
+                       <a id="btnspeak" onclick="" href="#" style="font-size:25px;color:white;"><i class="bi bi-mic"></i></a>
                    </div>
                    <div class="mr-4">
                     <a id="bgw" onclick="" href="#" style="font-size:25px;color:gray;"><i class="bi bi-mic-mute"></i></a>
+                   </div>
+
+
+                     <div class="">
+                         Select Voice :<select name="" id="voicelist">
+           
+                         </select>
+
+                   </div>
+
+               </div>
+             </div> 
+
+                <hr class="hrstyle">
+                 <div class="row mt-2" style="margin:0px auto">
+                   <div class="col-12">
+                    <button class="btn btn-warning btn-lg w-100" style="font-size:17px;color:#03254c" onclick="tosearch()"><i class="bi bi-binoculars"></i> To Search </button>
+                   </div>
+                   <br />
+                     <br />
+                   <div class="row ml-3" style="display:none" id="myDIVsearch">
+                     <div class="mr-4">
+                       <p  style="font-size:25px;color:gray;">From PC Enter Ctrl + F</p>
+                   </div>
+                   <div class="mr-4">
+                    <a  style="font-size:25px;color:gray;">From Android Menu And Enter Find</a>
                    </div>
 @*                   <div class="col-3">
                     <a id="bgb" onclick="bcb()" href="#" style="font-size:15px;color:black;"><i class="bi bi-circle-fill"></i></a>
@@ -158,6 +190,16 @@
                </div>
              </div> 
 
+                <hr class="hrstyle">
+                 <div class="row mt-2" style="margin:0px auto">
+                   <div class="col-12">
+                    <a href="https://translate.google.com/" target="_blank" class="btn btn-warning btn-lg w-100" style="font-size:17px;color:#03254c"><i class="bi bi-translate"></i>  Translate </a>
+                   </div>
+             </div> 
+
+
+
+             
                 <br />
                 <hr />
                <div class="col" style="text-align:center;margin:0px auto" hidden>
@@ -225,18 +267,7 @@
                     <button class="btn btn-info w-75">My Profile</button>
                 </div>
                 
-                <div class="row">
 
-                </div>
-                <hr class="hrstyle">
-                <div class="row">
-                    <a class="nav-link" href="#" style=" margin: auto; "> <span class="" style="color: white;">Services  </span></a>
-                </div>
-                <hr class="hrstyle">
-                <div class="row">
-                    <a class="nav-link" href="#" style=" margin: auto; "> <span class="" style="color: white;">Translate </span></a>
-                </div>
-                <hr class="hrstyle">
        
 
             </div>
@@ -272,45 +303,65 @@
                              <h6>Publisher : @Html.DisplayFor(modelItem => Model.Publisher)</h6>
                         </div>
                     </div>
-                    <div class="row" style="margin: auto;">
 
 
-                        <div class="row" style="margin: auto;">
-                            <div class="col" style="text-align: center; padding: 10px; margin: 15px; ">
-                                <span style="color: #333333; font-size: 1.5rem;">Search For Any Word in Book</span>
-                                <form class="form-block" style="padding: 15px;">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                         <button class="btn btn-warning" type="button"><img src="~/img/search.png" alt="search" width="25" height="25"></button>
-                                        </div>
-                                        <input id="findInput" type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1" value="" name="" style="background-color: #c4c4c4;">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
 
 
-    <div class="container">
+
+                   <hr class="hrstyle">
+
+
+                    
+                   
           <!-- Start tools -->
 
                <!-- End tools --> 
                <!--*****************************************************-->
                 <!--*****************************************************-->
                 <!--*****************************************************-->
-                <div id="cont" class="container" style="margin:0px auto;border:2px solid gray;border-radius:10px;background-color:#EEEEEE;overflow:scroll" >
+                <div id="cont" class="container contsearch" style="margin:0px auto;border:2px solid gray;border-radius:10px;background-color:#EEEEEE;overflow:scroll" >
                     <br />
                     <div id="mainscrees">
                        <div class="Container text-center" style="margin:0px auto;border:2px solid gray;border-radius:10px" >
                           <div class="row">
-                              <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-volume-up"></i></a></div>
+                              <div id="aread" class="col-2"><a href="" style="font-size:25px"><i class="bi bi-volume-up"></i></a></div>
                               <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-volume-mute"></i></a></div>
-                              <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-translate"></i></a></div>
+                              <div id="tranc" onclick="tranc()" class="col-2"><a href="" style="font-size:25px"><i class="bi bi-translate"></i></a></div>
                               <div id="bigscreen" class="col-2"><a id="maxsize" onclick="openFullscreen();" href="" style="font-size:25px"><i class="bi bi-fullscreen"></i></a></div>
                               <div id="bigscreen" class="col-2"><a href="" style="font-size:25px"><i class="bi bi-fullscreen-exit"></i></a></div>
                               <div  class="col-2"><a href="" style="font-size:25px"><i class="bi bi-clipboard"></i></a></div>
                           </div>
                        </div>
+
+    <div class="containert" style="background-color:#EEEEEE;display:none" id="myDIVtranc">
+              <div class="mb-4" style="margin:0px auto">
+                  <h4 style="text-align:center">Translation Tools</h4>
+                  </div>
+      <div class="wrapper" style="margin:0px auto">
+        <div class="text-input">
+          <textarea spellcheck="false" class="from-text" placeholder="Enter text"></textarea>
+          <textarea spellcheck="false" readonly disabled class="to-text" placeholder="Translation"></textarea>
+        </div>
+        <ul class="controls">
+          <li class="row from">
+            <div class="icons">
+              <i id="from" class="fas fa-volume-up"></i>
+              <i id="from" class="fas fa-copy"></i>
+            </div>
+            <select></select>
+          </li>
+          <li class="exchange"><i class="fas fa-exchange-alt"></i></li>
+          <li class="row to">
+            <select></select>
+            <div class="icons">
+              <i id="to" class="fas fa-volume-up"></i>
+              <i id="to" class="fas fa-copy"></i>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <button id="btnt" class="btn btn-success">Translate Text</button>
+    </div>
                        <br />
                           <iframe id="tc" type="text/html" src="@Html.DisplayFor(modelItem => Model.BookURLS)" width="100%" height="1000"></iframe>
                         <br />
@@ -351,6 +402,25 @@
   
 
     <script>
+
+
+        ///////////////////////////////
+        // Audio Program /////////////
+        /////////////////////////////
+        var voicelist = document.getElementById("voicelist");
+        var text = document.getElementById("tc");
+        var btnspeak = document.getElementById("btnspeak");
+
+        var tts = window.speechSynthesis;
+        var voices = [];
+
+        function getvoices()
+        {
+            voices = tts.getvoices();
+            voicelist.innerHTML = '';
+            voices.foreach() 
+        }
+        ////////////////////////////
         
             var elem = document.getElementById("maxsize");
             var screen = document.getElementById("mainscrees");
@@ -405,6 +475,17 @@
           var elmnt = iframe.contentWindow.document.getElementsByTagName("body")[0].style.color = 'gray';
           //elmnt.style.display = "none";
          }
+         //*************************** */
+          function tranc() 
+          {
+                  var x = document.getElementById('myDIVtranc');
+                  if (x.style.display === 'none') {
+                    x.style.display = 'flex';
+                  } else {
+                    x.style.display = 'none';
+                  }
+           }
+         
         //*************************** */
          function mFblack() 
          {
@@ -484,7 +565,13 @@
             document.exitFullscreen();
           }
         });
+        //////////////////////////////////
+        //***************************** */
+        // search function 
+        /////////////////////////////////
 
+
+        /////////////////////////////////
 
 
                 function myFunctionFontColor() {
@@ -497,6 +584,15 @@
                 }
 
                 
+                 function tosearch() {
+                  var x = document.getElementById('myDIVsearch');
+                  if (x.style.display === 'none') {
+                    x.style.display = 'flex';
+                  } else {
+                    x.style.display = 'none';
+                  }
+                }
+
                  function myFunctionfontsize() {
                   var x = document.getElementById('myDIVfs');
                   if (x.style.display === 'none') {
@@ -560,6 +656,8 @@
                 }
    </script>
                     <!-- Option 6: Bootstrap Bundle with Popper -->
+                    <script src="~/js/countries.js"></script>
+                    <script src="~/js/scripttranc.js"></script>
                     <script src="~/js/js.js"> </script>
                     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
                     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

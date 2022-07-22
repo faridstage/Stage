@@ -176,10 +176,10 @@
                         else
                         {
                       
-                          @foreach (var item in Model.Books)
+                          @foreach (var item in Model.Auther)
                           {
                            <a href="#" class="list-group-item list-group-item-action">
-                               @item.Author.Name
+                               @item.Name.ToString();
                            </a>      
                           }
                         }

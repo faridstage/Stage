@@ -75,6 +75,12 @@ namespace Stage_Books.Controllers
             return View(book);
         }
 
+        public PartialViewResult getsamebooks()
+        {
+            List<Book> books = _context.Books.ToList();
+            return PartialView("bookslinks" ,books);
+        }
+
         // GET: Books/Search/5
         public IActionResult Search(string? search)
         {
