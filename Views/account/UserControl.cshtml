@@ -1,0 +1,113 @@
+﻿@using System.Security.Claims
+@model Stage_Books.Models.ApplicationUser
+@{
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	ViewData["Title"] = "UserControl";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br /><br />
+<br />
+<link href="~/css/ChangePassword.css" rel="stylesheet"/>
+<div class="container">
+	<div class="page-title">
+		<h4>الحساب الشخصي</h4>
+	</div>
+	
+	<div class="rowUser">
+		<div class="list-group userList">
+			<a class="list-group-item text-light active text-center">القائمة</a>
+			<a class="list-group-item" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">تغيير كلمة المرور</a>
+			@{
+				if (Stage_Books.Controllers.AccountController.IsProfileExists)
+				{
+					long userId = Stage_Books.Controllers.AccountController.UID;
+					if (userId > 0)
+					{
+								<a asp-action="EditProfile" asp-route-id="@userId.ToString()" class="list-group-item">الملف الشخصي</a>
+					}
+
+				}
+				else
+				{
+							<a asp-action="Profile" asp-route-id="@User.FindFirst(ClaimTypes.NameIdentifier)?.Value" class="list-group-item">الملف الشخصي</a>
+				}
+			}
+
+
+			<a href="#" class="list-group-item">رابط رقم 3 </a>
+		</div>
+
+		<div class="user-personal">
+			<div class="form-group">
+				<div><label asp-for="UserName" class="control-label"></label></div>
+				<div class="userlbl">
+					<label>@Html.DisplayFor(model => model.UserName)</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<div> <label asp-for="Email" class="control-label"></label></div>
+				<div class="userlbl">
+					<label>@Html.DisplayFor(model => model.Email)</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<div><label asp-for="phone" class="control-label"></label></div>
+				<div class="userlbl">
+					<label>@Html.DisplayFor(model => model.phone)</label>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="text-danger">@ViewBag.msg</div>
+
+	<div id="id01" class="modal">
+
+		<form asp-action="VerifyPassword" asp-controller="account" style="width:50%" class="modal-content animate" >
+			<div class="imgcontainer">
+				<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+				<img style="width:7%;" src="@Url.Content("/UserImages/Change.jpg")" alt="Avatar" class="avatar">
+			</div>
+
+			<div class="container">
+				<label for="pass"><b>Password Reset</b></label>
+				<input type="password" placeholder="Enter Password" name="pass" required>
+
+
+				<button type="submit">Submit</button>
+			</div>
+
+			<div class="container" style="background-color:#f1f1f1">
+				<button type="submit" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+				<span class="psw">Forgot <a href="#">password?</a></span>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+	<script>
+		// Get the modal
+		var modal = document.getElementById('id01');
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
+}

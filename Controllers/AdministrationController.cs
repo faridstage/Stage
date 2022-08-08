@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Stage_Books.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    /*[Authorize(Roles = "Admin")]*/
     public class AdministrationController : Controller
     {
         private RoleManager<IdentityRole> roleManager;
