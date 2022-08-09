@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Stage_Books.Models;
 
 namespace Stage_Books.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220725001223_AddingRolesAgainWithAnotherTables")]
+    partial class AddingRolesAgainWithAnotherTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -664,52 +666,6 @@ namespace Stage_Books.Migrations
                     b.ToTable("Scriptpaper");
                 });
 
-            modelBuilder.Entity("Stage_Books.Models.UserProfile", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("UserImage")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserProfiles");
-                });
-
-            modelBuilder.Entity("Stage_Books.Models.UserRoleNew", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(460)
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(460)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("RoleId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("userRoleNews");
-                });
-
             modelBuilder.Entity("Stage_Books.Models.paperssearcher", b =>
                 {
                     b.Property<int>("id")
@@ -856,32 +812,6 @@ namespace Stage_Books.Migrations
                         .HasForeignKey("UserId");
 
                     b.Navigation("AppUser");
-                });
-
-            modelBuilder.Entity("Stage_Books.Models.UserProfile", b =>
-                {
-                    b.HasOne("Stage_Books.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("ApplicationUser");
-                });
-
-            modelBuilder.Entity("Stage_Books.Models.UserRoleNew", b =>
-                {
-                    b.HasOne("Stage_Books.Models.AppRole", "AppRole")
-                        .WithMany()
-                        .HasForeignKey("RoleId");
-
-                    b.HasOne("Stage_Books.Models.Account.RegisterViewModel", "RegisterViewModel")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppRole");
-
-                    b.Navigation("RegisterViewModel");
                 });
 
             modelBuilder.Entity("Stage_Books.Models.Author", b =>

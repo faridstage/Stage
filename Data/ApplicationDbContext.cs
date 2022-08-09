@@ -25,8 +25,10 @@ namespace Stage_Books.Models
         public DbSet<SaveBook> Saved { get; set; }
         //public DbSet<RateBook> RateBooks { get; set; }
         public DbSet<BookComment> BookComments { get; set; }
-
-
+        public DbSet<AppRole> appRoles { get; set; }
+        public DbSet<AppUserRole> appUserRoles { get; set; }
+        public DbSet<UserRoleNew> userRoleNews { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
 
     }
 }

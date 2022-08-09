@@ -13,6 +13,7 @@ namespace Stage_Books.Models.Account
         [Required(ErrorMessage = "you have to provide a valid First name")]
         [MinLength(2, ErrorMessage = "min is 2")]
         [MaxLength(20, ErrorMessage = "max is 20")]
+        [Display(Name ="UserName")]
         public string Name { get; set; }
         [Required(ErrorMessage = "you have to provide a valid Email")]
         [EmailAddress(ErrorMessage = "you have to provide a valid Email")]

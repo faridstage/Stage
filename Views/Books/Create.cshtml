@@ -53,6 +53,7 @@
 										id="selectauthor" aria-describedby="inputGroup-sizing-lg" onchange="authermore()" placeholder="Author" asp-for="AuthorID"
 										asp-items="@(new SelectList(ViewBag.AllAuthors,"ID","Name")) ">
 									<option disabled selected>Select Author</option>
+
 								</select>
 								<span></span>
 							</div>
