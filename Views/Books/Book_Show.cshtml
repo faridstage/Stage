@@ -110,6 +110,26 @@
                  <hr class="hrstyle">
 
                 <div class="row mt-2" style="margin:0px auto">
+                    <div class="col-12">
+                     <button class="btn btn-warning btn-lg w-100" onclick="myFunctionsize()" style="font-size:17px;color:#03254c"><i class="bi bi-file-text"></i> - Font Size</button>
+                </div>
+                     <br />
+                     <br />
+                <div class="row ml-3" style="display:none" id="myDIVsize">
+                   <div class="mr-4">
+                       <a id="fc1" onclick="fontschange1()" href="#" style="font-size:21px;color:white;">X1</a>
+                   </div>
+                   <div class="mr-4">
+                    <a id="fc2" onclick="fontschange2()" href="#"  style="font-size:21px;color:white;">X2</a>
+                   </div>
+                   <div class="mr-4">
+                    <a id="fc3" onclick="fontschange3()" href="#" style="font-size:21px;color:white;">X3</a>
+                  </div>
+               </div>
+               </div>
+                 <hr class="hrstyle">
+
+                <div class="row mt-2" style="margin:0px auto">
                    <div class="col-12">
                     <button class="btn btn-warning btn-lg w-100" style="font-size:17px;color:#03254c" onclick="myFunction2()"><i class="bi bi-palette"></i> - Backround Color</button>
                    </div>
@@ -173,7 +193,7 @@
                 <hr class="hrstyle">
                  <div class="row mt-2" style="margin:0px auto">
                    <div class="col-12">
-                    <button class="btn btn-warning btn-lg w-100" style="font-size:17px;color:#03254c" onclick="tosearch()"><i class="bi bi-binoculars"></i> To Search </button>
+                    <button class="btn btn-warning btn-lg w-100" style="font-size:17px;color:#03254c" onclick="searchintext()"><i class="bi bi-binoculars"></i> To Search </button>
                    </div>
                    <br />
                      <br />
@@ -193,7 +213,7 @@
                 <hr class="hrstyle">
                  <div class="row mt-2" style="margin:0px auto">
                    <div class="col-12">
-                    <a href="https://translate.google.com/" target="_blank" class="btn btn-warning btn-lg w-100" style="font-size:17px;color:#03254c"><i class="bi bi-translate"></i>  Translate </a>
+                    <a href="#" onclick="tranc()" class="btn btn-warning btn-lg w-100" style="font-size:17px;color:#03254c"><i class="bi bi-translate"></i>  Translate </a>
                    </div>
              </div> 
 
@@ -221,14 +241,14 @@
                      </svg>
                     </a>
                     </div>
-                                        <div class="col-sm-2">
+                     <div class="col-sm-2">
                       <a class="nav-link" href="#" style="color:yellow">
                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16" >
                       <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
                      </svg>
                     </a>
                     </div>
-                                        <div class="col-sm-2">
+                     <div class="col-sm-2">
                       <a class="nav-link" href="#" style="color:yellow">
                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16" >
                       <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
@@ -324,20 +344,20 @@
                     <div id="mainscrees">
                        <div class="Container text-center" style="margin:0px auto;border:2px solid gray;border-radius:10px" >
                           <div class="row">
-                              <div id="aread" class="col-2"><a href="" style="font-size:25px"><i class="bi bi-volume-up"></i></a></div>
-                              <div class="col-2"><a href="" style="font-size:25px"><i class="bi bi-volume-mute"></i></a></div>
-                              <div id="tranc" onclick="tranc()" class="col-2"><a href="" style="font-size:25px"><i class="bi bi-translate"></i></a></div>
-                              <div id="bigscreen" class="col-2"><a id="maxsize" onclick="openFullscreen();" href="" style="font-size:25px"><i class="bi bi-fullscreen"></i></a></div>
-                              <div id="bigscreen" class="col-2"><a href="" style="font-size:25px"><i class="bi bi-fullscreen-exit"></i></a></div>
-                              <div  class="col-2"><a href="" style="font-size:25px"><i class="bi bi-clipboard"></i></a></div>
+                              <div class="col-2"><a style="font-size:25px;color:#0099CC;"><i class="bi bi-volume-up"></i></a></div>
+                              <div class="col-2"><a style="font-size:25px;color:#0099CC;"><i class="bi bi-volume-mute"></i></a></div>
+                              <div class="col-2"><a onclick="tranc()" style="font-size:25px;color:#0099CC;"><i class="bi bi-translate"></i></a></div>
+                              <div class="col-2"><a onclick="bigscreen1()" id="bigscreen1" href="#" style="font-size:25px;color:#0099CC;"><i class="bi bi-fullscreen"></i></a></div>
+                              <div class="col-2"><a onclick="bigscreen2()" id="bigscreen2" href="#" style="font-size:25px;color:#0099CC;"><i class="bi bi-fullscreen-exit"></i></a></div>
+                              <div class="col-2"><a href="#" onclick="searchintext()" style="font-size:25px;color:#0099CC;"><i class="bi bi-search"></i></a></div>
                           </div>
                        </div>
 
     <div class="containert" style="background-color:#EEEEEE;display:none" id="myDIVtranc">
-              <div class="mb-4" style="margin:0px auto">
+@*              <div class="row mb-4" style="margin:0px auto">
                   <h4 style="text-align:center">Translation Tools</h4>
-                  </div>
-      <div class="wrapper" style="margin:0px auto">
+              </div>*@
+@*      <div class="wrapper row" style="margin:0px auto">
         <div class="text-input">
           <textarea spellcheck="false" class="from-text" placeholder="Enter text"></textarea>
           <textarea spellcheck="false" readonly disabled class="to-text" placeholder="Translation"></textarea>
@@ -359,9 +379,16 @@
             </div>
           </li>
         </ul>
-      </div>
-      <button id="btnt" class="btn btn-success">Translate Text</button>
+      </div>*@
+@*      <div class="row"><button id="btnt" class="btn btn-success">Translate Text</button></div>
+*@      
+    <iframe src="https://www.bing.com/translator" width="100%" height="400"></iframe>
+</div>
+    <div style="display:none" class="container mt-2 mb-2" id="myDIVsearcharea" >
+            <input class="w-50" type="text" id="text-to-search" placeholder="Search" style="height:35px;border:2px solid gray; border-radius:5px;padding-left:5px;">
+            <button class="btn btn-primary" onclick="searchontext()">search</button>
     </div>
+
                        <br />
                           <iframe id="tc" type="text/html" src="@Html.DisplayFor(modelItem => Model.BookURLS)" width="100%" height="1000"></iframe>
                         <br />
@@ -551,10 +578,22 @@
            var elmnt = iframe.contentWindow.document.getElementsByTagName("body")[0].style.fontWeight  = "bold";
 
        }
+       //*************************** */
+        ////////////////////////////////
+        // Resize Fonts function
+        //*************************** */
+       function fontschange1()
+       {
+              let text = document.getElementById("tc").contentWindow;
+              let catchtext = text.document.body;
+              catchtext.style.fontSize = "xx-large"
+       }
         //*************************** */
         ////////////////////////////////
         // Resize Screen function
         //*************************** */
+        function bigscreen()
+        {
         let fullscreen = document.getElementById("cont");
         let button = document.getElementById("bigscreen");
 
@@ -565,6 +604,35 @@
             document.exitFullscreen();
           }
         });
+        }
+
+        function bigscreen1()
+        {
+        let fullscreen = document.getElementById("cont");
+        let button = document.getElementById("bigscreen1");
+
+        button.addEventListener("click", () => {
+          if (!document.fullscreenElement) {
+            fullscreen?.requestFullscreen();
+          } else {
+            document.exitFullscreen();
+          }
+        });
+        }
+
+        function bigscreen2()
+        {
+        let fullscreen = document.getElementById("cont");
+        let button = document.getElementById("bigscreen2");
+
+        button.addEventListener("click", () => {
+          if (!document.fullscreenElement) {
+            fullscreen?.requestFullscreen();
+          } else {
+            document.exitFullscreen();
+          }
+        });
+        }
         //////////////////////////////////
         //***************************** */
         // search function 
@@ -583,6 +651,17 @@
                   }
                 }
 
+                ///////////////////////////////////////////////////////////////
+                 function searchintext() 
+                 {
+                  var x = document.getElementById('myDIVsearcharea');
+                  if (x.style.display === 'none') {
+                    x.style.display = 'flex';
+                  } else {
+                    x.style.display = 'none';
+                  }
+                }
+              
                 
                  function tosearch() {
                   var x = document.getElementById('myDIVsearch');
@@ -610,7 +689,14 @@
                     x.style.display = 'none';
                   }
                 }
-
+                 function myFunctionsize() {
+                  var x = document.getElementById('myDIVsize');
+                  if (x.style.display === 'none') {
+                    x.style.display = 'flex';
+                  } else {
+                    x.style.display = 'none';
+                  }
+                }
                   function myFunction2() {
                   var x = document.getElementById('myDIV2');
                   if (x.style.display === 'none') {
@@ -629,7 +715,18 @@
                   }
                 }
                  
-
+                ////////////////////////////
+                function searchontext()
+                        {
+                            let texttosearch = document.getElementById("text-to-search").value;
+                            let text = document.getElementById("tc").contentWindow;
+                            let catchtext = text.document.body;
+                            //console.log(catchtext);
+                            texttosearch = texttosearch.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+                            let pattern = new RegExp(`${texttosearch}`,"gi");
+                            catchtext.innerHTML = catchtext.textContent.replace(pattern, match => `<mark>${match}</mark>`);
+                        }
+                ///////////////////////////
 
                  function myFunction3() {
                   var x = document.getElementById('myDIV3');

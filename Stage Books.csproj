@@ -69,6 +69,8 @@
     <None Include="wwwroot\BookFiles\Phone Help_files\image023.png" />
     <None Include="wwwroot\BookFiles\Phone.htm" />
     <None Include="wwwroot\BookFiles\PhoneHelp.html" />
+    <None Include="wwwroot\fonts\fontawesome-webfont914c.svg" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.svg" />
     <None Include="wwwroot\vtest\Phone Help_files\image001.jpg" />
     <None Include="wwwroot\vtest\Phone Help_files\image002.png" />
     <None Include="wwwroot\vtest\Phone Help_files\image003.png" />
