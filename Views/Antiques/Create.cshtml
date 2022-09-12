@@ -1,0 +1,80 @@
+﻿@model Stage_Books.Models.Antiques
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Antiques</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="id" class="control-label"></label>
+                <input asp-for="id" class="form-control" />
+                <span asp-validation-for="id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="date" class="control-label"></label>
+                <input asp-for="date" class="form-control" />
+                <span asp-validation-for="date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="madein" class="control-label"></label>
+                <input asp-for="madein" class="form-control" />
+                <span asp-validation-for="madein" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="creator" class="control-label"></label>
+                <input asp-for="creator" class="form-control" />
+                <span asp-validation-for="creator" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="owner" class="control-label"></label>
+                <input asp-for="owner" class="form-control" />
+                <span asp-validation-for="owner" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ownercerti" class="control-label"></label>
+                <input asp-for="ownercerti" class="form-control" />
+                <span asp-validation-for="ownercerti" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="imageurl" class="control-label"></label>
+                <input asp-for="imageurl" class="form-control" />
+                <span asp-validation-for="imageurl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="des" class="control-label"></label>
+                <input asp-for="des" class="form-control" />
+                <span asp-validation-for="des" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="info" class="control-label"></label>
+                <input asp-for="info" class="form-control" />
+                <span asp-validation-for="info" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="note" class="control-label"></label>
+                <input asp-for="note" class="form-control" />
+                <span asp-validation-for="note" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

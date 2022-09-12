@@ -1,0 +1,86 @@
+﻿@model Stage_Books.Models.Thesis
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Thesis</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="owner" class="control-label"></label>
+                <input asp-for="owner" class="form-control" />
+                <span asp-validation-for="owner" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="image" class="control-label"></label>
+                <input asp-for="image" class="form-control" />
+                <span asp-validation-for="image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Thesisurl" class="control-label"></label>
+                <input asp-for="Thesisurl" class="form-control" />
+                <span asp-validation-for="Thesisurl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="date" class="control-label"></label>
+                <input asp-for="date" class="form-control" />
+                <span asp-validation-for="date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="category" class="control-label"></label>
+                <input asp-for="category" class="form-control" />
+                <span asp-validation-for="category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="lang" class="control-label"></label>
+                <input asp-for="lang" class="form-control" />
+                <span asp-validation-for="lang" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="topic" class="control-label"></label>
+                <input asp-for="topic" class="form-control" />
+                <span asp-validation-for="topic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="pagesnumber" class="control-label"></label>
+                <input asp-for="pagesnumber" class="form-control" />
+                <span asp-validation-for="pagesnumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="desc_info" class="control-label"></label>
+                <input asp-for="desc_info" class="form-control" />
+                <span asp-validation-for="desc_info" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="type" class="control-label"></label>
+                <input asp-for="type" class="form-control" />
+                <span asp-validation-for="type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="note" class="control-label"></label>
+                <input asp-for="note" class="form-control" />
+                <span asp-validation-for="note" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

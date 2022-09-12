@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Stage_Books.Models
 {
@@ -7,9 +8,15 @@ namespace Stage_Books.Models
         public int Id { get; set; }
         public string Comments { get; set; }
         public DateTime PublishDate { get; set; }
+
+        public string UserId { get; set; }
+
+        [ForeignKey("UserId")]
+        public ApplicationUser ApplicationUser { get; set; }
+
+        [ForeignKey("Book")]
         public int BookId { get; set; }
-        public Book Books { get; set; }
-        public int Rating { get; set; }
+        public virtual Book Book { get; set; }
 
     }
 }

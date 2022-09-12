@@ -29,6 +29,25 @@ namespace Stage_Books.Models
         public DbSet<AppUserRole> appUserRoles { get; set; }
         public DbSet<UserRoleNew> userRoleNews { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<OrderViewModel> orderViewModel { get; set; }
+        public DbSet<LoveViewModel> loveViewModels { get; set; }
+
+        public DbSet<BookRate> bookRates { get; set; }
+        public DbSet<AdvRequest> advRequest { get; set; }
+        public DbSet<AllNewsPapers> allNewsPaper { get; set; }
+
+        public DbSet<Issuance> issuance { get; set; }
+
+        public DbSet<Issuancepaper> issuancepapers { get; set; }    
+
+        public DbSet<PageTitle> pageTitles { get; set; }
+
+        public DbSet<Thesis> theses { get; set; }
+
+        public DbSet<Archaeology> archaeology { get; set; } 
+
+        public DbSet<Archaeology> archaeologies { get; set; }
+        public DbSet<Antiques> Antiques  { get; set; }
 
     }
 }

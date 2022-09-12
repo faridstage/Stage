@@ -4,6 +4,26 @@
 @using X.PagedList;
 @using X.PagedList.Mvc.Core; <!--import to get HTML Helper-->
 @model Stage_Books.Models.Showdatamodel
+@inject SignInManager<ApplicationUser> signInManager;
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Stage_Books.Models.Account
+@using System.Security.Claims
+
+@inject IViewLocalizer localizer
+@inject IOptions<RequestLocalizationOptions> locoption
+@{
+	var requestculture = Context.Features.Get<IRequestCultureFeature>();
+	var culitems = locoption.Value.SupportedUICultures.Select(c => new SelectListItem
+			{
+				Value = c.Name,
+				Text = c.NativeName
+			}).ToList();
+	var returnurl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+}
 @{
     ViewData["Title"] = "Index";
 }
@@ -31,17 +51,131 @@
     <link href="~/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link href="~/css/style.css" rel="stylesheet">
+	<link href="~/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 
 <body style="font-family:cairo,Roboto"> <!-- oncontextmenu="return false;"-->
+    <div class="container-fluid" style="background-color:#333333">
+		<nav class="navbar navbar-expand-lg navbar-light " style="background-color:#333333;color:#ff7236;">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<img src="~/img/stage_logo1.png" alt="language" width="30" height="30" style="margin-right: 10px;">
+			<a class="navbar-brand" href="#" style="color:#ff7236;">S T A G E</a>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" style="color:white;" asp-area="" asp-controller="Home" asp-action="Index">@Stage_Books.languages.Resource.Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" style="color:white;" asp-area="" asp-controller="Contactmsgs" asp-action="Create">@Stage_Books.languages.Resource.Contact<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" style="color:white;" asp-area="" asp-controller="publicpages" asp-action="policy">@Stage_Books.languages.Resource.Policy<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" style="color:white;" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+						   aria-haspopup="true" aria-expanded="false">
+							@Stage_Books.languages.Resource.About
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">@Stage_Books.languages.Resource.About_Stage</a>
+
+							<a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="service">@Stage_Books.languages.Resource.Services</a>
+							<a class="dropdown-item" asp-area="" asp-controller="Help" asp-action="Help">@Stage_Books.languages.Resource.Help</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#"></a>
+							</div>
+						</div>
+					</li>
+						<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" style="color:white;" id="navbarDropdownMenuLink" data-toggle="dropdown"
+						   aria-haspopup="true" aria-expanded="false">
+							Other
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="nav-link" asp-area="" asp-controller="Encs" asp-action="index">@Stage_Books.languages.Resource.Encyclopedia</a>
+							
+							<a class="nav-link" asp-area="" asp-controller="Scriptpapers" asp-action="Index">Manuscripts</a>
+							<a class="nav-link" asp-area="" asp-controller="paperssearchers" asp-action="Index">Researcher Papers</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#"></a>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+						   aria-haspopup="true" aria-expanded="false" style="color:white">
+						   <i class="bi bi-translate mr-2"></i>Language</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" title="@localizer["Request culture provider:"] @requestculture?.Provider?.GetType().Name">
+
+                            <form id="selectlanguage" asp-controller="Home" asp-action="setlang" asp-route-returnurl="@returnurl" method="post">
+                                                       
+                              <select class="form-control form-control-sm" name="culture"
+                                      onchange="this.form.submit();" asp-for="@requestculture.RequestCulture.UICulture.Name"
+                                       asp-items="culitems">
+                           
+                      
+                               </select>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#"></a>
+                            </div>
+                            </form>
+                            </div>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" style="color:white;" asp-area="" asp-controller="publicpages" asp-action="policy">@Stage_Books.languages.Resource.Help<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" style="color:white;" asp-area="" asp-controller="publicpages" asp-action="policy"><i style="color:#ff7236" class="bi bi-cart-check mr-2"></i>Order<span class="sr-only">(current)</span></a>
+					</li>
+				</ul>
+
+			</div>
+
+			@if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+			{
+				<a asp-action="Index" asp-controller="Books" class="btn btn-danger nav-link">DASHBOARD</a>
+			}
+
+			@if (signInManager.IsSignedIn(User))
+			{
+				<form method="post" asp-action="Logout" asp-controller="Account" class="form-inline">
+					<button type="submit" class="btn btn-outline-primary my-2 my-sm-0 mr-3">Logout</button>
+				</form>
+				<h5>@User.Identity.Name</h5>
+			}
+			else
+			{
+				<a style="color:white;outline-color:#ff7236;" class="btn btn-outline-warning my-2 my-sm-0" asp-action="Register" asp-controller="Account">	@Stage_Books.languages.Resource.New_Account	</a>
+				<a style="color:white;outline-color:#ff7236;" class="btn btn-outline-warning my-2 my-sm-0" asp-action="Login" asp-controller="Account">@Stage_Books.languages.Resource.Login</a>
+			}
+
+			@{
+				string id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+				if (id != null)
+				{
+					<a asp-action="SaveBook" asp-controller="Home" asp-route-id="@id">
+						<img src="../img/unkown.png" alt="User" width="25" height="25" style="border:1px solid white;border-radius:50%">
+					</a>
+				}
+			}
+		    </nav>
+  </div>
     <br>
     <div class="container" style="margin:0px auto; text-align:center">
         <br />
-        <h3>@Stage_Books.languages.Resource.Encyclopedia</h3>
+        <h3 style="color:#ff7236">@Stage_Books.languages.Resource.Encyclopedia</h3>
         <br>
-        <img src="~/img/en.png" alt="Encyclobedia" width="150" height="150"/>
+        <img src="~/img/en.png" alt="Encyclobedia" width="80" height="80"/>
         <br />
     </div>
 @*    <p>

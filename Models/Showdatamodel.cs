@@ -30,6 +30,22 @@ namespace Stage_Books.Models
 
         public List<ApplicationUser> appusers { get; set; }
 
+        public List<LoveViewModel> Loveviews { get; set; }
+        public List<AdvRequest> advRequest { get; set; }
+
+        
+        public List<Archaeology> archaeologies { get; set; }
+
+        public List<Thesis> theses { get; set; }
+
+        public List<Antiques> antiques { get; set; }
+        public List<AllNewsPapers> allNewsPapers { get; set; }
+
+        public List<Issuance> issuances { get; set; }
+
+        public List<Issuancepaper> issuancepapers { get; set; }
+        public List<PageTitle> pageTitles { get; set; }
+
         //public List<Book> Searchfunc(string term)
         //{
         //    var result = _context.Books.Include(x => x.Author).Where(b => b.Name.Contains(term) || b.Author.Name.Contains(term)).ToList();

@@ -207,6 +207,155 @@ namespace Stage_Books.Migrations
                     b.ToTable("users");
                 });
 
+            modelBuilder.Entity("Stage_Books.Models.AdvRequest", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Author")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BookCover")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BookFile")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BookName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DateRequest")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("End")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Language")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LongTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OtherWay")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PlaceBook")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Price")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Start")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Topic")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("advRequest");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.AllNewsPapers", b =>
+                {
+                    b.Property<string>("Nid")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("category")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("desc_info")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("firstpubdate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("lang")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("logo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("newspaperdate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("owner")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Nid");
+
+                    b.ToTable("allNewsPaper");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.Antiques", b =>
+                {
+                    b.Property<string>("id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("creator")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("date")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("des")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("imageurl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("info")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("madein")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("owner")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ownercerti")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Antiques");
+                });
+
             modelBuilder.Entity("Stage_Books.Models.AppRole", b =>
                 {
                     b.Property<string>("Id")
@@ -333,6 +482,52 @@ namespace Stage_Books.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.Archaeology", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("creator")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("date")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("exename")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("imageurl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("info")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("place")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Archaeology");
                 });
 
             modelBuilder.Entity("Stage_Books.Models.AudioBook", b =>
@@ -494,14 +689,41 @@ namespace Stage_Books.Migrations
                     b.Property<DateTime>("PublishDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BookId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("BookComments");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.BookRate", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RateCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("bookRates");
                 });
 
             modelBuilder.Entity("Stage_Books.Models.Contact.Contactmsg", b =>
@@ -565,6 +787,157 @@ namespace Stage_Books.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Encs");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.Issuance", b =>
+                {
+                    b.Property<int>("Pid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AllNewsPapersNid")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("IssuanceNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Issuancedate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Pages")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Pid");
+
+                    b.HasIndex("AllNewsPapersNid");
+
+                    b.ToTable("issuance");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.Issuancepaper", b =>
+                {
+                    b.Property<int>("ppid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("IssuancePid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Pages")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Pid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("imageurl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ppid");
+
+                    b.HasIndex("IssuancePid");
+
+                    b.ToTable("issuancepapers");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.LoveViewModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Love_count")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("loveViewModels");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.OrderViewModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Book_name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Other_way_Contact")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Whatsapp_phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("orderViewModel");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.PageTitle", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("Issuancepaperppid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Titles")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ppid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("Issuancepaperppid");
+
+                    b.ToTable("pageTitles");
                 });
 
             modelBuilder.Entity("Stage_Books.Models.SaveBook", b =>
@@ -662,6 +1035,53 @@ namespace Stage_Books.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Scriptpaper");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.Thesis", b =>
+                {
+                    b.Property<string>("id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Thesisurl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("category")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("date")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("desc_info")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("lang")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("owner")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("pagesnumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("topic")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("theses");
                 });
 
             modelBuilder.Entity("Stage_Books.Models.UserProfile", b =>
@@ -812,6 +1232,15 @@ namespace Stage_Books.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Stage_Books.Models.AdvRequest", b =>
+                {
+                    b.HasOne("Stage_Books.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("ApplicationUser");
+                });
+
             modelBuilder.Entity("Stage_Books.Models.AppUserRole", b =>
                 {
                     b.HasOne("Stage_Books.Models.AppRole", "AppRole")
@@ -840,13 +1269,97 @@ namespace Stage_Books.Migrations
 
             modelBuilder.Entity("Stage_Books.Models.BookComment", b =>
                 {
-                    b.HasOne("Stage_Books.Models.Book", "Books")
+                    b.HasOne("Stage_Books.Models.Book", "Book")
                         .WithMany("BookComment")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Books");
+                    b.HasOne("Stage_Books.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Book");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.BookRate", b =>
+                {
+                    b.HasOne("Stage_Books.Models.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Stage_Books.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Book");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.Issuance", b =>
+                {
+                    b.HasOne("Stage_Books.Models.AllNewsPapers", "AllNewsPapers")
+                        .WithMany()
+                        .HasForeignKey("AllNewsPapersNid");
+
+                    b.Navigation("AllNewsPapers");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.Issuancepaper", b =>
+                {
+                    b.HasOne("Stage_Books.Models.Issuance", "Issuance")
+                        .WithMany()
+                        .HasForeignKey("IssuancePid");
+
+                    b.Navigation("Issuance");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.LoveViewModel", b =>
+                {
+                    b.HasOne("Stage_Books.Models.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Stage_Books.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Book");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.OrderViewModel", b =>
+                {
+                    b.HasOne("Stage_Books.Models.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Stage_Books.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Book");
+                });
+
+            modelBuilder.Entity("Stage_Books.Models.PageTitle", b =>
+                {
+                    b.HasOne("Stage_Books.Models.Issuancepaper", "Issuancepaper")
+                        .WithMany()
+                        .HasForeignKey("Issuancepaperppid");
+
+                    b.Navigation("Issuancepaper");
                 });
 
             modelBuilder.Entity("Stage_Books.Models.SaveBook", b =>

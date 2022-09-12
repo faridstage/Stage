@@ -1,0 +1,48 @@
+﻿@model Stage_Books.Models.Issuance
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Issuance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Issuancedate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Issuancedate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pages)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pages)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IssuanceNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IssuanceNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nid)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nid)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.note)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.note)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Pid">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

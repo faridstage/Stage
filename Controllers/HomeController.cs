@@ -56,16 +56,27 @@ namespace Stage_Books.Controllers
             var Enc = _context.Encs.ToList();
             var users = _context.Users.ToList();
             var saved = _context.Saved.ToList();
+            var love = _context.loveViewModels.ToList();
             var show = new Showdatamodel
             {
                 Books = book.ToList(),
                 Auther = author,
                 Encs = Enc,
                 appusers = users,
-                SaveBooks = saved
+                SaveBooks = saved,
+                Loveviews = love
 
             };
             return View(show);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Index(int id)
+        {
+            var lovebook = await _context.loveViewModels.FirstOrDefaultAsync(l => l.Love_count == id);
+            lovebook.Love_count++;
+            _context.Update(lovebook);
+            _context.SaveChanges();
+            return View();
         }
         public IActionResult publishercont()
         {
@@ -287,5 +298,16 @@ namespace Stage_Books.Controllers
             return RedirectToAction("Book_Details","books", new { id = bookId });
         }
 
+        //// start buy order 
+        //[HttpGet]
+        //public IActionResult order()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //public IActionResult order(OrderViewModel model)
+        //{
+        //    return View();
+        //}
     }
 }

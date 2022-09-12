@@ -1,0 +1,51 @@
+﻿@model Stage_Books.Models.Issuance
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Issuance</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Pid" />
+            <div class="form-group">
+                <label asp-for="Issuancedate" class="control-label"></label>
+                <input asp-for="Issuancedate" class="form-control" />
+                <span asp-validation-for="Issuancedate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pages" class="control-label"></label>
+                <input asp-for="Pages" class="form-control" />
+                <span asp-validation-for="Pages" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IssuanceNumber" class="control-label"></label>
+                <input asp-for="IssuanceNumber" class="form-control" />
+                <span asp-validation-for="IssuanceNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nid" class="control-label"></label>
+                <input asp-for="Nid" class="form-control" />
+                <span asp-validation-for="Nid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="note" class="control-label"></label>
+                <input asp-for="note" class="form-control" />
+                <span asp-validation-for="note" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

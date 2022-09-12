@@ -1,17 +1,37 @@
 ﻿@using X.PagedList.Mvc.Core.Common;
 @using X.PagedList.Web.Common;
 @using X.PagedList;
-@using X.PagedList.Mvc.Core; <!--import to get HTML Helper-->
+@using X.PagedList.Mvc.Core; 
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Stage_Books.Models.Account
+@inject IViewLocalizer localizer
+@inject IOptions<RequestLocalizationOptions> locoption
+@{
+	var requestculture = Context.Features.Get<IRequestCultureFeature>();
+	var culitems = locoption.Value.SupportedUICultures.Select(c => new SelectListItem
+			{
+				Value = c.Name,
+				Text = c.NativeName
+			}).ToList();
+	var returnurl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+    }
+@inject SignInManager<ApplicationUser> signInManager;
+
+<!--import to get HTML Helper-->
 @model Stage_Books.Models.Showdatamodel
 @*@model IPagedList<Stage_Books.Models.Showdatamodel>*@
 @{
     ViewData["Title"] = "Home Page";
 }
 
-
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <title>S T A G E</title>
@@ -19,79 +39,205 @@
     <meta name="descrption" content="Best website to Find any Books">
     <meta name="keywords" content=" كتب عالمية مترجمة  مكتبة,اكبر مكتبة لتحميل الكتب مجانا,اكبر مكتبة كتب,كتب,أكبر مكتبة,اكبر مكتبة للكتب الاسلامية,اكبر مكتبة شخصية,اكبر مكتبة يوغي يو,اكبر مكتبة اسلامية,اكبر مكتبة في العالم,اكبر مكتبة شخصية في العالم,اكبر مكتبة اسلامية,اهم اكبر مكتبة كتب الكترونية في العالم .,أكبر مكتبة في العالم ,كتب ادب ">
     <!-- Bootstrap CSS -->
-    <link rel="icon" href="~/img/stage_logo.png" type="" sizes="">
-    <link rel="shortcut icon" href="~/img/stage_logo.png" type="" sizes="">
-    <link rel="apple-touch-icon" href="~/img/stage_logo.png">
+    <link rel="icon" href="~/img/stage_logo1.png" type="" sizes="">
+    <link rel="shortcut icon" href="~/img/stage_logo1.png" type="" sizes="">
+    <link rel="apple-touch-icon" href="~/img/stage_logo1.png">
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="~/css/style.css" rel="stylesheet">
+    @*<link href="~/css/style.css" rel="stylesheet">*@
     <link href="~/css/newstyle.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
     <link href="~/img/favicon.ico" rel="icon" type="image/x-icon" />
-    <link href="css/mmenu.css" rel="stylesheet" type="text/css" />
-    <link href="css/mmenu.positioning.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/mmenu.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/mmenu.positioning.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+	 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	  @*<link href="~/css/style.css" rel="stylesheet">*@
+	
+
 </head>
 <body style="font-family:cairo,Roboto"> <!-- oncontextmenu="return false;"-->
-    <div class="container-fluid">
-        <div style="text-align: center; margin-top: 25px;">
-            <h1>S T A G E</h1>
-            <div class="container-fluid">
-                <!--<img class="d-block w-100" src="img/s4.jpg" alt="First slide" style="text-align: center; margin-top: 25px;">-->
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img class="d-block w-100" src="img/s1.jpg" alt="First slide" height="550">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h3 style="color: white;">S T A G E</h3>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="img/s2.jpg" alt="Second slide" height="550">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h3 style="color: white;">S T A G E</h3>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="img/s4.jpg" alt="Third slide" height="550">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h3 style="color:white;">S T A G E</h3>
+     <div class="container-fluid header-topbar hidden-sm hidden-xs" style="background-color:#333333;height:60px;padding-top:12px">
+           <div class="" style="display: flex;align-items: stretch;">
+             <div class="" style="flex-grow: 2;color:#ff7236; text-align: center;">
+                 <img class="mr-3" src="~/img/stage_logo1.png" alt="LIBRARIA" width="35" height="35" />
+                 <span style="font-size:20px;margin-top:10px;color:#ff7236;">S T A G E</span>
+                 </div>
+             <div class="" style="flex-grow: 7;color:white ;text-align: center;">
+                 <nav style="color:white"> 
+                     <a class="mr-5" style="font-size:20px;color:#ff7236;" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="publicpages" asp-action="about_stage">@Stage_Books.languages.Resource.About</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="publicpages" asp-action="service">@Stage_Books.languages.Resource.Services</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="publicpages" asp-action="policy">@Stage_Books.languages.Resource.Help</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="publicpages" asp-action="policy">@Stage_Books.languages.Resource.Policy</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Help" asp-action="Help">Orders</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Contactmsgs" asp-action="Create">@Stage_Books.languages.Resource.Contact</a>
+                 </nav>
+
+                 </div>
+             <div class="" style="flex-grow: 1;color:white;text-align: center;">
+                 <div class="row" style="">
+                     @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                     {
+                     <div class="col-sm-3" style="color:white">
+                          <a asp-action="Index" asp-controller="Books" class="btn w-100" style="background-color:#ff7236;">الادارة</a>
+                     </div>
+                     }
+                     @{string id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;}
+                     @if (signInManager.IsSignedIn(User) && id != null)
+                    {
+                            <form method="post" asp-action="Logout" asp-controller="Account" class="form-inline">
+                                <button type="submit" class="btn  my-2 my-sm-0 mr-3" style="background-color:#ff7236;height:28px">Logout</button>
+                            </form>
+                            <span style="margin-top:7px;font-size:15px;">@User.Identity.Name</span>
+                            <img src="../img/unkown.png" alt="User" width="25" height="25" style="border:1px solid white;border-radius:50%">
+                    }
+                    else{
+				            <a asp-action="Login" asp-controller="Account"><i class="fa fa-lock" ></i>Login /</a>
+                            <a asp-action="Register" asp-controller="Account"> Register</a>
+                           }
+@*                          @{string id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+*@				             @*if (id != null)
+				                {
+                                  <div class="col-sm-3" style="color:white">
+					              <a asp-action="SaveBook" asp-controller="Home" asp-route-id="@id">
+						             <img src="../img/unkown.png" alt="User" width="25" height="25" style="border:1px solid white;border-radius:50%">
+					              </a>
+                                  </div>
+				                 }*@
+                  </div>
+             </div>
+        </div>
+        </div>
+        <div class="container-fluid header-topbar hidden-sm hidden-xs" style="background-color:#333333;height:60px;padding-top:12px;border-top:2px solid #ff7236;">
+           <div class="" style="display: flex;align-items: stretch;">
+             <div class="" style="flex-grow: 12;color:white ;text-align: center;">
+                 <nav style="color:white"> 
+                     
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="publicpages" asp-action="about_stage">@*@Stage_Books.languages.Resource.*@eBooks</a>
+                     
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Encs" asp-action="Index2">@Stage_Books.languages.Resource.Encyclopedia</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="AudioBooks" asp-action="Index">@*@Stage_Books.languages.Resource.*@Audio </a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Scriptpapers" asp-action="Indexd">Manuscripting</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="AllNewsPapers" asp-action="IndexShow">الجرائد</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Help" asp-action="IndexShow">الاوراق البحثية</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Theses" asp-action="IndexShow">الرسائل العلمية</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Archaeologies" asp-action="IndexShow">موسوعة الاثار</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Antiques" asp-action="IndexShow">التحف والانتيكات</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Authors" asp-action="service">الافلام الوثائقية</a>
+
+                         
+                    
+                 </nav>
+
+                 </div>
+        </div>
+        </div>
+        <!-- End: Header Section -->
+        <header id="header-v1" class="navbar-wrapper">
+            <div class="container">
+                <div class="row">
+                    <nav class="navbar navbar-default">
+                        <div class="row">
+
+                            <div class="col-9">
+                                <!-- Header Topbar -->
+                                <div class="header-topbar hidden-sm hidden-xs">
+
+                                              <ul class="nav navbar-nav" style="">
+                                                <li class="dropdown" title="@localizer["Request culture provider:"] @requestculture?.Provider?.GetType().Name">
+                                                  <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#"><i style="color:#ff7236" class="bi bi-translate mr-2"></i>@Stage_Books.languages.Resource.Language</a>
+                                                 <ul class="dropdown-menu">
+                                                   <form id="selectlanguage" asp-controller="Home" asp-action="setlang" asp-route-returnurl="@returnurl" method="post">
+                                                        <select class="form-control form-control-sm" name="culture" onchange="this.form.submit()" asp-for="@requestculture.RequestCulture.UICulture.Name" asp-items="culitems">
+
+                                                        </select>
+                                                   </form>
+                                                </ul>
+                                               </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                       
+                                </div>
+
+                        
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        @*<div class="container">
+          <div class="row">
+              <div class="col-md-3">
+              </div>
+               <div class="col-md-3">
+              </div>
+          </div>
+        </div>
+        <br />*@
+
+        <!-- End: Header Section -->
+     <!-- Start: Slider Section -->
+        <div data-ride="carousel" class="carousel slide" id="home-v1-header-carousel">
+           
+            <!-- Carousel slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <figure>
+                       <img alt="Home Slide" src="~/img/s1.jpg" />
+                    </figure>
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>S T A G E</h1>
+                            <h3>! تعلم واقراْ اون لاين فى اى وقت من اى مكان</h3>
+                            <h2>اكتشف مزيد من المعارف</h2>
+                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humor, or randomized words.</p>
+                            <div class="slide-buttons hidden-sm hidden-xs">    
+                                <a style="background-color:#ff7236; width:200px;font-size:20px" class="btn ">@Stage_Books.languages.Resource.Read_More</a>
                             </div>
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
                 </div>
-
+                <div class="item">
+                    <figure>
+                       <img alt="Home Slide" src="~/img/s1.jpg" />
+                    </figure>
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>S T A G E </h1>
+                            <h2>احصل على نسخة مطبوعة </h2>
+                            <p>احصل على نسخة مطبوعة من اى كتاب قد يهمك او تتمنى اقتنائه من خلالنا </p>
+                            <a style="background-color:#ff7236; width:200px;font-size:20px" class="btn ">@Stage_Books.languages.Resource.Read_More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <figure>
+                        <img alt="Home Slide" src="~/img/s1.jpg" />
+                    </figure>
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>S T A G E</h1>
+                            <h3>منصة ستيج للكتب</h3>
+                            <h2>تصفح ملايين الكتب والابحاث</h2>
+                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humor, or randomized words.</p>
+                            <a style="background-color:#ff7236; width:200px;font-size:20px" class="btn ">@Stage_Books.languages.Resource.Read_More</a>
+                        </div>
+                    </div>
+                </div>
             </div>
+            
+            <!-- Controls -->
+            <a class="left carousel-control" href="#home-v1-header-carousel" data-slide="prev"></a>
+            <a class="right carousel-control" href="#home-v1-header-carousel" data-slide="next"></a>
         </div>
-    </div>
-    <br />
-    <br />
-      <div class="container bg-light" style="margin:20px auto;">
-         <div class="row bg-light" style="margin:10px auto; border-radius:20px;">
-            <div class="col-md-4 " style="text-align: center; border-radius: 5px ;margin:30px 0px;" title="subjects , language , author is covering ">
-                <a asp-area="" asp-controller="Home" asp-action="authercont" class="btn btn-secondary text-light">  @Stage_Books.languages.Resource.To_Authors</a>
-            </div>
-            <div class="col-md-4 " style="text-align: center; margin:30px 0px;">
-                <a asp-area="" asp-controller="Home" asp-action="publishercont" class="btn btn-secondary text-light">  @Stage_Books.languages.Resource.To_Publishers </a>
-            </div>
-            <div class="col-md-4 " style="text-align: center;margin:30px 0px;">
-                <a asp-area="" asp-controller="Home" asp-action="suggestion" class="btn btn-secondary text-light">@Stage_Books.languages.Resource.suggestions</a>
-            </div>
-        </div>
-    </div>
+        <!-- End: Slider Section -->
 
          <!-- Start: Features -->
         <section class="features">
@@ -99,40 +245,52 @@
                 <ul>
                     <li class="bg-yellow">
                         <div class="feature-box">
-                            <i class="yellow"></i>
-                            <h3>To Author</h3>
-                            <p>Are You Author</p>
-                            <a class="yellow" href="#">
+                            
+                            <i class="fa fa-user yellow" aria-hidden="true" style="font-size:45px;"></i>
+                            <h3>@Stage_Books.languages.Resource.To_Authors</h3>
+                            <p>Are You Author ?</p>
+                            <a class="yellow" asp-area="" asp-controller="Home" asp-action="authercont">
                                 Visite Page <i class="fa fa-long-arrow-right"></i>
                             </a>
                         </div>
                     </li>
                     <li class="bg-light-green">
                         <div class="feature-box">
-                            <i class="light-green"></i>
-                            <h3>eBooks</h3>
-                            <p>Lorem ipsum dolor s.</p>
-                            <a class="light-green" href="#">
+                            <i class="fa fa-home light-green" aria-hidden="true" style="font-size:45px;"></i>
+                            
+                            <h3> @Stage_Books.languages.Resource.To_Publishers</h3>
+                            <p>Are You Publisher ?</p>
+                            <a class="light-green" asp-area="" asp-controller="Home" asp-action="publishercont">
                                 View Selection <i class="fa fa-long-arrow-right"></i>
                             </a>
                         </div>
                     </li>
                     <li class="bg-blue">
                         <div class="feature-box">
-                            <i class="blue"></i>
-                            <h3>DVDs</h3>
-                            <p>Lorem ipsum.</p>
-                            <a class="blue" href="#">
+                            <i class="fa fa-lightbulb-o blue" aria-hidden="true" style="font-size:45px;"></i>
+                            <h3>@Stage_Books.languages.Resource.suggestions</h3>
+                            <p>If You Have A Suggestions !</p>
+                            <a class="blue" asp-area="" asp-controller="Home" asp-action="suggestion">
                                 View Selection <i class="fa fa-long-arrow-right"></i>
                             </a>
                         </div>
                     </li>
                     <li class="bg-red">
                         <div class="feature-box">
-                            <i class="red"></i>
-                            <h3>Magazines</h3>
-                            <p>Lorem ipsum.</p>
-                            <a class="red" href="#">
+                            <i class="fa fa-cart-arrow-down red" aria-hidden="true" style="font-size:45px;"></i>
+                            <h3>Order Buy</h3>
+                            <p>If You Want Make Order Buy Hard Copy To Any Book</p>
+                            <a class="red" asp-area="" asp-controller="OrderViewModels" asp-action="Create">
+                                View Selection <i class="fa fa-long-arrow-right"></i>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="bg-violet">
+                        <div class="feature-box">
+                          <i class="fa fa-bullhorn red" aria-hidden="true" style="font-size:45px;"></i>
+                            <h3>Advertisement</h3>
+                            <p>Advertisement Request .</p>
+                            <a class="red" asp-area="" asp-controller="AdvRequests" asp-action="Create">
                                 View Selection <i class="fa fa-long-arrow-right"></i>
                             </a>
                         </div>
@@ -142,6 +300,154 @@
         </section>
         <!-- End: Features -->
 
+
+        <!-- Start: Welcome Section -->
+        <section class="welcome-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="facts-counter">
+                                            
+                            <ul>
+                                <li class="bg-light-green">
+                                    <div class="fact-item">
+                                        <div class="fact-icon">
+                                            <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i>
+                                        </div>
+                                        
+                                        <span>@*@Stage_Books.languages.Resource.*@eBooks<strong class="fact-counter"></strong></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="facts-counter">
+                                            
+                            <ul>
+                                <li class="bg-yellow">
+                                    <div class="fact-item">
+                                        <div class="fact-icon">
+                                            <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i>
+                                        </div>
+                                        <span>@*@Stage_Books.languages.Resource.*@Audio <br /> Books<strong class="fact-counter">@Model.Books.Count</strong></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="facts-counter">
+                                            
+                            <ul>
+                                <li class="bg-blue">
+                                    <div class="fact-item">
+                                        <div class="fact-icon">
+                                            <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i>
+                                        </div>
+                                        <span>@Stage_Books.languages.Resource.Authors<strong class="fact-counter">@Model.Books.Count</strong></span>
+                                    </div>
+                                </li>
+                               
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="facts-counter">           
+                            <ul>
+                                <li class="bg-violet">
+                                    <div class="fact-item">
+                                        <div class="fact-icon">
+                                            <i class="fa fa-book" aria-hidden="true" style="font-size:25px; color:white;"></i>
+                                        </div>
+                                        <span>@Stage_Books.languages.Resource.Encyclopedia<strong class="fact-counter">@Model.Books.Count</strong></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="facts-counter">             
+                            <ul>
+                                <li class="bg-red">
+                                    <div class="fact-item">
+                                        <div class="fact-icon">
+                                            <i class="fa fa-book" aria-hidden="true" style="font-size:25px; color:white;"></i>
+                                        </div>
+                                        <span>@*@Stage_Books.languages.Resource.*@Manuscripting<strong class="fact-counter"></strong></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="facts-counter">              
+                            <ul>
+                                <li class="bg-green">
+                                    <div class="fact-item">
+                                        <div class="fact-icon">
+                                            <i class="fa fa-book" aria-hidden="true" style="font-size:25px; color:white;"></i>
+                                        </div>
+                                        <span  style="font-size:10px;">@Stage_Books.languages.Resource.Research_paper <br /> Books<strong class="fact-counter">@Model.Books.Count</strong></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="facts-counter">
+                                            
+                            <ul>
+                                <li class="bg-light-green">
+                                    <div class="fact-item">
+                                        <div class="fact-icon">
+                                            <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i>
+                                        </div>
+                                        <span>@*@Stage_Books.languages.Resource.*@Thesis<strong class="fact-counter">@Model.Books.Count</strong></span>
+                                    </div>
+                                </li>
+                               
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="facts-counter">           
+                            <ul>
+                                <li class="bg-yellow">
+                                    <div class="fact-item">
+                                        <div class="fact-icon">
+                                            <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i>
+                                        </div>
+                                        <span>@*@Stage_Books.languages.Resource.*@Archeology Encyclopedia<strong class="fact-counter">@Model.Books.Count</strong></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="facts-counter">             
+                            <ul>
+                                <li class="bg-blue">
+                                    <div class="fact-item">
+                                        <div class="fact-icon">
+                                            <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i>
+                                        </div>
+                                        <span>@*@Stage_Books.languages.Resource.*@Newspapers<strong class="fact-counter"></strong></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End: Welcome Section -->
+
+
        <!-- Start: Welcome Section -->
         <section class="welcome-section">
             <div class="container">
@@ -149,9 +455,9 @@
                     <div class="col-md-6">
                         <div class="welcome-wrap">
                             <div class="welcome-text">
-                                <h2 class="section-title">Welcome to the libraria</h2>
+                                <h2 class="section-title">Welcome to the S T A G E </h2>
                                 <span class="underline left"></span>
-                                <p class="lead">The standard chunk of Lorem Ipsum used since</p>
+                                <p class="lead">Understand About Stageem Ipsum used since</p>
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humor, or randomized words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humor, or non-characteristic words etc.</p>
                                 <a class="btn btn-primary" href="#">Read More</a>
                             </div>
@@ -159,37 +465,43 @@
                     </div>
                     <div class="col-md-3">
                         <div class="facts-counter">
+                                            @{
+                                                    var num1 = @Model.Auther.Count;
+                                                    var num2 = @Model.Encs.Count;
+                                                    var num3 = (@Model.Books.Count) * 2;
+                                                    var res = num1 + num2 + num3;
+                                                }
                             <ul>
                                 <li class="bg-light-green">
                                     <div class="fact-item">
                                         <div class="fact-icon">
-                                            <i class="ebook"></i>
+                                            <i class="fa fa-book" aria-hidden="true" style="font-size:45px; color:white;"></i>
                                         </div>
-                                        <span>eBooks<strong class="fact-counter">45780</strong></span>
+                                        <span>@Stage_Books.languages.Resource.Books<strong class="fact-counter">@Model.Books.Count</strong></span>
                                     </div>
                                 </li>
                                 <li class="bg-green">
-                                    <div class="fact-item">
-                                        <div class="fact-icon">
-                                            <i class="eaudio"></i>
+                                    <div class="fact-item" title="subjects , language , author is covering ">
+                                        <div class="fact-icon" >
+                                            <i class="fa fa-globe" style="font-size:45px; color:white;"></i>
                                         </div>
-                                        <span>eAudio<strong class="fact-counter">32450</strong></span>
+                                        <span>@Stage_Books.languages.Resource.Covering<strong class="fact-counter">@res</strong></span>
                                     </div>
                                 </li>
                                 <li class="bg-red">
                                     <div class="fact-item">
                                         <div class="fact-icon">
-                                            <i class="magazine"></i>
+                                            <i class="fa fa-pencil" style="font-size:45px; color:white;"></i>
                                         </div>
-                                        <span>Magazine<strong class="fact-counter">14450</strong></span>
+                                        <span>@Stage_Books.languages.Resource.Authors<strong class="fact-counter">14450</strong></span>
                                     </div>
                                 </li>
                                 <li class="bg-blue">
                                     <div class="fact-item">
                                         <div class="fact-icon">
-                                            <i class="videos"></i>
+                                            <i class="fa fa-users" style="font-size:45px; color:white;"></i>
                                         </div>
-                                        <span>Videos<strong class="fact-counter">32450</strong></span>
+                                        <span>@Stage_Books.languages.Resource.Visitors<strong class="fact-counter">32450</strong></span>
                                     </div>
                                 </li>
                             </ul>
@@ -203,759 +515,427 @@
         </section>
         <!-- End: Welcome Section -->
 
-
-
-    <br />
-    <div class="container bg-light" style="margin:20px auto;">
-        <div class="row bg-light" style="margin:10px auto; border-radius:20px;">
-            <div class="col " style="text-align: center; border-radius: 5px ;" title="subjects , language , author is covering ">              
-                <h5 style="color:#333333; margin-top: 15px ">@Stage_Books.languages.Resource.Covering</h5>
-                <img src="~/img/cov.png" alt="visitors" width="40" height="30"/>
-                @{
-                    var num1 = @Model.Auther.Count;
-                    var num2 = @Model.Encs.Count;
-                    var num3 = (@Model.Books.Count) * 2;
-                    var res = num1 + num2 + num3;
-                }
-                <p style="color: #333333; margin-top: 10px;font-size:25px">@res</p>
-            </div>
-            <div class="col " style="text-align: center;">
-                <h5 style="color:#333333; margin-top: 15px">@Stage_Books.languages.Resource.Books</h5>
-                <img src="~/img/books.png" alt="visitors" width="40" height="30" />
-                <p style="color:#333333; margin-top: 10px;font-size:25px">@Model.Books.Count</p>
-            </div>
-            <div class="col " style="text-align: center; border-radius: 5px; " hidden>
-                <h5 style="color:white; margin-top: 15px">@Stage_Books.languages.Resource.Visitors</h5>
-                <img src="~/img/Statistic.png" alt="visitors" width="40" height="30" />
-                <p style="color:white; margin-top: 10px;">0</p>
-            </div>
-        </div>
-    </div>
     <!-- نبذة مختصرة عن ستيج  -->
-     <!-- search section -->
-    <div class="container-fluid">
-        
-        <div class="container-fluid bg-light" style="text-align: center; margin-top: 25px; background-color:#DEDEDE; padding: 20px; padding-bottom: 40px;">
-               <h5>@Stage_Books.languages.Resource.Search</h5>
-              <div class="row" >
-                  <br />
-                 @using (Html.BeginForm("Search","Home",FormMethod.Post))
-                {
-                       <div class="" style="margin:0 auto" >
-                         <div class="class="col-6">
-                           <input type="text" name="searchname" class="form-control" />              
-                           @*<input type="submit" value="Search" />   *@           
-                       </div> 
-                     </div>
-                }
-              </div>
-            </div>
+     <!-- search section --> 
 
-        </div>
      <!-- container -->
-    <div class="container-fluid">
-           <div class="row">
-               <!--cat -->
-         <div class="col-sm">
-                <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
-                    @*<h3>@Stage_Books.languages.Resource.Categories</h3>*@
-                    <div class="list-group">
-                      <div class="p-3 mb-2 bg-secondary text-white">Topic</div>
-                    </div>
-                     @if(!Model.Books.Any())
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                No Data !
-                            </div>
-                        }
-                        else
-                        {
-                        @foreach (var item in Model.Books)
-                       {
-                           <a href="#" class="list-group-item list-group-item-action">
-                               @item.Topic
-                           </a>
-                           }
-                        }
-                <br />
-                   	<a class="nav-link text-info" href="../Home/gototopic">More Topics ..<span class="sr-only">(current)</span></a>
-                    <hr>
-                <div class="list-group">
-                        <div class="p-3 mb-2 bg-secondary text-white">
-                            @Stage_Books.languages.Resource.Authors
-                        </div>
-                        @if(!Model.Books.Any())
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                No Data !
-                            </div>
-                        }
-                        else
-                        {
-                      
-                          @foreach (var item in Model.Auther)
-                          {
-                           <a href="#" class="list-group-item list-group-item-action">
-                               @item.Name.ToString();
-                           </a>      
-                          }
-                        }
-                    </div>
-                    <a class="nav-link text-info" href="../Home/gotoauthors">More @Stage_Books.languages.Resource.Authors ..<span class="sr-only">(current)</span></a>
-                    <hr>
-                    <div class="list-group">
-                        <div class="p-3 mb-2 bg-secondary text-white">
-                            @Stage_Books.languages.Resource.Categories
-                        </div>
-                        @if(!Model.Books.Any())
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                No Data !
-                            </div>
-                        }
-                        else
-                        {
-                        @foreach (var item in Model.Books)
-                          {
-                           <a href="#" class="list-group-item list-group-item-action">
-                               @item.Category
-                           </a>
-                          }
-                         }
-                    </div>
-                    	<a class="nav-link text-info" href="../Home/gotocat">More @Stage_Books.languages.Resource.Categories ..<span class="sr-only">(current)</span></a>
-                    <hr />
-               <div class="list-group">
-                            <div class="p-3 mb-2 bg-secondary text-white">
-                              @Stage_Books.languages.Resource.Books_Language
-                            </div>
-                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyenglish">@Stage_Books.languages.Resource.English</a>
-                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyrabic">@Stage_Books.languages.Resource.Arabic</a>
-                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyfrench">@Stage_Books.languages.Resource.French</a>
-                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyspanish">@Stage_Books.languages.Resource.Spanich</a>
-                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbygerman">@Stage_Books.languages.Resource.German</a>
-                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyhindi">@Stage_Books.languages.Resource.Hindi</a>
 
-                     </div>
-                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" hidden>Read More ...</button>
-                        <hr>
-                    </div>
-            </div>
-            <!-- main container -->
-            <div class="col-8">
-                <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
-                    <h3> What About STAGE</h3>
-                    <p>
-                        what about stage lurem upson
-                    </p>
-                    <a class="btn btn-outline-primary my-2 my-sm-0" asp-area="" asp-controller="publicpages" asp-action="about_stage">Read More ...</a>
-                </div>
-
-
-       <!-- end meddil nav -->
-       
-
-         <div class="card text-center" >
-                    <div class="card-header" style="background-color:white">
-                           <img class="" width="150" height="150" src="img/ads.jpg" alt="Card image cap">
-                            <hr />
-                            <p class="card-text">Ads</p>
-                    </div>
-                    <div class="card-body">
-                    </div>
-              </div>
-                <br />
-                 <div class="container">
-                    <div class="row" style="">
-                   
-                        @if(!Model.Books.Any())
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                No Data !
-                            </div>
-                        }
-                        else
-                        {
-                      
-                        @foreach (var item in Model.Books)
-                       {
-                           
-                            <div  class="card mb-2" style="width:auto; margin:0px auto;border:2px solid gray; border-radius:6px;background-color:#eeeeee">
-                                <div class="mt-sm-3" style="margin:0px auto">
-                                      <img class="" src="@item.ImageURL" alt="Card image cap" width="150" height="200" style="border-radius:5px">
-                                </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title" style="text-align:center;background-color:#eeeeee">@item.Name</h5>
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group" style="text-align:center;background-color:#eeeeee">@item.Author.Name</li>
-                                       @* <li class="list-group-item" style="text-align:center;background-color:#eeeeee">@item.Language</li>*@
-                                       @* <li class="list-group" style="text-align:center;background-color:#eeeeee">@item.Topic</li>*@
-                                    </ul>
-                                    <div class="card-body">
-                                        
-                                        <a asp-controller="books" asp-action="Book_Details" asp-route-id="@item.ID" class="btn btn-danger" style="width:100%;border-radius:9px">Details</a><br><hr>
-                                       
-                                       <a href="#" class="btn btn-success">Save</a>
-                                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Fav</a>
-                                        <a data-toggle="modal" data-target="#myModal1"  class=" btn btn-warning">Intro</a>
-                                        <a class="btn btn-info" data-toggle="modal"  data-target="#myModal"> Index</a>
-
-
-  
-                                </div>
-                                    </div>
-                               <br />
-                                <hr />
-
-                                  <!-- The Modal -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title" style="text-align:center">Book Index</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          <iframe width="100%" height="100%" src="@Html.DisplayFor(modelItem => item.BookIndex)"></iframe>
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-    <!-- The Modal -->
-  <div class="modal" id="myModal1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title" style="text-align:center">Book Introdction</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          <iframe type="text/html" width="100%" height="100%" src="@item.BookIntro"></iframe>
-          
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-                           }
-                       }
-
-                        </div>
-                     
-                    </div>
-                       <br />
-                    <br />
-                     
-                     <!-- paging control for navigation to the previous page, next page, etc -->
-                    @Html.PagedListPager(Model.Books.ToPagedList(), page => Url.Action("Index", new { page = page }),
-                        new X.PagedList.Mvc.Core.Common.PagedListRenderOptions
-                        {
-                            DisplayItemSliceAndTotal = true,
-                            ContainerDivClasses = new[] { "navigation" },
-                            LiElementClasses = new[] { "page-item" },
-                            PageClasses = new[] { "page-link" },
-                       })
-            </div>
-            <!-- Ads -->
-            <div class="col-sm">
-                <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
-                   
-                    <div class="card" style="width: 12rem; ">
-
-                        <div class="card-body">
-                            <img class="card-img-top" src="img/ads.jpg" alt="Card image cap">
-                            <hr />
-                            <p class="card-text">Ads</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="card" style="width: 12rem;">
-
-                        <div class="card-body">
-                            <img class="card-img-top" src="img/ads.jpg" alt="Card image cap">
-                            <hr />
-                            <p class="card-text">Ads</p>
-                        </div>
-                    </div>
-
-                    <hr>
-                    <div class="card" style="width: 12rem; ">
-
-                        <div class="card-body">
-                            <img class="card-img-top" src="img/ads.jpg" alt="Card image cap">
-                            <hr />
-                            <p class="card-text">Ads</p>                  
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="card" style="width: 12rem; ">
-
-                        <div class="card-body">
-                            <img class="card-img-top" src="img/ads.jpg" alt="Card image cap">
-                            <hr />
-                            <p class="card-text">Ads</p>                        </div>
-                    </div>
-                    <hr>
-                    <div class="card" style="width: 12rem;">
-
-                        <div class="card-body">
-                            <img class="card-img-top" src="img/ads.jpg" alt="Card image cap">
-                            <hr />
-                            <p class="card-text">Ads</p>
-                        </div>
-                      </div>
-                    <hr>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- -->
-
-      
-        <section class="category-filter section-padding">
+       <!-- Start: Search Section -->
+        <section class="search-filters mt-5 mb-5">
             <div class="container">
-                <div class="center-content">
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3">
-                            <h2 class="section-title">Check Out The New Releases</h2>
-                            <span class="underline center"></span>
-                            <p class="lead">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>
+                <div class="filter-box">
+                    <h3>What are you looking for at the library?</h3>
+                        <div class="col-md-10 col-sm-6">
+                            <div class="form-group">
+                                 @using (Html.BeginForm("Search","Home",FormMethod.Post))
+                                    {
+                                           <div class="" style="margin:0 auto" >
+                                             <div class="class="col-6">
+                                               <input type="text" name="searchname" class="form-control" />              
+                                               @*<input type="submit" value="Search" />   *@           
+                                           </div> 
+                                         </div>
+                                    }
+                               @*@using (Html.BeginForm("Search","Home",FormMethod.Post))
+                                 {
+                                <label class="sr-only" for="keywords">Search by Keyword</label>
+                                <input style="font-size:15px" class="form-control" placeholder="Search by Keyword" id="keywords" name="searchname" type="text">
+                                 }*@
+                            </div>
                         </div>
-                    </div>
+                        @*<div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                <select name="catalog" id="catalog" class="form-control">
+                                    <option>Search the Catalog</option>
+                                    <option>Catalog 01</option>
+                                    <option>Catalog 02</option>
+                                    <option>Catalog 03</option>
+                                    <option>Catalog 04</option>
+                                    <option>Catalog 05</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                <select name="category" id="category" class="form-control">
+                                    <option>All Categories</option>
+                                    <option>Category 01</option>
+                                    <option>Category 02</option>
+                                    <option>Category 03</option>
+                                    <option>Category 04</option>
+                                    <option>Category 05</option>
+                                </select>
+                            </div>
+                        </div>*@
+                        <div class="col-md-2 col-sm-6">
+                            <div class="form-group">
+                                <input class="form-control" type="submit" value="Search">
+                                 @*<input type="submit" value="Search" />   *@
+                            </div>
+                        </div>
                 </div>
-                <div class="filter-buttons">
-                    <div class="filter btn" data-filter="all">All Releases</div>
-                    <div class="filter btn" data-filter=".adults">Adults</div>
-                    <div class="filter btn" data-filter=".kids-teens">Kids &amp; Teens</div>
-                    <div class="filter btn" data-filter=".video">Video</div>
-                    <div class="filter btn" data-filter=".audio">Audio</div>
-                    <div class="filter btn" data-filter=".books">Books</div>
-                    <div class="filter btn" data-filter=".magazines">Magazines</div>
-                </div>
-            </div>
-            <div id="category-filter">
-                <ul class="category-list">
-                    <li class="category-item adults">
-                        <figure>
-                            <img src="~/img/category-filter-img-01.jpg" alt="New Releaase" />
-                            <figcaption class="bg-orange">
-                                <div class="info-block">
-                                    <h4>The Great Gatsby</h4>
-                                    <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                    <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                    <div class="rating">
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                    </div>
-                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                    <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                                    <ol>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-heart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-envelope"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </li>
-                    <li class="category-item kids-teens">
-                        <figure>
-                            <img src="~/img/category-filter-img-02.jpg" alt="New Releaase" />
-                            <figcaption class="bg-orange">
-                                <div class="info-block">
-                                    <h4>The Great Gatsby</h4>
-                                    <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                    <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                    <div class="rating">
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                    </div>
-                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                    <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                                    <ol>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-heart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-envelope"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </li>
-                    <li class="category-item video">
-                        <figure>
-                            <img src="~/img/category-filter/home-v1/category-filter-img-03.jpg" alt="New Releaase" />
-                            <figcaption class="bg-orange">
-                                <div class="info-block">
-                                    <h4>The Great Gatsby</h4>
-                                    <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                    <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                    <div class="rating">
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                    </div>
-                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                    <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                                    <ol>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-heart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-envelope"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </li>
-                    <li class="category-item audio">
-                        <figure>
-                            <img src="~/img/category-filter/home-v1/category-filter-img-04.jpg" alt="New Releaase" />
-                            <figcaption class="bg-orange">
-                                <div class="info-block">
-                                    <h4>The Great Gatsby</h4>
-                                    <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                    <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                    <div class="rating">
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                    </div>
-                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                    <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                                    <ol>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-heart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-envelope"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </li>
-                    <li class="category-item books">
-                        <figure>
-                            <img src="~/img/category-filter-img-01.jpg" alt="New Releaase" />
-                            <figcaption class="bg-orange">
-                                <div class="info-block">
-                                    <h4>The Great Gatsby</h4>
-                                    <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                    <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                    <div class="rating">
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                    </div>
-                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                    <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                                    <ol>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-heart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-envelope"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </li>
-                    <li class="category-item magazines">
-                        <figure>
-                            <img src="~/img/category-filter/home-v1/category-filter-img-06.jpg" alt="New Releaase" />
-                            <figcaption class="bg-orange">
-                                <div class="info-block">
-                                    <h4>The Great Gatsby</h4>
-                                    <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                    <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                    <div class="rating">
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                    </div>
-                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                    <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                                    <ol>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-heart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-envelope"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </li>
-                    <li class="category-item adults">
-                        <figure>
-                            <img src="~/img/category-filter/home-v1/category-filter-img-07.jpg" alt="New Releaase" />
-                            <figcaption class="bg-orange">
-                                <div class="info-block">
-                                    <h4>The Great Gatsby</h4>
-                                    <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                    <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                    <div class="rating">
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                    </div>
-                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                    <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                                    <ol>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-heart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-envelope"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </li>
-                    <li class="category-item kids-teens">
-                        <figure>
-                            <img src="~/img/category-filter/home-v1/category-filter-img-08.jpg" alt="New Releaase" />
-                            <figcaption class="bg-orange">
-                                <div class="info-block">
-                                    <h4>The Great Gatsby</h4>
-                                    <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                    <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                    <div class="rating">
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                        <span>☆</span>
-                                    </div>
-                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                    <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                                    <ol>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-heart"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-envelope"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-share-alt"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </li>
-                </ul>
-                <div class="center-content">
-                    <a href="#" class="btn btn-primary">View More</a>
-                </div>
-                <div class="clearfix"></div>
             </div>
         </section>
-     
-        
+        <!-- End: Search Section -->
+
+        <!-- Start: Category -->
+        <section class="search-filters mt-5 mb-5">
+            <div class="container">
+                <div class="filter-box">
+                    <h3>All Categories</h3>
+                    <form action="" method="get">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                @*<select name="catalog" id="catalog" class="form-control">
+                                    <option>Topics</option>
+                                     @if(!Model.Books.Any())
+                                    {
+                                        <div class="alert alert-danger" role="alert">
+                                            No Data !
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                    @foreach (var item in Model.Books)
+                                    {
+                                       <option>@item.Topic</option>
+                                    }
+                                    }
+                                </select>*@
+                                <br />
+                               <a class="btn form-control" style="background-color:#ff7236;" asp-area="" asp-controller="Home" asp-action="gototopic">More Topics ..</a>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                @*<select name="catalog" id="catalog" class="form-control">
+                                    <option>Authors</option>
+                                    @if(!Model.Books.Any())
+                                    {
+                                        <div class="alert alert-danger" role="alert">
+                                            No Data !
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                    @foreach (var item in Model.Auther)
+                                   {
+                                       <option>@item.Name.ToString()</option>
+                                    }
+                                    }
+                                </select>*@
+                                 <br />
+                               <a class="btn" style="background-color:#ff7236;" asp-area="" asp-controller="Home" asp-action="gotoauthors">More Authors ..</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                @*<select name="category" id="category" class="form-control">
+                                    <option>Categorys</option>
+                                     @if(!Model.Books.Any())
+                                    {
+                                        <div class="alert alert-danger" role="alert">
+                                            No Data !
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                    @foreach (var item in Model.Books)
+                                   {
+                                       <option>@item.Category</option>
+                                    }
+                                    }
+
+                                </select>*@
+                                <br />
+                               <a class="btn" style="background-color:#ff7236;" asp-area="" asp-controller="Home" asp-action="gotocat">More Categories ..</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                <ul class="nav navbar-nav form-control" style="display:inline" name="category" id="category">
+                                 <li class="dropdown">
+                                            <a data-toggle="dropdown" class="dropdown-toggle disabled">@Stage_Books.languages.Resource.Languages</a>
+                                            <ul class="dropdown-menu">
+                                               <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyenglish">@Stage_Books.languages.Resource.English</a>
+                                               <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyrabic">@Stage_Books.languages.Resource.Arabic</a>
+                                               <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyfrench">@Stage_Books.languages.Resource.French</a>
+                                               <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyspanish">@Stage_Books.languages.Resource.Spanich</a>
+                                               <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbygerman">@Stage_Books.languages.Resource.German</a>
+                                               <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyhindi">@Stage_Books.languages.Resource.Hindi</a>
+                                               
+                                            </ul>
+                                        </li>
+                                </ul>
+                            
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- End: Category -->
+
+        <!-- Start: Category Filter -->
+
+        <section class="category-filter section-padding" style="background-image: url(img/project-filter-bg-home-v1.jpg);">
+             <div class="container">
+                   <div class="center-content">
+                                    <div class="row">
+                                        <div class="col-md-6 col-md-offset-3">
+                                            <h2 class="section-title">Check Stage Books</h2>
+                                            <span class="underline center"></span>
+                                            <p class="lead">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>
+                                        </div>
+                                    </div>
+                       </div>
+@*                     <div class="filter-buttons">
+                                    <div class="filter btn" data-filter="all">All Releases</div>
+                                    <div class="filter btn" data-filter=".adults">Adults</div>
+                                    <div class="filter btn" data-filter=".kids-teens">Kids &amp; Teens</div>
+                                    <div class="filter btn" data-filter=".video">Video</div>
+                                    <div class="filter btn" data-filter=".audio">Audio</div>
+                                    <div class="filter btn" data-filter=".books">Books</div>
+                                    <div class="filter btn" data-filter=".magazines">Magazines</div>
+                                </div>*@
+                            
+                            <div id="category-filter">
+                                <ul class="category-list">
+                                     @if(!Model.Books.Any())
+                                     {
+                                            <div class="alert alert-danger" role="alert">
+                                                No Data !
+                                            </div>
+                                     }
+                                     else
+                                     {
+                                    @foreach (var item in Model.Books)
+                                   {
+                                      <li class="category-item adults" >
+                                        <figure>
+                                            <img src="@item.ImageURL" alt="New Releaase" />
+                                            <figcaption class="bg-orange">
+                                                <div class="info-block">
+                                                    <h4>@item.Name</h4>
+                                                    <span class="author"><strong>@Stage_Books.languages.Resource.Author:</strong>@item.Author.Name</span>
+                                                    <span class="author"><strong>@Stage_Books.languages.Resource.Language:</strong>@item.Language</span>
+                                                   @* <span class="author"><strong>Topic:</strong>@item.Topic</span>*@
+
+                                                    <div class="rating">
+                                                        <span>☆</span>
+                                                        <span>☆</span>
+                                                        <span>☆</span>
+                                                        <span>☆</span>
+                                                        <span>☆</span>
+                                                    </div>
+                                                    <p>@item.Desc</p>
+                                                    <a asp-controller="books" asp-action="Book_Details" asp-route-id="@item.ID">Read Details <i class="fa fa-long-arrow-right"></i></a>
+                                                    <ol>
+                                                        <li>
+                                                           
+                                                            
+                                                        </li>
+                                                        <li>
+                                                            <a >
+                                                        <span class="">
+                                                            </span>
+                                                    </a>
+                                                            
+                                                        </li>
+                                                        <li>
+                                                            
+                                                        </li>
+                                                        <li>
+                                                            
+                                                        </li>
+                                                         <li>
+                                                            
+                                                        </li>
+                                                    </ol>
+                                                    <ol>
+                                                        <li>
+                                                            <a asp-area="" asp-controller="OrderViewModels" asp-action="Create">
+                                                                <i class="fa fa-shopping-cart"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                          
+                                                            <button type="submit" name="id">
+                                                                <i class="fa fa-heart"></i>
+                                                            </button>
+                                                       
+                                                        </li>
+                                                        <li>
+                                                            <a asp-area="" asp-controller="Contactmsgs" asp-action="Create">
+                                                                <i class="fa fa-envelope"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <i class="fa fa-search"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ol>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                    </li>
+                                    }
+                                   }
+                                </ul>
+                                <div class="center-content">
+                                    <a href="#" class="btn btn-primary">View More</a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                </div>
+        </section>
+
+         <br />
+                       <div class="container mt-5">
+                          <div style="margin:0px auto">
+                            <!-- paging control for navigation to the previous page, next page, etc -->
+                             @Html.PagedListPager(Model.Books.ToPagedList(), page => Url.Action("Index", new { page = page }),
+                             new X.PagedList.Mvc.Core.Common.PagedListRenderOptions
+                              {
+                                            DisplayItemSliceAndTotal = true,
+                                            ContainerDivClasses = new[] { "navigation" },
+                                            LiElementClasses = new[] { "page-item" },
+                                            PageClasses = new[] { "page-link" },
+                             })
+                          </div>
+                      </div>
+            <!-- Ads -->
+            @*<div class="col-2">
+                <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
+                    <div class="card" style="width: 12rem; ">
+                        <div class="card-body">
+                            <img class="card-img-top" src="img/ads.jpg" alt="Card image cap">
+                            <hr />
+                            <p class="card-text">Ads</p>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+               </div>
+          </div>
+        <!-- -->
+
+      <!-- Start: services -->
+        <section class="team section-padding">
+            <div class="container">
+                <div class="center-content">
+                    <h2 class="section-title"> Our Services</h2>
+                    <span class="underline center"></span>
+                    <p class="lead"></p>
+                </div>
+                <br />
+                <div class="team-list">
+                    <div class="team-member">
+                        <figure>
+                            <img src="~/img/team-img-01.jpg" alt="team" />
+                        </figure>
+                        <div class="content-block">
+                            <div class="member-info">
+                               <h4>S t a g e</h4>
+                                <span class="designation">Executive Director</span>
+                                <ul class="social">
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="fa fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                                <p>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here...</p>
+                                <a class="btn btn-primary" href="#">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <figure>
+                            <img src="~/img/team-img-02.jpg" alt="team" />
+                        </figure>
+                        <div class="content-block">
+                            <div class="member-info">
+                                <h4>S t a g e</h4>
+                                <span class="designation">Deputy Director</span>
+                                <ul class="social">
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="fa fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <p>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here...</p>
+                                <a class="btn btn-primary" href="#">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <figure>
+                            <img src="~/img/team-img-03.jpg" alt="team" />
+                        </figure>
+                        <div class="content-block">
+                            <div class="member-info">
+                                <h4>S t a g e</h4>
+                                <span class="designation">Librarian</span>
+                                <ul class="social">
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="fa fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <p>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here...</p>
+                                <a class="btn btn-primary" href="#">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End: our servises -->
+
        <!-- Start: Social Network -->
         <section class="social-network section-padding">
             <div class="container">
                 <div class="center-content">
                     <h2 class="section-title">Follow Us</h2>
                     <span class="underline center"></span>
-                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
+                <br />
                 <ul>
                     <li>
                         <a class="facebook" href="#" target="_blank">
@@ -981,7 +961,7 @@
                     <li>
                         <a class="rss" href="#" target="_blank">
                             <span>
-                                <i class="fa fa-rss"></i>
+                                <i class="fa fa-envelope"></i>
                             </span>
                         </a>
                     </li>
@@ -1002,8 +982,9 @@
                 </ul>
             </div>
         </section>
-      <!-- Start: Social Network -->
+      <!-- Start Social Network -->
 
+        <!-- End: Footer -->
     <!-- Footer  -->
 @*    <div class="container-fluid" style="background-color: #333333;">
 		<div class="row">
@@ -1107,63 +1088,24 @@
             $('ul.pagination > li.disabled > a').addClass('page-link');
         });
 
-
     </script>
     }
-
-    <!-- Optional JavaScript; choose one of the two! -->
-                    <!-- jQuery Latest Version 1.x -->
         <script type="text/javascript" src="~/js/jquery-1.12.4.min.js"></script>
-        
-        <!-- jQuery UI -->
         <script type="text/javascript" src="~/js/jquery-ui.min.js"></script>
-        
-        <!-- jQuery Easing -->
         <script type="text/javascript" src="~/js/jquery.easing.1.3.js"></script>
-
-        <!-- Bootstrap -->
         <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
-        
-        <!-- Mobile Menu -->
         <script type="text/javascript" src="~/js/mmenu.min.js"></script>
-        
-        <!-- Harvey - State manager for media queries -->
         <script type="text/javascript" src="~/js/harvey.min.js"></script>
-        
-        <!-- Waypoints - Load Elements on View -->
         <script type="text/javascript" src="~/js/waypoints.min.js"></script>
-
-        <!-- Facts Counter -->
         <script type="text/javascript" src="~/js/facts.counter.min.js"></script>
-
-        <!-- MixItUp - Category Filter -->
         <script type="text/javascript" src="~/js/mixitup.min.js"></script>
-
-        <!-- Owl Carousel -->
         <script type="text/javascript" src="~/js/owl.carousel.min.js"></script>
-        
-        <!-- Accordion -->
         <script type="text/javascript" src="~/js/accordion.min.js"></script>
-        
-        <!-- Responsive Tabs -->
         <script type="text/javascript" src="~/js/responsive.tabs.min.js"></script>
-        
-        <!-- Responsive Table -->
         <script type="text/javascript" src="~/js/responsive.table.min.js"></script>
-        
-        <!-- Masonry -->
         <script type="text/javascript" src="~/js/masonry.min.js"></script>
-        
-        <!-- Carousel Swipe -->
         <script type="text/javascript" src="~/js/carousel.swipe.min.js"></script>
-        
-        <!-- bxSlider -->
         <script type="text/javascript" src="~/js/bxslider.min.js"></script>
-        
-        <!-- Custom Scripts -->
         <script type="text/javascript" src="~/js/main.js"></script>
-    <script src="~/js/js.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>

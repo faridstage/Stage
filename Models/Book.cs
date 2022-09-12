@@ -8,6 +8,7 @@ namespace Stage_Books.Models
 {
     public class Book
     {
+       
         public int ID { get; set; }
         [Required]
         public string Name { get; set; }

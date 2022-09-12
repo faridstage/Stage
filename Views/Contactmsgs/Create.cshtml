@@ -1,5 +1,27 @@
 ﻿@model Stage_Books.Models.Contact.Contactmsg
 
+
+@inject SignInManager<ApplicationUser> signInManager;
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Stage_Books.Models.Account
+@using System.Security.Claims
+
+@inject IViewLocalizer localizer
+@inject IOptions<RequestLocalizationOptions> locoption
+@{
+	var requestculture = Context.Features.Get<IRequestCultureFeature>();
+	var culitems = locoption.Value.SupportedUICultures.Select(c => new SelectListItem
+			{
+				Value = c.Name,
+				Text = c.NativeName
+			}).ToList();
+	var returnurl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+}
+
 @{
     ViewData["Title"] = "Create";
 }
@@ -12,59 +34,162 @@
     <meta name="descrption" content="Best website to Find any Books">
     <!-- Bootstrap CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+	<link href="~/css/style.css" rel="stylesheet">
+	<link href="~/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link href="~/css/Footersite.css" rel="stylesheet" type="text/css" />
 </head>
 <body oncontextmenu="return false;" style="font-family:Cairo,Roboto">
+	<!--main nav-->
+  	<div class="container-fluid" style="background-color:#333333">
+		<nav class="navbar navbar-expand-lg navbar-light " style="background-color:#333333;color:#ff7236;">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<img src="~/img/stage_logo1.png" alt="language" width="30" height="30" style="margin-right: 10px;">
+			<a class="navbar-brand" href="#" style="color:#ff7236;">S T A G E</a>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" style="color:white;" asp-area="" asp-controller="Home" asp-action="Index">@Stage_Books.languages.Resource.Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" style="color:white;" asp-area="" asp-controller="Contactmsgs" asp-action="Create">@Stage_Books.languages.Resource.Contact<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" style="color:white;" asp-area="" asp-controller="publicpages" asp-action="policy">@Stage_Books.languages.Resource.Policy<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" style="color:white;" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+						   aria-haspopup="true" aria-expanded="false">
+							@Stage_Books.languages.Resource.About
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">@Stage_Books.languages.Resource.About_Stage</a>
+
+							<a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="service">@Stage_Books.languages.Resource.Services</a>
+							<a class="dropdown-item" asp-area="" asp-controller="Help" asp-action="Help">@Stage_Books.languages.Resource.Help</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#"></a>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" style="color:white;" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+						   aria-haspopup="true" aria-expanded="false">
+							Books & Authors
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">eBooks</a>
+							<a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="gotoauthors">@Stage_Books.languages.Resource.Authors</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#"></a>
+							</div>
+						</div>
+					</li>
+
+						<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" style="color:white;" id="navbarDropdownMenuLink" data-toggle="dropdown"
+						   aria-haspopup="true" aria-expanded="false">
+							Other
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="nav-link" asp-area="" asp-controller="Encs" asp-action="index">@Stage_Books.languages.Resource.Encyclopedia</a>
+							
+							<a class="nav-link" asp-area="" asp-controller="Scriptpapers" asp-action="Index">Manuscripts</a>
+							<a class="nav-link" asp-area="" asp-controller="paperssearchers" asp-action="Index">Researcher Papers</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#"></a>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+						   aria-haspopup="true" aria-expanded="false" style="color:white">
+						   <i class="bi bi-translate mr-2"></i>Language</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" title="@localizer["Request culture provider:"] @requestculture?.Provider?.GetType().Name">
+
+                            <form id="selectlanguage" asp-controller="Home" asp-action="setlang" asp-route-returnurl="@returnurl" method="post">
+                                                       
+                              <select class="form-control form-control-sm" name="culture"
+                                      onchange="this.form.submit();" asp-for="@requestculture.RequestCulture.UICulture.Name"
+                                       asp-items="culitems">
+                           
+                      
+                               </select>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#"></a>
+                            </div>
+                            </form>
+                            </div>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" style="color:white;" asp-area="" asp-controller="Help" asp-action="Help">@Stage_Books.languages.Resource.Help<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" style="color:white;" asp-area="" asp-controller="OrderViewModels" asp-action="Create"><i style="color:#ff7236" class="bi bi-cart-check mr-2"></i>Order<span class="sr-only">(current)</span></a>
+					</li>
+				</ul>
+
+			</div>
+
+			@if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+			{
+				<a asp-action="Index" asp-controller="Books" class="btn btn-danger nav-link">DASHBOARD</a>
+			}
+
+			@if (signInManager.IsSignedIn(User))
+			{
+				<form method="post" asp-action="Logout" asp-controller="Account" class="form-inline">
+					<button type="submit" class="btn btn-outline-primary my-2 my-sm-0 mr-3">Logout</button>
+				</form>
+				<h5>@User.Identity.Name</h5>
+			}
+			else
+			{
+				<a style="color:white;outline-color:#ff7236;" class="btn btn-outline-warning my-2 my-sm-0" asp-action="Register" asp-controller="Account">	@Stage_Books.languages.Resource.New_Account	</a>
+				<a style="color:white;outline-color:#ff7236;" class="btn btn-outline-warning my-2 my-sm-0" asp-action="Login" asp-controller="Account">@Stage_Books.languages.Resource.Login</a>
+			}
+
+			@{
+				string id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+				if (id != null)
+				{
+					<a asp-action="SaveBook" asp-controller="Home" asp-route-id="@id">
+						<img src="../img/unkown.png" alt="User" width="25" height="25" style="border:1px solid white;border-radius:50%">
+					</a>
+				}
+			}
+		    </nav>
+  </div>
 
         <div class="row" style="margin:0 auto; text-align:center">
             <br />
             <br />
-         
-          
             <br />
         </div>
 
         <div class="container">
              <div class="row">
              <div class="col-md-1 col-1">
-
         </div>
         <div class="col-md-5 col-12">
-            
                <h1>Send Message</h1>
-                 <br />
-            <hr />
-            <h4>
-                @Stage_Books.languages.Resource.You_Can_Contact_Us___Ask_About_Anything_And_We_Responce_on_Your_E_Mail_Address
-            </h4>
-            <br />
-            <h5 style="color: blue;">@Stage_Books.languages.Resource.Or_Visit_us_On:</h5>
-            <br> 
-                <div class="row">
-                    <img src="/img/facebook.png" alt="Facebook" title="Facebook" width="30" height="30"
-                         style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                        Home <span class="sr-only">(current)</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <img src="/img/twitter.jpg" alt="Facebook" title="Facebook" width="30" height="30"
-                         style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                        Home <span class="sr-only">(current)</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <img src="/img/youtube.jpg" alt="Facebook" title="Facebook" width="30" height="30"
-                         style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-                        Home <span class="sr-only">(current)</span>
-                    </a>
-                </div>
+               <br />
+				<hr />
+				<h4>@Stage_Books.languages.Resource.You_Can_Contact_Us___Ask_About_Anything_And_We_Responce_on_Your_E_Mail_Address</h4>
+               <br />
+              <br> 
         </div>
 
         <div class="col-md-5 col-12">
@@ -93,111 +218,16 @@
                 <span asp-validation-for="body" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Send" class="btn btn-primary btn-lg btn-block" />
+                <input type="submit" value="Send" class="btn btn-lg btn-block" style="background-color:#ff7236"/>
              </div>
              </form>
             <div>
-           <a asp-controller="Home" asp-action="Index">Back to Homet</a>
+           
         </div>
-    </div>
+           </div>
         </div>
      </div>
-        <!--footer-->
-    <!-- Footer  -->
-    <div class="container-fluid" style="background-color: #333333;">
-		<div class="row">
-			<div class="col" style="text-align: center; padding: 7px;">
-				<span style="color: white; font-size: 2rem;">S T A G E </span>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col" style="text-align: center; padding: 10px; margin: 15px;">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-6" style="">
-				<div class="row">
-					<span style="color:#333333; font-size: 1.5rem; text-align: center;">Contact Us </span>
-				</div>
-				<div class="row">
-					<img src="~/img/home.png" alt="Facebook" title="Facebook" width="30" height="30"
-						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-						@Stage_Books.languages.Resource.Home<span class="sr-only">(current)</span>
-					</a>
-				</div>
-				<div class="row">
-					<img src="~/img/about-us.jpg" alt="Facebook" title="Facebook" width="30" height="30"
-						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-						@Stage_Books.languages.Resource.About_Stage
-						<span class="sr-only">(current)</span>
-					</a>
-				</div>
-				<div class="row">
-					<img src="~/img/services-icon-4.jpg" alt="Facebook" title="Facebook" width="30" height="30"
-						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-						@Stage_Books.languages.Resource.Our_Services
-						<span class="sr-only">(current)</span>
-					</a>
-				</div>
-				<div class="row">
-					<img src="~/img/community.png" alt="Facebook" title="Facebook" width="30" height="30"
-						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-						@Stage_Books.languages.Resource.Our_Message
-						<span class="sr-only">(current)</span>
-					</a>
-				</div>
-				<div class="row">
-					<img src="~/img/facebook.png" alt="Facebook" title="Facebook" width="30" height="30"
-						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-						@Stage_Books.languages.Resource.Join_Us<span class="sr-only">(current)</span>
-					</a>
-				</div>
-			</div>
 
-			<div class="col-6" style="text-align: center;">
-				<div class="row">
-					<span style="color: white; font-size: 1.5rem; text-align: center;">Contact Us</span>
-				</div>
-				<div class="row">
-					<a class="nav-link" href="#" style="color:white;">
-						<img src="~/img/facebook.png" alt="Facebook" title="Facebook"
-							 width="30" height="30"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Facebook</span>
-					</a>
-				</div>
-				<div class="row">
-					<a class="nav-link" href="#" style="color:white;">
-						<img src="~/img/twitter.jpg" alt="twitter" title="twitter"
-						 width="33" height="33"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Twitter</span>
-					</a>
-				</div>
-				<div class="row">
-					<a class="nav-link" href="#" style="color:white;">
-						<img src="~/img/youtube.jpg" alt="youtube" title="youtube"
-							 width="30" height="30"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Youtube</span>
-					</a>
-				</div>
-				<div class="row">
-					<a class="nav-link" href="https://mail.google.com/" style="color:white;" target="_blank">
-						<img src="~/img/Gmail.ico" alt="Gmail" title="Gmail"
-						width="30" height="30"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">stage.books.2022@gmail.com</span>
-					</a>
-				</div>
-			</div>
-		</div>
-		<div class="row" hidden>
-			<div class="col " style="text-align: center; border-radius: 5px; ">
-				<h5 style="color: white; margin-top: 15px">@Stage_Books.languages.Resource.Visitors</h5>
-				<img src="~/img/Statistic.png" alt="visitors" width="40" height="30" />
-				<p style="color: white; margin-top: 10px;">0</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col" style="text-align: center; padding: 7px;">
-				<span style="color: white;">&copy; Copyright Stage 2022</span>
-			</div>
-		</div>
-	</div>
-<
     <script src="js/js.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -208,6 +238,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
