@@ -1,0 +1,71 @@
+﻿
+@******************************************@
+@model Stage_Books.Models.documentaries
+
+@{
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	ViewData["Title"] = "Delete";
+}
+
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-10">
+		<br />
+		<br />
+		<br />
+		<br />
+		<h2 style="text-align:center"> حذف وثائقى </h2>
+		<br />
+		<hr />
+		<br />
+		<div class="container">
+			<table class="table">
+				<tbody>
+					<tr>
+
+						<th scope="row">@Html.DisplayNameFor(model => model.DocName)</th>
+						<td>@Html.DisplayFor(model => model.DocName)</td>
+					</tr>
+					<tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.Produce)</th>
+						<td>@Html.DisplayFor(model => model.Produce)</td>
+					</tr>
+					<tr>
+						<td>@Html.DisplayNameFor(model => model.Category)</td>
+						<th scope="row">@Html.DisplayFor(model => model.Category)</th>
+						
+					</tr>
+					<tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.Publisher)</th>
+						<td>@Html.DisplayFor(model => model.Publisher)</td>
+					</tr>
+					<tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.PubDate)</th>
+						<td>@Html.DisplayFor(model => model.PubDate)</td>
+					</tr>
+					<tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.Language)</th>
+						<td>@Html.DisplayFor(model => model.Language)</td>
+					</tr>
+					<tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.Rights)</th>
+						<td>@Html.DisplayFor(model => model.Rights)</td>
+					</tr>
+				</tbody>
+			</table>
+			<br />
+			<hr />
+			<br />
+		</div>
+		<div class="container">
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                <a asp-action="Index">Back to List</a>
+            </form>
+		</div>
+		<br />
+		<hr />
+		<br />
+	</div>
+</div>

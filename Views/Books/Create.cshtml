@@ -161,19 +161,30 @@
 
 							</div>
 						</div>
-						<div class="col-md-3 mb-3">
+						<div class="col-md-3 mb-3" hidden>
 							<span class="text-danger" asp-validation-for="Category"></span>
 							<div class="input-group input-group-lg">
 								<select asp-for="Category" class="form-control form-select" aria-label="Sizing example input"
 										aria-describedby="inputGroup-sizing-lg" id="catselect" onchange="cataddmore()" required>
 									<option disabled selected>Select Category</option>
-									<option>داب</option>
+									<option>ادب</option>
 									<option>فلسفة</option>
 									<option>مقارنة اديان</option>
 									<option>دين</option>
 									<option>علوم</option>
 								</select>
 
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<span class="text-danger" asp-validation-for="CategoryID"></span>
+							<div class="input-group input-group-lg">
+								<select class="form-control form-select" aria-label="Sizing example input"
+										id="selectauthor" aria-describedby="inputGroup-sizing-lg" onchange="cataddmore()" required placeholder="تصنيف" asp-for="CategoryID"
+										asp-items="@(new SelectList(ViewBag.AllCat,"id","Name")) ">
+									<option disabled selected>اختار تصنيف </option>
+								</select>
+								<span></span>
 							</div>
 						</div>
 						<div class="col-md-4">
@@ -252,7 +263,7 @@
 									<span class="me-2">Choose Book Index</span>
 									<br />
 									<input asp-for="BookIndex" type="file" class="form-control" aria-label="Sizing example input"
-										   aria-describedby="inputGroup-sizing-lg" placeholder="Choose Word File" accept=".htm,.html">
+										   aria-describedby="inputGroup-sizing-lg" placeholder="Choose Word File" accept=".htm,.html ">
 								</div>
 							</div>
 							<br />

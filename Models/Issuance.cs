@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
 namespace Stage_Books.Models
 {
     public class Issuance
@@ -15,11 +15,13 @@ namespace Stage_Books.Models
         [Display(Name = " رقم الاصدار ")]
         public string IssuanceNumber { get; set; }
         [Display(Name = "الجريدة")]
-        public string Nid { get; set; }
+        public int Nid { get; set; }
         [ValidateNever]
         public virtual AllNewsPapers AllNewsPapers { get; set; }
 
         [Display(Name = "ملاحظات ")]
         public string note { get; set; }
+
+        public List<Issuancepaper> Issuancepaper { get; set; }
     }
 }

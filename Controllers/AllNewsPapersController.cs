@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +15,12 @@ namespace Stage_Books.Controllers
     public class AllNewsPapersController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public AllNewsPapersController(ApplicationDbContext context)
+        public AllNewsPapersController(ApplicationDbContext context , IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            this.webHostEnvironment = webHostEnvironment;
         }
 
         // GET: AllNewsPapers
@@ -23,13 +28,9 @@ namespace Stage_Books.Controllers
         {
             return View(await _context.allNewsPaper.ToListAsync());
         }
-        
-            public async Task<IActionResult> IndexShow()
-        {
-            return View(await _context.allNewsPaper.ToListAsync());
-        }
+
         // GET: AllNewsPapers/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -57,10 +58,30 @@ namespace Stage_Books.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nid,Name,owner,logo,newspaperdate,firstpubdate,category,lang,desc_info,type,note")] AllNewsPapers allNewsPapers)
+        public async Task<IActionResult> Create([Bind("Nid,Name,owner,Country,logo,newspaperdate,firstpubdate,category,lang,desc_info,type,note")] AllNewsPapers allNewsPapers , IFormFile newspaperlogoimg)
         {
             if (ModelState.IsValid)
             {
+                if (newspaperlogoimg != null)
+                {
+                    // Guid -> globally Unique Identifier
+                    string imgExtension = Path.GetExtension(newspaperlogoimg.FileName);
+                    Guid imgGuid = Guid.NewGuid();
+                    string imgName = imgGuid + imgExtension;
+                    string imgURL = "\\newspaperlogoimg\\" + imgName;
+                    allNewsPapers.logo = imgURL;
+
+                    string imgPath = webHostEnvironment.WebRootPath + imgURL;
+                    FileStream imgStream = new FileStream(imgPath, FileMode.Create);
+                    newspaperlogoimg.CopyTo(imgStream);
+                    imgStream.Dispose();
+
+
+                }
+                else
+                {
+                    allNewsPapers.logo = "\\newspaperlogoimg\\NoImage.jpeg";
+                }
                 _context.Add(allNewsPapers);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -69,7 +90,7 @@ namespace Stage_Books.Controllers
         }
 
         // GET: AllNewsPapers/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -89,7 +110,7 @@ namespace Stage_Books.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Nid,Name,owner,logo,newspaperdate,firstpubdate,category,lang,desc_info,type,note")] AllNewsPapers allNewsPapers)
+        public async Task<IActionResult> Edit(int id, [Bind("Nid,Name,owner,Country,logo,newspaperdate,firstpubdate,category,lang,desc_info,type,note")] AllNewsPapers allNewsPapers)
         {
             if (id != allNewsPapers.Nid)
             {
@@ -120,7 +141,7 @@ namespace Stage_Books.Controllers
         }
 
         // GET: AllNewsPapers/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -140,7 +161,7 @@ namespace Stage_Books.Controllers
         // POST: AllNewsPapers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var allNewsPapers = await _context.allNewsPaper.FindAsync(id);
             _context.allNewsPaper.Remove(allNewsPapers);
@@ -148,7 +169,7 @@ namespace Stage_Books.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AllNewsPapersExists(string id)
+        private bool AllNewsPapersExists(int id)
         {
             return _context.allNewsPaper.Any(e => e.Nid == id);
         }

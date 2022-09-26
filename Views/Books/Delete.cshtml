@@ -1,4 +1,6 @@
-﻿@model Stage_Books.Models.Book
+﻿
+@******************************************@
+@model Stage_Books.Models.Book
 
 @{
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -9,20 +11,18 @@
 	<div class="col-md-2"></div>
 	<div class="col-md-10">
 		<br />
-		<h2 style="text-align:center">Delete Book</h2>
+		<br />
+		<br />
+		<br />
+		<h2 style="text-align:center"> حذف كتاب </h2>
 		<br />
 		<hr />
 		<br />
 		<div class="container">
 			<table class="table">
-				<thead>
-					<tr>
-						<th scope="col">Rows</th>
-						<th scope="col">Data</th>
-					</tr>
-				</thead>
 				<tbody>
 					<tr>
+
 						<th scope="row">@Html.DisplayNameFor(model => model.Name)</th>
 						<td>@Html.DisplayFor(model => model.Name)</td>
 					</tr>
@@ -31,8 +31,8 @@
 						<td>@Html.DisplayFor(model => model.Pages)</td>
 					</tr>
 					<tr>
-						<th scope="row">@Html.DisplayNameFor(model => model.Category)</th>
-						<td>@Html.DisplayFor(model => model.Category)</td>
+						<th scope="row">@Html.DisplayFor(model => model.Categories)</th>
+						<td>@Html.DisplayNameFor(model => model.Categories)</td>
 					</tr>
 					<tr>
 						<th scope="row">@Html.DisplayNameFor(model => model.Desc)</th>
@@ -54,16 +54,15 @@
 						<th scope="row">@Html.DisplayNameFor(model => model.Topic)</th>
 						<td>@Html.DisplayFor(model => model.Topic)</td>
 					</tr>
-					<tr>
+				    <tr>
 						<th scope="row">@Html.DisplayNameFor(model => model.Language)</th>
 						<td>@Html.DisplayFor(model => model.Language)</td>
 					</tr>
 					<tr>
 						<th scope="row">@Html.DisplayNameFor(book =>book.ImageURL)</th>
-						<td>
-							<img style="width:200px; height:200px;margin-left:20px" src="@Html.DisplayFor(book =>book.ImageURL)" />
-						</td>
+						<td><img style="width:200px; height:200px;margin-left:20px" src="@Html.DisplayFor(book =>book.ImageURL)" /></td>
 					</tr>
+
 				</tbody>
 			</table>
 			<br />
@@ -71,7 +70,7 @@
 			<br />
 		</div>
 		<div class="container">
-			<form asp-action="Delete">
+			   <form asp-action="Delete">
 				<input type="hidden" asp-for="ID" />
 				<input type="submit" value="Delete" class="btn btn-danger" /> |
 				<a class="btn btn-primary" asp-action="Index">Back to List</a>
@@ -82,5 +81,3 @@
 		<br />
 	</div>
 </div>
-
-

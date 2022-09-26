@@ -1,0 +1,77 @@
+﻿@model Stage_Books.Models.documentaries
+
+@{
+     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>documentaries</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="DocName" class="control-label"></label>
+                <input asp-for="DocName" class="form-control" />
+                <span asp-validation-for="DocName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Produce" class="control-label"></label>
+                <input asp-for="Produce" class="form-control" />
+                <span asp-validation-for="Produce" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Publisher" class="control-label"></label>
+                <input asp-for="Publisher" class="form-control" />
+                <span asp-validation-for="Publisher" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PubDate" class="control-label"></label>
+                <input asp-for="PubDate" class="form-control" />
+                <span asp-validation-for="PubDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Language" class="control-label"></label>
+                <input asp-for="Language" class="form-control" />
+                <span asp-validation-for="Language" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rights" class="control-label"></label>
+                <input asp-for="Rights" class="form-control" />
+                <span asp-validation-for="Rights" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="pathdocFile" class="control-label"></label>
+                <input asp-for="pathdocFile" class="form-control" />
+                <span asp-validation-for="pathdocFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageURL" class="control-label"></label>
+                <input asp-for="ImageURL" class="form-control" />
+                <span asp-validation-for="ImageURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="note" class="control-label"></label>
+                <input asp-for="note" class="form-control" />
+                <span asp-validation-for="note" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

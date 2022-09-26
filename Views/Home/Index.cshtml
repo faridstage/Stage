@@ -67,7 +67,7 @@
              <div class="" style="flex-grow: 2;color:#ff7236; text-align: center;">
                  <img class="mr-3" src="~/img/stage_logo1.png" alt="LIBRARIA" width="35" height="35" />
                  <span style="font-size:20px;margin-top:10px;color:#ff7236;">S T A G E</span>
-                 </div>
+              </div>
              <div class="" style="flex-grow: 7;color:white ;text-align: center;">
                  <nav style="color:white"> 
                      <a class="mr-5" style="font-size:20px;color:#ff7236;" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -85,22 +85,38 @@
                      @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                      {
                      <div class="col-sm-3" style="color:white">
-                          <a asp-action="Index" asp-controller="Books" class="btn w-100" style="background-color:#ff7236;">الادارة</a>
+                          <a asp-action="Index" asp-controller="Books" class="btn w-100" style="margin-right:10px;font-size:17px">الادارة</a>
                      </div>
                      }
                      @{string id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;}
                      @if (signInManager.IsSignedIn(User) && id != null)
                     {
-                            <form method="post" asp-action="Logout" asp-controller="Account" class="form-inline">
-                                <button type="submit" class="btn  my-2 my-sm-0 mr-3" style="background-color:#ff7236;height:28px">Logout</button>
-                            </form>
-                            <span style="margin-top:7px;font-size:15px;">@User.Identity.Name</span>
-                            <img src="../img/unkown.png" alt="User" width="25" height="25" style="border:1px solid white;border-radius:50%">
+                            @*<span style="margin-top:7px;font-size:15px;">@User.Identity.Name</span>*@
+                     <div class="dropdown" style="margin-right:20px;">
+                      <button style="font-size:20px;color:black;background-color:white;border-radius:65%;" class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             <img src="../img/unkown.png" alt="User" width="22" height="22">
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a style="font-size:15px;color:#333333" class="dropdown-item" asp-area="" asp-controller="" asp-action="">@User.Identity.Name</a>
+                        <div class="dropdown-divider"></div>
+                        <a style="font-size:15px;color:#333333" class="dropdown-item" asp-area="" asp-controller="" asp-action="">Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a style="font-size:15px;color:#333333" class="dropdown-item" asp-area="" asp-controller="" asp-action="">Edit</a>
+                        @*<div class="dropdown-divider"></div>
+                        <a style="font-size:17px;background-color:#ff7236;color:white;" class="dropdown-item btn" href="#">More</a>*@
+                      </div>
+                    </div>
+
+                    <form method="post" asp-action="Logout" asp-controller="Account" class="form-inline">
+                          <button type="submit" class="btn  my-2 my-sm-0 mr-3" style="background-color:#ff7236;height:28px">Logout</button>
+                    </form>
                     }
                     else{
 				            <a asp-action="Login" asp-controller="Account"><i class="fa fa-lock" ></i>Login /</a>
                             <a asp-action="Register" asp-controller="Account"> Register</a>
-                           }
+                    }
+
+
 @*                          @{string id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 *@				             @*if (id != null)
 				                {
@@ -119,17 +135,18 @@
              <div class="" style="flex-grow: 12;color:white ;text-align: center;">
                  <nav style="color:white"> 
                      
-                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="publicpages" asp-action="about_stage">@*@Stage_Books.languages.Resource.*@eBooks</a>
-                     
-                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Encs" asp-action="Index2">@Stage_Books.languages.Resource.Encyclopedia</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Home" asp-action="gotobooks">@*@Stage_Books.languages.Resource.*@eBooks</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Encs" asp-action="Index">@Stage_Books.languages.Resource.Encyclopedia</a>
                      <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="AudioBooks" asp-action="Index">@*@Stage_Books.languages.Resource.*@Audio </a>
-                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Scriptpapers" asp-action="Indexd">Manuscripting</a>
-                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="AllNewsPapers" asp-action="IndexShow">الجرائد</a>
-                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Help" asp-action="IndexShow">الاوراق البحثية</a>
-                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Theses" asp-action="IndexShow">الرسائل العلمية</a>
-                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Archaeologies" asp-action="IndexShow">موسوعة الاثار</a>
-                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Antiques" asp-action="IndexShow">التحف والانتيكات</a>
-                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Authors" asp-action="service">الافلام الوثائقية</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Scriptpapers" asp-action="Index">Manuscripting</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="AllNewsPapers" asp-action="Index">الجرائد</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="paperssearchers" asp-action="Index">الاوراق البحثية</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Theses" asp-action="Index">الرسائل العلمية</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Archaeologies" asp-action="Index">موسوعة الاثار</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Antiques" asp-action="Index">التحف والانتيكات</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="documentaries" asp-action="Index">الافلام الوثائقية</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Categories" asp-action="Index">تصنيفات</a>
+                     <a class="mr-5" style="font-size:17px;" asp-area="" asp-controller="Authors" asp-action="Index">مؤلفين</a>
 
                          
                     
@@ -238,6 +255,275 @@
             <a class="right carousel-control" href="#home-v1-header-carousel" data-slide="next"></a>
         </div>
         <!-- End: Slider Section -->
+        <br />
+        <br />
+        <br />
+        <!-- Start: category filter drop Section -->
+        <div class="container">
+            <div class="row">
+              <div class="col-sm-3">
+                  <div class="dropdown">
+                      <button style="font-size:20px;color:black;background-color:white" class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Books Categories
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a style="font-size:17px;" class="dropdown-item" href="#">ادب</a>
+                        <a style="font-size:17px;" class="dropdown-item" href="#">سياسة </a>
+                        <a style="font-size:17px;" class="dropdown-item" href="#">قانون</a>
+                        <a style="font-size:17px;" class="dropdown-item" href="#">تاريخ </a>
+                        <a style="font-size:17px;" class="dropdown-item" href="#">دين </a>
+                        <a style="font-size:17px;" class="dropdown-item" href="#">فن </a>
+                        <div class="dropdown-divider"></div>
+                        <a style="font-size:17px;background-color:#ff7236;color:white;" class="dropdown-item btn" href="#">More</a>
+                      </div>
+                    </div>
+              </div>
+              <div class="col-sm-3">
+                 <div class="dropdown">
+                      <button style="font-size:20px;color:black;background-color:white" class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Books Languages
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Searchbyrabic">عربى - Arabic</a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Searchbyenglish">انجليزية - English </a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Searchbyfrench">فرنسى - French</a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Searchbyspanish">اسبانى - Spanish</a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Searchbygerman">المانى - German </a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Searchbyhindi">هندى - Hindi </a>
+                      </div>
+                    </div>
+              </div>
+              <div class="col-sm-3">
+                  <div class="dropdown">
+                      <button style="font-size:20px;color:black;background-color:white" class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Services Categories
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a style="font-size:17px;" class="dropdown-item" href="#">خدمات المؤلفين</a>
+                        <a style="font-size:17px;" class="dropdown-item" href="#">خدمات دور النشر </a>
+                        <a style="font-size:17px;" class="dropdown-item" href="#">خدمات اعلانية</a>
+                        <a style="font-size:17px;" class="dropdown-item" href="#">خدمات طلب الكتب </a>
+                        @*<div class="dropdown-divider"></div>
+                        <a style="font-size:17px;background-color:#ff7236;color:white;" class="dropdown-item btn" href="#">More</a>*@
+                      </div>
+                    </div>
+              </div>
+              <div class="col-sm-3">
+                  <div class="dropdown">
+                      <button style="font-size:20px;color:black;background-color:white" class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        All Stage Categories
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action="">كتب الكترونية</a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action="">كتب صوتية </a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action=""> موسوعة المؤلفين</a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action=""> الاوراق البحثية </a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action=""> الرسائل العلمية</a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action=""> الافلام الوثائقية</a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action=""> موسوعة الاثار</a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action=""> التحف والانتيكات </a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action=""> ارشيف المخطوطات</a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action=""> ارشيف الجرائد </a>
+                        @*<div class="dropdown-divider"></div>
+                        <a style="font-size:17px;background-color:#ff7236;color:white;" class="dropdown-item btn" href="#">More</a>*@
+                      </div>
+                    </div>
+              </div>
+        </div>
+        </div>
+        <!-- End: Books & Media Section -->
+         <br />
+        <br />
+        <!-- Start: Search Section -->
+        <section class="search-filters mt-5 mb-5">
+            <div class="container">
+                <div class="filter-box">
+                    <h3>What are you looking for at the library?</h3>
+                    @using (Html.BeginForm("Search","Home",FormMethod.Post))
+                         {
+                        <div class="col-md-10 col-sm-6">
+                            <div class="form-group">
+                                 <div class="" style="margin:0 auto" >
+                                     <div class="class="col-6">
+                                          <input type="text" name="searchname" class="form-control" />              
+                                               @*<input type="submit" value="Search" />   *@           
+                                      </div> 
+                                  </div>
+                             </div>
+                        </div>
+
+                         <div class="col-md-2 col-sm-6">
+                            <div class="form-group">
+                                <input class="form-control" type="submit" value="Search">
+                                
+                            </div>
+                        </div>
+                                    }
+
+                            
+                        @*<div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                <select name="catalog" id="catalog" class="form-control">
+                                    <option>Search the Catalog</option>
+                                    <option>Catalog 01</option>
+                                    <option>Catalog 02</option>
+                                    <option>Catalog 03</option>
+                                    <option>Catalog 04</option>
+                                    <option>Catalog 05</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                                <select name="category" id="category" class="form-control">
+                                    <option>All Categories</option>
+                                    <option>Category 01</option>
+                                    <option>Category 02</option>
+                                    <option>Category 03</option>
+                                    <option>Category 04</option>
+                                    <option>Category 05</option>
+                                </select>
+                            </div>
+                        </div>*@
+                       
+                </div>
+            </div>
+        </section>
+        <!-- End: Search Section -->
+         <br />
+        <br />
+
+         <!-- Start: Category Filter -->
+        <section class="category-filter section-padding" style="background-image: url(img/project-filter-bg-home-v1.jpg);">
+             <div class="container">
+                   <div class="center-content">
+                                    <div class="row">
+                                        <div class="col-md-6 col-md-offset-3">
+                                            <h2 class="section-title">Check Stage Books</h2>
+                                            <span class="underline center"></span>
+                                            <p class="lead">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>
+                                        </div>
+                                    </div>
+                       </div>
+                                    @*<div class="filter-buttons">
+                                    <div class="filter btn" data-filter="all">All Releases</div>
+                                    <div class="filter btn" data-filter=".adults">Adults</div>
+                                    <div class="filter btn" data-filter=".kids-teens">Kids &amp; Teens</div>
+                                    <div class="filter btn" data-filter=".video">Video</div>
+                                    <div class="filter btn" data-filter=".audio">Audio</div>
+                                    <div class="filter btn" data-filter=".books">Books</div>
+                                    <div class="filter btn" data-filter=".magazines">Magazines</div>
+                                </div>*@
+                            
+                            <div id="category-filter">
+                                <ul class="category-list">
+                                     @if(!Model.Books.Any())
+                                     {
+                                            <div class="alert alert-danger" role="alert">
+                                                No Data !
+                                            </div>
+                                     }
+                                     else
+                                     {
+                                    @foreach (var item in Model.Books)
+                                   {
+                                      <li class="category-item adults" >
+                                        <figure>
+                                            <img src="@item.ImageURL" alt="New Releaase" />
+                                            <figcaption class="bg-orange">
+                                                <div class="info-block">
+                                                    <h4>@item.Name</h4>
+                                                    <span class="author"><strong>@Stage_Books.languages.Resource.Author : </strong>@item.Author.Name</span>
+                                                    <span class="author"><strong>@Stage_Books.languages.Resource.Language : </strong>@item.Language</span>
+                                                   @* <span class="author"><strong>Topic:</strong>@item.Topic</span>*@
+
+                                                   @* <div class="rating">
+                                                        <span>☆</span>
+                                                        <span>☆</span>
+                                                        <span>☆</span>
+                                                        <span>☆</span>
+                                                        <span>☆</span>
+                                                    </div>*@
+                                                    @*<p>@item.Desc</p>*@
+                                                    <br>
+                                                    <a asp-controller="books" asp-action="Book_Details" asp-route-id="@item.ID">Read Details <i class="fa fa-long-arrow-right"></i></a>
+                                                    <ol>
+                                                        <li>
+                                                           
+                                                            
+                                                        </li>
+                                                        <li>
+                                                            <a >
+                                                        <span class="">
+                                                            </span>
+                                                    </a>
+                                                            
+                                                        </li>
+                                                        <li>
+                                                            
+                                                        </li>
+                                                        <li>
+                                                            
+                                                        </li>
+                                                         <li>
+                                                            
+                                                        </li>
+                                                    </ol>
+                                                    <ol>
+                                                        <li>
+                                                            <a asp-area="" asp-controller="OrderViewModels" asp-action="Create">
+                                                                <i class="fa fa-shopping-cart"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                          
+                                                            <button type="submit" name="id">
+                                                                <i class="fa fa-heart"></i>
+                                                            </button>
+                                                       
+                                                        </li>
+                                                        <li>
+                                                            <a asp-area="" asp-controller="Contactmsgs" asp-action="Create">
+                                                                <i class="fa fa-envelope"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ol>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                    </li>
+                                    }
+                                   }
+                                </ul>
+                                <div class="center-content">
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                </div>
+        </section>
+         <br />
+        <div class="container mt-5">
+              <div class="row">
+                   <div class="col-4"></div>
+                        <div class="col-4" style="text-align:center;">
+                          <div style="margin:0px auto;">
+                            <!-- paging control for navigation to the previous page, next page, etc -->
+                             @Html.PagedListPager(Model.Books.ToPagedList(), page => Url.Action("Index", new { page = page }),
+                             new X.PagedList.Mvc.Core.Common.PagedListRenderOptions
+                              {
+                                            DisplayItemSliceAndTotal = true,
+                                            ContainerDivClasses = new[] { "navigation" },
+                                            LiElementClasses = new[] { "page-item" },
+                                            PageClasses = new[] { "page-link" },
+                             })
+                          </div>
+                         </div>
+                     <div class="col-4"></div>
+               </div>          
+         </div>
+        <!-- Start: Category Filter -->
+
+
 
          <!-- Start: Features -->
         <section class="features">
@@ -300,153 +586,80 @@
         </section>
         <!-- End: Features -->
 
-
-        <!-- Start: Welcome Section -->
+         <!-- Start: cat Section -->
         <section class="welcome-section">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="facts-counter">
-                                            
-                            <ul>
-                                <li class="bg-light-green">
-                                    <div class="fact-item">
-                                        <div class="fact-icon">
-                                            <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i>
-                                        </div>
-                                        
-                                        <span>@*@Stage_Books.languages.Resource.*@eBooks<strong class="fact-counter"></strong></span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="facts-counter">
-                                            
-                            <ul>
-                                <li class="bg-yellow">
-                                    <div class="fact-item">
-                                        <div class="fact-icon">
-                                            <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i>
-                                        </div>
-                                        <span>@*@Stage_Books.languages.Resource.*@Audio <br /> Books<strong class="fact-counter">@Model.Books.Count</strong></span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="facts-counter">
-                                            
-                            <ul>
-                                <li class="bg-blue">
-                                    <div class="fact-item">
-                                        <div class="fact-icon">
-                                            <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i>
-                                        </div>
-                                        <span>@Stage_Books.languages.Resource.Authors<strong class="fact-counter">@Model.Books.Count</strong></span>
-                                    </div>
-                                </li>
-                               
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="facts-counter">           
-                            <ul>
-                                <li class="bg-violet">
-                                    <div class="fact-item">
-                                        <div class="fact-icon">
-                                            <i class="fa fa-book" aria-hidden="true" style="font-size:25px; color:white;"></i>
-                                        </div>
-                                        <span>@Stage_Books.languages.Resource.Encyclopedia<strong class="fact-counter">@Model.Books.Count</strong></span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="center-content">
+                    <h2 class="section-title">Get Started With STAGE</h2>
+                    <span class="underline center"></span>
                 </div>
                 <div class="row">
-                    <div class="col-md-3">
-                        <div class="facts-counter">             
-                            <ul>
-                                <li class="bg-red">
-                                    <div class="fact-item">
-                                        <div class="fact-icon">
-                                            <i class="fa fa-book" aria-hidden="true" style="font-size:25px; color:white;"></i>
-                                        </div>
-                                        <span>@*@Stage_Books.languages.Resource.*@Manuscripting<strong class="fact-counter"></strong></span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="col-4 bg-blue" style="text-align:center;">
+                        <br />
+                        <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i><br />
+                        <span style="font-size:25px;color:white;text-align:center;">eBooks</span><br />
+                        <strong style="font-size:25px;color:white;text-align:center;" class="fact-counter">@Model.Books.Count</strong>                  
                     </div>
-                    <div class="col-md-3">
-                        <div class="facts-counter">              
-                            <ul>
-                                <li class="bg-green">
-                                    <div class="fact-item">
-                                        <div class="fact-icon">
-                                            <i class="fa fa-book" aria-hidden="true" style="font-size:25px; color:white;"></i>
-                                        </div>
-                                        <span  style="font-size:10px;">@Stage_Books.languages.Resource.Research_paper <br /> Books<strong class="fact-counter">@Model.Books.Count</strong></span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="col-4 bg-light-green" style="text-align:center;">
+                        <br />
+                        <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i><br />
+                        <span style="font-size:25px;color:white;text-align:center;">Authors</span><br />
+                        <strong style="font-size:25px;color:white;text-align:center;" class="fact-counter">@Model.Books.Count</strong>                  
                     </div>
-                    <div class="col-md-3">
-                        <div class="facts-counter">
-                                            
-                            <ul>
-                                <li class="bg-light-green">
-                                    <div class="fact-item">
-                                        <div class="fact-icon">
-                                            <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i>
-                                        </div>
-                                        <span>@*@Stage_Books.languages.Resource.*@Thesis<strong class="fact-counter">@Model.Books.Count</strong></span>
-                                    </div>
-                                </li>
-                               
-                            </ul>
-                        </div>
+                    <div class="col-4 bg-yellow" style="text-align:center;">
+                        <br />
+                        <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i><br />
+                        <span style="font-size:25px;color:white;text-align:center;">@Stage_Books.languages.Resource.Encyclopedia</span><br />
+                        <strong style="font-size:25px;color:white;text-align:center;" class="fact-counter">@Model.Books.Count</strong>                  
                     </div>
-                    <div class="col-md-3">
-                        <div class="facts-counter">           
-                            <ul>
-                                <li class="bg-yellow">
-                                    <div class="fact-item">
-                                        <div class="fact-icon">
-                                            <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i>
-                                        </div>
-                                        <span>@*@Stage_Books.languages.Resource.*@Archeology Encyclopedia<strong class="fact-counter">@Model.Books.Count</strong></span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="col-4 bg-blue" style="text-align:center;">
+                        <br />
+                        <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i><br />
+                        <span style="font-size:25px;color:white;text-align:center;">Manuscripting</span><br />
+                        <strong style="font-size:25px;color:white;text-align:center;" class="fact-counter">@Model.Books.Count</strong>                  
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="facts-counter">             
-                            <ul>
-                                <li class="bg-blue">
-                                    <div class="fact-item">
-                                        <div class="fact-icon">
-                                            <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i>
-                                        </div>
-                                        <span>@*@Stage_Books.languages.Resource.*@Newspapers<strong class="fact-counter"></strong></span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="col-4 bg-violet" style="text-align:center;">
+                        <br />
+                        <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i><br />
+                        <span style="font-size:25px;color:white;text-align:center;">Audio Books</span><br />
+                        <strong style="font-size:25px;color:white;text-align:center;" class="fact-counter">@Model.Books.Count</strong>                  
+                    </div>
+                    <div class="col-4 bg-red" style="text-align:center;">
+                        <br />
+                        <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i><br />
+                        <span style="font-size:25px;color:white;text-align:center;">Newspapers</span><br />
+                        <strong style="font-size:25px;color:white;text-align:center;" class="fact-counter">@Model.Books.Count</strong>                  
+                    </div>
+                    <div class="col-4 bg-green" style="text-align:center;">
+                        <br />
+                        <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i><br />
+                        <span style="font-size:25px;color:white;text-align:center;">Antiques</span><br />
+                        <strong style="font-size:25px;color:white;text-align:center;" class="fact-counter">@Model.Books.Count</strong>                  
+                    </div>
+                    <div class="col-4 bg-light-green" style="text-align:center;">
+                        <br />
+                        <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i><br />
+                        <span style="font-size:25px;color:white;text-align:center;">Archaeology</span><br />
+                        <strong style="font-size:25px;color:white;text-align:center;" class="fact-counter">@Model.Books.Count</strong>                  
+                    </div>
+                    <div class="col-4 bg-yellow" style="text-align:center;">
+                        <br />
+                        <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i><br />
+                        <span style="font-size:25px;color:white;text-align:center;">Thesis</span><br />
+                        <strong style="font-size:25px;color:white;text-align:center;" class="fact-counter">@Model.Books.Count</strong>                  
+                    </div>
+                    <div class="col-4 bg-blue" style="text-align:center;">
+                        <br />
+                        <i class="fa fa-book" aria-hidden="true" style="font-size:35px; color:white;"></i><br />
+                        <span style="font-size:25px;color:white;text-align:center;">@Stage_Books.languages.Resource.Research_paper</span><br />
+                        <strong style="font-size:25px;color:white;text-align:center;" class="fact-counter">@Model.Books.Count</strong>                  
                     </div>
                 </div>
             </div>
-        </section>
+         </section>
         <!-- End: Welcome Section -->
-
+        <br />
+        <br />
 
        <!-- Start: Welcome Section -->
         <section class="welcome-section">
@@ -520,73 +733,17 @@
 
      <!-- container -->
 
-       <!-- Start: Search Section -->
-        <section class="search-filters mt-5 mb-5">
-            <div class="container">
-                <div class="filter-box">
-                    <h3>What are you looking for at the library?</h3>
-                        <div class="col-md-10 col-sm-6">
-                            <div class="form-group">
-                                 @using (Html.BeginForm("Search","Home",FormMethod.Post))
-                                    {
-                                           <div class="" style="margin:0 auto" >
-                                             <div class="class="col-6">
-                                               <input type="text" name="searchname" class="form-control" />              
-                                               @*<input type="submit" value="Search" />   *@           
-                                           </div> 
-                                         </div>
-                                    }
-                               @*@using (Html.BeginForm("Search","Home",FormMethod.Post))
-                                 {
-                                <label class="sr-only" for="keywords">Search by Keyword</label>
-                                <input style="font-size:15px" class="form-control" placeholder="Search by Keyword" id="keywords" name="searchname" type="text">
-                                 }*@
-                            </div>
-                        </div>
-                        @*<div class="col-md-3 col-sm-6">
-                            <div class="form-group">
-                                <select name="catalog" id="catalog" class="form-control">
-                                    <option>Search the Catalog</option>
-                                    <option>Catalog 01</option>
-                                    <option>Catalog 02</option>
-                                    <option>Catalog 03</option>
-                                    <option>Catalog 04</option>
-                                    <option>Catalog 05</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="form-group">
-                                <select name="category" id="category" class="form-control">
-                                    <option>All Categories</option>
-                                    <option>Category 01</option>
-                                    <option>Category 02</option>
-                                    <option>Category 03</option>
-                                    <option>Category 04</option>
-                                    <option>Category 05</option>
-                                </select>
-                            </div>
-                        </div>*@
-                        <div class="col-md-2 col-sm-6">
-                            <div class="form-group">
-                                <input class="form-control" type="submit" value="Search">
-                                 @*<input type="submit" value="Search" />   *@
-                            </div>
-                        </div>
-                </div>
-            </div>
-        </section>
-        <!-- End: Search Section -->
+
 
         <!-- Start: Category -->
-        <section class="search-filters mt-5 mb-5">
+        @*<section class="search-filters mt-5 mb-5">
             <div class="container">
                 <div class="filter-box">
                     <h3>All Categories</h3>
                     <form action="" method="get">
                         <div class="col-md-3 col-sm-6">
                             <div class="form-group">
-                                @*<select name="catalog" id="catalog" class="form-control">
+                                <select name="catalog" id="catalog" class="form-control">
                                     <option>Topics</option>
                                      @if(!Model.Books.Any())
                                     {
@@ -601,7 +758,7 @@
                                        <option>@item.Topic</option>
                                     }
                                     }
-                                </select>*@
+                                </select>
                                 <br />
                                <a class="btn form-control" style="background-color:#ff7236;" asp-area="" asp-controller="Home" asp-action="gototopic">More Topics ..</a>
 
@@ -609,7 +766,7 @@
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="form-group">
-                                @*<select name="catalog" id="catalog" class="form-control">
+                                <select name="catalog" id="catalog" class="form-control">
                                     <option>Authors</option>
                                     @if(!Model.Books.Any())
                                     {
@@ -624,14 +781,14 @@
                                        <option>@item.Name.ToString()</option>
                                     }
                                     }
-                                </select>*@
+                                </select>
                                  <br />
                                <a class="btn" style="background-color:#ff7236;" asp-area="" asp-controller="Home" asp-action="gotoauthors">More Authors ..</a>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="form-group">
-                                @*<select name="category" id="category" class="form-control">
+                                <select name="category" id="category" class="form-control">
                                     <option>Categorys</option>
                                      @if(!Model.Books.Any())
                                     {
@@ -647,7 +804,7 @@
                                     }
                                     }
 
-                                </select>*@
+                                </select>
                                 <br />
                                <a class="btn" style="background-color:#ff7236;" asp-area="" asp-controller="Home" asp-action="gotocat">More Categories ..</a>
                             </div>
@@ -674,138 +831,10 @@
                     </form>
                 </div>
             </div>
-        </section>
+        </section>*@
         <!-- End: Category -->
 
-        <!-- Start: Category Filter -->
 
-        <section class="category-filter section-padding" style="background-image: url(img/project-filter-bg-home-v1.jpg);">
-             <div class="container">
-                   <div class="center-content">
-                                    <div class="row">
-                                        <div class="col-md-6 col-md-offset-3">
-                                            <h2 class="section-title">Check Stage Books</h2>
-                                            <span class="underline center"></span>
-                                            <p class="lead">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>
-                                        </div>
-                                    </div>
-                       </div>
-@*                     <div class="filter-buttons">
-                                    <div class="filter btn" data-filter="all">All Releases</div>
-                                    <div class="filter btn" data-filter=".adults">Adults</div>
-                                    <div class="filter btn" data-filter=".kids-teens">Kids &amp; Teens</div>
-                                    <div class="filter btn" data-filter=".video">Video</div>
-                                    <div class="filter btn" data-filter=".audio">Audio</div>
-                                    <div class="filter btn" data-filter=".books">Books</div>
-                                    <div class="filter btn" data-filter=".magazines">Magazines</div>
-                                </div>*@
-                            
-                            <div id="category-filter">
-                                <ul class="category-list">
-                                     @if(!Model.Books.Any())
-                                     {
-                                            <div class="alert alert-danger" role="alert">
-                                                No Data !
-                                            </div>
-                                     }
-                                     else
-                                     {
-                                    @foreach (var item in Model.Books)
-                                   {
-                                      <li class="category-item adults" >
-                                        <figure>
-                                            <img src="@item.ImageURL" alt="New Releaase" />
-                                            <figcaption class="bg-orange">
-                                                <div class="info-block">
-                                                    <h4>@item.Name</h4>
-                                                    <span class="author"><strong>@Stage_Books.languages.Resource.Author:</strong>@item.Author.Name</span>
-                                                    <span class="author"><strong>@Stage_Books.languages.Resource.Language:</strong>@item.Language</span>
-                                                   @* <span class="author"><strong>Topic:</strong>@item.Topic</span>*@
-
-                                                    <div class="rating">
-                                                        <span>☆</span>
-                                                        <span>☆</span>
-                                                        <span>☆</span>
-                                                        <span>☆</span>
-                                                        <span>☆</span>
-                                                    </div>
-                                                    <p>@item.Desc</p>
-                                                    <a asp-controller="books" asp-action="Book_Details" asp-route-id="@item.ID">Read Details <i class="fa fa-long-arrow-right"></i></a>
-                                                    <ol>
-                                                        <li>
-                                                           
-                                                            
-                                                        </li>
-                                                        <li>
-                                                            <a >
-                                                        <span class="">
-                                                            </span>
-                                                    </a>
-                                                            
-                                                        </li>
-                                                        <li>
-                                                            
-                                                        </li>
-                                                        <li>
-                                                            
-                                                        </li>
-                                                         <li>
-                                                            
-                                                        </li>
-                                                    </ol>
-                                                    <ol>
-                                                        <li>
-                                                            <a asp-area="" asp-controller="OrderViewModels" asp-action="Create">
-                                                                <i class="fa fa-shopping-cart"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                          
-                                                            <button type="submit" name="id">
-                                                                <i class="fa fa-heart"></i>
-                                                            </button>
-                                                       
-                                                        </li>
-                                                        <li>
-                                                            <a asp-area="" asp-controller="Contactmsgs" asp-action="Create">
-                                                                <i class="fa fa-envelope"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                <i class="fa fa-search"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ol>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </li>
-                                    }
-                                   }
-                                </ul>
-                                <div class="center-content">
-                                    <a href="#" class="btn btn-primary">View More</a>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                </div>
-        </section>
-
-         <br />
-                       <div class="container mt-5">
-                          <div style="margin:0px auto">
-                            <!-- paging control for navigation to the previous page, next page, etc -->
-                             @Html.PagedListPager(Model.Books.ToPagedList(), page => Url.Action("Index", new { page = page }),
-                             new X.PagedList.Mvc.Core.Common.PagedListRenderOptions
-                              {
-                                            DisplayItemSliceAndTotal = true,
-                                            ContainerDivClasses = new[] { "navigation" },
-                                            LiElementClasses = new[] { "page-item" },
-                                            PageClasses = new[] { "page-link" },
-                             })
-                          </div>
-                      </div>
             <!-- Ads -->
             @*<div class="col-2">
                 <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
@@ -822,111 +851,245 @@
           </div>
         <!-- -->
 
-      <!-- Start: services -->
-        <section class="team section-padding">
+   <!-- Start: Meet Staff -->
+ <!-- Start: Our Community Section -->
+        <section class="community-testimonial">
             <div class="container">
-                <div class="center-content">
-                    <h2 class="section-title"> Our Services</h2>
+                <div class="text-center">
+                    <h2 class="section-title">خدماتنا</h2>
                     <span class="underline center"></span>
-                    <p class="lead"></p>
+                    <p class="lead">فى هذا القسم يمكنك الاضطلاع على نبذة مختصرة عن خدماتنا </p>
                 </div>
-                <br />
-                <div class="team-list">
-                    <div class="team-member">
-                        <figure>
-                            <img src="~/img/team-img-01.jpg" alt="team" />
-                        </figure>
-                        <div class="content-block">
-                            <div class="member-info">
-                               <h4>S t a g e</h4>
-                                <span class="designation">Executive Director</span>
-                                <ul class="social">
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="fa fa-facebook-f"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-
-                                </ul>
-                                <p>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here...</p>
-                                <a class="btn btn-primary" href="#">Read More</a>
+                <div class="owl-carousel">
+                    <div class="single-testimonial-box">
+                        <div class="top-portion">
+                            <img src="~/img/testimonial-image-01.jpg" alt="Testimonial Image" />
+                            <div class="user-comment">
+                                <div class="arrow-left"></div>
+                                <blockquote cite="#">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna magna, rhoncus eget commodo et, dignissim non nulla. Sed sit amet vestibulum ex. Donec dolor velit
+                                </blockquote>
                             </div>
+                            <div class="clear"></div>
                         </div>
+                        <div class="bottom-portion">
+                            <a href="#" class="author">
+                                Adrey Pachai <small>(Student )</small>
+                            </a>
+                            <div class="social-share-links">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
-                    <div class="team-member">
-                        <figure>
-                            <img src="~/img/team-img-02.jpg" alt="team" />
-                        </figure>
-                        <div class="content-block">
-                            <div class="member-info">
-                                <h4>S t a g e</h4>
-                                <span class="designation">Deputy Director</span>
-                                <ul class="social">
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="fa fa-facebook-f"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <p>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here...</p>
-                                <a class="btn btn-primary" href="#">Read More</a>
+                    <div class="single-testimonial-box">
+                        <div class="top-portion">
+                            <img src="~/img/testimonial-image-02.jpg" alt="Testimonial Image" />
+                            <div class="user-comment">
+                                <div class="arrow-left"></div>
+                                <blockquote cite="#">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna magna, rhoncus eget commodo et, dignissim non nulla. Sed sit amet vestibulum ex. Donec dolor velit
+                                </blockquote>
                             </div>
+                            <div class="clear"></div>
                         </div>
+                        <div class="bottom-portion">
+                            <a href="#" class="author">
+                                Maria B <small>(Student )</small>
+                            </a>
+                            <div class="social-share-links">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
-                    <div class="team-member">
-                        <figure>
-                            <img src="~/img/team-img-03.jpg" alt="team" />
-                        </figure>
-                        <div class="content-block">
-                            <div class="member-info">
-                                <h4>S t a g e</h4>
-                                <span class="designation">Librarian</span>
-                                <ul class="social">
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="fa fa-facebook-f"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <p>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here...</p>
-                                <a class="btn btn-primary" href="#">Read More</a>
+                    <div class="single-testimonial-box">
+                        <div class="top-portion">
+                            <img src="~/img/testimonial-image-01.jpg" alt="Testimonial Image" />
+                            <div class="user-comment">
+                                <div class="arrow-left"></div>
+                                <blockquote cite="#">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna magna, rhoncus eget commodo et, dignissim non nulla. Sed sit amet vestibulum ex. Donec dolor velit
+                                </blockquote>
                             </div>
+                            <div class="clear"></div>
                         </div>
+                        <div class="bottom-portion">
+                            <a href="#" class="author">
+                                Adrey Pachai <small>(Student )</small>
+                            </a>
+                            <div class="social-share-links">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="single-testimonial-box">
+                        <div class="top-portion">
+                            <img src="~/img/testimonial-image-02.jpg" alt="Testimonial Image" />
+                            <div class="user-comment">
+                                <div class="arrow-left"></div>
+                                <blockquote cite="#">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna magna, rhoncus eget commodo et, dignissim non nulla. Sed sit amet vestibulum ex. Donec dolor velit
+                                </blockquote>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="bottom-portion">
+                            <a href="#" class="author">
+                                Maria B <small>(Student )</small>
+                            </a>
+                            <div class="social-share-links">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="single-testimonial-box">
+                        <div class="top-portion">
+                            <img src="~/img/testimonial-image-01.jpg" alt="Testimonial Image" />
+                            <div class="user-comment">
+                                <div class="arrow-left"></div>
+                                <blockquote cite="#">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna magna, rhoncus eget commodo et, dignissim non nulla. Sed sit amet vestibulum ex. Donec dolor velit
+                                </blockquote>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="bottom-portion">
+                            <a href="#" class="author">
+                                Adrey Pachai <small>(Student )</small>
+                            </a>
+                            <div class="social-share-links">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="single-testimonial-box">
+                        <div class="top-portion">
+                            <img src="~/img/testimonial-image-02.jpg" alt="Testimonial Image" />
+                            <div class="user-comment">
+                                <div class="arrow-left"></div>
+                                <blockquote cite="#">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna magna, rhoncus eget commodo et, dignissim non nulla. Sed sit amet vestibulum ex. Donec dolor velit
+                                </blockquote>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="bottom-portion">
+                            <a href="#" class="author">
+                                Maria B <small>(Student )</small>
+                            </a>
+                            <div class="social-share-links">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="single-testimonial-box">
+                        <div class="top-portion">
+                            <img src="~/img/testimonial-image-01.jpg" alt="Testimonial Image" />
+                            <div class="user-comment">
+                                <div class="arrow-left"></div>
+                                <blockquote cite="#">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna magna, rhoncus eget commodo et, dignissim non nulla. Sed sit amet vestibulum ex. Donec dolor velit
+                                </blockquote>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="bottom-portion">
+                            <a href="#" class="author">
+                                Adrey Pachai <small>(Student )</small>
+                            </a>
+                            <div class="social-share-links">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="single-testimonial-box">
+                        <div class="top-portion">
+                            <img src="~/img/testimonial-image-02.jpg" alt="Testimonial Image" />
+                            <div class="user-comment">
+                                <div class="arrow-left"></div>
+                                <blockquote cite="#">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna magna, rhoncus eget commodo et, dignissim non nulla. Sed sit amet vestibulum ex. Donec dolor velit
+                                </blockquote>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="bottom-portion">
+                            <a href="#" class="author">
+                                Maria B <small>(Student )</small>
+                            </a>
+                            <div class="social-share-links">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- End: our servises -->
+        <!-- End: Our Community Section -->
+        <!-- End: Meet Staff -->
 
        <!-- Start: Social Network -->
         <section class="social-network section-padding">

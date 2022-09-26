@@ -1,42 +1,52 @@
-﻿@model Stage_Books.Models.Issuancepaper
+﻿
+@******************************************@
+@model Stage_Books.Models.Issuancepaper
 
 @{
-    ViewData["Title"] = "Details";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	ViewData["Title"] = "Delete";
 }
 
-<h2>Details</h2>
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-10">
+		<br />
+		<br />
+		<br />
+		<br />
+		<h2 style="text-align:center"> حذف </h2>
+		<br />
+		<hr />
+		<br />
+		<div class="container">
+			<table class="table">
+				<tbody>
+					<tr>
 
-<div>
-    <h4>Issuancepaper</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Pages)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Pages)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.imageurl)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.imageurl)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Pid)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Pid)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.note)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.note)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ppid">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+						<th scope="row">@Html.DisplayNameFor(model => model.Pages)</th>
+						<td>@Html.DisplayFor(model => model.Pages)</td>
+					</tr>
+					<tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.Pid)</th>
+						<td>@Html.DisplayFor(model => model.Pid)</td>
+					</tr>
+
+					<tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.note)</th>
+						<td>@Html.DisplayFor(model => model.note)</td>
+					</tr>
+				</tbody>
+			</table>
+			<br />
+			<hr />
+			<br />
+		</div>
+		<div class="container">
+			    <a asp-action="Edit" asp-route-id="@Model.ppid">Edit</a> |
+                <a asp-action="Index">Back to List</a>
+		</div>
+		<br />
+		<hr />
+		<br />
+	</div>
 </div>

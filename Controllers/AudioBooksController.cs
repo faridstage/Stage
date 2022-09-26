@@ -15,11 +15,12 @@ namespace Stage_Books.Controllers
     public class AudioBooksController : Controller
     {
         private readonly ApplicationDbContext _context;
-        IWebHostEnvironment WebHostEnvironment;
+        private readonly IWebHostEnvironment WebHostEnvironment;
 
-        public AudioBooksController(ApplicationDbContext context)
+        public AudioBooksController(ApplicationDbContext context , IWebHostEnvironment WebHostEnvironment)
         {
             _context = context;
+            this.WebHostEnvironment = WebHostEnvironment;
         }
         // GET: Books/Search/5
         public IActionResult Search(string? search)
@@ -90,7 +91,7 @@ namespace Stage_Books.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,Author,Category,Publisher,Desc,PubDate,uploadDate,Language,Topic,Rights,path,ImageURL,note")] AudioBook audioBook, IFormFile imageFile)
+        public async Task<IActionResult> Create([Bind("ID,Name,Author,Category,Publisher,Desc,PubDate,uploadDate,Language,Topic,Rights,path,ImageURL,note")] AudioBook audioBook, IFormFile imageFile, IFormFile audiofile)
         {
             if (ModelState.IsValid)
             {
@@ -111,6 +112,24 @@ namespace Stage_Books.Controllers
                 else
                 {
                     audioBook.ImageURL = "\\AudioImages\\NoUser.jpg";
+                }
+                if (audiofile != null)
+                {
+                    // Guid -> globally Unique Identifier
+                    string imgExtension = Path.GetExtension(audiofile.FileName);
+                    Guid imgGuid = Guid.NewGuid();
+                    string imgName = imgGuid + imgExtension;
+                    string imgURL = "\\audiofile\\" + imgName;
+                    audioBook.path = imgURL;
+
+                    string imgPath = WebHostEnvironment.WebRootPath + imgURL;
+                    FileStream imgStream = new FileStream(imgPath, FileMode.Create);
+                    audiofile.CopyTo(imgStream);
+                    imgStream.Dispose();
+                }
+                else
+                {
+                    audioBook.path = "\\audiofile\\NoUser.jpg";
                 }
                 _context.Add(audioBook);
                 await _context.SaveChangesAsync();
@@ -211,6 +230,23 @@ namespace Stage_Books.Controllers
         private bool AudioBookExists(int id)
         {
             return _context.AudioBooks.Any(e => e.ID == id);
+        }
+
+        public ActionResult SearchAudioBooks(string searchname)
+        {
+            List<AudioBook> Book = new List<AudioBook>();
+            if (string.IsNullOrEmpty(searchname))
+            {
+                Book = _context.AudioBooks.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = searchname;
+                Book = _context.AudioBooks.Where(e => e.Name.Contains(searchname)
+                        || e.Category.Contains(searchname)
+                        || e.Topic.Contains(searchname)).ToList();
+            }
+            return View("Index", Book);
         }
     }
 }

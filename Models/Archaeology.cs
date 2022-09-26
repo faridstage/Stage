@@ -14,7 +14,7 @@ namespace Stage_Books.Models
         [Display(Name = " الدولة")]
         public string Country { get; set; }
         
-        [Display(Name = " الدولة")]
+        [Display(Name = " المدينة")]
         public string City { get; set; }
 
        

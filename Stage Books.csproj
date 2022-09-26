@@ -39,6 +39,19 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="wwwroot\Admin\" />
     <Folder Include="wwwroot\BookIndex\" />
+    <Folder Include="wwwroot\ArchImage\" />
+    <Folder Include="wwwroot\AntiqImage\" />
+    <Folder Include="wwwroot\documentariesmovie\" />
+    <Folder Include="wwwroot\documentariesimg\" />
+    <Folder Include="wwwroot\audiofile\" />
+    <Folder Include="wwwroot\manuimg\" />
+    <Folder Include="wwwroot\manufile\" />
+    <Folder Include="wwwroot\newspaperpage\" />
+    <Folder Include="wwwroot\newspaperlogoimg\" />
+    <Folder Include="wwwroot\paperfile\" />
+    <Folder Include="wwwroot\paperimg\" />
+    <Folder Include="wwwroot\thesesfile\" />
+    <Folder Include="wwwroot\thesesimg\" />
     <Folder Include="wwwroot\UserImages\" />
   </ItemGroup>
 
@@ -69,6 +82,26 @@
     <None Include="wwwroot\BookFiles\Phone Help_files\image023.png" />
     <None Include="wwwroot\BookFiles\Phone.htm" />
     <None Include="wwwroot\BookFiles\PhoneHelp.html" />
+    <None Include="wwwroot\BookFiles\programs icons\Advanced Installer 18.6.1.lnk" />
+    <None Include="wwwroot\BookFiles\programs icons\Barcode to PC server.lnk" />
+    <None Include="wwwroot\BookFiles\programs icons\DriverMax.lnk" />
+    <None Include="wwwroot\BookFiles\programs icons\Firefox.lnk" />
+    <None Include="wwwroot\BookFiles\programs icons\Git Bash.lnk" />
+    <None Include="wwwroot\BookFiles\programs icons\GitHub Desktop.lnk" />
+    <None Include="wwwroot\BookFiles\programs icons\Google Chrome.lnk" />
+    <None Include="wwwroot\BookFiles\programs icons\Internet Download Manager.lnk" />
+    <None Include="wwwroot\BookFiles\programs icons\OBS Studio.lnk" />
+    <None Include="wwwroot\BookFiles\programs icons\Oracle VM VirtualBox.lnk" />
+    <None Include="wwwroot\BookFiles\programs icons\PyCharm Community Edition 2021.3.lnk" />
+    <None Include="wwwroot\BookFiles\programs icons\PyCharm Community Edition 2022.2.1.lnk" />
+    <None Include="wwwroot\BookFiles\programs icons\QQPlayer.lnk" />
+    <None Include="wwwroot\BookFiles\programs icons\QuickTime Player.lnk" />
+    <None Include="wwwroot\BookFiles\programs icons\Said Fayiz1.xd" />
+    <None Include="wwwroot\BookFiles\programs icons\Visual Studio Code.lnk" />
+    <None Include="wwwroot\BookFiles\programs icons\VLC media player.lnk" />
+    <None Include="wwwroot\BookFiles\programs icons\VMware Workstation Pro.lnk" />
+    <None Include="wwwroot\BookFiles\programs icons\Wondershare Recoverit.lnk" />
+    <None Include="wwwroot\BookFiles\programs icons\Youtube Multi Downloader.lnk" />
     <None Include="wwwroot\fonts\fontawesome-webfont914c.svg" />
     <None Include="wwwroot\fonts\glyphicons-halflings-regular.svg" />
     <None Include="wwwroot\vtest\Phone Help_files\image001.jpg" />

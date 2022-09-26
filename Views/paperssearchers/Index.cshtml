@@ -1,9 +1,5 @@
-﻿@*@model IEnumerable<Stage_Books.Models.paperssearcher>*@
-@using X.PagedList.Mvc.Core.Common;
-@using X.PagedList.Web.Common;
-@using X.PagedList;
-@using X.PagedList.Mvc.Core; <!--import to get HTML Helper-->
-@model Stage_Books.Models.Showdatamodel
+﻿
+@model IEnumerable<Stage_Books.Models.paperssearcher>
 @inject SignInManager<ApplicationUser> signInManager;
 @using Microsoft.AspNetCore.Builder
 @using Microsoft.AspNetCore.Localization
@@ -24,33 +20,31 @@
 			}).ToList();
 	var returnurl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
 }
+
 @{
     ViewData["Title"] = "Index";
 }
-<!doctype html>
-<html lang="en">
-  <head>
+<head >
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <title>S T A G E</title>
     <meta name="viewport" content="width=device-width, initial-scale=6">
     <meta name="descrption" content="Best website to Find any Books">
-    <meta name="keywords" content=" كتب عالمية مترجمة  مكتبة,اكبر مكتبة لتحميل الكتب مجانا,اكبر مكتبة كتب,كتب,أكبر مكتبة,اكبر مكتبة للكتب الاسلامية,اكبر مكتبة شخصية,اكبر مكتبة يوغي يو,اكبر مكتبة اسلامية,اكبر مكتبة في العالم,اكبر مكتبة شخصية في العالم,اكبر مكتبة اسلامية,اهم اكبر مكتبة كتب الكترونية في العالم .,أكبر مكتبة في العالم ,كتب ادب ">
     <!-- Bootstrap CSS -->
-    <link rel="icon" href="~/img/stage_logo.png" type="" sizes="">
-    <link rel="shortcut icon" href="~/img/stage_logo.png" type="" sizes="">
-    <link rel="apple-touch-icon" href="~/img/stage_logo.png">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="~/css/style.css" rel="stylesheet">\
-       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 	<link href="~/css/style.css" rel="stylesheet">
 	<link href="~/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body style="font-family:cairo,Roboto">
-
-      <div class="container-fluid" style="background-color:#333333">
+	<link href="~/css/Footersite.css" rel="stylesheet" type="text/css" />
+</head>
+@*oncontextmenu="return false;"*@
+<body  style="font-family:Cairo,Roboto">
+	<!--main nav-->
+  	<div class="container-fluid" style="background-color:#333333">
 		<nav class="navbar navbar-expand-lg navbar-light " style="background-color:#333333;color:#ff7236;">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,6 +80,21 @@
 							</div>
 						</div>
 					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" style="color:white;" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+						   aria-haspopup="true" aria-expanded="false">
+							Books & Authors
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" asp-area="" asp-controller="publicpages" asp-action="about_stage">eBooks</a>
+							<a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="gotoauthors">@Stage_Books.languages.Resource.Authors</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#"></a>
+							</div>
+						</div>
+					</li>
+
 						<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" style="color:white;" id="navbarDropdownMenuLink" data-toggle="dropdown"
 						   aria-haspopup="true" aria-expanded="false">
@@ -124,10 +133,10 @@
                             </div>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" style="color:white;" asp-area="" asp-controller="publicpages" asp-action="policy">@Stage_Books.languages.Resource.Help<span class="sr-only">(current)</span></a>
+						<a class="nav-link" style="color:white;" asp-area="" asp-controller="Help" asp-action="Help">@Stage_Books.languages.Resource.Help<span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" style="color:white;" asp-area="" asp-controller="publicpages" asp-action="policy"><i style="color:#ff7236" class="bi bi-cart-check mr-2"></i>Order<span class="sr-only">(current)</span></a>
+						<a class="nav-link" style="color:white;" asp-area="" asp-controller="OrderViewModels" asp-action="Create"><i style="color:#ff7236" class="bi bi-cart-check mr-2"></i>Order<span class="sr-only">(current)</span></a>
 					</li>
 				</ul>
 
@@ -162,390 +171,117 @@
 			}
 		    </nav>
   </div>
-      <div class="container-fluid">
-          <br />
-          <br />
-          <div class="row">
-              <div class="col-12">
-                <h1 style="text-align:center">@Stage_Books.languages.Resource.Research_paper</h1>
-              </div>
-          </div>
-          
-          <br />
-          <br />
-          <div class="row">
-              
-
-              <div class="col-2">
-               
-              </div>
-              <div class="col-5">
-                 <form method="get" asp-controller="Encs" asp-action="search" class="form-inline">
-                       <div class="form-group mx-sm-3 mb-2">
-                        <input type="text" class="form-control" name="search" value="@ViewBag.CurrentSearch" id="inputPassword2" placeholder="Search">
-                      </div>
-                      <button type="submit" class="btn btn-primary input-group-append mb-2"><i class="bi bi-search mr-3"></i>Search </button>
-                    </form>
-              </div>
-              <div class="col-5">
-                   <p> <a class="btn btn-dark" asp-action="Create"><i class="bi bi-file-earmark-plus mr-3"></i>Add New Research paper </a></p>
-              </div>
-          </div>
-          <br />
-          <br />
-
-
-    <!-- container -->
-    <div class="container-fluid">
-        <div class="row">
-               <!--cat -->
-         <div class="col-sm">
-                <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
-                    @*<h3>@Stage_Books.languages.Resource.Categories</h3>*@
-                    <div class="list-group">
-                      <div class="p-3 mb-2 bg-secondary text-white">Topic</div>
-                    </div>
-                     @if(!Model.Books.Any())
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                No Data !
-                            </div>
-                        }
-                        else
-                        {
-                        @foreach (var item in Model.Books)
-                       {
-                           <a href="#" class="list-group-item list-group-item-action">
-                               @item.Topic
-                           </a>
-                           }
-                        }
-                <br />
-                   	<a class="nav-link text-info" href="../Home/gototopic">More Topics ..<span class="sr-only">(current)</span></a>
-                    <hr>
-                <div class="list-group">
-                        <div class="p-3 mb-2 bg-secondary text-white">
-                            @Stage_Books.languages.Resource.Authors
-                        </div>
-                        @if(!Model.Books.Any())
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                No Data !
-                            </div>
-                        }
-                        else
-                        {
-                      
-                          @foreach (var item in Model.Books)
-                          {
-                           <a href="#" class="list-group-item list-group-item-action">
-                               @item.Author.Name
-                           </a>      
-                          }
-                        }
-                    </div>
-                    <a class="nav-link text-info" href="../Home/gotoauthors">More @Stage_Books.languages.Resource.Authors ..<span class="sr-only">(current)</span></a>
-                    <hr>
-                    <div class="list-group">
-                        <div class="p-3 mb-2 bg-secondary text-white">
-                            @Stage_Books.languages.Resource.Categories
-                        </div>
-                        @if(!Model.Books.Any())
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                No Data !
-                            </div>
-                        }
-                        else
-                        {
-                        @foreach (var item in Model.Books)
-                          {
-                           <a href="#" class="list-group-item list-group-item-action">
-                               @item.Category
-                           </a>
-                          }
-                         }
-                    </div>
-                    	<a class="nav-link text-info" href="../Home/gotocat">More @Stage_Books.languages.Resource.Categories ..<span class="sr-only">(current)</span></a>
-                    <hr />
-               <div class="list-group">
-                            <div class="p-3 mb-2 bg-secondary text-white">
-                              @Stage_Books.languages.Resource.Books_Language
-                            </div>
-                    <a class="list-group-item list-group-item-action" href="#list-item-1">@Stage_Books.languages.Resource.English</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-2">@Stage_Books.languages.Resource.Arabic</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-3">@Stage_Books.languages.Resource.French</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-4">@Stage_Books.languages.Resource.Spanich</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-5">@Stage_Books.languages.Resource.German</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-6">@Stage_Books.languages.Resource.Hindi</a>
-
-                     </div>
-                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" hidden>Read More ...</button>
-                        <hr>
-                    </div>
-            </div>
-            <!-- main container -->
-            <div class="col-8">
-
-
-
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-              
-            </th>
-            <th>
-                
-            </th>
-            <th>
-               
-            </th>
-            <th>
-               
-            </th>
-            <th>
-                
-            </th>
-            <th>
-               
-            </th>
-            <th>
-                
-            </th>
-            <th>
-                
-            </th>
-            <th>
-                
-            </th>
-            <th>
-                
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.paperssearcher) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.searchername)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SerchName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.topic)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.lang)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PagesNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.publishdate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.url)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.note)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-                    @Html.PagedListPager(Model.Books.ToPagedList(), page => Url.Action("Index", new { page = page }),
-                        new X.PagedList.Mvc.Core.Common.PagedListRenderOptions
-                        {
-                            DisplayItemSliceAndTotal = true,
-                            ContainerDivClasses = new[] { "navigation" },
-                            LiElementClasses = new[] { "page-item" },
-                            PageClasses = new[] { "page-link" },
-                       })
-
- </div>
-            <!-- Ads -->
-            <div class="col-sm">
-                <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
-                   
-                    <div class="card" style="width: 12rem; ">
-
-                        <div class="card-body">
-                            <img class="card-img-top" src="img/ads.jpg" alt="Card image cap">
-                            <hr />
-                            <p class="card-text">Ads</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="card" style="width: 12rem;">
-
-                        <div class="card-body">
-                            <img class="card-img-top" src="img/ads.jpg" alt="Card image cap">
-                            <hr />
-                            <p class="card-text">Ads</p>
-                        </div>
-                    </div>
-
-                    <hr>
-                    <div class="card" style="width: 12rem; ">
-
-                        <div class="card-body">
-                            <img class="card-img-top" src="img/ads.jpg" alt="Card image cap">
-                            <hr />
-                            <p class="card-text">Ads</p>                        </div>
-                    </div>
-                    <hr>
-                    <div class="card" style="width: 12rem; ">
-
-                        <div class="card-body">
-                            <img class="card-img-top" src="img/ads.jpg" alt="Card image cap">
-                            <hr />
-                            <p class="card-text">Ads</p>                        </div>
-                    </div>
-                    <hr>
-                    <div class="card" style="width: 12rem;">
-
-                        <div class="card-body">
-                            <img class="card-img-top" src="img/ads.jpg" alt="Card image cap">
-                            <hr />
-                            <p class="card-text">Ads</p>
-                        </div>
-                      </div>
-                    <hr>
-                </div>
-            </div>
-        </div>
-    </div>
+<br />
+<br />
+<div class="container">
+<div class="row">
+<div class="col-3">
+</div>
+<div class="col-6">
+	<h2 style="text-align:center"> الاوراق البحثية </h2>
 
 </div>
- <!--footer-->
-		<!-- Start: Footer -->
-        <footer class="site-footer" style="background-color:#333333">
-            <div class="container">
-                <div id="footer-widgets">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6 widget-container">
-                            <div id="text-2" class="widget widget_text">
-                                <h3 class="footer-widget-title" style="color:#ff7236">About  S T A G E</h3>
-                                <span class="underline left"></span>
-                                <div class="textwidget">
-                                    It is a long established fact that a reader will be distracted by the readable content of a page when looking.
-                                </div>
-                                <address>
-                                    <div class="info">
-                                        <i class="fa fa-envelope"></i>
-                                        <span><a href="#">stage_books@gmail.com</a></span>
-                                    </div>
-                                    <div class="info">
-                                        <i class="fa fa-phone"></i>
-                                        <span><a href="tel:0122-345-6789">+ 0122-543-0068</a></span>
-                                    </div>
-                                </address>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-sm-6 widget-container">
-                            <div id="nav_menu-2" class="widget widget_nav_menu">
-                                <h3 class="footer-widget-title">Start With</h3>
-                                <span class="underline left"></span>
-                                <div class="menu-quick-links-container">
-                                    <ul id="menu-quick-links" class="menu">
-                                        <li><a href="#">eBooks</a></li>
-                                        <li><a href="#">Authers</a></li>
-                                        <li><a href="#">Audio Books</a></li>
-                                        <li><a href="#">Orders</a></li>
-										<li><a href="#">Encyclopedia</a></li>
-                                        <li><a href="#">Services</a></li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clearfix hidden-lg hidden-md hidden-xs tablet-margin-bottom"></div>
-                        <div class="col-md-2 col-sm-6 widget-container">
-                            <div id="text-4" class="widget widget_text">
-                                <h3 class="footer-widget-title">Follow Us</h3>
-                                <span class="underline left"></span>
-                                <div class="menu-quick-links-container">
-                                    <ul id="menu-quick-links" class="menu">
-                                        <li><a href="#">Contact Us</a></li>
-                                        <li><a href="#">Facebook</a></li>
-                                        <li><a href="#">Twitter</a></li>
-										<li><a href="#">E-mail</a></li>
-                                        <li><a href="#">Linkedin</a></li>
-										<li><a href="#">Youtupe</a></li>
-                                       
-                                        
-                                    </ul>
-                                </div>
-                            </div>			
-                        </div>
-                        <div class="col-md-4 col-sm-6 widget-container">
-                            <div class="widget twitter-widget">
-                                <h3 class="footer-widget-title"></h3>
-                                <span class="underline left"></span>
-                                <div id="twitter-feed">
-                                    <ul>
-                                        <li>
-                                            <p><a href="#"></a> Sed ut perspiciatis unde omnis iste natus error sit voluptatem.</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>		
-                        </div>
-                    </div>
-                </div>                
-            </div>
-            <div class="sub-footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="footer-text col-md-3">
-                            <p ><a target="_blank" href="#" style="color:#ff7236;">Created By : SIA Micro-Systems </a></p>
-						    <p ><a target="_blank"  style="color:#ff7236;"> &copy; All Recived Stage 2022s</a></p>
+<div class="col-3">
 
-							<!-- Created By : SIA Micro-Systems &copy; All Recived Stage 2022 -->
+</div>
+
+<div class="col-4">
+</div>
+<div class="col-4">
+	<br />
+<br />
+	<a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Index">الرجوع للرئيسية</a> |
+	<a class="btn btn-warning"  asp-area="" asp-controller="paperssearchers" asp-action="Index">الرجوع للاوراق البحثية</a> 
+</div>
+<div class="col-4">
+
+</div>
+</div>
+</div>
+<hr />
+<br />
+ <!-- Start: Search Section -->
+        <section class="search-filters mt-5 mb-5">
+            <div class="container">
+                <div class="filter-box">
+                    @using (Html.BeginForm("Searchpaperre","paperssearchers",FormMethod.Post))
+                         {
+							 <div class="row">
+                             <div class="col-md-10 col-sm-6">
+                            <div class="form-group">
+                                 <div class="" style="margin:0 auto" >
+                                     <div class="class="col-6">
+                                          <input style="" type="text" name="searchname" class="form-control" />                    
+                                      </div> 
+                                  </div>
+                             </div>
                         </div>
-                        <div class="col-md-9 pull-right">
-                            <ul>
-                                <li><a href="index-2.html">Home</a></li>
-                                <li><a href="books-media-list-view.html">Books &amp; Media</a></li>
-                                <li><a href="news-events-list-view.html">Authors</a></li>
-                               <li><a href="news-events-list-view.html">Publisher</a></li>
-                                <li><a href="services.html">Services</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
+
+                         <div class="col-md-2 col-sm-6">
+                            <div class="form-group">
+                                <input style="color:white;background-color:#ff7236;" class="form-control" type="submit" value="Search">
+                                
+                            </div>
                         </div>
-                    </div>
+						</div>
+                     }
                 </div>
             </div>
-        </footer>
-        <!-- End: Footer -->
+        </section>
+ <!-- End: Search Section -->
+		<hr />
+<br />
+<div class="container">
+<div class="row">
+	<div class="col-2"></div>
+	<div class="col-8">
+		@foreach (var item in Model) {
+          <div class="row" >
+			
 
-    @section Scripts{
-    <script>
-        $(document).ready(function () {
-            $('ul.pagination > li.disabled > a').addClass('page-link');
-        });
-    </script>
-}
+<div class="card" style="width: 22rem;">
+  <div class="card-body">
 
-    <!-- Optional JavaScript; choose one of the two! -->
-    <script src="~/js/js.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
-</html>
+     <h5 style="text-align:center" class="card-title">@Html.DisplayFor(modelItem => item.SerchName)</h5>
+    <p style="text-align:center" class="card-text">@Html.DisplayFor(modelItem => item.searchername)</p>
+	<p style="text-align:center" class="card-text">@Html.DisplayFor(modelItem => item.category)</p>
+	<p style="text-align:center" class="card-text">@Html.DisplayFor(modelItem => item.topic)</p>
+	<p style="text-align:center" class="card-text">@Html.DisplayFor(modelItem => item.lang)</p>
+	<p style="text-align:center" class="card-text">@Html.DisplayFor(modelItem => item.publishdate)</p>
+  </div>
+      <a style="color:white;background-color:#ff7236;" asp-action="Details" asp-route-id="@item.id" class="btn btn-primary">@Stage_Books.languages.Resource.Read_More </a>
+	  
+
+</div>
+
+<div class="card" style="width: 24rem;">
+  <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.image)" alt="@Html.DisplayFor(modelItem => item.SerchName)">
+
+</div>
+</div>
+<br />
+		}
+	</div>
+	<div class="col-2"></div>
+</div>
+</div>
+<br />
+<br />
+<br />
+<br />
+
+
+    <script src="js/js.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+        
+            </body>
+

@@ -40,6 +40,12 @@ namespace Stage_Books.Models
         
         public virtual Author Author { get; set; }
 
+        [Display(Name = "Categories")]
+        [Range(1, int.MaxValue, ErrorMessage = "Choose a Valid Categories")]
+        public int CategoryID { get; set; }
+        [ValidateNever]
+        public virtual Category Categories { get; set; }
+
         [Display(Name = "BookFile")]
         public string BookURLS { get; set; }
         [Display(Name = "IntroFile")]

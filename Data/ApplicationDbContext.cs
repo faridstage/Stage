@@ -23,7 +23,7 @@ namespace Stage_Books.Models
         public DbSet<Scriptpaper> Scriptpaper { get; set; }
         public DbSet<paperssearcher> paperssearchers { get; set; }
         public DbSet<SaveBook> Saved { get; set; }
-        //public DbSet<RateBook> RateBooks { get; set; }
+        public DbSet<Category> categories { get; set; }
         public DbSet<BookComment> BookComments { get; set; }
         public DbSet<AppRole> appRoles { get; set; }
         public DbSet<AppUserRole> appUserRoles { get; set; }
@@ -38,16 +38,16 @@ namespace Stage_Books.Models
 
         public DbSet<Issuance> issuance { get; set; }
 
-        public DbSet<Issuancepaper> issuancepapers { get; set; }    
+        public DbSet<Issuancepaper> issuancepapers { get; set; }
 
         public DbSet<PageTitle> pageTitles { get; set; }
-
-        public DbSet<Thesis> theses { get; set; }
-
+        public DbSet<Antiques> Antiques { get; set; }   
         public DbSet<Archaeology> archaeology { get; set; } 
 
         public DbSet<Archaeology> archaeologies { get; set; }
-        public DbSet<Antiques> Antiques  { get; set; }
+        public DbSet<Thesis> theses { get; set; }
+
+        public DbSet<documentaries> documentaries { get; set; }
 
     }
 }

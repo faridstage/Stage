@@ -21,9 +21,33 @@ namespace Stage_Books.Controllers
         // GET: Issuances
         public async Task<IActionResult> Index()
         {
+            //Issuance issuance = _context.issuance.Include(e => e.AllNewsPapers).FirstOrDefault(e => e.Nid == id);
+            //return View(issuance);
             return View(await _context.issuance.ToListAsync());
         }
 
+        public IActionResult ld(int? id)
+        {
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
+            //var issuance =  _context.issuance.FirstOrDefaultAsync(m => m.Nid == id);
+            //if (issuance == null)
+            //{
+            //    return NotFound();
+            //}
+            //return View(issuance);
+            var newspaper = _context.allNewsPaper;
+            var asdarat = _context.issuance;
+            var show = new Showdatamodel
+            {
+                allNewsPapers = newspaper.ToList(),
+                issuances = asdarat.ToList()
+            };
+            return View(show);
+
+        }
         // GET: Issuances/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -45,7 +69,8 @@ namespace Stage_Books.Controllers
         // GET: Issuances/Create
         public IActionResult Create()
         {
-            return View();
+            ViewBag.graied = _context.allNewsPaper.ToList();
+            return View("Create");
         }
 
         // POST: Issuances/Create

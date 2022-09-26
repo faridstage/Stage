@@ -178,14 +178,63 @@
         <div style="text-align: center; margin-top: 25px;">
             <h1>S T A G E</h1>
             <br>
-            <h1>Search</h1>
+            <h3>Search</h3>
+			<hr />
         </div>
     </div>
+	<div class="container-fluid">
+        <div class="container">
+								 @using (Html.BeginForm("Search","Home",FormMethod.Post))
+                                    {
+                                           <div class="" style="margin:0 auto" >
+                                             <div class="class="col-6">
+                                               <input placeholder="Search" type="text" name="searchname" class="form-control" />              
+                                           </div> 
+                                         </div>
+                                    }
+		</div>
+    </div>
+	<hr />
+	<br />
+          <div class="container-fluid">
+                    <div class="row" >
+                       <div class="col-2 " style="text-align:center;background-color:#333333">
+						   
+						  @* <p>
+					     	  <a style="width:150px" class="btn btn-primary" data-toggle="" href="#collapseExample" role="button" aria-expanded="false" aria-controls="">
+					      		تصنيفات الكتب
+						  </a>
+						  
+						</p>
+						<div class="" id="">
+						  <div class="card card-body">
+							<ul>
+								<li>التصنيفات</li>
+								<li>التصنيفات</li>
+								<li>التصنيفات</li>
+							</ul>
+						  </div>
+						</div>
 
-          <div class="container">
-                    <div class="row">
-                   
-                        @if(!Model.Any())
+						<p>
+						  <a style="width:150px" class="btn btn-primary" data-toggle="" href="#" role="button" aria-expanded="false" aria-controls="">
+							المؤلفين
+						  </a>
+						  
+						</p>
+						<div class="" id="collapseExample">
+						  <div class="card card-body">
+							<ul>
+								<li>التصنيفات</li>
+								<li>التصنيفات</li>
+								<li>التصنيفات</li>
+							</ul>
+						  </div>
+						</div>*@
+					   </div>
+					   <div class="col-8 ">
+						   <div class="row">
+						   @if(!Model.Any())
                         {
                             <div class="alert alert-danger" role="alert">
                                 No Data !
@@ -195,47 +244,24 @@
                         {
                         @foreach (var item in Model)
                        {
-                            <div  class="card" style="width:auto; margin:0px auto">
-                                <div class="mt-sm-3" style="margin:0px auto">
-                                      <img class="" src="@item.ImageURL" alt="Card image cap" width="150" height="200">
-                                </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title" style="text-align:center">@item.Name</h5>
-                                       
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        @*<li class="list-group-item" style="text-align:center">@item.Author.Name</li>*@
-                                        <li class="list-group-item" style="text-align:center">@item.Language</li>
-                                        <li class="list-group-item" style="text-align:center">@item.Topic</li>
-                                    </ul>
-                                    <div class="card-body">
-                                        
-                                        <a asp-controller="books" asp-action="Book_Details" asp-route-id="@item.ID" class="card-link">Details</a>
-                                       
-                                        <a href="#" class="card-link">Save</a>
-                                        <a href="#" class="card-link mr-4" data-toggle="modal" data-target="#exampleModal">Index</a>
-                                       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                          <div class="modal-dialog">
-                                            <div class="modal-content">
-                                              <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Book Index</h5>
-                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                   <span aria-hidden="true">&times;</span>
-                                                 </button>
-                                                </div>
-                                                 <div class="modal-body">...</div>
-                                                <div class="modal-footer">
-                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                  <button type="button" class="btn btn-primary">Save changes</button>
-                                                </div>
-                                              </div>
-                                            </div>
-                                         </div>
-                                    </div>
-                                 </div>
-                                <hr />
-							}
+
+						   <div class="card mr-2 ml-2" style="width: 13rem;">
+							  <img class="card-img-top" src="@item.ImageURL" alt="Card image cap">
+							  <div class="card-body">
+								<h5 class="card-title" style="text-align:center">@item.Name</h5>
+								<p class="card-text" style="text-align:center">@item.Category</p>
+								<p class="card-text" style="text-align:center">@item.Language</p>
+								<a style="background-color:#ff7236;color:white" asp-controller="books" asp-action="Book_Details" asp-route-id="@item.ID" class="btn  ">Details</a> |
+								<a style="background-color:#ff7236;color:white" asp-controller="books" asp-action="Book_Show" asp-route-id="@item.ID" class="btn  ">Read</a>
+							  </div>
+							</div>
+						}
                        }
+					   </div>
+					   </div>
+					   <div class="col-2" style="text-align:center;background-color:#333333">
+						   اعلانات
+					   </div>
 
                     </div>
           </div>

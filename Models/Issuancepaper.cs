@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+
 namespace Stage_Books.Models
 {
     public class Issuancepaper
@@ -15,14 +17,14 @@ namespace Stage_Books.Models
 
         [Display(Name = "الاصدار")]
 
-        public string Pid { get; set; }
+        public int Pid { get; set; }
         [ValidateNever]
         public virtual Issuance Issuance { get; set; }
-
 
 
         [Display(Name = "ملاحظات ")]
         public string note { get; set; }
 
+        public List<PageTitle> PageTitle { get; set; }
     }
 }

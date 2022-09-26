@@ -1,0 +1,48 @@
+﻿
+@******************************************@
+@model Stage_Books.Models.Category
+
+
+@{
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	ViewData["Title"] = "Delete";
+}
+
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-10">
+		<br />
+		<br />
+		<br />
+		<br />
+		<h2 style="text-align:center"> حذف تصنيف </h2>
+		<br />
+		<hr />
+		<br />
+		<div class="container">
+			<table class="table">
+				<tbody>
+					<tr>
+
+						<th scope="row">@Html.DisplayNameFor(model => model.Name)</th>
+						<td>@Html.DisplayFor(model => model.Name)</td>
+					</tr>
+
+				</tbody>
+			</table>
+			<br />
+			<hr />
+			<br />
+		</div>
+		<div class="container">
+			    <form asp-action="Delete">
+        <input type="hidden" asp-for="id" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+		</div>
+		<br />
+		<hr />
+		<br />
+	</div>
+</div>

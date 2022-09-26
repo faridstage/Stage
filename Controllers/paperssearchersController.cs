@@ -18,38 +18,41 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Data.SqlClient;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using System.IO;
 
 namespace Stage_Books.Controllers
 {
     public class paperssearchersController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public paperssearchersController(ApplicationDbContext context)
+        public paperssearchersController(ApplicationDbContext context , IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            this.webHostEnvironment = webHostEnvironment;
         }
 
         // GET: paperssearchers
         public async Task<IActionResult> Index(int? page)
         {
-            var book = _context.Books.ToList();
-            var author = _context.Authors.ToList();
-            var Enc = _context.Encs.ToList();
-            var users = _context.Users.ToList();
-            var saved = _context.Saved.ToList();
-            var papers = _context.paperssearchers.ToList().ToPagedList(page ?? 1, 25);
-            var show = new Showdatamodel
-            {
-                Books = book.ToList(),
-                Auther = author,
-                Encs = Enc,
-                appusers = users,
-                SaveBooks = saved,
-                paperssearcher = papers.ToList()
-            };
-            return View(show);
-            //return View(await _context.paperssearchers.ToListAsync());
+            //var book = _context.Books.ToList();
+            //var author = _context.Authors.ToList();
+            //var Enc = _context.Encs.ToList();
+            //var users = _context.Users.ToList();
+            //var saved = _context.Saved.ToList();
+            //var papers = _context.paperssearchers.ToList().ToPagedList(page ?? 1, 25);
+            //var show = new Showdatamodel
+            //{
+            //    Books = book.ToList(),
+            //    Auther = author,
+            //    Encs = Enc,
+            //    appusers = users,
+            //    SaveBooks = saved,
+            //    paperssearcher = papers.ToList()
+            //};
+            //return View(show);
+            return View(await _context.paperssearchers.ToListAsync());
         }
 
         // GET: paperssearchers/Details/5
@@ -81,10 +84,50 @@ namespace Stage_Books.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,searchername,SerchName,topic,lang,PagesNumber,publishdate,category,image,url,note")] paperssearcher paperssearcher)
+        public async Task<IActionResult> Create([Bind("id,searchername,SerchName,topic,lang,PagesNumber,publishdate,category,image,url,note")] paperssearcher paperssearcher, IFormFile paperimg, IFormFile paperfile)
         {
             if (ModelState.IsValid)
             {
+                if (paperimg != null)
+                {
+                    // Guid -> globally Unique Identifier
+                    string imgExtension = Path.GetExtension(paperimg.FileName);
+                    Guid imgGuid = Guid.NewGuid();
+                    string imgName = imgGuid + imgExtension;
+                    string imgURL = "\\paperimg\\" + imgName;
+                    paperssearcher.image = imgURL;
+
+                    string imgPath = webHostEnvironment.WebRootPath + imgURL;
+                    FileStream imgStream = new FileStream(imgPath, FileMode.Create);
+                    paperimg.CopyTo(imgStream);
+                    imgStream.Dispose();
+
+
+                }
+                else
+                {
+                    paperssearcher.image = "\\paperimg\\NoImage.jpeg";
+                }
+                if (paperfile != null)
+                {
+                    // Guid -> globally Unique Identifier
+                    string imgExtension = Path.GetExtension(paperfile.FileName);
+                    Guid imgGuid = Guid.NewGuid();
+                    string imgName = imgGuid + imgExtension;
+                    string imgURL = "\\paperfile\\" + imgName;
+                    paperssearcher.url = imgURL;
+
+                    string imgPath = webHostEnvironment.WebRootPath + imgURL;
+                    FileStream imgStream = new FileStream(imgPath, FileMode.Create);
+                    paperfile.CopyTo(imgStream);
+                    imgStream.Dispose();
+
+
+                }
+                else
+                {
+                    paperssearcher.url = "\\paperfile\\NoImage.jpeg";
+                }
                 _context.Add(paperssearcher);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -175,6 +218,23 @@ namespace Stage_Books.Controllers
         private bool paperssearcherExists(int id)
         {
             return _context.paperssearchers.Any(e => e.id == id);
+        }
+
+        public ActionResult Searchpaperre(string searchname)
+        {
+            List<paperssearcher> Book = new List<paperssearcher>();
+            if (string.IsNullOrEmpty(searchname))
+            {
+                Book = _context.paperssearchers.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = searchname;
+                Book = _context.paperssearchers.Where(e => e.SerchName.Contains(searchname)
+                        || e.category.Contains(searchname)
+                        || e.topic.Contains(searchname)).ToList();
+            }
+            return View("Index", Book);
         }
     }
 }

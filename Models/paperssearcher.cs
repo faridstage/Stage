@@ -4,45 +4,48 @@ namespace Stage_Books.Models
 {
     public class paperssearcher
     {
+        [Key]
         public int id { get; set; }
 
         [Required]
-        [Display(Name = "Searcher Name")]
-        public string searchername { get; set; }
-
-        [Required]
-        [Display(Name = "Serch Name")]
+        [Display(Name = "البحث")]
         public string SerchName { get; set; }
 
         [Required]
-        [Display(Name = "Topic")]
+        [Display(Name = "اسم الباحث ")]
+        public string searchername { get; set; }
+
+       
+
+        [Required]
+        [Display(Name = "الموضوع")]
         public string topic { get; set; }
 
         [Required]
-        [Display(Name = "Language")]
+        [Display(Name = "اللغة")]
         public string lang { get; set; }
 
         [Required]
-        [Display(Name = "Pages Number")]
+        [Display(Name = "الصفحات ")]
         public string PagesNumber { get; set; }
 
-        [Required]
-        [Display(Name = "Publish Date")]
+        
+        [Display(Name = "تاريخ البحث ")]
         public string publishdate { get; set; }
 
         [Required]
-        [Display(Name = "Category")]
+        [Display(Name = "التصنيف")]
         public string category { get; set; }
 
-        [Required]
-        [Display(Name = "Image")]
+     
+        [Display(Name = "صورة")]
         public string image { get; set; }
 
-        [Required]
-        [Display(Name = "Url")]
+        
+        [Display(Name = "ملف البحث")]
         public string url { get; set; }
 
-        [Display(Name = "Notes")]
+        [Display(Name = "ملاحظات")]
         public string note { get; set; }
     }
 }

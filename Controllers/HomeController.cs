@@ -57,6 +57,7 @@ namespace Stage_Books.Controllers
             var users = _context.Users.ToList();
             var saved = _context.Saved.ToList();
             var love = _context.loveViewModels.ToList();
+            var profile = _context.UserProfiles.ToList();
             var show = new Showdatamodel
             {
                 Books = book.ToList(),
@@ -64,7 +65,8 @@ namespace Stage_Books.Controllers
                 Encs = Enc,
                 appusers = users,
                 SaveBooks = saved,
-                Loveviews = love
+                Loveviews = love,
+                userProfiles = profile
 
             };
             return View(show);
@@ -91,6 +93,7 @@ namespace Stage_Books.Controllers
         {
             return View();
         }
+        [HttpGet]
         public ActionResult Search()
         {
             return View();
@@ -107,6 +110,7 @@ namespace Stage_Books.Controllers
 
             return View(result);
         }
+
 
         public ActionResult Searchbyenglish(string Searchbyenglish)
         {
@@ -154,7 +158,7 @@ namespace Stage_Books.Controllers
         }
     
                            
-        public ActionResult gotobooks()
+        public async Task<ActionResult> gotobooks()
         {
             var book = _context.Books.ToList();
             var author = _context.Authors.ToList();
@@ -166,6 +170,7 @@ namespace Stage_Books.Controllers
                 Encs = Enc,
             };
             return View(show);
+            //return View(await _context.Books.ToListAsync());
         }
         public ActionResult gotoauthors()
         {
@@ -309,5 +314,30 @@ namespace Stage_Books.Controllers
         //{
         //    return View();
         //}
+
+        
+        public ActionResult Searchgotobooks(string searchname)
+        {
+            //var result = _context.Books.Include(x => x.Author).Where(b => b.Name.Contains(searchname) || b.Author.Name.Contains(searchname)).ToList();
+            //*****************
+            //var result = _context.Books.Where(b => b.Name.Contains(searchname)
+            //             || b.Author.Name.Contains(searchname)
+            //             || b.Topic.Contains(searchname)
+            //             || b.Category.Contains(searchname)).ToList();
+
+            //return View(result);
+            //****************
+            List<Book> Book = new List<Book>();
+            if (string.IsNullOrEmpty(searchname))
+            {
+                Book = _context.Books.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = searchname;
+                Book = _context.Books.Where(e => e.Name.Contains(searchname)).ToList();
+            }
+            return View("gotobooks", Book);
+        }
     }
 }

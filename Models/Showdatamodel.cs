@@ -43,13 +43,12 @@ namespace Stage_Books.Models
 
         public List<Issuance> issuances { get; set; }
 
-        public List<Issuancepaper> issuancepapers { get; set; }
-        public List<PageTitle> pageTitles { get; set; }
+        //public List<Issuancepaper> issuancepapers { get; set; }
+        //public List<PageTitle> pageTitles { get; set; }
 
-        //public List<Book> Searchfunc(string term)
-        //{
-        //    var result = _context.Books.Include(x => x.Author).Where(b => b.Name.Contains(term) || b.Author.Name.Contains(term)).ToList();
-        //    return result;
-        //}
+        public List<UserProfile> userProfiles { get; set; }
+
+        public List<Category> categories { get; set; }
+
     }
 }

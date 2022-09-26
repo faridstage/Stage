@@ -1,0 +1,36 @@
+﻿@model Stage_Books.Models.Showdatamodel
+
+@{
+    ViewData["Title"] = "ld";
+}
+
+<h2>ld</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@foreach (var item in Model.issuances) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Issuancedate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pages)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IssuanceNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.note)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Pid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Pid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Pid">Delete</a>
+            </td>
+        </tr>
+}

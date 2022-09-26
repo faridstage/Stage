@@ -66,7 +66,7 @@ namespace Stage_Books.Controllers
                 ViewBag.CurrentSearch = search;
                 Enc = _context.Encs.Where(e => e.Name.Contains(search)).ToList();
             }
-            return View("index2", Enc); ;
+            return View("index2", Enc); 
         }
         // GET: Encs
         public async Task<IActionResult> Index(int? page)
@@ -244,6 +244,31 @@ namespace Stage_Books.Controllers
         private bool EncExists(int id)
         {
             return _context.Encs.Any(e => e.id == id);
+        }
+
+        public ActionResult Searchens(string searchname)
+        {
+            var result = _context.Encs.Where(b => b.Name.Contains(searchname)).ToList();
+
+            return View(result);
+
+        }
+
+        public ActionResult Searchpaperre(string searchname)
+        {
+            List<Scriptpaper> Book = new List<Scriptpaper>();
+            if (string.IsNullOrEmpty(searchname))
+            {
+                Book = _context.Scriptpaper.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = searchname;
+                Book = _context.Scriptpaper.Where(e => e.scriptname.Contains(searchname)
+                        || e.scriptpalcestore.Contains(searchname)
+                        || e.scriptcategory.Contains(searchname)).ToList();
+            }
+            return View("Index", Book);
         }
     }
 }

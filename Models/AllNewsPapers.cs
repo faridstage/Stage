@@ -1,16 +1,20 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
 namespace Stage_Books.Models
 {
     public class AllNewsPapers
     {
         [Key]
-        public string Nid { get; set; }
+        public int Nid { get; set; }
 
         [Required]
         [Display(Name = "اسم الجريدة ")]
         public string Name { get; set; }
         [Display(Name = "المالك ")]
         public string owner { get; set; }
+        [Display(Name = "الدولة ")]
+        public string Country { get; set; }
         [Display(Name = "اللوجو ")]
         public string logo { get; set; }
         [Display(Name = "تاريخ التأسيس ")]
@@ -27,5 +31,8 @@ namespace Stage_Books.Models
         public string type { get; set; }
         [Display(Name = "ملاحظات ")]
         public string note { get; set; }
+
+        public List<Issuance> Issuances { get; set; }
+
     }
 }

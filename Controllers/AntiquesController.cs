@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +15,12 @@ namespace Stage_Books.Controllers
     public class AntiquesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public AntiquesController(ApplicationDbContext context)
+        public AntiquesController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            this.webHostEnvironment = webHostEnvironment;
         }
 
         // GET: Antiques
@@ -23,13 +28,13 @@ namespace Stage_Books.Controllers
         {
             return View(await _context.Antiques.ToListAsync());
         }
-        
-        public async Task<IActionResult> IndexShow()
+        public async Task<IActionResult> Index_d()
         {
             return View(await _context.Antiques.ToListAsync());
         }
+
         // GET: Antiques/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -57,10 +62,30 @@ namespace Stage_Books.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,Name,date,madein,creator,owner,ownercerti,imageurl,des,info,note")] Antiques antiques)
+        public async Task<IActionResult> Create([Bind("id,Name,date,madein,creator,owner,ownercerti,imageurl,des,info,note")] Antiques antiques, IFormFile AntiqImage)
         {
             if (ModelState.IsValid)
             {
+                if (AntiqImage != null)
+                {
+                    // Guid -> globally Unique Identifier
+                    string imgExtension = Path.GetExtension(AntiqImage.FileName);
+                    Guid imgGuid = Guid.NewGuid();
+                    string imgName = imgGuid + imgExtension;
+                    string imgURL = "\\AntiqImage\\" + imgName;
+                    antiques.imageurl = imgURL;
+
+                    string imgPath = webHostEnvironment.WebRootPath + imgURL;
+                    FileStream imgStream = new FileStream(imgPath, FileMode.Create);
+                    AntiqImage.CopyTo(imgStream);
+                    imgStream.Dispose();
+
+
+                }
+                else
+                {
+                    antiques.imageurl = "\\ArchImage\\NoImage.jpeg";
+                }
                 _context.Add(antiques);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -69,7 +94,7 @@ namespace Stage_Books.Controllers
         }
 
         // GET: Antiques/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -89,7 +114,7 @@ namespace Stage_Books.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("id,Name,date,madein,creator,owner,ownercerti,imageurl,des,info,note")] Antiques antiques)
+        public async Task<IActionResult> Edit(int id, [Bind("id,Name,date,madein,creator,owner,ownercerti,imageurl,des,info,note")] Antiques antiques)
         {
             if (id != antiques.id)
             {
@@ -120,7 +145,7 @@ namespace Stage_Books.Controllers
         }
 
         // GET: Antiques/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -140,7 +165,7 @@ namespace Stage_Books.Controllers
         // POST: Antiques/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var antiques = await _context.Antiques.FindAsync(id);
             _context.Antiques.Remove(antiques);
@@ -148,9 +173,34 @@ namespace Stage_Books.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AntiquesExists(string id)
+        private bool AntiquesExists(int id)
         {
             return _context.Antiques.Any(e => e.id == id);
+        }
+
+        //public ActionResult Search(string searchname)
+        //{
+        //    //var result = _context.Books.Include(x => x.Author).Where(b => b.Name.Contains(searchname) || b.Author.Name.Contains(searchname)).ToList();
+        //    var result = _context.Antiques.Where(b => b.Name.Contains(searchname)
+        //                 || b.madein.Contains(searchname)).ToList();
+
+        //    return View(result);
+        //}
+
+        public ActionResult Search(string searchname)
+        {
+            List<Antiques> Book = new List<Antiques>();
+            if (string.IsNullOrEmpty(searchname))
+            {
+                Book = _context.Antiques.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = searchname;
+                Book = _context.Antiques.Where(e => e.Name.Contains(searchname)
+                        || e.madein.Contains(searchname)).ToList();
+            }
+            return View("Index", Book);
         }
     }
 }

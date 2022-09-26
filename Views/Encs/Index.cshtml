@@ -175,134 +175,55 @@
         <br />
         <h3 style="color:#ff7236">@Stage_Books.languages.Resource.Encyclopedia</h3>
         <br>
-        <img src="~/img/en.png" alt="Encyclobedia" width="80" height="80"/>
-        <br />
     </div>
 @*    <p>
     <a asp-action="Create">Send Message</a>
     </p>*@
-    <br><hr /><br>
+  <hr />
 
-   <div class="container">
+ <!-- Start: Search Section -->
+        <section class="search-filters mt-5 mb-5">
+            <div class="container">
+                <div class="filter-box">
+                    @using (Html.BeginForm("Searchens","Encs",FormMethod.Post))
+                         {
+							 <div class="row">
+                             <div class="col-md-10 col-sm-6">
+                            <div class="form-group">
+                                 <div class="" style="margin:0 auto" >
+                                     <div class="class="col-6">
+                                          <input style="" type="text" name="searchname" class="form-control" />                    
+                                      </div> 
+                                  </div>
+                             </div>
+                        </div>
 
-<form method="get" asp-controller="Encs" asp-action="search" class="">
-  <div class="form-group row">
-    <label for="colFormLabel" class="col-sm-2 col-form-label">Search</label>
-    <div class="col-sm-8">
-      <input type="text" class="form-control"  placeholder="Search" value="@ViewBag.CurrentSearch" name="search">
-    </div>
-    <button type="submit"  class="btn btn-warning col-sm-2 col-form-label">Search</button>
-  </div>
-</form>
-   </div>
+                         <div class="col-md-2 col-sm-6">
+                            <div class="form-group">
+                                <input style="color:white;background-color:#ff7236;" class="form-control" type="submit" value="Search">
+                                
+                            </div>
+                        </div>
+						</div>
+                     }
+                </div>
+            </div>
+        </section>
+ <!-- End: Search Section -->
 <hr />
 
-
-    <!--******************************************-->
 <div class="container-fluid">
-
-@*<p>
-    <a asp-action="Create">Create New</a>
-</p>*@
-
     <!-- container -->
     <div class="container-fluid">
         <div class="row">
                <!--cat -->
          <div class="col-sm">
-                <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
-                    @*<h3>@Stage_Books.languages.Resource.Categories</h3>*@
-                    <div class="list-group">
-                      <div class="p-3 mb-2 bg-secondary text-white">Topic</div>
-                    </div>
-                     @if(!Model.Books.Any())
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                No Data !
-                            </div>
-                        }
-                        else
-                        {
-                        @foreach (var item in Model.Books)
-                       {
-                           <a href="#" class="list-group-item list-group-item-action">
-                               @item.Topic
-                           </a>
-                           }
-                        }
-                <br />
-                   	<a class="nav-link text-info" href="../Home/gototopic">More Topics ..<span class="sr-only">(current)</span></a>
-                    <hr>
-                <div class="list-group">
-                        <div class="p-3 mb-2 bg-secondary text-white">
-                            @Stage_Books.languages.Resource.Authors
-                        </div>
-                        @if(!Model.Books.Any())
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                No Data !
-                            </div>
-                        }
-                        else
-                        {
-                      
-                          @foreach (var item in Model.Books)
-                          {
-                           <a href="#" class="list-group-item list-group-item-action">
-                               @item.Author.Name
-                           </a>      
-                          }
-                        }
-                    </div>
-                    <a class="nav-link text-info" href="../Home/gotoauthors">More @Stage_Books.languages.Resource.Authors ..<span class="sr-only">(current)</span></a>
-                    <hr>
-                    <div class="list-group">
-                        <div class="p-3 mb-2 bg-secondary text-white">
-                            @Stage_Books.languages.Resource.Categories
-                        </div>
-                        @if(!Model.Books.Any())
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                No Data !
-                            </div>
-                        }
-                        else
-                        {
-                        @foreach (var item in Model.Books)
-                          {
-                           <a href="#" class="list-group-item list-group-item-action">
-                               @item.Category
-                           </a>
-                          }
-                         }
-                    </div>
-                    	<a class="nav-link text-info" href="../Home/gotocat">More @Stage_Books.languages.Resource.Categories ..<span class="sr-only">(current)</span></a>
-                    <hr />
-               <div class="list-group">
-                            <div class="p-3 mb-2 bg-secondary text-white">
-                              @Stage_Books.languages.Resource.Books_Language
-                            </div>
-                    <a class="list-group-item list-group-item-action" href="#list-item-1">@Stage_Books.languages.Resource.English</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-2">@Stage_Books.languages.Resource.Arabic</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-3">@Stage_Books.languages.Resource.French</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-4">@Stage_Books.languages.Resource.Spanich</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-5">@Stage_Books.languages.Resource.German</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-6">@Stage_Books.languages.Resource.Hindi</a>
-
-                     </div>
-                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" hidden>Read More ...</button>
-                        <hr>
-                    </div>
-            </div>
+ 
+         </div>
             <!-- main container -->
 
             <div class="col-8">
-                <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
-                </div>
-                <div class="card text-center" style="">
-                    <div class="card-header"> . </div>
-      
-                </div>
+               
             @foreach (var item in Model.Encs) {
                <div class="container-fluid row" style="direction:rtl">
                   <div class="col">
@@ -326,7 +247,7 @@
         }
                     <!-- paging control for navigation to the previous page, next page, etc -->
                     
-                    @Html.PagedListPager(Model.Books.ToPagedList(), page => Url.Action("Index", new { page = page }),
+                    @Html.PagedListPager(Model.Encs.ToPagedList(), page => Url.Action("Index", new { page = page }),
                         new X.PagedList.Mvc.Core.Common.PagedListRenderOptions
                         {
                             DisplayItemSliceAndTotal = true,
@@ -337,45 +258,6 @@
  </div>
             <!-- Ads -->
             <div class="col-sm">
-                <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
-                   
-                    <div class="card" style="width: 12rem; ">
-
-                        <div class="card-body">
-                            <img class="card-img-top" src="img/ads.jpg" alt="Card image cap">
-                            <hr />
-                            <p class="card-text">Ads</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="card" style="width: 12rem;">
-
-                        <div class="card-body">
-
-                        </div>
-                    </div>
-
-                    <hr>
-                    <div class="card" style="width: 12rem; ">
-
-                        <div class="card-body">
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="card" style="width: 12rem; ">
-
-                        <div class="card-body">
-                       </div>
-                    </div>
-                    <hr>
-                    <div class="card" style="width: 12rem;">
-
-                        <div class="card-body">
-
-                        </div>
-                      </div>
-                    <hr>
-                </div>
             </div>
         </div>
     </div>

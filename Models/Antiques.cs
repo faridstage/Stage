@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+
 namespace Stage_Books.Models
 {
     public class Antiques
     {
-        public string id { get; set; }
+        
+        public int id { get; set; }
         [Required]
         [Display(Name = "اسم القطعة ")]
         public string Name { get; set; }
@@ -14,7 +16,7 @@ namespace Stage_Books.Models
         [Display(Name = "   الصانع")]
         public string creator { get; set; }
 
-       
+
         [Display(Name = "المالك ")]
         public string owner { get; set; }
         [Display(Name = "  توثيق الملكية ")]
@@ -27,6 +29,5 @@ namespace Stage_Books.Models
         public string info { get; set; }
         [Display(Name = "اخرى")]
         public string note { get; set; }
-
     }
 }

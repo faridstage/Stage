@@ -7,62 +7,61 @@ namespace Stage_Books.Models
         public int id { get; set; }
 
         [Required]
-        [Display(Name = "Name")]
+        [Display(Name = "مخطوطة")]
         public string scriptname { get; set; }
 
         [Required]
-        [Display(Name = "Discription")]
+        [Display(Name = "وصف")]
         public string scriptdiscription { get; set; }
 
         [Required]
-        [Display(Name = "Language")]
+        [Display(Name = "اللغة")]
         public string scriptlang { get; set; }
 
         [Required]
-        [Display(Name = "Discovered Details")]
+        [Display(Name = "تفاصيل الاكتشاف ")]
         public string scriptdiscovored { get; set; }
 
         [Required]
-        [Display(Name = "Discovered Date")]
+        [Display(Name = " تاريخ الاكتشاف")]
         public string scriptdiscovoreddate { get; set; }
 
         [Required]
-        [Display(Name = "Discovered place")]
+        [Display(Name = "موقع الاكتشاف")]
         public string scriptdiscovoredpalce { get; set; }
 
         [Required]
-        [Display(Name = "Writer by")]
+        [Display(Name = " الكاتب")]
         public string scriptwriterby { get; set; }
 
         [Required]
-        [Display(Name = "Topic")]
+        [Display(Name = "موضوع المخطوطة")]
         public string scripttopic { get; set; }
 
         [Required]
-        [Display(Name = "Date")]
+        [Display(Name = "تاريخ المخطوطة")]
         public string scriptdate { get; set; }
 
         [Required]
-        [Display(Name = "Category")]
+        [Display(Name = "تصنيف")]
         public string scriptcategory { get; set; }
 
         [Required]
-        [Display(Name = "Code")]
+        [Display(Name = "كود")]
         public string scriptcode { get; set; }
 
         [Required]
-        [Display(Name = "Store In")]
+        [Display(Name = "محفوظ فى")]
         public string scriptpalcestore { get; set; }
 
-        [Required]
-        [Display(Name = "Image")]
+ 
+        [Display(Name = "صورة")]
         public string scriptimage { get; set; }
 
-        [Required]
-        [Display(Name = "Url")]
+        [Display(Name = "ملف")]
         public string scripturl { get; set; }
 
-        [Display(Name = "Notes")]
+        [Display(Name = "ملاحظات")]
         public string scriptnote { get; set; }
     }
 }

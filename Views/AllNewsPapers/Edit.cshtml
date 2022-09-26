@@ -24,6 +24,11 @@
                 <span asp-validation-for="owner" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="logo" class="control-label"></label>
                 <input asp-for="logo" class="form-control" />
                 <span asp-validation-for="logo" class="text-danger"></span>
@@ -74,3 +79,6 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

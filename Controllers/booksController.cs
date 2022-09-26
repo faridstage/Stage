@@ -54,10 +54,13 @@ namespace Stage_Books.Controllers
         }
 
         // GET: Books/Details/5
-        public async Task<IActionResult> Book_Details(int? id)
+        public async Task<IActionResult> Book_Details(int? id , string cat)
         {
-            Book book = _context.Books.Include(e => e.Author).FirstOrDefault(e => e.ID == id);
 
+            Book book = _context.Books.Include(e => e.Author).FirstOrDefault(e => e.ID == id);
+            //ViewBag.catstr = _context.Books.Where(z => z.ID == b.Select(p => p.CategoryId).FirstOrDefault())
+            //               .Select(p => p.Name);
+            //ViewBag.catstr = _context.Books.Where(b => b.Category == "علوم");
             if (book == null)
             {
                 return NotFound();
@@ -114,6 +117,7 @@ namespace Stage_Books.Controllers
         // GET: Books/Create
         public IActionResult Create()
         {
+            ViewBag.AllCat = _context.categories.ToList();
             ViewBag.AllAuthors = _context.Authors.ToList();
             return View("Create");
         }
@@ -123,7 +127,7 @@ namespace Stage_Books.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,Pages,Category,Language,Topic,Publisher,PubDate,Desc,Rights,AuthorID,UploadDate")] Book book, IFormFile imageFile,IFormFile bookFile,IFormFile bookIndex,IFormFile bookIntro)
+        public async Task<IActionResult> Create([Bind("ID,Name,Pages,Category,Language,Topic,Publisher,PubDate,Desc,Rights,AuthorID,CategoryID,UploadDate")] Book book, IFormFile imageFile,IFormFile bookFile,IFormFile bookIndex,IFormFile bookIntro)
         {
             if (ModelState.IsValid)
             {
@@ -202,6 +206,7 @@ namespace Stage_Books.Controllers
             }
             else
             {
+                ViewBag.AllCat = _context.categories.ToList();
                 ViewBag.AllAuthors = _context.Authors.ToList();
                 return View("Create",book);
             }
@@ -406,5 +411,19 @@ namespace Stage_Books.Controllers
         {
             return _context.Books.Any(e => e.ID == id);
         }
+
+
+        [HttpPost]
+        public ActionResult SearchIn(string searchname)
+        {
+            //var result = _context.Books.Include(x => x.Author).Where(b => b.Name.Contains(searchname) || b.Author.Name.Contains(searchname)).ToList();
+            var result = _context.Books.Where(b => b.Name.Contains(searchname)
+                         || b.Author.Name.Contains(searchname)
+                         || b.Topic.Contains(searchname)
+                         || b.Category.Contains(searchname)).ToList();
+
+            return View(result);
+        }
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<IdentityRole>
 
 @{
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 	ViewBag.Title = "All Roles";
 }
 
@@ -20,12 +21,29 @@
 </head>
 
 <body>
+	<br />
+	<br />
+	<br />
+	<div class="container">
+		<div class="row">
+			<div class="col-5"></div>
+			<div class="col-3"><h1 style="text-align:center">All Roles</h1></div>
+			<div class="col-4"></div>
+		</div>
+	</div>
+	<br />
+	<br />
+	<div class="container">
+		<div class="row">
+			<div class="col-4"></div>
+			<div class="col-5">
+               @if(Model.Any()){
+	   		   <div class="row">
+	  		  	 <div class="col-5"></div>
+					<div class="col-5"><a class="btn btn-primary mb-3" style="width:auto" asp-action="CreateRole" asp-controller="Administration">Add New Role</a></div>
+				 <div class="col-2"></div>
 
-<h1>All Roles</h1>
-
-@if(Model.Any()){
-
-	<a class="btn btn-primary mb-3" style="width:auto" asp-action="CreateRole" asp-controller="Administration">Add New Role</a>
+				</div>
 
 		foreach(var role in Model)
 		{
@@ -66,8 +84,13 @@ else{
 			</a>
 		</div>
 	</div>
-}
 
+
+}
+			</div>
+			<div class="col-3"></div>
+		</div>
+	</div>
 
 
 

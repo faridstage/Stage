@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
+
 namespace Stage_Books.Models
 {
     public class PageTitle
     {
-   
+        [Key]
         public int id { get; set; }
 
 
@@ -13,13 +15,13 @@ namespace Stage_Books.Models
 
         [Display(Name = "الصفحة")]
 
-        public string ppid { get; set; }
+        public int ppid { get; set; }
         [ValidateNever]
-        public virtual Issuancepaper Issuancepaper { get; set; }
-
-
+      
 
         [Display(Name = "ملاحظات ")]
         public string note { get; set; }
+
+       
     }
 }

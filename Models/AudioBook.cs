@@ -13,22 +13,23 @@ namespace Stage_Books.Models
         public string Author { get; set; }
         [Required]
         public string Category { get; set; }
-        [Required]
+        
         public string Publisher { get; set; }
-        [Required]
+       
         public string Desc { get; set; }
-        [Required]
-        public DateTime PubDate { get; set; }
-        [Required]
-        public DateTime uploadDate { get; set; }
+       
+        public string PubDate { get; set; }
+        
+        public string uploadDate { get; set; }
         public string Language { get; set; }
-        [Required]
+       
         public string Topic { get; set; }
         public string Rights { get; set; }
-        [Required]
+        [Display(Name = "الكتاب")]
+        [ValidateNever]
         public string path { get; set; }
 
-        [Display(Name = "Image")]
+        [Display(Name = "بروفايل")]
         [ValidateNever]
         public string ImageURL { get; set; }
         public string note { get; set; }

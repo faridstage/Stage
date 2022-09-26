@@ -1,81 +1,76 @@
-﻿@model Stage_Books.Models.Antiques
+﻿
+@******************************************@
+@model Stage_Books.Models.Antiques
 
 @{
-    ViewData["Title"] = "Delete";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	ViewData["Title"] = "Delete";
 }
 
-<h2>Delete</h2>
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-10">
+		<br />
+		<br />
+		<br />
+		<br />
+		<h2 style="text-align:center"> حذف قطعة فنية </h2>
+		<br />
+		<hr />
+		<br />
+		<div class="container">
+			<table class="table">
+				<tbody>
+					<tr>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Antiques</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.date)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.date)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.madein)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.madein)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.creator)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.creator)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.owner)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.owner)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ownercerti)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ownercerti)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.imageurl)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.imageurl)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.des)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.des)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.info)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.info)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.note)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.note)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="id" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+						<th scope="row">@Html.DisplayNameFor(model => model.Name)</th>
+						<td>@Html.DisplayFor(model => model.Name)</td>
+					</tr>
+					<tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.date)</th>
+						<td>@Html.DisplayFor(model => model.date)</td>
+					</tr>
+					<tr>
+						<td>@Html.DisplayNameFor(model => model.madein)</td>
+						<th scope="row">@Html.DisplayFor(model => model.madein)</th>
+						
+					</tr>
+					<tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.creator)</th>
+						<td>@Html.DisplayFor(model => model.creator)</td>
+					</tr>
+					<tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.owner)</th>
+						<td>@Html.DisplayFor(model => model.owner)</td>
+					</tr>
+					<tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.ownercerti)</th>
+						<td>@Html.DisplayFor(model => model.ownercerti)</td>
+					</tr>
+					<tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.des)</th>
+						<td>@Html.DisplayFor(model => model.des)</td>
+					</tr>
+					<tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.info)</th>
+						<td>@Html.DisplayFor(model => model.info)</td>
+					</tr>
+
+				</tbody>
+			</table>
+			<br />
+			<hr />
+			<br />
+		</div>
+		<div class="container">
+			    <form asp-action="Delete">
+                    <input type="hidden" asp-for="id" />
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    <a asp-action="Index">Back to List</a>
+                </form>
+		</div>
+		<br />
+		<hr />
+		<br />
+	</div>
 </div>
