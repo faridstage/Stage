@@ -225,6 +225,7 @@ namespace Stage_Books.Controllers
             else
             {
                 ViewBag.AllAuthors = _context.Authors.ToList();
+                ViewBag.AllCat = _context.categories.ToList();
                 return View("Edit", book);
             }
         }
@@ -234,7 +235,7 @@ namespace Stage_Books.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Pages,Category,Language,Topic,Publisher,PubDate,Desc,Rights,AuthorID,ImageURL,UploadDate,BookURLS,BookIntro,BookIndex")] Book book, IFormFile imageFile, IFormFile bookFile, IFormFile bookIndex, IFormFile bookIntro)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Pages,Category,Language,Topic,Publisher,PubDate,Desc,Rights,AuthorID,ImageURL,UploadDate,BookURLS,BookIntro,BookIndex,CategoryID")] Book book, IFormFile? imageFile, IFormFile bookFile, IFormFile bookIndex, IFormFile bookIntro)
         {
             if (id != book.ID)
             {
@@ -346,6 +347,7 @@ namespace Stage_Books.Controllers
             else
             {
                 ViewBag.AllAuthors = _context.Authors.ToList();
+                ViewBag.AllCat = _context.categories.ToList();
                 return View(book);
             }
 

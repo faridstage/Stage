@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Stage_Books.Models;
 
 namespace Stage_Books.Controllers
 {
@@ -16,6 +17,8 @@ namespace Stage_Books.Controllers
         }
         public ActionResult profile()
         {
+            UserProfile model = new UserProfile();
+            ViewBag.Profile = model;
             return View();
         }
         // GET: profileController/Details/5

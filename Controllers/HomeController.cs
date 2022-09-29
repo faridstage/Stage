@@ -33,7 +33,9 @@ namespace Stage_Books.Controllers
         {
             _logger = logger;
             _context = context;
+            savedCount = _context.Saved.Count();
         }
+
         public int SavedCount()
         {
             int i = 0;
@@ -257,7 +259,7 @@ namespace Stage_Books.Controllers
 
         public async Task<List<SaveBook>> GetSaveBook(string userId)
         {
-            return await _context.Saved.Where(x =>x.UserId == userId).ToListAsync();
+            return await _context.Saved.ToListAsync();
         }
 
         public bool GetBookName(string bookName,string id)

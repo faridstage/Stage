@@ -36,8 +36,10 @@
 				else
 				{
 							<a asp-action="Profile" asp-route-id="@User.FindFirst(ClaimTypes.NameIdentifier)?.Value" class="list-group-item">الملف الشخصي</a>
+							<a asp-action="TestView" asp-controller="Home" asp-route-id="@User.FindFirst(ClaimTypes.NameIdentifier)?.Value" class="list-group-item">Test View</a>
 				}
 			}
+
 
 
 			<a href="#" class="list-group-item">رابط رقم 3 </a>

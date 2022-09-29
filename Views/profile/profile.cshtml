@@ -31,6 +31,7 @@
 					<img src="~/img/unkown.png" t="Facebook" title="Person" width="100" height="100"
 						 style="margin:25px auto;">
 				</div>
+				<h1>@ViewBag.Profile.Name</h1>
 				<div class="row">
 					<a class="nav-link" href="../account/Edit" style=" margin: auto; ">
 						<span class="" style="color: white;">
@@ -42,8 +43,7 @@
 				<div class="row">
 					<a class="nav-link" href="#" style=" margin: auto; ">
 						<span class="" style="color: white;">
-							User
-							Name
+							
 						</span>
 					</a>
 				</div>
@@ -80,7 +80,7 @@
 							int count = Stage_Books.Controllers.HomeController.savedCount;
 							if (count >= 0)
 							{
-								<span>@count</span>
+									<span>@count</span>
 							}
 						}
 					</div>

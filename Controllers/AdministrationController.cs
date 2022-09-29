@@ -19,6 +19,10 @@ namespace Stage_Books.Controllers
             this.roleManager = roleManager;
             this.userManager = userManager;
         }
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
 
         public async Task<IActionResult> DeleteRole(string id)
         {
