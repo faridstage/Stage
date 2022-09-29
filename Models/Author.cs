@@ -9,7 +9,7 @@ namespace Stage_Books.Models
 
         public int ID { get; set; }
         [Required]
-        
+
         public string Name { get; set; }
         [ValidateNever]
         public List<Book> Employees { get; set; }

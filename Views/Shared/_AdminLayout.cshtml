@@ -121,7 +121,7 @@
 						</div>
 					</li>
 					<li>
-						<a href="/Books" class="nav-link px-3 active"
+						<a href="/Administration/Dashboard" class="nav-link px-3 active"
               <span class="me-2"><i class="bi bi-speedometer2"></i></span>
 			  <span>Dashboard</span>
 			</a>
@@ -147,8 +147,14 @@
 						<div class="collapse" id="layouts">
 							<ul class="navbar-nav ps-3">
 								<li>
-									<a href="../Books/Create" class="nav-link px-3">
+									<a href="~/Books" class="nav-link px-3">
 										<span class="me-2"><i class="bi bi-book-fill"></i></span>
+										<span>All Books</span>
+									</a>
+								</li>
+								<li>
+									<a href="~/Books/Create" class="nav-link px-3">
+										<span class="me-2"><i class="bi bi-plus-circle"></i></span>
 										<span>Add Book</span>
 									</a>
 								</li>
@@ -164,13 +170,13 @@
 						</div>
 					</li>
 					<li>
-						<a href="../Encs/Index" class="nav-link px-3">
+						<a href="~/Authors" class="nav-link px-3">
 							<span class="me-2"><i class="bi bi-person-fill"></i></span>
-							<span>Manage Authers</span>
+							<span>All Authers</span>
 						</a>
 					</li>
 					<li>
-						<a href="../Encs/Create" class="nav-link px-3">
+						<a href="~/Authors/Create" class="nav-link px-3">
 							<span class="me-2"><i class="bi bi-plus-circle"></i></span>
 							<span>Add Auther</span>
 						</a>
@@ -184,17 +190,39 @@
 						</div>
 					</li>
 					<li>
-						<a href="../Administration/ListUsers" class="nav-link px-3">
+						<a href="~/Administration/ListUsers" class="nav-link px-3">
 							<span class="me-2"><i class="bi bi-person-fill"></i></span>
-							<span>Manage Users</span>
+							<span>All Users</span>
 						</a>
 					</li>
 					<li>
-						<a href="../account/Register" class="nav-link px-3">
+						<a href="~/account/Register" class="nav-link px-3">
 							<span class="me-2"><i class="bi bi-plus-circle"></i></span>
 							<span>Add Users</span>
 						</a>
 					</li>
+
+					<li class="my-4">
+						<hr class="dropdown-divider bg-light" />
+					</li>
+					<li>
+						<div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+							Roles
+						</div>
+					</li>
+					<li>
+						<a href="~/Administration/ListRoles" class="nav-link px-3">
+							<span class="me-2"><i class="bi bi-person-fill"></i></span>
+							<span>All Roles</span>
+						</a>
+					</li>
+					<li>
+						<a href="~/Administration/CreateRole" class="nav-link px-3">
+							<span class="me-2"><i class="bi bi-plus-circle"></i></span>
+							<span>Add Role</span>
+						</a>
+					</li>
+
 					<li class="my-4">
 						<hr class="dropdown-divider bg-light" />
 					</li>
@@ -204,15 +232,15 @@
 						</div>
 					</li>
 					<li>
-						<a href="../Contactmsgs/index" class="nav-link px-3">
+						<a href="~/Contactmsgs/index" class="nav-link px-3">
 							<span class="me-2"><i class="bi bi-envelope"></i></span>
-							<span>Users Messages</span>
+							<span> الكتب الالكترونية</span>
 						</a>
 					</li>
 					<li>
 						<a class="nav-link px-3">
 							<span class="me-2"><i class="bi bi-bug"></i></span>
-							<span>Errors Messages</span>
+							<span>  المؤلفين</span>
 						</a>
 					</li>
 					<li>
@@ -220,14 +248,56 @@
 					<li>
 						<a href="~/Admin/index_ocr/index_ocr" class="nav-link px-3">
 							<span class="me-2"><i class="bi bi-plus-square"></i></span>
-							<span>Add Encyclopedia</span>
+							<span> الكتب الصوتية</span>
 						</a>
 					</li>
 					<li>
 						<a href="~/Admin/bu/bu" class="nav-link px-3">
 							<span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
-							<span>Edit Encyclopedia</span>
+							<span>  الموسوعة</span>
 						</a>
+					</li>
+					<li>
+						<a href="~/Admin/bu/bu" class="nav-link px-3">
+							<span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
+							<span>  المخطوطات</span>
+						</a>
+					</li>
+					<li>
+						<a href="~/Admin/bu/bu" class="nav-link px-3">
+							<span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
+							<span>موسوعة الاثار</span>
+						</a>
+					</li>
+					<li>
+						<a href="~/Admin/bu/bu" class="nav-link px-3">
+							<span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
+							<span> التحف والانتيكات</span>
+						</a>
+					</li>
+					<li>
+						<a href="~/Admin/bu/bu" class="nav-link px-3">
+							<span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
+							<span> الرسائل العلمية</span>
+						</a>
+						<li>
+						<a href="~/Admin/bu/bu" class="nav-link px-3">
+							<span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
+							<span> الاوراق البحثية</span>
+						</a>
+						<li>
+						<a href="~/Admin/bu/bu" class="nav-link px-3">
+							<span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
+							<span> الافلام الوثائقية</span>
+						</a>
+					</li>
+					<li>
+						<a href="~/Admin/bu/bu" class="nav-link px-3">
+							<span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
+							<span>موسوعة الجرائد</span>
+						</a>
+					</li>
+					</li>
 					</li>
 					<li class="my-4">
 						<hr class="dropdown-divider bg-light" />
