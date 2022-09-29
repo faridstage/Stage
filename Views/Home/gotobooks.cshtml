@@ -1,5 +1,5 @@
-﻿@*@model IEnumerable<Stage_Books.Models.Book>*@
-@model Stage_Books.Models.Showdatamodel
+﻿@model IEnumerable<Stage_Books.Models.Book>
+@*@model Stage_Books.Models.Showdatamodel*@
 @using X.PagedList.Mvc.Core.Common;
 @using X.PagedList.Web.Common;
 @using X.PagedList;
@@ -209,7 +209,7 @@
 	<div class="col-2"></div>
 	<div class="col-8">
 <div class="row" >
-@foreach (var item in Model.Books) {
+@foreach (var item in Model) {
 
 			
 <div class="col-4 card" style="width: 18rem;">

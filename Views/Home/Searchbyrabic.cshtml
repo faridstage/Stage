@@ -1,9 +1,10 @@
-﻿@model IEnumerable<Stage_Books.Models.Book>
+﻿
+@model IEnumerable<Stage_Books.Models.Book>
+@inject SignInManager<ApplicationUser> signInManager;
 @using X.PagedList.Mvc.Core.Common;
 @using X.PagedList.Web.Common;
 @using X.PagedList;
-@using X.PagedList.Mvc.Core;
-@inject SignInManager<ApplicationUser> signInManager;
+@using X.PagedList.Mvc.Core; 
 @using Microsoft.AspNetCore.Builder
 @using Microsoft.AspNetCore.Localization
 @using Microsoft.Extensions.Options
@@ -23,35 +24,17 @@
 			}).ToList();
 	var returnurl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
 }
+
 @{
     ViewData["Title"] = "Searchbyrabic";
 }
-<!doctype html>
-<html lang="en">
-
-<head>
+<head >
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <title>S T A G E - Arabic</title>
+    <title>S T A G E</title>
     <meta name="viewport" content="width=device-width, initial-scale=6">
     <meta name="descrption" content="Best website to Find any Books">
-    <meta name="keywords" content=" الموسوعة ,موسوعة ستيج, موسوعة منصة ستيح , موسوعة المؤلفين , موسوعة اشخاص المؤلفين , موسوعة اصحاب الابداع الفكرى , Encyclopedia, Stage Encyclopedia , stage , Authors Encyclopedia" />
-    <link rel="icon" href="img/stage_logo.png" type="" sizes="">
-    <link rel="shortcut icon" href="img/stage_logo.png" type="" sizes="">
-    <link rel="apple-touch-icon" href="img/stage_logo.png">
-    	<link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
-    <link href="~/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet">
-        <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
@@ -60,10 +43,11 @@
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 	<link href="~/css/style.css" rel="stylesheet">
 	<link href="~/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-
+	<link href="~/css/Footersite.css" rel="stylesheet" type="text/css" />
 </head>
-<body style="font-family:cairo,Roboto"> <!-- oncontextmenu="return false;"-->
-    <!--main nav-->
+@*oncontextmenu="return false;"*@
+<body  style="font-family:Cairo,Roboto">
+	<!--main nav-->
   	<div class="container-fluid" style="background-color:#333333">
 		<nav class="navbar navbar-expand-lg navbar-light " style="background-color:#333333;color:#ff7236;">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -190,63 +174,75 @@
 				}
 			}
 		    </nav>
-    </div>
-    <br />
-    <br />
-    <div class="container"><h1 style="text-align:center">Arabic Books</h1></div>
-    <br />
-    <hr />
-    <div class="container">
+  </div>
+<br />
+<br />
+<div class="container">
+<div class="row">
+<div class="col-3">
+</div>
+<div class="col-6">
+	<h2 style="text-align:center"> Arabic Books - الكتب العربية </h2>
+</div>
 
-        <form method="get" asp-controller="" asp-action="search" class="">
-          <div class="form-group row">
-            <label for="colFormLabel" class="col-sm-2 col-form-label">Search</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="inputPassword2"  placeholder="Search" value="@ViewBag.CurrentSearch" name="search">
+<div class="col-3">
+
+</div>
+</div>
+</div>
+<hr />
+
+<div class="container">
+<div class="row">
+<div class="col-5">
+</div>
+<div class="col-3">
+	<a class="btn btn-primary" asp-controller="Home" asp-action="Index">الرئيسية</a> |
+	<a class="btn btn-success" asp-controller="AllNewsPapers" asp-action="Index">عرض الكل</a>
+</div>
+
+<div class="col-4">
+
+</div>
+</div>
+</div>
+ <!-- Start: Search Section -->
+        <section class="search-filters mt-5 mb-5">
+            <div class="container">
+                <div class="filter-box">
+                    @using (Html.BeginForm("Search","AllNewsPapers",FormMethod.Post))
+                         {
+							 <div class="row">
+                        <div class="col-md-10 col-sm-6">
+                            <div class="form-group">
+                                 <div class="" style="margin:0 auto" >
+                                     <div class="class="col-6">
+                                          <input style="" type="text" name="searchname" class="form-control" />              
+                                                    
+                                      </div> 
+                                  </div>
+                             </div>
+                        </div>
+
+                         <div class="col-md-2 col-sm-6">
+                            <div class="form-group">
+                                <input style="color:white;background-color:#ff7236;" class="form-control" type="submit" value="Search">
+                                
+                            </div>
+                        </div>
+						</div>
+                     }
+                </div>
             </div>
-            <button type="submit"  class="btn btn-warning col-sm-2 col-form-label">Search</button>
-          </div>
-        </form>
-    </div>
-    <br><hr /><br>
-
-
-    <!--******************************************-->
-
-
-
-     <!-- container -->
-    <div class="container-fluid">
-           <div class="row">
-               <!--cat -->
-         <div class="col-sm">
-                <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
-                    @*<h3>@Stage_Books.languages.Resource.Categories</h3>*@
-                    <div class="list-group">
-                      <div class="p-3 mb-2 bg-secondary text-white">Topic</div>
-                    </div>
-                     @if(!Model.Any())
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                No Data !
-                            </div>
-                        }
-                        else
-                        {
-                        @foreach (var item in Model)
-                       {
-                           <a href="#" class="list-group-item list-group-item-action">
-                               @item.Topic
-                           </a>
-                           }
-                        }
-                <br />
-                   	<a class="nav-link text-info" href="../Home/gototopic">More Topics ..<span class="sr-only">(current)</span></a>
-                    <hr>
-                <div class="list-group">
-                        <div class="p-3 mb-2 bg-secondary text-white">
-                            @Stage_Books.languages.Resource.Authors
-                        </div>
+        </section>
+<!-- End: Search Section -->
+<hr />
+<br />
+<div class="container">
+<div class="row">
+	<div class="col-2"></div>
+	<div class="col-8">
+		<div class="row" >
                         @if(!Model.Any())
                         {
                             <div class="alert alert-danger" role="alert">
@@ -255,136 +251,32 @@
                         }
                         else
                         {
-                      
-                          @foreach (var item in Model)
-                          {
-                           <a href="#" class="list-group-item list-group-item-action">
-                               @item.Author
-                           </a>      
-                          }
-                        }
-                    </div>
-                    <a class="nav-link text-info" href="../Home/gotoauthors">More @Stage_Books.languages.Resource.Authors ..<span class="sr-only">(current)</span></a>
-                    <hr>
-                    <div class="list-group">
-                        <div class="p-3 mb-2 bg-secondary text-white">
-                            @Stage_Books.languages.Resource.Categories
-                        </div>
-                        @if(!Model.Any())
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                No Data !
-                            </div>
-                        }
-                        else
-                        {
-                        @foreach (var item in Model)
-                          {
-                           <a href="#" class="list-group-item list-group-item-action">
-                               @item.Category
-                           </a>
-                          }
-                         }
-                    </div>
-                    	<a class="nav-link text-info" href="../Home/gotocat">More @Stage_Books.languages.Resource.Categories ..<span class="sr-only">(current)</span></a>
-                    <hr />
-               <div class="list-group">
-                            <div class="p-3 mb-2 bg-secondary text-white">
-                              @Stage_Books.languages.Resource.Books_Language
-                            </div>
-                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyenglish">@Stage_Books.languages.Resource.English</a>
-                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyrabic">@Stage_Books.languages.Resource.Arabic</a>
-                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyfrench">@Stage_Books.languages.Resource.French</a>
-                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyspanish">@Stage_Books.languages.Resource.Spanich</a>
-                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbygerman">@Stage_Books.languages.Resource.German</a>
-                    <a class="list-group-item list-group-item-action" asp-area="" asp-controller="Home" asp-action="Searchbyhindi">@Stage_Books.languages.Resource.Hindi</a>
+@foreach (var item in Model) {
 
-                     </div>
-                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" hidden>Read More ...</button>
-                        <hr>
-                    </div>
-            </div>
-            <!-- main container -->
-            <div class="col-8">
+<div class="col-4">
+	<div class="card" style="width: 18rem;">
+  <img class="card-img-top" height="350" src="@Html.DisplayFor(modelItem => item.ImageURL)" alt="@Html.DisplayFor(modelItem => item.Name)">
+  <div class="card-body">
+    <h5 style="text-align:center" class="card-title">كتاب : @Html.DisplayFor(modelItem => item.Name)</h5>
+    <a style="background-color:#ff7236;color:white;text-align:center"  asp-controller="books" asp-action="Book_Details" asp-route-id="@item.ID" class="btn w-100">اقرأ</a>
+  </div>
+</div>
+</div>
 
-       <!-- meddil nav -->
-           <div class="container ">
-    	  </div>
-       <!-- end meddil nav -->
-       
 
-         <div class="card text-center" >
-                    <div class="card-header" style="background-color:white">
-                           <img class="" width="150" height="150" src="~/img/ads.jpg" alt="Card image cap">
-                            <hr />
-                            <p class="card-text">Ads</p>
-                    </div>
-                    <div class="card-body">
-                    </div>
-              </div>
-                <br />
-                 <div class="container">
-                    <div class="row" style="">
-                   
-                        @if(!Model.Any())
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                No Data !
-                            </div>
-                        }
-                        else
-                        {
-                      
-                        @foreach (var item in Model)
-                       {
-                            <div  class="card" style="width:auto; margin:0px auto;border:2px solid gray; border-radius:6px;background-color:#eeeeee">
-                                <div class="mt-sm-3" style="margin:0px auto">
-                                      <img class="" src="@item.ImageURL" alt="Card image cap" width="150" height="200" style="border-radius:5px">
-                                </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title" style="text-align:center;background-color:#eeeeee">@item.Name</h5>
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group" style="text-align:center;background-color:#eeeeee">@item.Author</li>
-                                       @* <li class="list-group-item" style="text-align:center;background-color:#eeeeee">@item.Language</li>*@
-                                       @* <li class="list-group" style="text-align:center;background-color:#eeeeee">@item.Topic</li>*@
-                                    </ul>
-                                    <div class="card-body">
-                                        
-                                        <a asp-controller="books" asp-action="Book_Details" asp-route-id="@item.ID" class="btn btn-danger" style="width:100%;border-radius:9px">Details</a><br><hr>
-                                       
-                                       <a href="#" class="btn btn-success">Save</a>
-                                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Fav</a>
-                                        <a asp-controller="books" asp-action="Book_Details" asp-route-id="@item.ID" class=" btn btn-warning">Intro</a>
-                                         <a href="#" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Index</a>
-                                       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                          <div class="modal-dialog">
-                                            <div class="modal-content">
-                                              <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Book Index</h5>
-                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                   <span aria-hidden="true">&times;</span>
-                                                 </button>
-                                                </div>
-                                                 <div class="modal-body">...</div>
-                                                <div class="modal-footer">
-                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                  <button type="button" class="btn btn-primary">Save changes</button>
-                                                </div>
-                                              </div>
-                                            </div>
-                                         </div>
-                                    </div>
-                                 </div>
-                                <hr />
-                           }
-                       }
+@*<video src="@Html.DisplayFor(modelItem => item.pathdocFile)" controls></video>
+*@               
 
-                        </div>
-
-                    </div>
-                    <br />
-                     
+}
+}
+</div>
+	</div>
+	<div class="col-2"></div>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-4"></div>
+<div class="col-4">
                      <!-- paging control for navigation to the previous page, next page, etc -->
                     @Html.PagedListPager(Model.ToPagedList(), page => Url.Action("Index", new { page = page }),
                         new X.PagedList.Mvc.Core.Common.PagedListRenderOptions
@@ -394,77 +286,33 @@
                             LiElementClasses = new[] { "page-item" },
                             PageClasses = new[] { "page-link" },
                        })
-            </div>
-            <!-- Ads -->
-            <div class="col-sm">
-                <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
-                   
-                    <div class="card" style="width: 12rem; ">
+<div class="col-4"></div>
+</div>
+</div>
+</div>
+</div>
+<br />
+<br />
+<br />
+<br />
 
-                        <div class="card-body">
-                            <img class="card-img-top" src="~/img/ads.jpg" alt="Card image cap">
-                            <hr />
-                            <p class="card-text">Ads</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="card" style="width: 12rem;">
-
-                        <div class="card-body">
-                            <img class="card-img-top" src="~/img/ads.jpg" alt="Card image cap">
-                            <hr />
-                            <p class="card-text">Ads</p>
-                        </div>
-                    </div>
-
-                    <hr>
-                    <div class="card" style="width: 12rem; ">
-
-                        <div class="card-body">
-                            <img class="card-img-top" src="~/img/ads.jpg" alt="Card image cap">
-                            <hr />
-                            <p class="card-text">Ads</p>                        </div>
-                    </div>
-                    <hr>
-                    <div class="card" style="width: 12rem; ">
-
-                        <div class="card-body">
-                            <img class="card-img-top" src="~/img/ads.jpg" alt="Card image cap">
-                            <hr />
-                            <p class="card-text">Ads</p>                        </div>
-                    </div>
-                    <hr>
-                    <div class="card" style="width: 12rem;">
-
-                        <div class="card-body">
-                            <img class="card-img-top" src="~/img/ads.jpg" alt="Card image cap">
-                            <hr />
-                            <p class="card-text">Ads</p>
-                        </div>
-                      </div>
-                    <hr>
-                </div>
-            </div>
-        </div>
-    </div>
-         
-
-              @section Scripts{
-                <script>
+@section Scripts{
+         <script>
                     $(document).ready(function () {
                         $('ul.pagination > li.disabled > a').addClass('page-link');
                     });
-                </script>
+          </script>
               }
-    <!-- -->
-    <!-- -->
-    <!-- Optional JavaScript; choose one of the two! -->
-    <!-- Option 6: Bootstrap Bundle with Popper -->
-    <script src="~/js/js.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/js.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 
-</body>
-
-</html>           
+        
+            </body>

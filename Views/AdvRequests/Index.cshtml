@@ -1,73 +1,94 @@
-﻿@model IEnumerable<Stage_Books.Models.AdvRequest>
-
+﻿
+@*******************************************@
+@model IEnumerable<Stage_Books.Models.AdvRequest>
 @{
-    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Adv";
 }
+<div class="row">
+    <div class="col-md-2"> </div>
+    <div class="col-md-10">
+        <br>
+         <br>
+          <br>
+           <br>
+    <div class="container" style="margin:0px auto; text-align:center">
+        <h3 style="text-align:center"> طلبات الاعلان </h3>
+    </div>
 
-<h2>Index</h2>
+    <br><hr />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+   <div class="container">
+        <!-- Start: Search Section -->
+        <section class="search-filters mt-5 mb-5">
+            <div class="container">
+                <div class="filter-box">
+                    @using (Html.BeginForm("Search","AdvRequests",FormMethod.Post))
+                         {
+						<div class="row">
+                        <div class="col-md-8 col-sm-6">
+                            <div class="form-group">
+                                 <div class="" style="margin:0 auto" >
+                                     <div class="class="col-6">
+                                          <input style="" type="text" name="searchname" class="form-control" />              
+                                                    
+                                      </div> 
+                                  </div>
+                             </div>
+                        </div>
+                         <div class="col-md-2 col-sm-3">
+                            <div class="form-group">
+                                <input style="color:white;background-color:#ff7236;" class="form-control" type="submit" value="بحث">
+                            </div>
+                        </div>
+                         <div class="col-md-2 col-sm-3">
+                            <div class="form-group">
+                                <a asp-area="" asp-controller="AdvRequeste" asp-action="Index" style="color:white;" class=" btn btn-success">عودة للكل</a>
+                                
+                            </div>
+                        </div>
+						</div>
+                     }
+                </div>
+            </div>
+        </section>
+        <!-- End: Search Section -->
+
+    <br><hr />
+<div class="container-fluid">
+     <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                الاسم
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Phone)
+                الهاتف
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OtherWay)
+                وسيلة اخرى للتواصل
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateRequest)
+                تاريخ الاعلان
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BookName)
+                اسم الكتاب
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+               السعر
+            </th>
+              <th>
+                منفذ البيع
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Author)
+                صورة
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Topic)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Language)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PlaceBook)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LongTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Start)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.End)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BookCover)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BookFile)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ApplicationUser)
-            </th>
+
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+       @foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -84,48 +105,33 @@
             <td>
                 @Html.DisplayFor(modelItem => item.BookName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Topic)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Language)
-            </td>
+
+
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PlaceBook)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LongTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Start)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.End)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookCover)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookFile)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApplicationUser.Id)
+
+             <td>
+               <img src="@Html.DisplayFor(modelItem => item.BookCover)"> 
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
             </td>
-        </tr>
-}
+         </tr>
+             }
     </tbody>
 </table>
+
+</div>
+    </div>
+</div>
+</div>
+    
+
+
+ 

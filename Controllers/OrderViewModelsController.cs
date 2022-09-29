@@ -65,7 +65,7 @@ namespace Stage_Books.Controllers
                return RedirectToAction("Create","OrderViewModel");
             }
             ViewData["BookId"] = new SelectList(_context.Books, "ID", "Name", orderViewModel.BookId);
-            return View(orderViewModel);
+            return View( orderViewModel);
         }
 
         // GET: OrderViewModels/Edit/5
@@ -154,6 +154,39 @@ namespace Stage_Books.Controllers
         private bool OrderViewModelExists(int id)
         {
             return _context.orderViewModel.Any(e => e.Id == id);
+        }
+
+
+
+
+
+        //{
+        //    List<> orderViewModel = new List<>();
+        //    if (string.IsNullOrEmpty(Search))
+        //    {
+        //        orderViewModel = _context.orderViewModel.ToList();
+        //    }
+        //    else
+        //    {
+        //        ViewBag.CurrentSearch = Search;
+        //        orderViewModel = _context.orderViewModel.Where(e => e.Name.Contains(Search)).ToList();
+        //    }
+        //    return View("index", orderViewModel);
+        //}
+
+        public ActionResult Search(string searchname)
+        {
+            List<OrderViewModel> Book = new List<OrderViewModel>();
+            if (string.IsNullOrEmpty(searchname))
+            {
+                Book = _context.orderViewModel.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = searchname;
+                Book = _context.orderViewModel.Where(e => e.Name.Contains(searchname)).ToList();
+            }
+            return View("Index", Book);
         }
     }
 }

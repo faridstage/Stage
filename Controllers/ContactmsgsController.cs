@@ -163,5 +163,20 @@ namespace Stage_Books.Controllers
         {
             return _context.Contactmsgs.Any(e => e.Id == id);
         }
+
+        public ActionResult Searchpaperre(string searchname)
+        {
+            List<Contactmsg> Book = new List<Contactmsg>();
+            if (string.IsNullOrEmpty(searchname))
+            {
+                Book = _context.Contactmsgs.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = searchname;
+                Book = _context.Contactmsgs.Where(e => e.Name.Contains(searchname)).ToList();
+            }
+            return View("Index", Book);
+        }
     }
 }

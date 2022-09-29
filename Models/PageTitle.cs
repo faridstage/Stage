@@ -17,7 +17,7 @@ namespace Stage_Books.Models
 
         public int ppid { get; set; }
         [ValidateNever]
-      
+        public virtual Issuancepaper Issuancepaper { get; set; }
 
         [Display(Name = "ملاحظات ")]
         public string note { get; set; }

@@ -8,18 +8,25 @@
     <div class="col-md-2"> </div>
     <div class="col-md-10">
         <br>
+         <br>
+          <br>
+           <br>
     <div class="container" style="margin:0px auto; text-align:center">
-        <h3>Users Messages</h3>
+        <h3 style="text-align:center">رسائل الاعضاء </h3>
     </div>
 
     <br><hr /><br>
 
    <div class="container">
+       <div class="row">
+       <div class="col-md-4"> </div>
+       <div class="col-md-6">
 	  <form method="get" asp-controller="Contactmsgs" asp-action="search">
-		<label>Search</label>
 		<input type="text" name="search" value="@ViewBag.CurrentSearch"/>
         <button type="submit" class="btn btn-secondary input-group-append">Search</button>
      </form>
+</div>
+     <div class="col-md-2"> </div>
    </div>
 
     <br><hr /><br>
@@ -28,16 +35,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                الاسم
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.mail)
+                الايميل
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.title)
+                عنوان الرسالة
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.body)
+                المحتوى
             </th>
             <th></th>
         </tr>
@@ -58,7 +65,7 @@
                 @Html.DisplayFor(modelItem => item.body)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary ">Edit</a>
+                @*<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary ">Edit</a>*@
                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success ">Details</a>
                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
             </td>

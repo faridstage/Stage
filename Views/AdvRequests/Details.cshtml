@@ -1,120 +1,107 @@
-﻿@model Stage_Books.Models.AdvRequest
+﻿
+@******************************************@
+@model Stage_Books.Models.AdvRequest
 
 @{
-    ViewData["Title"] = "Details";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	ViewData["Title"] = "Delete";
 }
 
-<h2>Details</h2>
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-10">
+		<br />
+		<br />
+		<br />
+		<br />
+		<h2 style="text-align:center">تفاصيل طلب اعلان</h2>
+		<br />
+		<hr />
+		<br />
+		<div class="container">
+			<table class="table">
+				<tbody>
+					<tr>
 
-<div>
-    <h4>AdvRequest</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.OtherWay)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.OtherWay)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DateRequest)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DateRequest)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.BookName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.BookName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Author)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Topic)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Topic)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Language)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Language)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.PlaceBook)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.PlaceBook)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.LongTime)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.LongTime)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Start)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Start)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.End)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.End)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.BookCover)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.BookCover)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.BookFile)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.BookFile)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationUser)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationUser.Id)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+						<th scope="row">@Html.DisplayNameFor(model => model.Name)</th>
+						<td>@Html.DisplayFor(model => model.Name)</td>
+					</tr>
+					<tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.Phone)</th>
+						<td>@Html.DisplayFor(model => model.Phone)</td>
+					</tr>
+					<tr>
+						<td>@Html.DisplayNameFor(model => model.OtherWay)</td>
+						<th scope="row">@Html.DisplayFor(model => model.OtherWay)</th>
+					</tr>
+					<tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.DateRequest)</th>
+						<td>@Html.DisplayFor(model => model.DateRequest)</td>
+					</tr>
+                    <tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.BookName)</th>
+						<td>@Html.DisplayFor(model => model.BookName)</td>
+					</tr>
+                   	<tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.Description)</th>
+						<td>@Html.DisplayFor(model => model.Description)</td>
+					</tr>
+                    <tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.Author)</th>
+						<td>@Html.DisplayFor(model => model.Author)</td>
+					</tr>
+                    <tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.Topic)</th>
+						<td>@Html.DisplayFor(model => model.Topic)</td>
+					</tr>
+                    <tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.Language)</th>
+						<td>@Html.DisplayFor(model => model.Language)</td>
+					</tr>
+                   	<tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.Price)</th>
+						<td>@Html.DisplayFor(model => model.Price)</td>
+					</tr>
+                    <tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.PlaceBook)</th>
+						<td>@Html.DisplayFor(model => model.PlaceBook)</td>
+					</tr>
+                    <tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.LongTime)</th>
+						<td>@Html.DisplayFor(model => model.LongTime)</td>
+					</tr>
+                    <tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.Start)</th>
+						<td>@Html.DisplayFor(model => model.Start)</td>
+					</tr>
+                    <tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.End)</th>
+						<td>@Html.DisplayFor(model => model.End)</td>
+					</tr>
+                    <tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.BookCover)</th>
+						<td>@Html.DisplayFor(model => model.BookCover)</td>
+					</tr>
+                    <tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.BookFile)</th>
+						<td>@Html.DisplayFor(model => model.BookFile)</td>
+					</tr>
+                    <tr>
+						<th scope="row">@Html.DisplayNameFor(model => model.ApplicationUser)</th>
+						<td>@Html.DisplayFor(model => model.ApplicationUser.Name)</td>
+					</tr>
+				</tbody>
+			</table>
+			<br />
+			<hr />
+			<br />
+		</div>
+		<div class="container">
+                <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+                <a asp-action="Index">Back to List</a>
+		</div>
+		<br />
+		<hr />
+		<br />
+	</div>
 </div>

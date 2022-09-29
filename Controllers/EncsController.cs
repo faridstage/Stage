@@ -71,22 +71,22 @@ namespace Stage_Books.Controllers
         // GET: Encs
         public async Task<IActionResult> Index(int? page)
         {
-            var book = _context.Books.ToList();
-            var author = _context.Authors.ToList();
-            var Enc = _context.Encs.ToList().ToPagedList(page ?? 1, 25);
-            var users = _context.Users.ToList();
-            var saved = _context.Saved.ToList();
-            var show = new Showdatamodel
-            {
-                Books = book.ToList(),
-                Auther = author,
-                Encs = Enc.ToList(),
-                appusers = users,
-                SaveBooks = saved
+            //var book = _context.Books.ToList();
+            //var author = _context.Authors.ToList();
+            //var Enc = _context.Encs.ToList().ToPagedList(page ?? 1, 25);
+            //var users = _context.Users.ToList();
+            //var saved = _context.Saved.ToList();
+            //var show = new Showdatamodel
+            //{
+            //    Books = book.ToList(),
+            //    Auther = author,
+            //    Encs = Enc.ToList(),
+            //    appusers = users,
+            //    SaveBooks = saved
 
-            };
-            return View(show);
-            //return View(await _context.Encs.ToListAsync());
+            //};
+            //return View(show);
+            return View(await _context.Encs.ToListAsync());
         }
         public async Task<IActionResult> Index2()
         {
@@ -246,29 +246,27 @@ namespace Stage_Books.Controllers
             return _context.Encs.Any(e => e.id == id);
         }
 
+        //public ActionResult Searchens(string searchname)
+        //{
+        //    var result = _context.Encs.Where(b => b.Name.Contains(searchname)).ToList();
+
+        //    return View(result);
+
+        //}
+
         public ActionResult Searchens(string searchname)
         {
-            var result = _context.Encs.Where(b => b.Name.Contains(searchname)).ToList();
-
-            return View(result);
-
-        }
-
-        public ActionResult Searchpaperre(string searchname)
-        {
-            List<Scriptpaper> Book = new List<Scriptpaper>();
+            List<Enc> Book = new List<Enc>();
             if (string.IsNullOrEmpty(searchname))
             {
-                Book = _context.Scriptpaper.ToList();
+                Book = _context.Encs.ToList();
             }
             else
             {
                 ViewBag.CurrentSearch = searchname;
-                Book = _context.Scriptpaper.Where(e => e.scriptname.Contains(searchname)
-                        || e.scriptpalcestore.Contains(searchname)
-                        || e.scriptcategory.Contains(searchname)).ToList();
+                Book = _context.Encs.Where(e => e.Name.Contains(searchname)).ToList();
             }
-            return View("Index", Book);
+             return View("Index", Book);
         }
     }
 }

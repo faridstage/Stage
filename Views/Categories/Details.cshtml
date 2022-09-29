@@ -20,3 +20,10 @@
     <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+@if(Model.books.Count > 0 )
+{
+    @foreach (var item in Model.books)
+    {
+        @item.Name
+    }
+}

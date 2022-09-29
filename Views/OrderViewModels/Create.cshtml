@@ -188,35 +188,35 @@
 				<div class="row">
 					<div class="col-6">
 						<div class="form-group">
-							<label asp-for="Name" class="control-label"></label>
+							<label asp-for="Name" class="control-label">الاسم</label>
 							<input asp-for="Name" class="form-control" />
 							<span asp-validation-for="Name" class="text-danger"></span>
 						</div>
 					    <div class="form-group">
-							<label asp-for="BookId" class="control-label"></label>
+							<label asp-for="BookId" class="control-label">اختر كتاب</label>
 							<select asp-for="BookId" class ="form-control" asp-items="ViewBag.BookId">
 								<option>Choos A Book</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<label asp-for="Other_way_Contact" class="control-label"></label>
+							<label asp-for="Other_way_Contact" class="control-label">طريقة الاستلام</label>
 							<input asp-for="Other_way_Contact" class="form-control" />
 							<span asp-validation-for="Other_way_Contact" class="text-danger"></span>
 						</div>
 					</div>
 					<div class="col-6">
 						 <div class="form-group">
-							<label asp-for="Whatsapp_phone" class="control-label"> phone Support Whatsapp <i style="color:red" class="bi bi-star-fill ml-2"></i></label>
+							<label asp-for="Whatsapp_phone" class="control-label">رقم هاتف يدعم الواتس اب للتواصل <i style="color:red" class="bi bi-star-fill ml-2"></i></label>
 							<input asp-for="Whatsapp_phone" class="form-control" />
 							<span asp-validation-for="Whatsapp_phone" class="text-danger"></span>
 						</div>
 						 <div class="form-group">
-							<label asp-for="Book_name" class="control-label"> Book Name <i style="color:red" class="bi bi-star-fill ml-2"></i></label>
+							<label asp-for="Book_name" class="control-label"> اكتب اسم الكتاب  <i style="color:red" class="bi bi-star-fill ml-2"></i></label>
 							<input asp-for="Book_name" class="form-control" />
 							<span asp-validation-for="Book_name" class="text-danger"></span>
 						</div>
 						<div class="form-group">
-							<label asp-for="Address" class="control-label"></label>
+							<label asp-for="Address" class="control-label">العنوان</label>
 							<input asp-for="Address" class="form-control" />
 							<span asp-validation-for="Address" class="text-danger"></span>
 						</div>
@@ -225,19 +225,13 @@
 			</div>
 			
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-			
-            
-           
-            
-			
-           
-            
+
            <br />
 			<br />
             <div class="form-group">
 				<div class="row" style="margin:0px auto;width:contain">
 				
-                <input style="background-color:#ff7236;" type="submit" value="Send Order" class="btn btn-default w-100 " />
+                <input style="background-color:#ff7236;" type="submit" value="ارسل" class="btn btn-default w-100 " />
             </div>
 			</div>
 			<br />

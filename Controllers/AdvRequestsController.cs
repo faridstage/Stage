@@ -155,5 +155,22 @@ namespace Stage_Books.Controllers
         {
             return _context.advRequest.Any(e => e.id == id);
         }
+
+
+
+        public ActionResult Search(string searchname)
+        {
+            List<AdvRequest> Book = new List<AdvRequest>();
+            if (string.IsNullOrEmpty(searchname))
+            {
+                Book = _context.advRequest.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = searchname;
+                Book = _context.advRequest.Where(e => e.Name.Contains(searchname)).ToList();
+            }
+            return View("Index", Book);
+        }
     }
 }

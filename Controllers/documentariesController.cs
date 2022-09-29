@@ -198,14 +198,31 @@ namespace Stage_Books.Controllers
         }
 
         [HttpPost]
+        //public ActionResult Search(string searchname)
+        //{
+        //    //var result = _context.Books.Include(x => x.Author).Where(b => b.Name.Contains(searchname) || b.Author.Name.Contains(searchname)).ToList();
+        //    var result = _context.documentaries.Where(b => b.DocName.Contains(searchname)
+        //                 || b.Publisher.Contains(searchname)
+        //                 || b.Category.Contains(searchname)).ToList();
+
+        //    return View(result);
+        //}
+
         public ActionResult Search(string searchname)
         {
-            //var result = _context.Books.Include(x => x.Author).Where(b => b.Name.Contains(searchname) || b.Author.Name.Contains(searchname)).ToList();
-            var result = _context.documentaries.Where(b => b.DocName.Contains(searchname)
-                         || b.Publisher.Contains(searchname)
-                         || b.Category.Contains(searchname)).ToList();
-
-            return View(result);
+            List<documentaries> Book = new List<documentaries>();
+            if (string.IsNullOrEmpty(searchname))
+            {
+                Book = _context.documentaries.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = searchname;
+                Book = _context.documentaries.Where(e => e.DocName.Contains(searchname)
+                        || e.Publisher.Contains(searchname)
+                        || e.Category.Contains(searchname)).ToList();
+            }
+            return View("Index", Book);
         }
     }
 }

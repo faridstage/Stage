@@ -173,5 +173,20 @@ namespace Stage_Books.Controllers
         {
             return _context.allNewsPaper.Any(e => e.Nid == id);
         }
+
+        public ActionResult Search(string searchname)
+        {
+            List<AllNewsPapers> Book = new List<AllNewsPapers>();
+            if (string.IsNullOrEmpty(searchname))
+            {
+                Book = _context.allNewsPaper.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = searchname;
+                Book = _context.allNewsPaper.Where(e => e.Name.Contains(searchname)).ToList();
+            }
+            return View("Index", Book);
+        }
     }
 }

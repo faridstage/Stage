@@ -310,7 +310,13 @@
 <br />
 <br />
 <br />
-
+@if(Model.Issuances.Count >0)
+{
+	@foreach (var item in Model.Issuances)
+	{
+		@item.Pages
+	}
+}
 
     <script src="js/js.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

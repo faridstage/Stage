@@ -1,40 +1,85 @@
 ﻿@model IEnumerable<Stage_Books.Models.OrderViewModel>
-
 @{
-    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Contact";
 }
+<div class="row">
+    <div class="col-md-2"> </div>
+    <div class="col-md-10">
+        <br>
+         <br>
+          <br>
+           <br>
+    <div class="container" style="margin:0px auto; text-align:center">
+        <h3 style="text-align:center"> اوامر الشراء</h3>
+    </div>
 
-<h2>Index</h2>
+    <br><hr />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+   <div class="container">
+               <!-- Start: Search Section -->
+        <section class="search-filters mt-5 mb-5">
+            <div class="container">
+                <div class="filter-box">
+                    @using (Html.BeginForm("Search","OrderViewModels",FormMethod.Post))
+                         {
+						<div class="row">
+                        <div class="col-md-8 col-sm-6">
+                            <div class="form-group">
+                                 <div class="" style="margin:0 auto" >
+                                     <div class="class="col-6">
+                                          <input style="" type="text" name="searchname" class="form-control" />              
+                                                    
+                                      </div> 
+                                  </div>
+                             </div>
+                        </div>
+                         <div class="col-md-2 col-sm-3">
+                            <div class="form-group">
+                                <input style="color:white;background-color:#ff7236;" class="form-control" type="submit" value="بحث">
+                            </div>
+                        </div>
+                         <div class="col-md-2 col-sm-3">
+                            <div class="form-group">
+                                <a asp-area="" asp-controller="OrderViewModels" asp-action="Index" style="color:white;" class=" btn btn-success">عودة للكل</a>
+                                
+                            </div>
+                        </div>
+						</div>
+                     }
+                </div>
+            </div>
+        </section>
+        <!-- End: Search Section -->
+
+    <br><hr />
+<div class="container-fluid">
+     <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                الاسم
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Whatsapp_phone)
+                الهاتف
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Other_way_Contact)
+                وسيلة اخرى للتواصل
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Book_name)
+                اسم الكتاب
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address)
+                عنوان الاستلام
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Book)
+                اسم الكتاب
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+       @foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -52,14 +97,23 @@
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Book.Desc)
+                @Html.DisplayFor(modelItem => item.Book.Name)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
-        </tr>
-}
+         </tr>
+             }
     </tbody>
 </table>
+
+</div>
+    </div>
+</div>
+</div>
+    
+
+
+ 

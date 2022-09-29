@@ -148,5 +148,20 @@ namespace Stage_Books.Controllers
         {
             return _context.categories.Any(e => e.id == id);
         }
+
+        public ActionResult Searchcat(string searchname)
+        {
+            List<Category> Book = new List<Category>();
+            if (string.IsNullOrEmpty(searchname))
+            {
+                Book = _context.categories.ToList();
+            }
+            else
+            {
+                ViewBag.CurrentSearch = searchname;
+                Book = _context.categories.Where(e => e.Name.Contains(searchname)).ToList();
+            }
+            return View("Index", Book);
+        }
     }
 }
