@@ -247,17 +247,8 @@ namespace Stage_Books.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public async Task<IActionResult> SaveBook(string id)
-        {
-            if(id != null)
-            {
-                ViewBag.SaveBook = await GetSaveBook(id);
-            }
-            
-            return View();
-        }
 
-        public async Task<List<SaveBook>> GetSaveBook(string userId)
+        public async Task<List<SaveBook>> GetSaveBook()
         {
             return await _context.Saved.ToListAsync();
         }
@@ -266,12 +257,21 @@ namespace Stage_Books.Controllers
         {
             return _context.Saved.Where(s =>s.UserId == id).Any(x=>x.BookName == bookName);
         }
+        [HttpGet]
+        public async Task<IActionResult> SaveBook()
+        {
+            ViewBag.Saved = await GetSaveBook();
+            
+            return View();
+        }
 
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SaveBook([Bind("Id,BookName,bookDesc,ImageURL")] SaveBook saveBook, string bookName, string? bookDesc, string bookImage, int bookId)
+        public async Task<IActionResult> SaveBook([Bind("Id,BookName,bookDesc,ImageURL")] SaveBook saveBook, string bookName, string? bookImage, string bookDesc, int bookId)
         {
+
+
             string id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (id == null)
             {
@@ -280,12 +280,12 @@ namespace Stage_Books.Controllers
             }
             if (ModelState.IsValid)
             {
-                if (!GetBookName(bookName,id))
+                if (!GetBookName(bookName, id))
                 {
                     saveBook.BookName = bookName;
                     saveBook.bookDesc = bookDesc;
                     saveBook.ImageURL = bookImage;
-                    saveBook.UserId= id;
+                    saveBook.UserId = id;
 
 
                     _context.Add(saveBook);
@@ -302,7 +302,25 @@ namespace Stage_Books.Controllers
 
 
             }
-            return RedirectToAction("Book_Details","books", new { id = bookId });
+            return RedirectToAction("Book_Details", "books", new { id = bookId });
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> DeleteBook(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var book = await _context.Saved.FirstOrDefaultAsync(m => m.Id == id);
+            if(book == null)
+            {
+                return NotFound();
+            }
+            _context.Saved.Remove(book);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(SaveBook));
         }
 
         //// start buy order 
