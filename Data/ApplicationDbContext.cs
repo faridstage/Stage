@@ -49,5 +49,9 @@ namespace Stage_Books.Models
 
         public DbSet<documentaries> documentaries { get; set; }
 
+        public DbSet<magazines> magazines { get; set; } 
+        public DbSet<magazincopys> magazincopys { get; set; }
+        public DbSet<magazinepages> magazinepages { get; set; } 
+
     }
 }

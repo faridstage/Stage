@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Stage_Books.Models;
 
 namespace Stage_Books.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221002034214_magazines")]
+    partial class magazines
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1226,29 +1228,6 @@ namespace Stage_Books.Migrations
                     b.ToTable("magazincopys");
                 });
 
-            modelBuilder.Entity("Stage_Books.Models.magazinepages", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("magazincopysId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("page")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("pageNum")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("magazincopysId");
-
-                    b.ToTable("magazinepages");
-                });
-
             modelBuilder.Entity("Stage_Books.Models.magazines", b =>
                 {
                     b.Property<int>("Id")
@@ -1572,17 +1551,6 @@ namespace Stage_Books.Migrations
                     b.Navigation("magazines");
                 });
 
-            modelBuilder.Entity("Stage_Books.Models.magazinepages", b =>
-                {
-                    b.HasOne("Stage_Books.Models.magazincopys", "magazincopys")
-                        .WithMany("magazinepages")
-                        .HasForeignKey("magazincopysId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("magazincopys");
-                });
-
             modelBuilder.Entity("Stage_Books.Models.AllNewsPapers", b =>
                 {
                     b.Navigation("Issuances");
@@ -1611,11 +1579,6 @@ namespace Stage_Books.Migrations
             modelBuilder.Entity("Stage_Books.Models.Issuancepaper", b =>
                 {
                     b.Navigation("PageTitle");
-                });
-
-            modelBuilder.Entity("Stage_Books.Models.magazincopys", b =>
-                {
-                    b.Navigation("magazinepages");
                 });
 
             modelBuilder.Entity("Stage_Books.Models.magazines", b =>

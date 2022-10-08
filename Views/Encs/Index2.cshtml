@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<Stage_Books.Models.Encyclopedia.Enc>
 
 @{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
     ViewData["Title"] = "Show Encyclobedia";
 }
 <html>
@@ -18,81 +19,9 @@
   <link rel="apple-touch-icon" href="~/img/stage_logo.png">
 </head>
 <body oncontextmenu="return false;">
-  <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar"
-        aria-controls="offcanvasExample">
-        <span class="navbar-toggler-icon" data-bs-target="#sidebar"></span>
-      </button>
-      <img src="~/img/stage_logo.png" alt="language" width="30" height="30"
-        style="margin-right: 10px;margin-left: 5px;">
-      <a class="navbar-brand" href="index.html">S T A G E</a>
-
-      <a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href="#"></a>
-
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home <span class="sr-only"></span></a>
-          </li>
-
-          <li class="nav-item active">
-            <a class="nav-link" href="contact.html">Contact<span class="sr-only"></span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="policy.html">Policy<span class="sr-only"></span></a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              About
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item">About Stage</a>
-              <a class="dropdown-item" href="#">Our message</a>
-              <a class="dropdown-item" href="#">Services</a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"></a>
-              </div>
-              </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              <i class="bi bi-globe"></i> Lannguage
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">العربية</a>
-              <a class="dropdown-item" href="#">English</a>
-              <a class="dropdown-item" href="#">German</a>
-              <a class="dropdown-item" href="#">Spanish</a>
-              <a class="dropdown-item" href="#">French</a>
-              <a class="dropdown-item" href="#">hindi</a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"></a>
-              </div>
-              </div>
-          </li>
-
-        </ul>
-
-      </div>
-
-
-      <form class="form-inline">
-        <a href="login.html" class="btn btn-outline-primary my-2 my-sm-0" style="margin-right: 10PX;">Log out</a>
-      </form>
-
-    </nav>
-  </div>
     <br>
     <div class="container" style="margin:0px auto; text-align:center">
-        <h3> Encyclobidea List</h3>
+        <h3> قائمة موضوعات الموسوعة </h3>
         <p><a class="btn btn-primary" asp-action="Create">Create New</a></p>
     </div>
     <br>
@@ -174,136 +103,6 @@
   </div>
     </div>
 
-   <div class="offcanvas offcanvas-start sidebar-nav bg-dark" tabindex="-1" id="sidebar">
-    <div class="offcanvas-body p-0">
-      <nav class="navbar-dark">
-        <ul class="navbar-nav">
-          <li>
-            <div class="text-muted small fw-bold text-uppercase px-3">
-              CORE
-            </div>
-          </li>
-          <li>
-            <a href="#" class="nav-link px-3 active"
-              <span class="me-2"><i class="bi bi-speedometer2"></i></span>
-              <span>Dashboard</span>
-            </a>
-          </li>
-          <li class="my-4">
-            <hr class="dropdown-divider bg-light" />
-          </li>
-          <li>
-            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-              Books
-            </div>
-          </li>
-          <li>
-            <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#layouts">
-              <span class="me-2"><i class="bi bi-layout-split"></i></span>
-              <span>Manage Books</span>
-              <span class="ms-auto">
-                <span class="right-icon">
-                  <i class="bi bi-chevron-down"></i>
-                </span>
-              </span>
-            </a>
-            <div class="collapse" id="layouts">
-              <ul class="navbar-nav ps-3">
-                <li>
-                  <a href="~/Admin/Edit/Edit" class="nav-link px-3">
-                    <span class="me-2"><i class="bi bi-pencil-square"></i></span>
-                    <span>Edit Books</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <a  href="~/Admin/AddBook/AddBook" class="nav-link px-3">
-              <span class="me-2"><i class="bi bi-book-fill"></i></span>
-              <span>Add Book</span>
-            </a>
-          </li>
-          <li class="my-4">
-            <hr class="dropdown-divider bg-light" />
-          </li>
-          <li>
-            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-              Users
-            </div>
-          </li>
-          <li>
-            <a href="~/Admin/Users/Users" class="nav-link px-3">
-              <span class="me-2"><i class="bi bi-person-fill"></i></span>
-              <span>Manage Users</span>
-            </a>
-          </li>
-          <li>
-            <a href="~/Admin/AddUser/AddUser" class="nav-link px-3">
-              <span class="me-2"><i class="bi bi-plus-circle"></i></span>
-              <span>Add Users</span>
-            </a>
-          </li>
-           <li class="my-4">
-            <hr class="dropdown-divider bg-light" />
-          </li>
-          <li>
-            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-              Other
-            </div>
-          </li>
-          <li>
-             @* href="../Views/Contactmsgs/Delete" *@
-            <a href="../Contactmsgs/index" class="nav-link px-3">
-              <span class="me-2"><i class="bi bi-envelope"></i></span>
-              <span>Users Messages</span>
-            </a>
-          </li>
-          <li>
-            <a class="nav-link px-3">
-              <span class="me-2"><i class="bi bi-bug"></i></span>
-              <span>Errors Messages</span>
-            </a>
-          </li>
-          <li>
-          </li>
-          <li>
-            <a href="../Encs/Index2" class="nav-link px-3">
-              <span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
-              <span>Show Encyclopedia</span>
-            </a>
-          </li>
-          <li>
-            <a href="../Encs/Create" class="nav-link px-3">
-              <span class="me-2"><i class="bi bi-plus-square"></i></span>
-              <span>Add Encyclopedia</span>
-            </a>
-          </li>
-          
-           <li class="my-4">
-            <hr class="dropdown-divider bg-light" />
-           </li>
-          <li>
-            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-              Other
-            </div>
-          </li>
-          <li>
-            <a href="~/Admin/index_ocr/index_ocr" class="nav-link px-3">
-              <span class="me-2"><i class="bi bi-journal-text"></i></span>
-              <span>OCR</span>
-            </a>
-          </li>
-          <li>
-            <a href="~/Admin/bu/bu" class="nav-link px-3">
-              <span class="me-2"><i class="bi bi-hdd"></i></span>
-              <span>Back UP</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
   <!-- top navigation bar -->
   <!-- offcanvas -->
   <script src="~/Admin/jsD/bootstrap.bundle.min.js"></script>

@@ -1,0 +1,102 @@
+﻿
+
+
+@*@**********************************************@
+@model Stage_Books.Models.magazines
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-10">
+		<br />
+		<br />
+		<br />
+		<br />
+		   <h2 style="text-align:center"> تعديل بيانات مجلة</h2>
+		<br />
+		<hr />
+		<br />
+		<div class="container">
+			 <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="row">
+                <div class="col-6">
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="owner" class="control-label"></label>
+                <input asp-for="owner" class="form-control" />
+                <span asp-validation-for="owner" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="logo" class="control-label"></label>
+                <input asp-for="logo" class="form-control" />
+                <span asp-validation-for="logo" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="startdate" class="control-label"></label>
+                <input asp-for="startdate" class="form-control" />
+                <span asp-validation-for="startdate" class="text-danger"></span>
+            </div>
+            <br />
+
+                </div>
+                <div class="col-6">
+            <div class="form-group">
+                <label asp-for="firstpubdate" class="control-label"></label>
+                <input asp-for="firstpubdate" class="form-control" />
+                <span asp-validation-for="firstpubdate" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="category" class="control-label"></label>
+                <input asp-for="category" class="form-control" />
+                <span asp-validation-for="category" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="lang" class="control-label"></label>
+                <input asp-for="lang" class="form-control" />
+                <span asp-validation-for="lang" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="desc_info" class="control-label"></label>
+                <input asp-for="desc_info" class="form-control" />
+                <span asp-validation-for="desc_info" class="text-danger"></span>
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" /> | 
+                <a asp-action="Index">Back to List</a>
+            </div>
+                </div>
+            </div>
+        </form>
+			<br />
+			<br />
+		</div>
+		<br />
+	</div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

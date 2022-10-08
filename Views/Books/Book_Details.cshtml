@@ -230,7 +230,6 @@
 
                             </div>
                         </div>
-
                     </div>
                     <br>
                     <div class="bookName">
@@ -341,15 +340,12 @@
                                 <li class="list-group-item">@Html.DisplayFor(model => model.Rights)</li>
                                 <li class="list-group-item">@Html.DisplayFor(model => model.Pages)</li>
                                 <li class="list-group-item">@Html.DisplayFor(model => model.Language)</li>
-
                             </ul>
-
                         </div>
                         <div class="card-body">
                             <a asp-controller="books" asp-action="Book_Show" asp-route-id="@Model.ID" class="btn btn-primary" style="border-radius:9px">Read Book</a> |
                             <a onclick="myFunctionindex()" class="btn btn-warning" style="border-radius:9px">Read Index</a> |
                             <a onclick="myFunctionintro()" class="btn btn-info" style="border-radius:9px">Read Intro</a>
-
                         </div>
                     </div>
                     <form asp-controller="Home" asp-action="SaveBook" method="post">

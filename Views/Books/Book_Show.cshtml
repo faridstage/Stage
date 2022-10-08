@@ -22,9 +22,6 @@
 @{
     ViewData["Title"] = "Book_Show";
 }
-
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -48,8 +45,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Reem+Kufi:wght@700&display=swap" rel="stylesheet">
    <link href="~/css/style.css" rel="stylesheet">
 	<link href="~/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <style>
+body {}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
 </head>
-<body style="color:red;">
+<body >
     <!-- container oncontextmenu="return false"; -->
     <div class="container-fluid" style="background-color:#333333">
 		<nav class="navbar navbar-expand-lg navbar-light " style="background-color:#333333;color:#ff7236;">
@@ -165,20 +205,17 @@
   </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-2" style="background-color: #333333";">
+            <div class="col-sm-1" style="background-color: #333333";">
                  <br />
                 <div class="row mt-2" style="margin:0px auto" hidden>
                     <div class="col" style="text-align:center;margin:0px auto">
                     <span style="color: white;font-size:26px">Tools</span>
-                        </div>
+                    </div>
                 </div>
                 <br />
                  <div class="row mt-2" style="margin:0px auto">
-                    
-                   
                 </div>
-                  <hr class="hrstyle" hidden>
-
+                @*****************************@
                   <div class="row mt-2" style="margin:0px auto" hidden>
                      <div class="col-12">
                          <button class="btn btn-warning btn-lg w-100" onclick="myFunctionfontsize()" style="font-size:17px;color:#03254c"><i class="bi bi-fonts"></i>- Font Change</button>
@@ -197,51 +234,132 @@
                   </div>
                </div>
                 </div>
-                  <hr class="hrstyle">
+                @*****************************@
 
-                <div class="row mt-2" style="margin:0px auto">
-                    <div class="col-12">
-                     
-                </div>
-                     <br />
-                     <br />
-                <div class="row ml-3" style="display:none" id="myDIV1">
-                   <div class="mr-4">
-                       <a id="fc1" onclick="fontchange1()" href="#" style="font-size:25px;color:white;"><i class="bi bi-list"></i></a>
-                   </div>
-                   <div class="mr-4">
-                    <a id="fc2" onclick="fontchange2()" href="#"  style="font-size:25px;color:white;"><i class="bi bi-type-italic"></i></a>
-                   </div>
-                   <div class="mr-4">
-                    <a id="fc3" onclick="fontchange3()" href="#" style="font-size:25px;color:white;"><i class="bi bi-type-bold"></i></a>
-                  </div>
-               </div>
-               </div>
-                 <hr class="hrstyle">
-
-                <div class="row mt-2" style="margin:0px auto">
-                    <div class="col-12">
-                     
-                </div>
-                     <br />
-                     <br />
-                <div class="row ml-3" style="display:none" id="myDIVsize">
-                   <div class="mr-4">
-                       <a id="fc1" onclick="fontschange1()" href="#" style="font-size:21px;color:white;">X1</a>
-                   </div>
-                   <div class="mr-4">
-                    <a id="fc2" onclick="fontschange2()" href="#"  style="font-size:21px;color:white;">X2</a>
-                   </div>
-                   <div class="mr-4">
-                    <a id="fc3" onclick="fontschange3()" href="#" style="font-size:21px;color:white;">X3</a>
-                  </div>
-               </div>
-               </div>
-                 <hr class="hrstyle">
-
+             @*****************************@
                 <div class="row mt-2" style="margin:0px auto">
                    <div class="col-12">
+                   </div>
+                   <br />
+                     <br />
+                    <div class="row ml-3" style="display:none" id="myDIV3">
+                     <div class="mr-4">
+                       <a id="bigscreen" onclick="bigscreen()" href="#" style="font-size:25px;color:white;"><i class="bi bi-fullscreen"></i></a>
+                   </div>
+                   <div class="mr-4" hidden>
+                    <a id="bgw" onclick="smallscreen()" href="#" style="font-size:25px;color:white;"><i class="bi bi-fullscreen-exit"></i></a>
+                   </div>
+               </div>
+                 </div>
+                 @*****************************@
+
+                <hr class="hrstyle">
+                 <div class="row mt-2" style="margin:0px auto">
+                   <div class="col-12">
                     
+                   </div>
+             </div> 
+
+
+
+             
+                <br />
+                <hr />
+               <div class="col" style="text-align:center;margin:0px auto" hidden>
+                    <span style="color: white;font-size:20px">Rate Book</span>
+               </div>
+               <br>
+             
+  
+            </div>
+            <br />
+            <hr />
+            <div class="col-sm-11">
+                <div class="row">
+                    <div class="col-1"><a class="btn-lg" onclick="myFunctionFontColor()" style="font-size:25px;color:#03254c"><i class="bi bi-palette"></i></a></div>
+                    <div class="col-1"><a class="btn-lg" onclick="myFunction1()" style="font-size:25px;color:#03254c"><i class="bi bi-filetype-ttf"></i></a></div>
+                    <div class="col-1"><a class="btn-lg" onclick="myFunctionsize()" style="font-size:25px;color:#03254c"><i class="bi bi-file-text"></i></a></div>
+                    <div class="col-1"><a class="btn-lg" onclick="myFunction2()" style="font-size:25px;color:#03254c" ><i class="bi bi-palette"></i></a></div>
+                    <div class="col-1"><a class="btn-lg" onclick="bigscreen1()"  style="font-size:25px;color:#0099CC;" id="bigscreen1"><i class="bi bi-fullscreen"></i></a></div>
+                    <div class="col-1"><a class="btn-lg" onclick="bigscreen2()"  style="font-size:25px;color:#0099CC;" id="bigscreen2"><i class="bi bi-fullscreen-exit"></i></a></div>
+                    <div class="col-1"><a class="btn-lg" onclick="searchintext()" style="font-size:25px;color:#0099CC;"><i class="bi bi-search"></i></a></div>
+                    <div class="col-1"><a class="btn-lg" id="myBtn" style="font-size:25px;color:#0099CC;"><i class="bi bi-search"></i></a></div>
+                    <div class="col-1"><a class="btn-lg" onclick="myFunctionaudio()" style="font-size:25px;color:#03254c" ><i class="bi bi-mic-fill"></i></a></div>
+                    <div class="col-1"><a class="btn-lg" onclick="tranc()" style="font-size:25px;color:#0099CC;"><i class="bi bi-translate"></i></a></div>
+                    <div class="col-1"><a class="btn-lg" onclick="tranc()" style="font-size:25px;color:#0099CC;"><i class="bi bi-translate"></i></a></div>
+                    <div class="col-1"><a class="btn-lg" onclick="searchintext()" style="font-size:25px;color:#03254c" ><i class="bi bi-info"></i></a></div>
+                </div>
+                <br />
+                <hr />
+               
+                <div class="row">
+                    @*font color section*@
+                    <div class="col-1">
+                           <div class="row ml-3" style="display:none" id="myDIV">
+                           <div class="mr-2">
+                                <a id="fcgray" onclick="mFgray()" href="#" style="font-size:22px;color:gray;"><i class="bi bi-circle-fill"></i></a>
+                           </div>
+                           <div class="mr-2">
+                             <a id="fcblack" onclick="mFblack()" href="#" style="font-size:22px;color:black;"><i class="bi bi-circle-fill"></i></a>
+                           </div>
+                           <div class="mr-2">
+                             <a id="fcred" onclick="mFred()" href="#" style="font-size:22px;color:red;"><i class="bi bi-circle-fill"></i></a>
+                           </div>
+                           <div class="mr-2">
+                             <a id="fcblue" onclick="mFblue()" href="#" style="font-size:22px;color:blue;"><i class="bi bi-circle-fill"></i></a>
+                           </div>
+                           <div class="mr-2">
+                             <a id="fcgreen" onclick="mFgreen()" href="#" style="font-size:22px;color:green;"><i class="bi bi-circle-fill"></i></a>
+                           </div>
+                           </div>
+                    </div>
+
+
+
+
+                    @*font style section*@
+                    
+                    <div class="col-1">
+                          <div class="row mt-2" style="margin:0px auto">
+                            <div class="row ml-3" style="display:none" id="myDIV1">
+                            <div class="mr-4">
+                                <a id="fc1" onclick="fontchange1()" href="#" style="font-size:25px;color:black;"><i class="bi bi-list"></i></a>
+                            </div>
+                            <div class="mr-4">
+                              <a id="fc2" onclick="fontchange2()" href="#"  style="font-size:25px;color:black;"><i class="bi bi-type-italic"></i></a>
+                            </div>
+                            <div class="mr-4">
+                             <a id="fc3" onclick="fontchange3()" href="#" style="font-size:25px;color:black;"><i class="bi bi-type-bold"></i></a>
+                           </div>
+                        </div>
+                        </div>
+                    </div>
+                     @*back section*@
+                     <div class="col-1">
+                         <div class="row mt-2" style="margin:0px auto">
+                                <div class="col-12">
+                            </div>
+                             <div class="row ml-3" style="display:none" id="myDIVsize">
+                               <div class="mr-4">
+                                   <a id="fc1" onclick="fontschange1()" href="#" style="font-size:21px;color:black;">X1</a>
+                               </div>
+                               <div class="mr-4">
+                                <a id="fc2" onclick="fontschange2()" href="#"  style="font-size:21px;color:black;">X2</a>
+                               </div>
+                               <div class="mr-4">
+                                <a id="fc3" onclick="fontschange3()" href="#" style="font-size:21px;color:black;">X3</a>
+                              </div>
+                           </div>
+           
+                         </div>
+                    </div>
+
+
+                    @*back color section*@
+                    
+                    
+                <div class="row mt-2" style="margin:0px auto">
+                   <div class="col-12">
                    </div>
                      <br />
                      <br />
@@ -257,25 +375,50 @@
                   </div>
                </div>
              </div> 
-               <hr class="hrstyle">
-                <div class="row mt-2" style="margin:0px auto">
+
+                    @*Serach section*@
+                    <div class="col-1">
+                      <div class="row mt-2" style="margin:0px auto">
                    <div class="col-12">
-                     
                    </div>
                    <br />
                      <br />
-                    <div class="row ml-3" style="display:none" id="myDIV3">
+                   <div class="row ml-3" style="display:none" id="myDIVsearch">
                      <div class="mr-4">
-                       <a id="bigscreen" onclick="bigscreen()" href="#" style="font-size:25px;color:white;"><i class="bi bi-fullscreen"></i></a>
+                       <p  style="font-size:25px;color:gray;">From PC Enter Ctrl + F</p>
                    </div>
-                   <div class="mr-4" hidden>
-                    <a id="bgw" onclick="smallscreen()" href="#" style="font-size:25px;color:white;"><i class="bi bi-fullscreen-exit"></i></a>
+                   <div class="mr-4">
+                    <a  style="font-size:25px;color:gray;">From Android Menu And Enter Find</a>
                    </div>
-
+                        @* <div class="col-3">
+                    <a id="bgb" onclick="bcb()" href="#" style="font-size:15px;color:black;"><i class="bi bi-circle-fill"></i></a>
+                  </div>*@
                </div>
-                 </div>
-                   <hr class="hrstyle">
-                 <div class="row mt-2" style="margin:0px auto">
+             </div> 
+                    </div>
+                    @*Advanced Serach section*@
+                    <div class="col-1">
+                     <div class="row mt-2" style="margin:0px auto">
+                   <div class="col-12">
+                   </div>
+                   <br />
+                     <br />
+                   <div class="row ml-3" style="display:none" id="myDIVsearch">
+                     <div class="mr-4">
+                       <p  style="font-size:25px;color:gray;">From PC Enter Ctrl + F</p>
+                   </div>
+                   <div class="mr-4">
+                    <a  style="font-size:25px;color:gray;">From Android Menu And Enter Find</a>
+                   </div>
+@*                   <div class="col-3">
+                    <a id="bgb" onclick="bcb()" href="#" style="font-size:15px;color:black;"><i class="bi bi-circle-fill"></i></a>
+                  </div>*@
+               </div>
+             </div> 
+                    </div>
+                    @*Audio Read section*@
+                    <div class="col-1">
+                                         <div class="row mt-2" style="margin:0px auto">
                    <div class="col-12">
                     
                    </div>
@@ -299,89 +442,12 @@
 
                </div>
              </div> 
-
-                <hr class="hrstyle">
-                 <div class="row mt-2" style="margin:0px auto">
-                   <div class="col-12">
-                   </div>
-                   <br />
-                     <br />
-                   <div class="row ml-3" style="display:none" id="myDIVsearch">
-                     <div class="mr-4">
-                       <p  style="font-size:25px;color:gray;">From PC Enter Ctrl + F</p>
-                   </div>
-                   <div class="mr-4">
-                    <a  style="font-size:25px;color:gray;">From Android Menu And Enter Find</a>
-                   </div>
-@*                   <div class="col-3">
-                    <a id="bgb" onclick="bcb()" href="#" style="font-size:15px;color:black;"><i class="bi bi-circle-fill"></i></a>
-                  </div>*@
-               </div>
-             </div> 
-
-                <hr class="hrstyle">
-                 <div class="row mt-2" style="margin:0px auto">
-                   <div class="col-12">
-                    
-                   </div>
-             </div> 
-
-
-
-             
-                <br />
-                <hr />
-               <div class="col" style="text-align:center;margin:0px auto" hidden>
-                    <span style="color: white;font-size:20px">Rate Book</span>
-               </div>
-               <br>
-             
-  
-            </div>
-            <br />
-            <hr />
-            <div class="col-sm-10">
-                <div class="row">
-                    <div class="col-1"><a class="btn-lg" onclick="myFunctionFontColor()" style="font-size:25px;color:#03254c"><i class="bi bi-palette"></i></a></div>
-                    <div class="col-1"><a class="btn-lg" onclick="myFunction1()" style="font-size:25px;color:#03254c"><i class="bi bi-filetype-ttf"></i></a></div>
-                    <div class="col-1"><a class="btn-lg" onclick="myFunctionsize()" style="font-size:25px;color:#03254c"><i class="bi bi-file-text"></i></a></div>
-                    <div class="col-1"><a class="btn-lg" style="font-size:25px;color:#03254c" onclick="myFunction2()"><i class="bi bi-palette"></i></a></div>
-                    <div class="col-1"><a onclick="bigscreen1()" id="bigscreen1" href="#" style="font-size:25px;color:#0099CC;"><i class="bi bi-fullscreen"></i></a></div>
-                    <div class="col-1"><a onclick="bigscreen2()" id="bigscreen2" href="#" style="font-size:25px;color:#0099CC;"><i class="bi bi-fullscreen-exit"></i></a></div>
-                    <div class="col-1"><a onclick="searchintext()" style="font-size:25px;color:#0099CC;"><i class="bi bi-search"></i></a></div>
-                    <div class="col-1"><a class="btn-lg" style="font-size:25px;color:#03254c" onclick="myFunctionaudio()"><i class="bi bi-mic-fill"></i></a></div>
-                    <div class="col-1"><a onclick="tranc()" style="font-size:25px;color:#0099CC;"><i class="bi bi-translate"></i></a></div>
-                    <div class="col-1"><a class="btn-lg" style="font-size:25px;color:#03254c" onclick="searchintext()"><i class="bi bi-info"></i></a></div>
-                </div>
-                <br />
-                <hr />
-               
-                <div class="row">
-                    
-                    <div class="col-1">
-                        <div class="row ml-3" style="display:none" id="myDIV">
-                       <div class="mr-2">
-                            <a id="fcgray" onclick="mFgray()" href="#" style="font-size:22px;color:gray;"><i class="bi bi-circle-fill"></i></a>
-                       </div>
-                       <div class="mr-2">
-                         <a id="fcblack" onclick="mFblack()" href="#" style="font-size:22px;color:black;"><i class="bi bi-circle-fill"></i></a>
-                       </div>
-                       <div class="mr-2">
-                         <a id="fcred" onclick="mFred()" href="#" style="font-size:22px;color:red;"><i class="bi bi-circle-fill"></i></a>
-                      </div>
-                      <div class="mr-2">
-                         <a id="fcblue" onclick="mFblue()" href="#" style="font-size:22px;color:blue;"><i class="bi bi-circle-fill"></i></a>
-                      </div>
-                       <div class="mr-2">
-                         <a id="fcgreen" onclick="mFgreen()" href="#" style="font-size:22px;color:green;"><i class="bi bi-circle-fill"></i></a>
-                      </div>
-                     </div>
                     </div>
+                    @*tranclate section*@
                     <div class="col-1"></div>
+                    @*Advanced tranclate section*@
                     <div class="col-1"></div>
-                    <div class="col-1"></div>
-                    <div class="col-1"></div>
-                    <div class="col-1"></div>
+                    @*info section*@
                     <div class="col-1"></div>
                 </div>
 
@@ -423,11 +489,10 @@
                    <hr class="hrstyle">
 
 
-                <div id="cont" class="container contsearch" style="margin:0px auto;border:2px solid gray;border-radius:10px;background-color:#EEEEEE;overflow:scroll" >
+                <div id="cont" class="container contsearch" style="margin:0px auto;background-color:#EEEEEE;overflow:scroll" >
                     <br />
                     <div id="mainscrees">
                        
-
     <div class="containert" style="background-color:#EEEEEE;display:none" id="myDIVtranc">
 @*              <div class="row mb-4" style="margin:0px auto">
                   <h4 style="text-align:center">Translation Tools</h4>
@@ -455,14 +520,14 @@
           </li>
         </ul>
       </div>*@
-@*      <div class="row"><button id="btnt" class="btn btn-success">Translate Text</button></div>
-*@      
-    <iframe src="https://www.bing.com/translator" width="100%" height="400"></iframe>
-</div>
-    <div style="display:none" class="container mt-2 mb-2" id="myDIVsearcharea" >
-            <input class="w-50" type="text" id="text-to-search" placeholder="Search" style="height:35px;border:2px solid gray; border-radius:5px;padding-left:5px;">
-            <button class="btn btn-primary" onclick="searchontext()">search</button>
-    </div>
+            @*      <div class="row"><button id="btnt" class="btn btn-success">Translate Text</button></div>
+            *@      
+                <iframe src="https://www.bing.com/translator" width="100%" height="400"></iframe>
+            </div>
+                <div style="display:none" class="container mt-2 mb-2" id="myDIVsearcharea" >
+                        <input class="w-50" type="text" id="text-to-search" placeholder="Search" style="height:35px;border:2px solid gray; border-radius:5px;padding-left:5px;">
+                        <button class="btn btn-primary" onclick="searchontext()">search</button>
+                </div>
 
                        <br />
                           <iframe style="border:none;" id="tc" type="text/html" src="@Html.DisplayFor(modelItem => Model.BookURLS)" width="100%" height="1000"></iframe>
@@ -471,17 +536,52 @@
                  </div>
                   <br />
                </div>
-              </v>
+              </div>
             </div>
          </div>
-    </div>
-  
 
+         <!-- The Modal -->
+            <div id="myModal" class="modal" style="direction:rtl">
+
+              <!-- Modal content -->
+              <div class="modal-content">
+                <span  class="close">&times;</span>
+                <p style="text-align:center"> للبحث من جهاز الكمبيوتر اضغط Ctrl + F</p>
+                <p style="text-align:center"> للبحث من جهاز الاندرويد Ctrl + F</p>
+                <p style="text-align:center"> IOS للبحث من جهاز  Ctrl + F</p>
+              </div>
+
+            </div>
     <script>
 
 
         ///////////////////////////////
         // Audio Program /////////////
+        // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
         /////////////////////////////
         var voicelist = document.getElementById("voicelist");
         var text = document.getElementById("tc");

@@ -21,7 +21,6 @@
 	var returnurl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
     }
 @inject SignInManager<ApplicationUser> signInManager;
-
 <!--import to get HTML Helper-->
 @model Stage_Books.Models.Showdatamodel
 @*@model IPagedList<Stage_Books.Models.Showdatamodel>*@
@@ -56,44 +55,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	  @*<link href="~/css/style.css" rel="stylesheet">*@
-
 </head>
 <body style="font-family:cairo,Roboto"> <!-- oncontextmenu="return false;"-->
-@*      <div class="Navbar" style="background-color:#333333;height:60px;padding-top:12px">
-          <nav class="Navbar__Items">
-            <div class="Navbar__Link">
-
-            </div>
-          </nav>
-          <nav class="Navbar__Items Navbar__Items--right">
-            <div class="Navbar__Link">
-                    @{string id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;}
-                     @if (signInManager.IsSignedIn(User) && id != null)
-                    {
-                     <div class="dropdown" style="margin-right:20px;">
-                      <button style="font-size:20px;color:black;background-color:white;border-radius:65%;" class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             <img src="../img/unkown.png" alt="User" width="22" height="22">
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a style="font-size:15px;color:#333333" class="dropdown-item" asp-area="" asp-controller="" asp-action="">@User.Identity.Name</a>
-                        <a style="font-size:15px;color:#333333" class="dropdown-item" asp-area="" asp-controller="" asp-action="">Profile</a>
-                        <a style="font-size:15px;color:#333333" class="dropdown-item" asp-area="" asp-controller="" asp-action="">Edit</a>
-                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin")){<a asp-action="Index" asp-controller="Books" class="btn w-100" style="margin-right:10px;font-size:17px">الادارة</a>}
-                        <div class="dropdown-divider"></div>
-                        <form method="post" asp-action="Logout" asp-controller="Account" class="form-inline">
-                          <button type="submit" class="btn my-2 my-sm-0 mr-3" style="height:28px">Logout</button>
-                        </form>
-                    </div>
-                    </div>
-                    }
-                    else{
-				            <a asp-action="Login" asp-controller="Account"><i class="fa fa-lock" ></i>Login /</a>
-                            <a asp-action="Register" asp-controller="Account"> Register</a>
-                    }
-            </div>
-          </nav>
-        </div>*@
-
         <div class="container-fluid" style="background-color:#333333;">
              <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#333333;" >
                   <img class="mr-1" src="~/img/stage_logo1.png" alt="LIBRARIA" width="35" height="35" />
@@ -133,6 +96,8 @@
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item"  style="font-size:15px;text-align:center;" asp-area="" asp-controller="AllNewsPapers" asp-action="Index">الجرائد</a>
                           <div class="dropdown-divider"></div>
+                          <a class="dropdown-item"  style="font-size:15px;text-align:center;" asp-area="" asp-controller="magazines" asp-action="Index">المجلات</a>
+                          <div class="dropdown-divider"></div>
                           <a class="dropdown-item" style="font-size:15px;text-align:center;" asp-area="" asp-controller="paperssearchers" asp-action="Index">الاوراق البحثية</a>
                           <div class="dropdown-divider"></div>  
                           <a class="dropdown-item" style="font-size:15px;text-align:center;" asp-area="" asp-controller="Categories" asp-action="Index">تصنيفات</a>
@@ -143,16 +108,26 @@
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" style="font-size:15px;text-align:center;" asp-area="" asp-controller="Archaeologies" asp-action="Index">موسوعة الاثار</a>
                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" style="font-size:15px;text-align:center;" asp-area="" asp-controller="Theses" asp-action="Index">الرسائل العلميةn</a>
+                          <a class="dropdown-item" style="font-size:15px;text-align:center;" asp-area="" asp-controller="Theses" asp-action="Index">الرسائل العلمية</a>
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" style="font-size:15px;text-align:center;" asp-area="" asp-controller="Authors" asp-action="Index">مؤلفين</a>
+                          <div class="dropdown-divider"></div>
                         </div>
                       </li>
                       <li class="nav-item active" style="padding:18px 5px">
                         <a class="nav-link disabled" tabindex="-1" aria-disabled="true" style="font-size:17px;color:white;" asp-area="" asp-controller="Contactmsgs" asp-action="Create">Contact</a>
                       </li>
                       <li class="nav-item active" style="padding:18px 5px">
-                        <a class="nav-link" style="font-size:17px;color:white;" asp-area="" asp-controller="OrderViewModels" asp-action="Create">Order</a>
+                        <a class="nav-link" style="font-size:17px;color:white;" asp-area="" asp-controller="OrderViewModels" asp-action="Create"><i style="color:#ff7236" class="bi bi-cart-check mr-2"></i>Order</a>
+                      </li>
+                      <li class="dropdown" style="padding:18px 5px" title="@localizer["Request culture provider:"] @requestculture?.Provider?.GetType().Name">
+                          <a style="font-size:17px;color:white;" data-toggle="dropdown" class="dropdown-toggle disabled" href="#"><i style="color:#ff7236" class="bi bi-translate mr-2"></i>@Stage_Books.languages.Resource.Language</a>
+                              <ul class="dropdown-menu">
+                                  <form id="selectlanguage" asp-controller="Home" asp-action="setlang" asp-route-returnurl="@returnurl" method="post">
+                                         <select class="form-control form-control-sm" name="culture" onchange="this.form.submit()" asp-for="@requestculture.RequestCulture.UICulture.Name" asp-items="culitems">
+                                         </select>
+                                  </form>
+                               </ul>
                       </li>
                     </ul>
                      @{string id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;}
@@ -167,7 +142,7 @@
                         <a style="font-size:15px;color:#333333" class="dropdown-item" asp-area="" asp-controller="" asp-action="">@User.Identity.Name</a>
                         <a style="font-size:15px;color:#333333" class="dropdown-item" asp-area="" asp-controller="" asp-action="">Profile</a>
                         <a style="font-size:15px;color:#333333" class="dropdown-item" asp-area="" asp-controller="" asp-action="">Edit</a>
-                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin")){<a asp-action="Index" asp-controller="Books" class="btn w-100" style="margin-right:10px;font-size:17px">الادارة</a>}
+                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin")){<a asp-area="Admin" asp-action="Index" asp-controller="Home" class="btn w-100" style="margin-right:10px;font-size:17px">الادارة</a>}
                         <div class="dropdown-divider"></div>
                         <form method="post" asp-action="Logout" asp-controller="Account" class="form-inline">
                           <button type="submit" class="btn my-2 my-sm-0 mr-3" style="height:28px">Logout</button>
@@ -175,50 +150,14 @@
                     </div>
                     </div>
                     }
-                    else{
-				            <a asp-action="Login" asp-controller="Account"><i class="fa fa-lock" ></i>Login /</a>
-                            <a asp-action="Register" asp-controller="Account"> Register</a>
+                    else{ 
+				            <a asp-action="Login" asp-controller="Account"  style="font-size:15px;color:#ff7236;" class="nav-link" ><i class="fa fa-lock" ></i>  Login  </a> 
+                             <a style="font-size:15px;color:#ff7236;" class="nav-link" > /</a> 
+                            <a asp-action="Register" asp-controller="Account" class="nav-link" style="font-size:15px;color:#ff7236;"> Register</a>
                     }
                   </div>
-                </nav>        
-            </div>
-
-        <!-- End: Header Section -->
-@*        <header id="header-v1" class="navbar-wrapper">
-            <div class="container">
-                <div class="row">
-                    <nav class="navbar navbar-default">
-                        <div class="row">
-
-                            <div class="col-9">
-                                <!-- Header Topbar -->
-                                <div class="header-topbar hidden-sm hidden-xs">
-
-                                              <ul class="nav navbar-nav" style="">
-                                                <li class="dropdown" title="@localizer["Request culture provider:"] @requestculture?.Provider?.GetType().Name">
-                                                  <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#"><i style="color:#ff7236" class="bi bi-translate mr-2"></i>@Stage_Books.languages.Resource.Language</a>
-                                                 <ul class="dropdown-menu">
-                                                   <form id="selectlanguage" asp-controller="Home" asp-action="setlang" asp-route-returnurl="@returnurl" method="post">
-                                                        <select class="form-control form-control-sm" name="culture" onchange="this.form.submit()" asp-for="@requestculture.RequestCulture.UICulture.Name" asp-items="culitems">
-
-                                                        </select>
-                                                   </form>
-                                                </ul>
-                                               </li>
-                                            </ul>
-                                          </div>
-                                        </div>
-                                       
-                                </div>
-
-                        
-                    </nav>
-                </div>
-            </div>
-        </header>*@
-
-
-        <!-- End: Header Section -->
+             </nav>        
+        </div>
      <!-- Start: Slider Section -->
         <div data-ride="carousel" class="carousel slide" id="home-v1-header-carousel">
             <div class="carousel-inner">
@@ -280,7 +219,7 @@
                         Books Categories
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-@*                        @if(Model.categories.Any())
+                         @*@if(Model.categories.Any())
                         {
                             <div class="alert alert-danger" role="alert">No Data !</div>
                         }
@@ -332,15 +271,16 @@
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action="">كتب الكترونية</a>
-                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action="">كتب صوتية </a>
-                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action=""> موسوعة المؤلفين</a>
-                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action=""> الاوراق البحثية </a>
-                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action=""> الرسائل العلمية</a>
-                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action=""> الافلام الوثائقية</a>
-                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action=""> موسوعة الاثار</a>
-                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action=""> التحف والانتيكات </a>
-                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action=""> ارشيف المخطوطات</a>
-                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action=""> ارشيف الجرائد </a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action="Index">كتب صوتية </a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action="Index"> موسوعة المؤلفين</a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action="Index"> الاوراق البحثية </a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action="Index"> الرسائل العلمية</a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action="Index"> الافلام الوثائقية</a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action="Index"> موسوعة الاثار</a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action="Index"> التحف والانتيكات </a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action="Index"> ارشيف المخطوطات</a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="" asp-action="Index"> ارشيف الجرائد </a>
+                        <a style="font-size:17px;" class="dropdown-item" asp-area="" asp-controller="magazines" asp-action="Index"> ارشيف المجلات </a>
                         @*<div class="dropdown-divider"></div>
                         <a style="font-size:17px;background-color:#ff7236;color:white;" class="dropdown-item btn" href="#">More</a>*@
                       </div>
@@ -409,7 +349,6 @@
         <!-- End: Search Section -->
          <br />
         <br />
-
          <!-- Start: Category Filter -->
         <section class="category-filter section-padding" style="background-image: url(img/project-filter-bg-home-v1.jpg);">
              <div class="container">
@@ -542,7 +481,7 @@
         <br />
         <br />
         <br />
-               <!-- Start: Welcome Section -->
+        <!-- Start: Welcome Section -->
         <section class="welcome-section">
             <div class="container">
                 <div class="row">
@@ -608,7 +547,6 @@
             </div>
         </section>
         <!-- End: Welcome Section -->
-
          <!-- Start: Features -->
         <section class="features">
             <div class="container">
@@ -669,7 +607,6 @@
             </div>
         </section>
         <!-- End: Features -->
-
          <!-- Start: cat Section -->
         <section class="welcome-section">
             <div class="container">
@@ -744,16 +681,6 @@
         <!-- End: Welcome Section -->
         <br />
         <br />
-
-
-
-    <!-- نبذة مختصرة عن ستيج  -->
-     <!-- search section --> 
-
-     <!-- container -->
-
-
-
         <!-- Start: Category -->
         @*<section class="search-filters mt-5 mb-5">
             <div class="container">
@@ -852,10 +779,8 @@
             </div>
         </section>*@
         <!-- End: Category -->
-
-
-            <!-- Ads -->
-            @*<div class="col-2">
+        <!-- Ads -->
+        @*<div class="col-2">
                 <div style="text-align: center; margin-top: 25px; padding: 20px; padding-bottom: 40px;">
                     <div class="card" style="width: 12rem; ">
                         <div class="card-body">
@@ -865,13 +790,9 @@
                         </div>
                     </div>
                 </div>
-            </div>*@
-               </div>
-          </div>
+        </div>*@
         <!-- -->
-
-   <!-- Start: Meet Staff -->
- <!-- Start: Our Community Section -->
+        <!-- Start: Our Community Section -->
         <section class="community-testimonial">
             <div class="container">
                 <div class="text-center">
@@ -1109,7 +1030,6 @@
         </section>
         <!-- End: Our Community Section -->
         <!-- End: Meet Staff -->
-
        <!-- Start: Social Network -->
         <section class="social-network section-padding">
             <div class="container">
@@ -1164,105 +1084,7 @@
                 </ul>
             </div>
         </section>
-      <!-- Start Social Network -->
-
-        <!-- End: Footer -->
-    <!-- Footer  -->
-@*    <div class="container-fluid" style="background-color: #333333;">
-		<div class="row">
-			<div class="col" style="text-align: center; padding: 7px;">
-				<span style="color: white; font-size: 2rem;">S T A G E </span>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col" style="text-align: center; padding: 10px; margin: 15px;">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-6" style="">
-				<div class="row">
-					<span style="color:#333333; font-size: 1.5rem; text-align: center;">Contact Us </span>
-				</div>
-				<div class="row">
-					<img src="~/img/home.png" alt="Facebook" title="Facebook" width="30" height="30"
-						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-						@Stage_Books.languages.Resource.Home<span class="sr-only">(current)</span>
-					</a>
-				</div>
-				<div class="row">
-					<img src="~/img/about-us.jpg" alt="Facebook" title="Facebook" width="30" height="30"
-						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-						@Stage_Books.languages.Resource.About_Stage
-						<span class="sr-only">(current)</span>
-					</a>
-				</div>
-				<div class="row">
-					<img src="~/img/services-icon-4.jpg" alt="Facebook" title="Facebook" width="30" height="30"
-						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-						@Stage_Books.languages.Resource.Our_Services
-						<span class="sr-only">(current)</span>
-					</a>
-				</div>
-				<div class="row">
-					<img src="~/img/community.png" alt="Facebook" title="Facebook" width="30" height="30"
-						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-						@Stage_Books.languages.Resource.Our_Message
-						<span class="sr-only">(current)</span>
-					</a>
-				</div>
-				<div class="row">
-					<img src="~/img/facebook.png" alt="Facebook" title="Facebook" width="30" height="30"
-						 style="margin-left: 25px;margin-top: 5px;"> <a class="nav-link" href="#" style="color:white;">
-						@Stage_Books.languages.Resource.Join_Us<span class="sr-only">(current)</span>
-					</a>
-				</div>
-			</div>
-
-			<div class="col-6" style="text-align: center;">
-				<div class="row">
-					<span style="color: white; font-size: 1.5rem; text-align: center;">Contact Us</span>
-				</div>
-				<div class="row">
-					<a class="nav-link" href="#" style="color:white;">
-						<img src="~/img/facebook.png" alt="Facebook" title="Facebook"
-							 width="30" height="30"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Facebook</span>
-					</a>
-				</div>
-				<div class="row">
-					<a class="nav-link" href="#" style="color:white;">
-						<img src="~/img/twitter.jpg" alt="twitter" title="twitter"
-						 width="33" height="33"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Twitter</span>
-					</a>
-				</div>
-				<div class="row">
-					<a class="nav-link" href="#" style="color:white;">
-						<img src="~/img/youtube.jpg" alt="youtube" title="youtube"
-							 width="30" height="30"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">Youtube</span>
-					</a>
-				</div>
-				<div class="row">
-					<a class="nav-link" href="https://mail.google.com/" style="color:white;" target="_blank">
-						<img src="~/img/Gmail.ico" alt="Gmail" title="Gmail"
-						width="30" height="30"> <span class="sr-only">(current)</span><span style="color:white;margin-left:15px">stage.books.2022@gmail.com</span>
-					</a>
-				</div>
-			</div>
-		</div>
-		<div class="row" hidden>
-			<div class="col " style="text-align: center; border-radius: 5px; ">
-				<h5 style="color: white; margin-top: 15px">@Stage_Books.languages.Resource.Visitors</h5>
-				<img src="~/img/Statistic.png" alt="visitors" width="40" height="30" />
-				<p style="color: white; margin-top: 10px;">0</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col" style="text-align: center; padding: 7px;">
-				<span style="color: white;">&copy; Copyright Stage 2022</span>
-			</div>
-		</div>
-	</div>*@
-    <!-- Footer  -->
-
+       <!-- Start Social Network -->
     @section Scripts{
     <script>
         $(document).ready(function ()
@@ -1277,7 +1099,6 @@
               navs.forEach(nav => nav.classList.toggle('Navbar__ToggleShow'));
             }
               document.querySelector('.Navbar__Link-toggle').addEventListener('click', classToggle);
-
     </script>
     }
         <script type="text/javascript" src="~/js/jquery-1.12.4.min.js"></script>

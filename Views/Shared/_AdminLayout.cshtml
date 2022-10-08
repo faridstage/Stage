@@ -1,20 +1,9 @@
 ﻿<!DOCTYPE html>
-
 <html>
 <head>
 	<meta name="viewport" content="width=device-width" />
 	<title>@ViewBag.Title</title>
-</head>
-<body>
-	<div>
-		@RenderBody()
-	</div>
-</body>
-<!DOCTYPE html>
-
-<html>
-<head>
-	<meta charset="UTF-8" />
+    <meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" href="~/Admin/cssD/bootstrap.min.css" />
@@ -22,307 +11,509 @@
 	<link rel="stylesheet" href="~/Admin/cssD/dataTables.bootstrap5.min.css" />
 	<link rel="stylesheet" href="~/Admin/cssD/style.css" />
 	<title>Stage Dashboard</title>
-
-
-
-
 </head>
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar"
+        aria-controls="offcanvasExample">
+        <span class="navbar-toggler-icon" data-bs-target="#sidebar"></span>
+      </button>
+      <img src="~/img/stage_logo1.png" alt="language" width="30" height="30"
+        style="margin-right: 10px;margin-left: 5px;">
+      <a class="navbar-brand" href="index.html">S T A G E</a>
+
+      <a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href="#"></a>
 
 
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home <span class="sr-only"></span></a>
+          </li>
+        </ul>
+      </div>
+      <form class="form-inline">
+        <a href="login.html" class="btn btn-outline-primary my-2 my-sm-0" style="margin-right: 10PX;">Log out</a>
+      </form>
+    </nav>
+  </div>
 
 <body>
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar"
+        aria-controls="offcanvasExample">
+        <span class="navbar-toggler-icon" data-bs-target="#sidebar"></span>
+      </button>
+      <img src="~/img/stage_logo1.png" alt="language" width="30" height="30"
+        style="margin-right: 10px;margin-left: 5px;">
+      <a class="navbar-brand" href="index.html">S T A G E</a>
+
+      <a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href="#"></a>
+
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home <span class="sr-only"></span></a>
+          </li>
+        </ul>
+      </div>
+      <form class="form-inline">
+        <a href="login.html" class="btn btn-outline-primary my-2 my-sm-0" style="margin-right: 10PX;">Log out</a>
+      </form>
+    </nav>
+  </div>
 	<div>
 		@RenderBody()
 	</div>
 
-
-	<div class="container-fluid">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar"
-					aria-controls="offcanvasExample">
-				<span class="navbar-toggler-icon" data-bs-target="#sidebar"></span>
-			</button>
-			<img src="~/img/stage_logo.png" alt="language" width="30" height="30"
-				 style="margin-right: 10px;margin-left: 5px;">
-			<a class="navbar-brand" href="index.html">S T A G E</a>
-
-			<a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href="#"></a>
-
-
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="index.html">Home <span class="sr-only"></span></a>
-					</li>
-
-					<li class="nav-item active">
-						<a class="nav-link" href="contact.html">Contact<span class="sr-only"></span></a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="policy.html">Policy<span class="sr-only"></span></a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-						   aria-haspopup="true" aria-expanded="false">
-							About
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item">About Stage</a>
-							<a class="dropdown-item" href="#">Our message</a>
-							<a class="dropdown-item" href="#">Services</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#"></a>
-							</div>
-						</div>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-						   aria-haspopup="true" aria-expanded="false">
-							<i class="bi bi-globe"></i> Lannguage
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="#">العربية</a>
-							<a class="dropdown-item" href="#">English</a>
-							<a class="dropdown-item" href="#">German</a>
-							<a class="dropdown-item" href="#">Spanish</a>
-							<a class="dropdown-item" href="#">French</a>
-							<a class="dropdown-item" href="#">hindi</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#"></a>
-							</div>
-						</div>
-					</li>
-
-				</ul>
-
-			</div>
-
-			<div class="form-inline">
-				<a href="/" class="btn btn-outline-primary my-2 my-sm-0" style="margin-right: 10PX;">Back To Stage</a>
-
-			</div>
-
-
-		</nav>
-	</div>
 	<!-- top navigation bar -->
 	<!-- offcanvas -->
-	<div class="offcanvas offcanvas-start sidebar-nav bg-dark" tabindex="-1" id="sidebar">
-		<div class="offcanvas-body p-0">
-			<nav class="navbar-dark">
-				<ul class="navbar-nav">
-					<li>
-						<div class="text-muted small fw-bold text-uppercase px-3">
-							CORE
-						</div>
-					</li>
-					<li>
-						<a href="/Administration/Dashboard" class="nav-link px-3 active"
+  <!-- القائمة الجانبية فى الداش بورد -->
+  <div class="offcanvas offcanvas-start sidebar-nav bg-dark" tabindex="-1" id="sidebar">
+    <div class="offcanvas-body p-0">
+      <nav class="navbar-dark">
+        <ul class="navbar-nav">
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3">
+              CORE
+            </div>
+          </li>
+          <li>
+            <a href="../Admin" class="nav-link px-3 active"
               <span class="me-2"><i class="bi bi-speedometer2"></i></span>
-			  <span>Dashboard</span>
-			</a>
-					</li>
-					<li class="my-4">
-						<hr class="dropdown-divider bg-light" />
-					</li>
-					<li>
-						<div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-							Books
-						</div>
-					</li>
-					<li>
-						<a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#layouts">
-							<span class="me-2"><i class="bi bi-layout-split"></i></span>
-							<span>Manage Books</span>
-							<span class="ms-auto">
-								<span class="right-icon">
-									<i class="bi bi-chevron-down"></i>
-								</span>
-							</span>
-						</a>
-						<div class="collapse" id="layouts">
-							<ul class="navbar-nav ps-3">
-								<li>
-									<a href="~/Books" class="nav-link px-3">
-										<span class="me-2"><i class="bi bi-book-fill"></i></span>
-										<span>All Books</span>
-									</a>
-								</li>
-								<li>
-									<a href="~/Books/Create" class="nav-link px-3">
-										<span class="me-2"><i class="bi bi-plus-circle"></i></span>
-										<span>Add Book</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li class="my-4">
-						<hr class="dropdown-divider bg-light" />
-					</li>
-					<li>
-						<div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-							Authers
-						</div>
-					</li>
-					<li>
-						<a href="~/Authors" class="nav-link px-3">
-							<span class="me-2"><i class="bi bi-person-fill"></i></span>
-							<span>All Authers</span>
-						</a>
-					</li>
-					<li>
-						<a href="~/Authors/Create" class="nav-link px-3">
-							<span class="me-2"><i class="bi bi-plus-circle"></i></span>
-							<span>Add Auther</span>
-						</a>
-					</li>
-					<li class="my-4">
-						<hr class="dropdown-divider bg-light" />
-					</li>
-					<li>
-						<div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-							Users
-						</div>
-					</li>
-					<li>
-						<a href="~/Administration/ListUsers" class="nav-link px-3">
-							<span class="me-2"><i class="bi bi-person-fill"></i></span>
-							<span>All Users</span>
-						</a>
-					</li>
-					<li>
-						<a href="~/account/Register" class="nav-link px-3">
-							<span class="me-2"><i class="bi bi-plus-circle"></i></span>
-							<span>Add Users</span>
-						</a>
-					</li>
+              <span style="text-align:center">الادارة</span>
+            </a>
+          </li>
+          <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+          </li>
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+              Books
+            </div>
+          </li>
+          <li>
+            <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#layouts">
+              <span class="me-2"><i class="bi bi-layout-split"></i></span>
+              <span>Manage Books</span>
+              <span class="ms-auto">
+                <span class="right-icon">
+                  <i class="bi bi-chevron-down"></i>
+                </span>
+              </span>
+            </a>
 
-					<li class="my-4">
-						<hr class="dropdown-divider bg-light" />
-					</li>
-					<li>
-						<div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-							Roles
-						</div>
-					</li>
-					<li>
-						<a href="~/Administration/ListRoles" class="nav-link px-3">
-							<span class="me-2"><i class="bi bi-person-fill"></i></span>
-							<span>All Roles</span>
-						</a>
-					</li>
-					<li>
-						<a href="~/Administration/CreateRole" class="nav-link px-3">
-							<span class="me-2"><i class="bi bi-plus-circle"></i></span>
-							<span>Add Role</span>
-						</a>
-					</li>
+            <div class="collapse" id="layouts">
+              <ul class="navbar-nav ps-3">
+                 <li>
+                  <a href="../Administration/CreateRole" class="nav-link px-3">
+                    <span class="me-2"><i class="bi bi-pencil-square"></i></span>
+                    <span>Rols</span>
+                  </a>
+                 </li>
+                 <li>
+                  <a href="~/Admin/Edit/Edit" class="nav-link px-3">
+                    <span class="me-2"><i class="bi bi-pencil-square"></i></span>
+                    <span>Edit Books</span>
+                  </a>
+                 </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a  href="../Books/index_show" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-book-fill"></i></span>
+              <span>Show Books</span>
+            </a>
+          </li>
 
-					<li class="my-4">
-						<hr class="dropdown-divider bg-light" />
-					</li>
-					<li>
-						<div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-							Other
-						</div>
-					</li>
-					<li>
-						<a href="~/Contactmsgs/index" class="nav-link px-3">
-							<span class="me-2"><i class="bi bi-envelope"></i></span>
-							<span> الكتب الالكترونية</span>
-						</a>
-					</li>
-					<li>
-						<a class="nav-link px-3">
-							<span class="me-2"><i class="bi bi-bug"></i></span>
-							<span>  المؤلفين</span>
-						</a>
-					</li>
-					<li>
-					</li>
-					<li>
-						<a href="~/Admin/index_ocr/index_ocr" class="nav-link px-3">
-							<span class="me-2"><i class="bi bi-plus-square"></i></span>
-							<span> الكتب الصوتية</span>
-						</a>
-					</li>
-					<li>
-						<a href="~/Admin/bu/bu" class="nav-link px-3">
-							<span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
-							<span>  الموسوعة</span>
-						</a>
-					</li>
-					<li>
-						<a href="~/Admin/bu/bu" class="nav-link px-3">
-							<span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
-							<span>  المخطوطات</span>
-						</a>
-					</li>
-					<li>
-						<a href="~/Admin/bu/bu" class="nav-link px-3">
-							<span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
-							<span>موسوعة الاثار</span>
-						</a>
-					</li>
-					<li>
-						<a href="~/Admin/bu/bu" class="nav-link px-3">
-							<span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
-							<span> التحف والانتيكات</span>
-						</a>
-					</li>
-					<li>
-						<a href="~/Admin/bu/bu" class="nav-link px-3">
-							<span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
-							<span> الرسائل العلمية</span>
-						</a>
-						<li>
-						<a href="~/Admin/bu/bu" class="nav-link px-3">
-							<span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
-							<span> الاوراق البحثية</span>
-						</a>
-						<li>
-						<a href="~/Admin/bu/bu" class="nav-link px-3">
-							<span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
-							<span> الافلام الوثائقية</span>
-						</a>
-					</li>
-					<li>
-						<a href="~/Admin/bu/bu" class="nav-link px-3">
-							<span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
-							<span>موسوعة الجرائد</span>
-						</a>
-					</li>
-					</li>
-					</li>
-					<li class="my-4">
-						<hr class="dropdown-divider bg-light" />
-					</li>
-					<li>
-						<div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-							Other
-						</div>
-					</li>
-					<li>
-						<a href="~/Admin/index_ocr/index_ocr" class="nav-link px-3">
-							<span class="me-2"><i class="bi bi-journal-text"></i></span>
-							<span>OCR</span>
-						</a>
-					</li>
-					<li>
-						<a href="~/Admin/bu/bu" class="nav-link px-3">
-							<span class="me-2"><i class="bi bi-hdd"></i></span>
-							<span>Back UP</span>
-						</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
+
+          <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+          </li>
+          <br />
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+            الكتب الالكترونية 
+            </div>
+          </li>
+          <li>
+             
+            <a href="../Books/index_show" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>قائمة الكتب  </span>
+            </a>
+          </li>
+          <li>
+            <a href="../Books/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>اضافة كتاب  </span>
+            </a>
+          </li>
+           <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+          </li>
+          <br />
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+             تصنيفات الكتب 
+            </div>
+          </li>
+          <li>
+             
+            <a href="../Categories/index" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>قائمة التصنيفات  </span>
+            </a>
+          </li>
+          <li>
+            <a href="../Categories/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>اضافة تصنيف  </span>
+            </a>
+          </li>
+          <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+          </li>
+          <br />
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+            المؤلفين 
+            </div>
+          </li>
+          <li>
+             
+            <a href="../Authors/index" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>قائمة المؤلفين  </span>
+            </a>
+          </li>
+          <li>
+            <a href="../Authors/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>اضافة مؤلف  </span>
+            </a>
+          </li>
+           <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+          </li>
+          <br />
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+            الكتب الصوتية 
+            </div>
+          </li>
+          <li>
+             
+            <a href="../AudioBooks/Indexdash" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span> قائمة الكتب الصوتية </span>
+            </a>
+          </li>
+          <li>
+            <a href="../AudioBooks/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>اضافة كتاب صوتى </span>
+            </a>
+          </li>
+          <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+           </li>
+          <br />
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+            الافلام الوثائقية
+            </div>
+          </li>
+          <li>
+             
+            <a href="../documentaries/Index" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>قائمة الافلام  </span>
+            </a>
+          </li>
+          <li>
+            <a href="../documentaries/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>اضافة فيلم  </span>
+            </a>
+          </li>
+
+          <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+           </li>
+          <br />
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+            موسوعة المؤلفين والشخصيات
+            </div>
+          </li>
+          <li>
+             
+            <a href="../Encs/Index" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>قائمة   </span>
+            </a>
+          </li>
+          <li>
+            <a href="../Encs/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>اضافة   </span>
+            </a>
+          </li>
+
+          <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+           </li>
+          <br />
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+            موسوعة الاماكن والقطع الاثرية  
+            </div>
+          </li>
+          <li>
+             
+            <a href="../Archaeologies/IndexShow" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>قائمة الاثار </span>
+            </a>
+          </li>
+          <li>
+            <a href="../Archaeologies/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>اضافة اثر جديد  </span>
+            </a>
+          </li>
+
+          <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+           </li>
+          <br />
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+                 موسوعة التحف والانتيكات والقطع الفنية النادرة
+            </div>
+          </li>
+          <li>
+             
+            <a href="../Antiques/Index_d" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>قائمة   </span>
+            </a>
+          </li>
+          <li>
+            <a href="../Antiques/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>اضافة قطعة جديدة  </span>
+            </a>
+          </li>
+
+          <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+           </li>
+          <br />
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+                المخطوطات
+            </div>
+          </li>
+          <li>
+             
+            <a href="../Scriptpapers/Indexd" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>قائمة المخطوطات  </span>
+            </a>
+          </li>
+          <li>
+            <a href="../Scriptpapers/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>اضافة مخطوطة  </span>
+            </a>
+          </li>
+
+          <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+           </li>
+          <br />
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+                الاوراق البحثية
+            </div>
+          </li>
+          <li>
+             
+            <a href="../paperssearchers/Index" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>قائمة   </span>
+            </a>
+          </li>
+          <li>
+            <a href="../paperssearchers/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>اضافة   </span>
+            </a>
+          </li>
+
+          <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+           </li>
+          <br />
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+                الرسائل العلمية
+            </div>
+          </li>
+          <li>
+             
+            <a href="../Theses/Index" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>قائمة   </span>
+            </a>
+          </li>
+          <li>
+            <a href="../Theses/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>اضافة   </span>
+            </a>
+          </li>
+
+          <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+           </li>
+          <br />
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+                 ارشيف الجرائد
+            </div>
+          </li>
+          <li>
+             
+            <a href="../AllNewsPapers/Index" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>قائمة الجرائد  </span>
+            </a>
+          </li>
+          <li>
+            <a href="../AllNewsPapers/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>اضافة جريدة  </span>
+            </a>
+          </li>
+          <li>
+            <a href="../Issuances/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>اضافة اصدار  </span>
+            </a>
+          </li>
+           <li>
+            <a href="../Issuancepapers/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>اضافة صفحة  </span>
+            </a>
+          </li>
+          <li>
+            <a href="../PageTitles/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>اضافة عناوين  </span>
+            </a>
+          </li>
+
+
+          <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+           </li>
+          <br />
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+                ارشيف المجلات
+            </div>
+          </li>
+          <li>
+             
+            <a href="../magazines/Index" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>قائمة المجلات  </span>
+            </a>
+          </li>
+           <li>
+            <a href="../magazines/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>اضافة مجلة  </span>
+            </a>
+          </li>
+          <li>
+            <a href="../magazincopys/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>اضافة اصدار  </span>
+            </a>
+          </li>
+           <li>
+            <a href="../magazinepages/Create" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>اضافة صفحة  </span>
+            </a>
+          </li>
+
+
+
+          <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+          </li>
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+              Users
+            </div>
+          </li>
+          <li>
+            <a href="~/Admin/Users/Users" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-person-fill"></i></span>
+              <span>Manage Users</span>
+            </a>
+          </li>
+           <li>
+            <a href="../Administration/ListUsers" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-plus-circle"></i></span>
+              <span>Show Users </span>
+            </a>
+          </li>
+           <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+          </li>
+
+          <li>
+            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+              Other
+            </div>
+          </li>
+          <li> 
+            <a href="../Contactmsgs/index" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span>رسائل الاعضاء </span>
+            </a>
+          </li>
+          <li> 
+            <a href="../OrderViewModels/index" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-envelope"></i></span>
+              <span> اوامر الشراء </span>
+            </a>
+          </li>
+          <li>
+          </li>
+          <li>
+            <a href="../AdvRequests/Index" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
+              <span>طلب اعلانات </span>
+            </a>
+          </li>
+           <li class="my-4">
+            <hr class="dropdown-divider bg-light" />
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
 
 	@await RenderSectionAsync("Scripts", required: false)
 

@@ -1,6 +1,6 @@
 ﻿
-@model IEnumerable<Stage_Books.Models.Book>
-@*@model Stage_Books.ViewModels.TestViewModel*@
+@**********************************@
+@model IEnumerable<Stage_Books.Models.magazincopys>
 @inject SignInManager<ApplicationUser> signInManager;
 @using X.PagedList.Mvc.Core.Common;
 @using X.PagedList.Web.Common;
@@ -27,7 +27,7 @@
 }
 
 @{
-    ViewData["Title"] = "Searchbyrabic";
+    ViewData["Title"] = "Index";
 }
 <head >
     <!-- Required meta tags -->
@@ -100,7 +100,7 @@
 						</div>
 					</li>
 
-					<li class="nav-item dropdown">
+						<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" style="color:white;" id="navbarDropdownMenuLink" data-toggle="dropdown"
 						   aria-haspopup="true" aria-expanded="false">
 							Other
@@ -122,16 +122,20 @@
 						   aria-haspopup="true" aria-expanded="false" style="color:white">
 						   <i class="bi bi-translate mr-2"></i>Language</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" title="@localizer["Request culture provider:"] @requestculture?.Provider?.GetType().Name">
-                            <form id="selectlanguage" asp-controller="Home" asp-action="setlang" asp-route-returnurl="@returnurl" method="post">                          
+
+                            <form id="selectlanguage" asp-controller="Home" asp-action="setlang" asp-route-returnurl="@returnurl" method="post">
+                                                       
                               <select class="form-control form-control-sm" name="culture"
                                       onchange="this.form.submit();" asp-for="@requestculture.RequestCulture.UICulture.Name"
-                                       asp-items="culitems">    
+                                       asp-items="culitems">
+                           
+                      
                                </select>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#"></a>
                             </div>
                             </form>
-                        </div>
+                            </div>
 					</li>
 					<li class="nav-item active">
 						<a class="nav-link" style="color:white;" asp-area="" asp-controller="Help" asp-action="Help">@Stage_Books.languages.Resource.Help<span class="sr-only">(current)</span></a>
@@ -179,7 +183,7 @@
 <div class="col-3">
 </div>
 <div class="col-6">
-	<h2 style="text-align:center"> Arabic Books - الكتب العربية </h2>
+	<h2 style="text-align:center">  اصدارات المجلة </h2>
 </div>
 
 <div class="col-3">
@@ -207,7 +211,7 @@
         <section class="search-filters mt-5 mb-5">
             <div class="container">
                 <div class="filter-box">
-                    @using (Html.BeginForm("Search","AllNewsPapers",FormMethod.Post))
+                    @using (Html.BeginForm("Search","magazines",FormMethod.Post))
                          {
 							 <div class="row">
                         <div class="col-md-10 col-sm-6">
@@ -239,53 +243,47 @@
 <div class="row">
 	<div class="col-2"></div>
 	<div class="col-8">
-		<div class="row" >
-                        @if(!Model.Any())
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                No Data !
-                            </div>
-                        }
-                        else
-                        {
-@foreach (var item in Model) {
 
-<div class="col-4">
-	<div class="card" style="width: 18rem;">
-  <img class="card-img-top" height="350" src="@Html.DisplayFor(modelItem => item.ImageURL)" alt="@Html.DisplayFor(modelItem => item.Name)">
-  <div class="card-body">
-    <h5 style="text-align:center" class="card-title">كتاب : @Html.DisplayFor(modelItem => item.Name)</h5>
-    <a style="background-color:#ff7236;color:white;text-align:center"  asp-controller="books" asp-action="Book_Details" asp-route-id="@item.ID" class="btn w-100">اقرأ</a>
+@foreach (var item in Model) {
+<div class="row" >
+			
+<div class="card" style="width: 20rem;">
+	<div class="card" >
+		    <h5 style="text-align:right" class="card-title"> مجلة : @Html.DisplayFor(modelItem => item.magazines.Name)</h5>
+@*       <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.magazines.logo)" alt="@Html.DisplayFor(modelItem => item.Name)">
+*@  </div>
+  <br>
+   <br>
+      <a style="background-color:#ff7236;color:white;" asp-action="Details" asp-route-id="@item.Id" class="btn">@*@Stage_Books.languages.Resource.Read_More*@ المزيد </a>
+	  <br>
+	   <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+       <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+       <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+      <a style="background-color:yellow;color:#333333;" asp-controller="Issuances" asp-action="Index" asp-route-id="@item.Id" class="btn">@*@Stage_Books.languages.Resource.Read_More*@ الاصدارات </a>
+</div>
+
+<div class="card" style="width: 24rem;">
+
+	  <div class="card-body">
+    <h5 style="text-align:right" class="card-title"> رقم الاصدار : @Html.DisplayFor(modelItem => item.copyNum)</h5>
+    <p style="text-align:right" class="card-text"> عدد الصفحات : @Html.DisplayFor(modelItem => item.Pages)</p>
+	<p style="text-align:right" class="card-text"> تاريخ الاصدار : @Html.DisplayFor(modelItem => item.copydate)</p>
+
+	@*<p style="text-align:right" class="card-text">@Html.DisplayFor(modelItem => item.Language)</p>*@
   </div>
 </div>
+
 </div>
+<br />
 
 
 @*<video src="@Html.DisplayFor(modelItem => item.pathdocFile)" controls></video>
 *@               
 
 }
-}
-</div>
+
 	</div>
 	<div class="col-2"></div>
-</div>
-<div class="container">
-<div class="row">
-<div class="col-4"></div>
-<div class="col-4">
-                     <!-- paging control for navigation to the previous page, next page, etc -->
-                    @Html.PagedListPager(Model.ToPagedList(), page => Url.Action("Index", new { page = page }),
-                        new X.PagedList.Mvc.Core.Common.PagedListRenderOptions
-                        {
-                            DisplayItemSliceAndTotal = true,
-                            ContainerDivClasses = new[] { "navigation" },
-                            LiElementClasses = new[] { "page-item" },
-                            PageClasses = new[] { "page-link" },
-                       })
-<div class="col-4"></div>
-</div>
-</div>
 </div>
 </div>
 <br />
@@ -293,13 +291,7 @@
 <br />
 <br />
 
-@section Scripts{
-         <script>
-                    $(document).ready(function () {
-                        $('ul.pagination > li.disabled > a').addClass('page-link');
-                    });
-          </script>
-              }
+
     <script src="js/js.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

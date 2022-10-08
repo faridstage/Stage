@@ -46,6 +46,8 @@
     <Folder Include="wwwroot\audiofile\" />
     <Folder Include="wwwroot\manuimg\" />
     <Folder Include="wwwroot\manufile\" />
+    <Folder Include="wwwroot\magazinesimg\" />
+    <Folder Include="wwwroot\magazinepagesimg\" />
     <Folder Include="wwwroot\newspaperpage\" />
     <Folder Include="wwwroot\newspaperlogoimg\" />
     <Folder Include="wwwroot\paperfile\" />
