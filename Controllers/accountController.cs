@@ -15,6 +15,7 @@ using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
+using Microsoft.Office.Interop.Word;
 
 namespace Stage_Books.Controllers
 {
@@ -120,7 +121,7 @@ namespace Stage_Books.Controllers
 
                 var user = new ApplicationUser
                 {
-                    UserName = model.Email,
+                    UserName = new MailAddress(model.Email).User,
                     Email = model.Email,
                     phone = model.phone,
                     gender = model.gender,
