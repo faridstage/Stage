@@ -133,7 +133,8 @@ namespace Stage_Books.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DocName,Produce,Category,Publisher,PubDate,Language,Rights,pathdocFile,ImageURL,note")] documentaries documentaries)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DocName,Produce,Category,Publisher,PubDate,Language,Rights,pathdocFile,ImageURL,note")] documentaries documentaries,
+            IFormFile imageFile)
         {
             if (id != documentaries.Id)
             {
@@ -142,6 +143,31 @@ namespace Stage_Books.Controllers
 
             if (ModelState.IsValid)
             {
+                if (imageFile != null)
+                {
+                    if (documentaries.ImageURL != "\\documentariesimg\\NoImage.jpeg")
+                    {
+                        string OldimgPath = webHostEnvironment.WebRootPath + documentaries.ImageURL;
+
+                        if (System.IO.File.Exists(OldimgPath))
+                        {
+                            System.IO.File.Delete(OldimgPath);
+                        }
+                    }
+                    // Guid -> globally Unique Identifier
+                    string imgExtension = Path.GetExtension(imageFile.FileName);
+                    Guid imgGuid = Guid.NewGuid();
+                    string imgName = imgGuid + imgExtension;
+                    string imgURL = "\\documentariesimg\\" + imgName;
+                    documentaries.ImageURL = imgURL;
+
+                    string imgPath = webHostEnvironment.WebRootPath + imgURL;
+                    FileStream imgStream = new FileStream(imgPath, FileMode.Create);
+                    imageFile.CopyTo(imgStream);
+                    imgStream.Dispose();
+                }
+
+
                 try
                 {
                     _context.Update(documentaries);

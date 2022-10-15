@@ -1,49 +1,79 @@
 ﻿@model Stage_Books.Models.Issuancepaper
 
 @{
-    ViewData["Title"] = "Edit";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
+<br />
+<br />
+<br />
 
-<h4>Issuancepaper</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ppid" />
-            <div class="form-group">
-                <label asp-for="Pages" class="control-label"></label>
-                <input asp-for="Pages" class="form-control" />
-                <span asp-validation-for="Pages" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="imageurl" class="control-label"></label>
-                <input asp-for="imageurl" class="form-control" />
-                <span asp-validation-for="imageurl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Pid" class="control-label"></label>
-                <input asp-for="Pid" class="form-control" />
-                <span asp-validation-for="Pid" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="note" class="control-label"></label>
-                <input asp-for="note" class="form-control" />
-                <span asp-validation-for="note" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-8">
+			<h2>Edit</h2>
+
+			<h4>Issuancepaper</h4>
+			<hr />
+			<div class="row">
+				<div class="col-md-8">
+					<form asp-action="Edit" enctype="multipart/form-data">
+						<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+						<input type="hidden" asp-for="ppid" />
+						<input type="hidden" asp-for="imageurl" />
+						<div class="form-group">
+							<label asp-for="Pages" class="control-label"></label>
+							<input asp-for="Pages" class="form-control" />
+							<span asp-validation-for="Pages" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<label asp-for="imageurl" class="control-label"></label>
+							<input type="file" asp-for="imageurl" class="form-control" name="imageFile" id="imageFile" accept=".png,.jpg" onchange="AddImage()"/>
+							<span asp-validation-for="imageurl" class="text-danger"></span>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="input-group input-group-lg">
+									<img width="250" height="300" src="@Html.DisplayFor(book =>book.imageurl)" id="bookImage" />
+								</div>
+							</div>
+							<div class="col-md-6"></div>
+						</div>
+						<div class="form-group">
+							<label asp-for="Pid" class="control-label"></label>
+							<input asp-for="Pid" class="form-control" />
+							<span asp-validation-for="Pid" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<label asp-for="note" class="control-label"></label>
+							<input asp-for="note" class="form-control" />
+							<span asp-validation-for="note" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<input type="submit" value="Save" class="btn btn-success" />
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div>
+				<a asp-action="Index">Back to List</a>
+			</div>
+		</div>
+	</div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+	<script>
+		function AddImage() {
+			document.getElementById('bookImage').src = window.URL.createObjectURL(document.getElementById('imageFile').files[0])
+		}
+	</script>
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+	}

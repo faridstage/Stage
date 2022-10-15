@@ -84,7 +84,7 @@ namespace Stage_Books.Controllers
                 }
                 else
                 {
-                    antiques.imageurl = "\\ArchImage\\NoImage.jpeg";
+                    antiques.imageurl = "\\AntiqImage\\NoImage.jpeg";
                 }
                 _context.Add(antiques);
                 await _context.SaveChangesAsync();
@@ -114,7 +114,7 @@ namespace Stage_Books.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,Name,date,madein,creator,owner,ownercerti,imageurl,des,info,note")] Antiques antiques)
+        public async Task<IActionResult> Edit(int id, [Bind("id,Name,date,madein,creator,owner,ownercerti,imageurl,des,info,note")] Antiques antiques, IFormFile? imageFile)
         {
             if (id != antiques.id)
             {
@@ -123,6 +123,30 @@ namespace Stage_Books.Controllers
 
             if (ModelState.IsValid)
             {
+                if (imageFile != null)
+                {
+                    if (antiques.imageurl != "\\AntiqImage\\NoImage.jpeg")
+                    {
+                        string OldimgPath = webHostEnvironment.WebRootPath + antiques.imageurl;
+
+                        if (System.IO.File.Exists(OldimgPath))
+                        {
+                            System.IO.File.Delete(OldimgPath);
+                        }
+                    }
+                    // Guid -> globally Unique Identifier
+                    string imgExtension = Path.GetExtension(imageFile.FileName);
+                    Guid imgGuid = Guid.NewGuid();
+                    string imgName = imgGuid + imgExtension;
+                    string imgURL = "\\AntiqImage\\" + imgName;
+                    antiques.imageurl = imgURL;
+
+                    string imgPath = webHostEnvironment.WebRootPath + imgURL;
+                    FileStream imgStream = new FileStream(imgPath, FileMode.Create);
+                    imageFile.CopyTo(imgStream);
+                    imgStream.Dispose();
+                }
+
                 try
                 {
                     _context.Update(antiques);

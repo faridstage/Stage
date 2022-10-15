@@ -158,7 +158,7 @@ namespace Stage_Books.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Author,Category,Publisher,Desc,PubDate,uploadDate,Language,Topic,Rights,path,ImageURL,note")] AudioBook audioBook)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Author,Category,Publisher,Desc,PubDate,uploadDate,Language,Topic,Rights,path,ImageURL,note")] AudioBook audioBook, IFormFile imageFile)
         {
             if (id != audioBook.ID)
             {
@@ -167,6 +167,31 @@ namespace Stage_Books.Controllers
 
             if (ModelState.IsValid)
             {
+                if (imageFile != null)
+                {
+                    if (audioBook.ImageURL != "\\AudioImages\\NoImage.jpeg")
+                    {
+                        string OldimgPath = WebHostEnvironment.WebRootPath + audioBook.ImageURL;
+
+                        if (System.IO.File.Exists(OldimgPath))
+                        {
+                            System.IO.File.Delete(OldimgPath);
+                        }
+                    }
+                    // Guid -> globally Unique Identifier
+                    string imgExtension = Path.GetExtension(imageFile.FileName);
+                    Guid imgGuid = Guid.NewGuid();
+                    string imgName = imgGuid + imgExtension;
+                    string imgURL = "\\AudioImages\\" + imgName;
+                    audioBook.ImageURL = imgURL;
+
+                    string imgPath = WebHostEnvironment.WebRootPath + imgURL;
+                    FileStream imgStream = new FileStream(imgPath, FileMode.Create);
+                    imageFile.CopyTo(imgStream);
+                    imgStream.Dispose();
+                }
+
+
                 try
                 {
                     _context.Update(audioBook);

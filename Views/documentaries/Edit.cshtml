@@ -1,77 +1,151 @@
 ﻿@model Stage_Books.Models.documentaries
 
 @{
-     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    ViewData["Title"] = "Edit";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
 
-<h4>documentaries</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="DocName" class="control-label"></label>
-                <input asp-for="DocName" class="form-control" />
-                <span asp-validation-for="DocName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Produce" class="control-label"></label>
-                <input asp-for="Produce" class="form-control" />
-                <span asp-validation-for="Produce" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Category" class="control-label"></label>
-                <input asp-for="Category" class="form-control" />
-                <span asp-validation-for="Category" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Publisher" class="control-label"></label>
-                <input asp-for="Publisher" class="form-control" />
-                <span asp-validation-for="Publisher" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PubDate" class="control-label"></label>
-                <input asp-for="PubDate" class="form-control" />
-                <span asp-validation-for="PubDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Language" class="control-label"></label>
-                <input asp-for="Language" class="form-control" />
-                <span asp-validation-for="Language" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Rights" class="control-label"></label>
-                <input asp-for="Rights" class="form-control" />
-                <span asp-validation-for="Rights" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="pathdocFile" class="control-label"></label>
-                <input asp-for="pathdocFile" class="form-control" />
-                <span asp-validation-for="pathdocFile" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageURL" class="control-label"></label>
-                <input asp-for="ImageURL" class="form-control" />
-                <span asp-validation-for="ImageURL" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="note" class="control-label"></label>
-                <input asp-for="note" class="form-control" />
-                <span asp-validation-for="note" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
+<br />
+<br />
+<br />
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-8">
+			<h2>Edit</h2>
+
+			<h4>documentaries</h4>
+			<hr />
+			<div class="row">
+				<div class="col-md-12">
+					<form asp-action="Edit" enctype="multipart/form-data">
+						<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+						<input type="hidden" asp-for="Id" />
+						<input type="hidden" asp-for="ImageURL" />
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label asp-for="DocName" class="control-label"></label>
+									<input asp-for="DocName" class="form-control" />
+									<span asp-validation-for="DocName" class="text-danger"></span>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label asp-for="Produce" class="control-label"></label>
+									<input asp-for="Produce" class="form-control" />
+									<span asp-validation-for="Produce" class="text-danger"></span>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label asp-for="Category" class="control-label"></label>
+									<input asp-for="Category" class="form-control" />
+									<span asp-validation-for="Category" class="text-danger"></span>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label asp-for="Publisher" class="control-label"></label>
+									<input asp-for="Publisher" class="form-control" />
+									<span asp-validation-for="Publisher" class="text-danger"></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label asp-for="PubDate" class="control-label"></label>
+									<input asp-for="PubDate" class="form-control" />
+									<span asp-validation-for="PubDate" class="text-danger"></span>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label asp-for="Language" class="control-label"></label>
+									<input asp-for="Language" class="form-control" />
+									<span asp-validation-for="Language" class="text-danger"></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label asp-for="Rights" class="control-label"></label>
+									<input asp-for="Rights" class="form-control" />
+									<span asp-validation-for="Rights" class="text-danger"></span>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label asp-for="pathdocFile" class="control-label"></label>
+									<input asp-for="pathdocFile" class="form-control" />
+									<span asp-validation-for="pathdocFile" class="text-danger"></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label asp-for="ImageURL" class="control-label"></label>
+									<input type="file" asp-for="ImageURL" class="form-control" name="imageFile" id="imageFile" accept=".png,.jpg" onchange="AddImage()"/>
+									<span asp-validation-for="ImageURL" class="text-danger"></span>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label asp-for="note" class="control-label"></label>
+									<input asp-for="note" class="form-control" />
+									<span asp-validation-for="note" class="text-danger"></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="input-group input-group-lg">
+									<img width="250" height="300" src="@Html.DisplayFor(book =>book.ImageURL)" id="bookImage" />
+								</div>
+							</div>
+							<div class="col-md-6"></div>
+						</div>
+
+
+						<br />
+
+						<div class="form-group">
+							<input type="submit" value="Save" class="btn btn-success" />
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div>
+				<a asp-action="Index">Back to List</a>
+			</div>
+		</div>
+	</div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
+
+@section Scripts {
+	<script>
+		function AddImage() {
+			document.getElementById('bookImage').src = window.URL.createObjectURL(document.getElementById('imageFile').files[0])
+		}
+	</script>
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+	}

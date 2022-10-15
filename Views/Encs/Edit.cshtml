@@ -1,327 +1,100 @@
 ﻿@model Stage_Books.Models.Encyclopedia.Enc
 
 @{
-    ViewData["Title"] = "Edit";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	ViewData["Title"] = "Edit";
 }
-<html>
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="~/Admin/cssD/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
-  <link rel="stylesheet" href="~/Admin/cssD/dataTables.bootstrap5.min.css" />
-  <link rel="stylesheet" href="~/Admin/cssD/style.css" />
-  <title>Stage Dashboard</title>
-  <link rel="icon" href="~/img/stage_logo.png" type="" sizes="">
-  <link rel="shortcut icon" href="~/img/stage_logo.png" type="" sizes="">
-  <link rel="apple-touch-icon" href="~/img/stage_logo.png">
-</head>
-
-    <body oncontextmenu="return false;">
-    <br>
-    <div class="container" style="margin:0px auto; text-align:center">
-        <h3>Edit Encyclobidea Item</h3>
-    </div>
-@*    <p>
-    <a asp-action="Create">Send Message</a>
-    </p>*@
-    <br><br>
- <div class="container-fluid">
-      <h3>Encyclobedia</h3>
+<br />
+<br />
+<br />
 
 <div class="container">
-    <hr />
-    <div class="col-md-5 col-12">
-<p>
-    <a class="btn btn-primary" asp-action="Create">Create New</a>
-</p>
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-8">
+			<h2>Edit</h2>
 
-<br />
-  </div>
+			<h4>Encyclopedia</h4>
 
-  <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar"
-        aria-controls="offcanvasExample">
-        <span class="navbar-toggler-icon" data-bs-target="#sidebar"></span>
-      </button>
-      <img src="~/img/stage_logo.png" alt="language" width="30" height="30"
-        style="margin-right: 10px;margin-left: 5px;">
-      <a class="navbar-brand" href="index.html">S T A G E</a>
+			<hr />
+			<div class="row">
+				<div class="col-md-12">
+					<form asp-action="Edit" enctype="multipart/form-data">
+						<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+						<input type="hidden" asp-for="id" />
 
-      <a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href="#"></a>
-
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home <span class="sr-only"></span></a>
-          </li>
-
-          <li class="nav-item active">
-            <a class="nav-link" href="contact.html">Contact<span class="sr-only"></span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="policy.html">Policy<span class="sr-only"></span></a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              About
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item">About Stage</a>
-              <a class="dropdown-item" href="#">Our message</a>
-              <a class="dropdown-item" href="#">Services</a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"></a>
-              </div>
-              </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              <i class="bi bi-globe"></i> Lannguage
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">العربية</a>
-              <a class="dropdown-item" href="#">English</a>
-              <a class="dropdown-item" href="#">German</a>
-              <a class="dropdown-item" href="#">Spanish</a>
-              <a class="dropdown-item" href="#">French</a>
-              <a class="dropdown-item" href="#">hindi</a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"></a>
-              </div>
-              </div>
-          </li>
-
-        </ul>
-
-      </div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label asp-for="Name" class="control-label"></label>
+									<br />
+									<input asp-for="Name" class="form-control" />
+									<span asp-validation-for="Name" class="text-danger"></span>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label asp-for="FullName" class="control-label"></label>
+									<br />
+									<input asp-for="FullName" class="form-control" />
+									<span asp-validation-for="FullName" class="text-danger"></span>
+								</div>
+							</div>
+						</div>
 
 
-      <form class="form-inline">
-        <a href="login.html" class="btn btn-outline-primary my-2 my-sm-0" style="margin-right: 10PX;">Log out</a>
-      </form>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label asp-for="Description" class="control-label"></label>
+									<br />
+									<input asp-for="Description" class="form-control" />
+									<span asp-validation-for="Description" class="text-danger"></span>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label asp-for="Category" class="control-label"></label>
+									<br />
+									<input asp-for="Category" class="form-control" />
+									<span asp-validation-for="Category" class="text-danger"></span>
+								</div>
+							</div>
+						</div>
 
-    </nav>
-  </div>
 
-  <div class="container" >
-        <form asp-action="Edit" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <br />
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <hr />
-            <div class="form-group">
-                <label asp-for="FullName" class="control-label"></label>
-               <br />
-                <input asp-for="FullName" class="form-control" />
-                <span asp-validation-for="FullName" class="text-danger"></span>
-            </div>
-            <hr />
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <br />
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <hr />
-            <div class="form-group">
-                <label asp-for="Category" class="control-label"></label>
-                <br />
-                <input asp-for="Category" class="form-control" />
-                <span asp-validation-for="Category" class="text-danger"></span>
-            </div>
-            <hr />
-            <div class="form-group">
-                <label asp-for="Store" class="control-label"></label>
-                <br />
-                <textarea asp-for="Store" class="form-control" rows="10"></textarea>
-                <span asp-validation-for="Store" class="text-danger"></span>
-            </div>
-            <hr />
-            <div class="form-group">
-                <label asp-for="Poster" class="control-label"></label>
-                <br />
-                <input type="file" asp-for="Poster" class="form-control" />
-                <span asp-validation-for="Poster" class="text-danger"></span>
-            </div>
-            <hr />
-            <br />
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label asp-for="Store" class="control-label"></label>
+									<br />
+									<textarea asp-for="Store" class="form-control" rows="10"></textarea>
+									<span asp-validation-for="Store" class="text-danger"></span>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label asp-for="Poster" class="control-label"></label>
+									<br />
+									<input type="file" asp-for="Poster" class="form-control" />
+									<span asp-validation-for="Poster" class="text-danger"></span>
+								</div>
+							</div>
+						</div>
+
+						<br />
+						<div class="form-group">
+							<input type="submit" value="Save" class="btn btn-success" />
+						</div>
+					</form>
+				</div>
+				<br />
+
+				<div>
+					<a asp-action="Index" class="btn btn-warning">Back to List</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-<br />
-<div>
-    <a asp-action="Index" class="btn btn-warning">Back to List</a>
-</div>
-<br />
- </div>
-    </div>
 
-      <div class="offcanvas offcanvas-start sidebar-nav bg-dark" tabindex="-1" id="sidebar">
-    <div class="offcanvas-body p-0">
-      <nav class="navbar-dark">
-        <ul class="navbar-nav">
-          <li>
-            <div class="text-muted small fw-bold text-uppercase px-3">
-              CORE
-            </div>
-          </li>
-          <li>
-            <a href="#" class="nav-link px-3 active"
-              <span class="me-2"><i class="bi bi-speedometer2"></i></span>
-              <span>Dashboard</span>
-            </a>
-          </li>
-          <li class="my-4">
-            <hr class="dropdown-divider bg-light" />
-          </li>
-          <li>
-            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-              Books
-            </div>
-          </li>
-          <li>
-            <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#layouts">
-              <span class="me-2"><i class="bi bi-layout-split"></i></span>
-              <span>Manage Books</span>
-              <span class="ms-auto">
-                <span class="right-icon">
-                  <i class="bi bi-chevron-down"></i>
-                </span>
-              </span>
-            </a>
-            <div class="collapse" id="layouts">
-              <ul class="navbar-nav ps-3">
-                <li>
-                  <a href="~/Admin/Edit/Edit" class="nav-link px-3">
-                    <span class="me-2"><i class="bi bi-pencil-square"></i></span>
-                    <span>Edit Books</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <a  href="~/Admin/AddBook/AddBook" class="nav-link px-3">
-              <span class="me-2"><i class="bi bi-book-fill"></i></span>
-              <span>Add Book</span>
-            </a>
-          </li>
-          <li class="my-4">
-            <hr class="dropdown-divider bg-light" />
-          </li>
-          <li>
-            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-              Users
-            </div>
-          </li>
-          <li>
-            <a href="~/Admin/Users/Users" class="nav-link px-3">
-              <span class="me-2"><i class="bi bi-person-fill"></i></span>
-              <span>Manage Users</span>
-            </a>
-          </li>
-          <li>
-            <a href="~/Admin/AddUser/AddUser" class="nav-link px-3">
-              <span class="me-2"><i class="bi bi-plus-circle"></i></span>
-              <span>Add Users</span>
-            </a>
-          </li>
-           <li class="my-4">
-            <hr class="dropdown-divider bg-light" />
-          </li>
-          <li>
-            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-              Other
-            </div>
-          </li>
-          <li>
-             @* href="../Views/Contactmsgs/Delete" *@
-            <a href="../Contactmsgs/index" class="nav-link px-3">
-              <span class="me-2"><i class="bi bi-envelope"></i></span>
-              <span>Users Messages</span>
-            </a>
-          </li>
-          <li>
-            <a class="nav-link px-3">
-              <span class="me-2"><i class="bi bi-bug"></i></span>
-              <span>Errors Messages</span>
-            </a>
-          </li>
-          <li>
-          </li>
-          <li>
-            <a href="../Encs/Index2" class="nav-link px-3">
-              <span class="me-2"><i class="bi bi-credit-card-2-front"></i></span>
-              <span>Show Encyclopedia</span>
-            </a>
-          </li>
-          <li>
-            <a href="../Encs/Create" class="nav-link px-3">
-              <span class="me-2"><i class="bi bi-plus-square"></i></span>
-              <span>Add Encyclopedia</span>
-            </a>
-          </li>
-          
-           <li class="my-4">
-            <hr class="dropdown-divider bg-light" />
-           </li>
-          <li>
-            <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-              Other
-            </div>
-          </li>
-          <li>
-            <a href="~/Admin/index_ocr/index_ocr" class="nav-link px-3">
-              <span class="me-2"><i class="bi bi-journal-text"></i></span>
-              <span>OCR</span>
-            </a>
-          </li>
-          <li>
-            <a href="~/Admin/bu/bu" class="nav-link px-3">
-              <span class="me-2"><i class="bi bi-hdd"></i></span>
-              <span>Back UP</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-  <!-- top navigation bar -->
-  <!-- offcanvas -->
-  <script src="~/Admin/jsD/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
-  <script src="~/Admin/jsD/jquery-3.5.1.js"></script>
-  <script src="~/Admin/jsD/jquery.dataTables.min.js"></script>
-  <script src="~/Admin/jsD/dataTables.bootstrap5.min.js"></script>
-  <script src="~/Admin/jsD/script.js"></script>
-  <script src="~/Admin/js/js.js"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-</body>
-
-</html>
